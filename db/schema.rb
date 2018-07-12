@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_061018) do
+ActiveRecord::Schema.define(version: 2018_07_12_113545) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "postal_code"
+    t.integer "prefecture"
+    t.string "city"
+    t.string "address1"
+    t.string "address2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +56,20 @@ ActiveRecord::Schema.define(version: 2018_07_12_061018) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "contact_id"
+    t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -53,9 +79,26 @@ ActiveRecord::Schema.define(version: 2018_07_12_061018) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "discs", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "disc_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.integer "disc_id"
+    t.integer "track_number"
+    t.string "name"
+    t.integer "bpm"
+    t.datetime "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
