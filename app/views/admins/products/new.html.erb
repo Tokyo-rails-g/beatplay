@@ -1,2 +1,50 @@
-<h1>Admins::Products#new</h1>
-<p>Find me in app/views/admins/products/new.html.erb</p>
+<header></header>
+
+<main>
+	<h1>新規商品追加</h1>
+	<div class="new-product">
+
+      <%= form_for(product) do |f| %>
+
+        <div class="field">
+          <label for="artist1">アーティスト名</label>
+          <div class="artist"><%= f.text_field :artist %></div>
+        </div>
+
+        <div class="field">
+          <label for="album_title1">シングル/アルバム名</label>
+          <div class="album_title"><%= f.text_area :album_title %></div>
+        </div>
+
+        <div class="field">
+          <label for="price1">値段</label>
+          <div class="price"><%= f.text_field :price, type="number" %></div>
+        </div>
+
+        <div class="field">
+          <label for="category1">ジャンル</label>
+          <div class="category"><%= f.text_field :category %></div>
+        </div>
+
+        <div class="field">
+          <label for="label1">レーベル名</label>
+          <div class="label"><%= f.text_field :label %></div>
+        </div>
+
+        <div class="field">
+          <label for="release_year1">リリース年</label>
+          <div class="release_year"><%= f.text_field :release_year, type="number" %></div>
+        </div>
+
+        <div class="field">
+          <div class="disc"><%= f.text_field :disc_id, type="number" %></div>
+          <div class="disc"><%= f.text_field :disc_number, type="number" %></div>
+
+        </div>
+
+        <div class="action">
+          <div class="submit"><%= f.submit 'Create Book', class:"btn btn-primary col-xs-12" %></div>
+        </div>
+
+      <% end %>
+</div>
