@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  addresses_id: 1
+  total: 1
+  peyment: MyString
+  status: MyString
+
+two:
+  user_id: 1
+  addresses_id: 1
+  total: 1
+  peyment: MyString
+  status: MyString
