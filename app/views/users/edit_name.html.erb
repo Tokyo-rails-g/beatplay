@@ -1,0 +1,30 @@
+<h1>名前の変更</h1>
+	<%= form_for(@user) do |f| %>
+
+		<div class="field row">
+		    <label>新しい名前</label>
+		    <%= f.text_field :first_name, class: "user_first_name col-xs-3" %>
+		    <%= f.text_field :last_name, class: "user_last_name col-xs-3" %>
+		</div>
+
+		<div class="field row">
+		    <label>カナ</label>
+		    <%= f.text_field :kana_first, class: "user_kana_first col-xs-3" %>
+		    <%= f.text_field :kana_last, class: "user_kana_last col-xs-3" %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit "変更内容を保存" %>
+		</div>
+
+	<% end %>
+
+	<div class="row">
+        <%= link_to edit_user_path(@user.id), class: " col-xs-3 btn btn-default glyphicon glyphicon-wrench" do %> 戻る
+        <% end %>
+    </div>
+    <!-- あ wqqerfer-->
+<div>
+</div>
+<div>
+</div>
