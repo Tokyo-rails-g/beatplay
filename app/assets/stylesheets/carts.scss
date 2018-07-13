@@ -1,3 +1,48 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+td{
+	padding: 40px;
+}
+
+
+
+.main-box{
+	width: 95%;
+}
+.cart-item-box{
+	padding: 20px;
+	background-color: black;
+}
+.cartlist{
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	border-bottom: solid 1px;
+	border-color: silver;
+	padding: 20px 0px 20px 0px;
+}
+.p-img{
+	width: 200px;
+	height: 200px;
+	background-color: pink;
+}
+.p-info{
+	background-color: orange;
+}
+.p-qty{
+	background-color: darkorange;
+}
+.p-price{
+	background-color: orange;
+}
+.p-button{
+	background-color: darkorange;
+}
+.cash-button{
+	margin: 10px;
+}
