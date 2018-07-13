@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+
+  $ -> 
+    "use strict"
+    $content = $('.field:last-child')
+    $('.add_btn').on 'click', -> 
+      $content.clone(true).appendTo('.parent')
+
+
+  $('.parent').on 'click','.trash_btn', -> 
+    $(this).parents('.field').remove()
+

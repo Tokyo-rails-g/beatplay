@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'products/destroy'
     get 'products/edit'
     get 'products/new'
-    get 'products/create'
+    post 'products' => 'products#create'
   end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
