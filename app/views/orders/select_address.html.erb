@@ -1,15 +1,60 @@
 <section class="main-box">
 <div class="search-box">
-	<p class="search-form"><input type="search" name="search-form" placeholder="検索"></p>
+	<div class ="container">
+		<p class="col-lg-4"></p>
+		<p class="col-lg-4 search-form"><input class="form-control" type="search" name="search-form" placeholder="検索"></p>
+		<p class="col-lg-4"></p>
+	</div>
 </div>
 <div class="contents-box">
-	<p class="page-title">送付先住所の選択</p>
+	<p class="page-title">送付先住所を選択してください</p>
 	<div class="send-user-address">
-		<span>ユーザー情報登録時の住所を表示</span><span class="btn btn-primary">この住所に送る</span>
-			<p>〒193-0006<br>東京都府中市緑町３−１６−５<br>クワトロ２０５</p>
+		<button class="button-style">この住所に送る</button>
+			<p class="user-address">@user.postal_code<br>@user.prefecture @user.city @user.address1<br>@user.address2</p>
 	</div>
 	<div class="change-send-address">
-		<span>送り先住所を変更する</span><span class="btn btn-primary">この住所に送る</span>
+		<span>送り先住所を変更する</span>
+		<button class="button-style">この住所に送る</button>
+		<div class="container">
+			<form class="form-horizontal">
+				<div class="form-group">
+			        <label class="col-sm-2 control-label">郵便番号</label>
+			        <div class="col-sm-3">
+			          <input type="text" name="postal_code" autocomplete="postal_code" class="form-control" placeholder="郵便番号" required/>
+			        </div>
+	      		</div>
+	      		<div class="form-group">
+			        <label class="col-sm-2 control-label">住所</label>
+			        <div class="col-sm-4">
+			        	<span><input type="text" name="city" autocomplete="city" class="form-control" placeholder="市区町村" required/></span>
+			        </div>
+	      		</div>
+	      		<div class="form-group">
+			        <label class="col-sm-2 control-label"></label>
+			        <div class="col-sm-4">
+			        	<span><input type="text" name="address1" autocomplete="address1" class="form-control" placeholder="番地" required/></span>
+			        </div>
+	      		</div>
+	      		<div class="form-group">
+			        <label class="col-sm-2 control-label"></label>
+			        <div class="col-sm-4">
+			        	<span><input type="text" name="address2" autocomplete="address2" class="form-control" placeholder="アパート/マンション名" required/></span>
+			        </div>
+	      		</div>
+	      		<div class="form-inline">
+			        <label class="col-sm-2 control-label">お名前</label>
+			        <div class="col-sm-2">
+			        	<span><input type="text" name="first-name" autocomplete="first-name" class="form-control" placeholder="姓" required/></span>
+			        </div>
+	      		</div>
+	      		<div class="form-inline">
+			        <div class="col-sm-2">
+			        	<span><input type="text" name="last-name" autocomplete="last-name" class="form-control" placeholder="名" required/></span>
+			        </div>
+	      		</div>
+	      		</form>
+		</div>
+
 	</div>
 </div>
 
