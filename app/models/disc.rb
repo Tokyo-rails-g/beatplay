@@ -1,4 +1,4 @@
 class Disc < ApplicationRecord
 	belongs_to :product
-	has_many :music
+	has_many :musics, allow_destroy: true
 end
