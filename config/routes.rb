@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admins do
     get 'contacts/index'
     get 'contacts/show'
@@ -31,6 +32,17 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+
+  resources :users, only: [:edit, :update, :destroy]
+
+  get 'users/:id/password_confirmation' => 'users#confirm', as: 'confirm_user'
+  get 'users/:id/mypage' => 'users#mypage', as: 'mypage_user'
+  get 'users/:id/edit_name' => 'users#edit_name', as: 'edit_name_user'
+  get 'users/:id/edit_address' => 'users#edit_address', as: 'edit_address_user'
+  get 'users/:id/edit_phonenumber' => 'users#edit_phonenumber', as: 'edit_phonenumber_user'
+  get 'users/:id/edit_email' => 'users#edit_email', as: 'edit_email_user'
+  get 'users/:id/edit_password' => 'users#edit_password', as: 'edit_password_user'
+
   get 'favorites/create'
   get 'favorites/destroy'
   get 'contacts/new'
