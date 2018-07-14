@@ -39,8 +39,8 @@ Rails.application.routes.draw do
   }
   get 'favorites/create'
   get 'favorites/destroy'
-  get 'contacts/new'
-  get 'contacts/create'
+  get '/contacts/new' => 'contacts#new'
+  post '/contacts/create' => 'contacts#create'
   get 'orders/select_address'
   get 'orders/create_address'
   get 'orders/confirm'
@@ -55,4 +55,5 @@ Rails.application.routes.draw do
   get 'products/show'
   get 'admins/top' => 'admins/users#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # resourses :contacts
 end

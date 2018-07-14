@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   def create
   end
 
+# 購入完了画面で使用するアクション
   def show
   end
 end
