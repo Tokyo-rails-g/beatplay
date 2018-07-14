@@ -29,13 +29,22 @@
             <li><a class="header-buttons" href="#">Home</a></li>
             <li><a class="header-buttons" href="#">Mypage</a></li>
             <li><a class="header-buttons" href="#">Cart</a></li>
-            <li><a class="header-buttons" href="#">SignOut</a></li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "header-buttons" do %>SignOut<% end %>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
   <body>
+    <% flash.each do |key, value| %>
+    <div class= "notice">
+      <div class= "alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
   <footer>
