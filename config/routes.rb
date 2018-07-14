@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'contacts/index'
     get 'contacts/show'
     get 'contacts/new'
-    get 'contacts/create'
+    post 'contacts' => 'contacts#create'
   end
   namespace :admins do
     get 'users/show'
@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     get 'products/new'
     post 'products' => 'products#create'
   end
+
+  namespace :admins do
+    get 'orders/index'
+    get 'orders/show'
+  end
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -45,8 +51,8 @@ Rails.application.routes.draw do
 
   get 'favorites/create'
   get 'favorites/destroy'
-  get 'contacts/new'
-  get 'contacts/create'
+  get '/contacts/new' => 'contacts#new'
+  post '/contacts/create' => 'contacts#create'
   get 'orders/select_address'
   get 'orders/create_address'
   get 'orders/confirm'
@@ -59,5 +65,7 @@ Rails.application.routes.draw do
   get 'carts/checkout'
   get 'products/index'
   get 'products/show'
+  get 'admins/top' => 'admins/users#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # resourses :contacts
 end
