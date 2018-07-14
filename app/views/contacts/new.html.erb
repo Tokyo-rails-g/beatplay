@@ -14,6 +14,7 @@
 				<div class="col-lg-4">購入日 : 年　月　日</div>
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4"><font>合計￥</font></div>
+				決済方法
 				<div class="contents-box">
 	<!-- ここからeach do -->
 					<div class="conteinar">
@@ -36,7 +37,7 @@
 							<div class="col-lg-6 p-qty">qty</div>
 							<div class="col-lg-6 p-price">price</div>
 					</div>
-	<!-- ------------- commit-test-->
+	<!-- --------------->
 				<div class="col-lg-4"></div>
 				<div class="col-lg-3" align="right">
 				</div>
@@ -45,7 +46,50 @@
 			</div>
 		</div>
 	</section>
-	<section class="post-contact-box">
-		
-		お問い合わせ内容
+	<section class="post-contact-section">
+		<div class="contact-title">
+			<p class="">お問い合わせ内容</p>
+		</div>
+		<div class="contact-box">
+			<div class="contact-forms">
+				<%= form_for (@contact), url: contacts_create_path, method: :post do |f| %>
+					<!-- <select class="" name="title" id="title">
+						<option value="">お問い合わせの内容を選択してください</option>
+						<option value="0">ご注文のキャンセル</option>
+						<option value="1">お届け先の変更</option>
+						<option value="2">配送状況について</option>
+						<option value="3">商品の返品・返金について</option>
+						<option value="4">商品の破損・不具合について</option>
+						<option value="5">注文した商品と異なる商品が届いた</option>
+						<option value="6">発送に関するその他質問</option>
+						<option value="7">商品の登録情報について</option>
+						<option value="8">お礼</option>
+						<option value="9">その他の質問</option>
+					</select> -->
+
+					<div class="textarea">
+						<%= f.select :title, [
+										["選択してください",""],
+										["注文のキャンセル","0"],
+										["お届け先の変更","1"],
+										["配送状況について","2"],
+										["商品の返品・返金について","3"],
+										["商品の破損・不具合について","4"],
+										["注文した商品と異なる商品が届いた","5"],
+										["発送に関するその他質問","6"],
+										["商品の登録情報について","7"],
+										["お礼","8"],
+										["その他の質問","9"]
+										] %>
+					
+						<%= f.text_area :body, :maxlength=>"200", :class => "form-control", :placeholder => "最大２００文字まで入力できます", :size => "50x10" %>
+					</div>
+					<div class="contact-submit-button">
+						<button type="submit" class="btn btn-default btn-right">送信</button>
+					</div>
+				<% end %>
+			</div>
+
+
+		</div>
 	</section>

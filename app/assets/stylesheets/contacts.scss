@@ -30,10 +30,12 @@
 .contact-contents{
 	width: 70%;
 	margin: 0 auto;
-	border: solid 2px;
-	border-radius: 5px;
+	border: solid 1px;
+	border-radius: 10px;
 }
 .contact-info{
+	margin: 0 auto;
+	width: 98%;
 	background-color: #202020;
 	border-top: solid 1px;
 	/*border: solid 2px;
@@ -53,8 +55,31 @@
 	padding-bottom: 20px;
 	margin-bottom: 50px;
 }
-.post-contact-box{
-	background-color: #202020;
+.post-contact-section{
 	width: 100%;
+}
+.contact-title{
+	width: 70%;
 	margin: 0 auto;
+	background-color: #202020;
+}
+.contact-box{
+	width: 70%;
+	margin: 0 auto;
+	background-color: #202020;
+	border: solid 1px;
+	border-radius: 10px;
+	padding-top: 20px;
+}
+.contact-forms{
+	width: 98%;
+	margin: 0 auto;
+}
+.textarea{
+	width: 80%;
+	margin: 0 auto;
+}
+.contact-submit-button{
+	margin: 20px;
+	text-align: right;
 }
