@@ -9,5 +9,24 @@
 			<p class="col-lg-4"></p>
 		</div>
 	</div>
-	
+	<div class="main-box">
+			<div class="thanks-icon">
+				<%= image_tag 'thanks-logo.png', :size => "200x200"%>
+				<!-- <img src="assets/thanks-logo.png" alt=""> -->
+				<div><font size="10">Thank you！</font></div>
+			</div>
+		<div class="message-box">
+			<div class="tanks">
+				<font size="5">ご注文が確定されました。<br>ありがとうございました。</font>
+			</div>
+			<div class="order-info">
+				<font size="4"><p class="order-number">注文番号：@order_id</p></font>
+				<p class="order-list">@order.name</p>
+			</div>
+		</div>
+		<div class="buttons">
+			<p class="btn btn-primary header-buttons" href="#">Home</p>
+            <p class="btn btn-default header-buttons" href="#">Mypage</p>
+		</div>
+	</div>
 </section>
