@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'users/show'
     get 'users/index'
-    get 'users/edit'
+    get 'users/edit' => 'users#edit', as: 'admins_edit'
     get 'users/update'
-    get 'users/destroy'
+    delete 'users/destroy'
   end
   namespace :admins do
     get 'products/index'

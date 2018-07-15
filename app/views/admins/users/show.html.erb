@@ -1,2 +1,42 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<%= render 'admins/users/header'  %>
+
+<div class="container">
+	<div class="col-12">
+		<%= @user.each do |user| %>
+          <%= '名前：' + user.name %>
+          <%= '登録住所：' + user.postal_code %>
+          <%= user.prefecture + user.city %>
+          <%= user.address1 + user.address2 %>
+          <%= user.phone_number %>
+          <%= user.email %>
+          <%= button_to "edit", edit_admins_users_edit_path, method: :get, class:"btn btn-success" %>
+          <%= button_to "Destroy", admins_users_destroy_path, class:"btn btn-danger", data: { confirm: 'Are you sure?' }%>
+        <% end %>
+    </div>
+
+    <div class="col-12">
+    	<table class="table">
+          <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>オーダーNo.</th>
+              <th>ステータス</th>
+              <th>購入日</th>
+              <th>合計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><input type="checkbox"></th>
+                <% @orders.each do |order| %>
+              <th><%= link_to "order.order_id", order.order_id %></th>
+              <td><%= link_to "order.status", order.status %></td>
+              <td><%= link_to "order.created_at", order.created_at %></td>
+              <td><%= link_to "order.total", order.total %></td>
+                <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>

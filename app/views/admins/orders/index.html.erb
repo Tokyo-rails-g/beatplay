@@ -1,30 +1,32 @@
-<header>
-    <nav class="navbar navbar-inverse navbar-fixed-top headline">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-           BeatPlayのロゴ
-          </a>
-        </div>
+<%= render 'admins/users/header'  %>
 
-        <div class="collapse navbar-collapse" id="navbarEexample8">
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'ダッシュボード', admins_top_path %></li>
-            <li><%= link_to '商品一覧', admins_products_index_path %></li>
-            <li><%= link_to '注文一覧', admins_orders_index_path %></li>
-            <li><%= link_to 'ユーザー一覧', admins_users_index_path %></li>
-            <li><%= link_to '問合せ一覧', admins_contacts_index_path %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-</header>
+<div class="container">
+  <h1>注文一覧</h1>
+  <div class="col-7">
+    <table class="table">
+      <thead>
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>オーダーNo.</th>
+            <th>ステータス</th>
+            <th>購入日</th>
+            <th>ユーザー名</th>
+            <th>合計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th><input type="checkbox"></th>
+            <% @orders.each do |order| %>
+            <th><%= order.order_id %></th>
+            <td><%= order.status %></td>
+            <td><%= order.created_at %></td>
+            <td><%= order.user_id.first_name %><%= order.user_id.last_name %></td>
+            <td><%= order.total %></td>
+            <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h1>Admins::Orders#index</h1>
-<p>Find me in app/views/admins/orders/index.html.erb</p>
