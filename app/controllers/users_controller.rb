@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top]
+
+  def top
+  end
 
   def confirm
   end

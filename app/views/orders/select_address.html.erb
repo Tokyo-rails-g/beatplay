@@ -9,50 +9,56 @@
 <div class="contents-box">
 	<p class="page-title">送付先住所を選択してください</p>
 	<div class="send-user-address">
-		<button class="button-style">この住所に送る</button>
-			<p class="user-address">@user.postal_code<br>@user.prefecture @user.city @user.address1<br>@user.address2</p>
+		<span>登録済みの住所に送る</span>
+		<%= link_to orders_confirm_path do %>
+			<button type="button" class="button-style" >この住所に送る</button>
+		<% end %>
+			<p class="user-address">
+				<%= @user.postal_code %><br>
+				<%= @user.prefecture %><%= @user.city %><%= @user.address1 %><br>
+				<%= @user.address2 %>
+			</p>
 	</div>
+	<p class="page-title">送り先住所を変更する</p>
 	<div class="change-send-address">
 		<span>送り先住所を変更する</span>
-		<button class="button-style">この住所に送る</button>
+		<%= form_for (@address), url: orders_create_address_path, method: :post do |f| %>
+			<%= link_to orders_confirm_path do %>
+				<button type="submit" class="button-style" >この住所に送る</button>
+			<% end %>
 		<div class="container">
+
 			<form class="form-horizontal">
 				<div class="form-group">
 			        <label class="col-sm-2 control-label">郵便番号</label>
-			        <div class="col-sm-3">
-			          <input type="text" name="postal_code" autocomplete="postal_code" class="form-control" placeholder="郵便番号" required/>
-			        </div>
-	      		</div>
-	      		<div class="form-group">
+			        	<%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %>
 			        <label class="col-sm-2 control-label">住所</label>
 			        <div class="col-sm-4">
-			        	<span><input type="text" name="city" autocomplete="city" class="form-control" placeholder="市区町村" required/></span>
+			        	<%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %>
+			        	<!-- <span><input type="text" name="city" autocomplete="city" class="form-control" placeholder="市区町村" required/></span> -->
 			        </div>
-	      		</div>
-	      		<div class="form-group">
 			        <label class="col-sm-2 control-label"></label>
 			        <div class="col-sm-4">
-			        	<span><input type="text" name="address1" autocomplete="address1" class="form-control" placeholder="番地" required/></span>
+			        	<%= f.text_field :address1, :class => "form-control", :placeholder => "番地" %>
+			        	<!-- <span><input type="text" name="address1" autocomplete="address1" class="form-control" placeholder="番地" required/></span> -->
 			        </div>
-	      		</div>
-	      		<div class="form-group">
 			        <label class="col-sm-2 control-label"></label>
 			        <div class="col-sm-4">
-			        	<span><input type="text" name="address2" autocomplete="address2" class="form-control" placeholder="アパート/マンション名" required/></span>
+			        	<%= f.text_field :address2, :class => "form-control", :placeholder => "アパート／マンション名" %>
+			        	<!-- <span><input type="text" name="address2" autocomplete="address2" class="form-control" placeholder="アパート/マンション名" required/></span> -->
 			        </div>
-	      		</div>
-	      		<div class="form-inline">
 			        <label class="col-sm-2 control-label">お名前</label>
 			        <div class="col-sm-2">
-			        	<span><input type="text" name="first-name" autocomplete="first-name" class="form-control" placeholder="姓" required/></span>
+			        	<%= f.text_field :first_name, :class => "form-control", :placeholder => "姓" %>
+			        	<!-- <span><input type="text" name="first-name" autocomplete="first-name" class="form-control" placeholder="姓" required/></span> -->
 			        </div>
-	      		</div>
-	      		<div class="form-inline">
 			        <div class="col-sm-2">
-			        	<span><input type="text" name="last-name" autocomplete="last-name" class="form-control" placeholder="名" required/></span>
+			        	<%= f.text_field :last_name, :class => "form-control", :placeholder => "名" %>
+			        	<!-- <span><input type="text" name="last-name" autocomplete="last-name" class="form-control" placeholder="名" required/></span> -->
 			        </div>
 	      		</div>
-	      		</form>
+	      	</form>
+	      	<% end %>
 		</div>
 
 	</div>
