@@ -1,12 +1,5 @@
 class CartsController < ApplicationController
 
-  def create
-  end
-
-
-
-
-
   def add_cart_item
   end
 
