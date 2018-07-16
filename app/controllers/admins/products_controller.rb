@@ -29,8 +29,7 @@ private
   def product_params
     params.require(:product).permit(
       :artist, :album_title, :price, :category_id, :label, :release_year, :stock, 
-      discs_attributes:[:disc_number],
-      musics_attributes:[:track_number, :track_name, :bpm, :duration])
+      discs_attributes:[:id, :disc_number, :_destroy])
   end
 
 end

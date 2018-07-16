@@ -89,8 +89,8 @@
 
           <div class="field">
             <div class="disc", class="col-sm-2">
-            <%= f.fields_for :admins,@products do |disc_number| %>
-              <%= disc_number.text_field :post, placeholder:"ディスクNo." %>
+            <%= f.nested_fields_for :discs do |disc_number| %>
+              <%= disc_number.text_field :disc_number, placeholder:"ディスクNo." %>
             <% end %>
             </div>
             <table class="table table-striped table-bordered table-hover">
@@ -102,20 +102,10 @@
                  <th>曲長</th>
                 </tr>
                   <button type="button" class="btn bg-white mt10 miw100 add_btn">入力欄追加</button>
-                  <div class="parent">
-                    <%= f.nested_fields_for :admins,@product  do |track_number|%>
-                    <td><%= track_number.text_field :post, placeholder:"曲順" %><% end %></td>
-                    <%= f.nested_fields_for :admins,@product  do |track_name|%>
-                    <td><%= track_name.text_field :post, placeholder:"曲名" %><% end %></td>
-                    <%= f.nested_fields_for :admins,@product  do |bpm|%>
-                    <td><%= bpm.text_field :post, placeholder:"BPM" %><% end %></td>
-                    <%= f.nested_fields_for :admins,@product  do |duration|%>
-                    <td><%= duration.text_field :post, placeholder:"曲長" %><% end %></td>
-                    <td><%= remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %><% end %></td>
-                  </div>
+                  
               </tbody>
             </table>
-            <%= f.add_nested_fields_link :disc_number,:track_number,:track_name,:bpm,:duration %>
+            
 
           <div class="field">
             <div class="stock"><%= f.text_field :stock, placeholder:"在庫数" %></div>
@@ -124,8 +114,8 @@
           <div class="action">
             <div class="submit"><%= f.submit '登録', class:"btn btn-primary col-xs-12" %></div>
           </div>
+        <% end %>
         </div>
-      <% end %>
       </form>
     </div>
   </div>
