@@ -9,16 +9,33 @@
 	</div>
 		<h2>ご注文内容の確認</h2>
 	<div class="orders-box">
-			<div class="jacket-image">img</div>
+			<div class="jacket-image">@product.image_url</div>
 			<div class="product-info">
-				<p class="p-info">アルバムタイトル<br>アーティスト<br>レーベル</p>
-				<p class="p-price">値段</p>
-				<p class="p-qty">枚数</p>
+				<p class="p-info">@product.album_title<br>@product.artist<br>@product.label</p>
+				<p class="p-price">@product.price</p>
+				<p class="p-qty">@product.quantity</p>
 			</div>
+	</div>
+	<div class="check-addres">
+		<p>送付する住所</p>
+
+		<% if @address != nil %>
+			<p class="user-address">
+				<%= @address.postal_code %><br>
+				<%= @address.prefecture %><%= @address.city %><%= @address.address1 %><br>
+				<%= @address.address2 %>
+			</p>
+		<% else %>
+			<p class="user-address">
+				<%= @user.postal_code %><br>
+				<%= @user.prefecture %><%= @user.city %><%= @user.address1 %><br>
+				<%= @user.address2 %>
+			</p>
+		<% end %>
 	</div>
 	<div class="buttons-box">
 		<div class="view-total-box">
-			<p class="total-money">合計¥</p>
+			<p class="total-money">合計¥ </p>
 		</div>
 		<div class="decision-button">
 			<button class="btn btn-danger btn-lg" type="submit">注文を確定する</button>

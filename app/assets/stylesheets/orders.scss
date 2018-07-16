@@ -41,6 +41,7 @@ text-align: center;
 	background-color: black;
 	border-radius: 10px;
 	margin: 30px auto;
+	border: solid 1px;
 }
 .change-send-address{
 	text-align: center;
@@ -135,9 +136,10 @@ h2{
 .button-style{
 	margin:20px 0px 10px 200px;
 	border: solid 1px;
+	color: rgba(255, 255, 255, 0.8);
 	padding: 0 20px;
 	text-align: center;
-	border-radius: 10px;
-	background-color: black;
+	border-radius: 5px;
+	background-color: #202020;
 	line-height: 2.5;
 }
