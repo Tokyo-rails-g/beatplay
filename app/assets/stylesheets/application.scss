@@ -20,10 +20,12 @@
 	/*フォント*/
 	@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 
+
 /*================================================*/
 *{
 	color: rgba(255, 255, 255, 0.8);
-	background-color: #202020;
+	/*background-color: #202020;*/
+	font-family: Didact+Gothic;
 }
 td{
 	margin-top: 40px;
@@ -49,12 +51,13 @@ footer{
 	border-color: silver;
 	border-radius: 20px;
 }
+
 .search-box{
 	width: 100%;
 	height: 200px;
 /*	background-color: silver;*/
 	/*margin-top: 50px;*/
-	/*background-image: url(beatplay_top_img.jpg);*/
+	background-image: url(top-page-img.jpg);
 }
 .page-title{
 	text-align: center;

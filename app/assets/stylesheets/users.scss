@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+
+
+/*---------------top_page----------------*/
+
+
+.background-image{
+	background-image: url('top-page-img.jpg');
+	width: 100%;
+	height: 1000px;
+	position: relative;
+	/*display: cover;*/
+}
+.img{
+	width: 100%;
+}
+.background-image p{
+	position: absolute;
+	/*position: fixed;*/
+	color: rgba(255, 255, 255, 0.7);
+	top: 50%;
+	left: 50%;
+	font-size: 100px;
+}

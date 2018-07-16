@@ -41,6 +41,7 @@ text-align: center;
 	background-color: black;
 	border-radius: 10px;
 	margin: 30px auto;
+	border: solid 1px;
 }
 .change-send-address{
 	text-align: center;
@@ -56,14 +57,89 @@ text-align: center;
 .container{
 	padding-bottom: 40px;
 }
+.main-box{
+	width: 100%;
+}
+.thanks-icon{
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+	color: white;
+	padding: 10px 0px 0px 10px;
+}
+.message-box{
+	width: 70%;
+	margin: 0 auto;
+	border: solid 1px;
+	border-radius: 10px;
+}
+.buttons{
+	width: 70%;
+	margin: 0 auto;
+	text-align: right;
+}
+/*---------------購入確認画面(orders/confirm.html.erb)にて使用中-------------------*/
+
+.confirm-main-box{
+	width: 100%;
+	background-color: #202020;
+}
+h2{
+	text-align: center;
+	padding-bottom: 20px;
+	color: orange;
+}
+.orders-box{
+	width: 70%;
+	margin: 0 auto;
+	border: solid 1px;
+	border-radius: 5px;
+	padding: 60px 20px;
+}
+.product-info{
+	float: none;
+	padding: 30px;
+}
+.total-money{
+	border: solid 1px;
+	border-radius: 5px;
+	width: 300px;
+	/*margin: 0 auto;*/
+	padding: 20px;
+	/*text-align: right;*/
+}
+.buttons-box{
+/*text-align: right;*/
+}
+.view-total-box{
+	width: 70%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.decision-button{
+	width: 70%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.jacket-image{
+	float: left;
+	width: 200px;
+	height: 200px;
+	background-color: pink;
+}
 /*============ボタン類のCSS==============*/
 /*この住所に送るボタンのスタイル*/
 .button-style{
 	margin:20px 0px 10px 200px;
 	border: solid 1px;
+	color: rgba(255, 255, 255, 0.8);
 	padding: 0 20px;
 	text-align: center;
-	border-radius: 10px;
-	background-color: black;
+	border-radius: 5px;
+	background-color: #202020;
 	line-height: 2.5;
 }
