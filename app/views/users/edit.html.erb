@@ -1,16 +1,32 @@
-<h1>登録情報の編集</h1>
 
-	<h2>名前</h2><%= @user.first_name %><%= @user.last_name %>
+<section class="view-edit-box">
 
-	<h2>カナ</h2><%= @user.kana_first %><%= @user.kana_last %><%= link_to "編集", edit_name_user_path(@user.id) %>
+	<div class="mail-icon">
+	    <div class="">
+	    	<i class="fa fa-sign-in"></i>
+	    </div>
 
-	<h2>住所</h2><%= @user.prefecture %><%= link_to "編集", edit_address_user_path(@user.id) %>
+		<p class="page-title">登録情報の編集</p><br>
+  		<p class="page-title">Log in</p>
+    </div>
 
-	<h2>電話番号</h2><%= @user.phone_number %><%= link_to "編集", edit_phonenumber_user_path(@user.id) %>
+    <div class="main-box">
 
-	<h2>メールアドレス</h2><%= @user.email%><%= link_to "編集", edit_email_user_path(@user.id) %>
+		<p>名前</p><%= @user.first_name %><%= @user.last_name %>
 
-	<h2>パスワード</h2><%= link_to "編集", edit_password_user_path(@user.id) %>
+		<p>カナ</p><%= @user.kana_first %><%= @user.kana_last %><%= link_to "編集", edit_name_user_path(@user.id) %>
+
+		<p>住所</p><%= @user.prefecture %><%= link_to "編集", edit_address_user_path(@user.id) %>
+
+		<p>電話番号</p><%= @user.phone_number %><%= link_to "編集", edit_phonenumber_user_path(@user.id) %>
+
+		<p>メールアドレス</p><%= @user.email%><%= link_to "編集", edit_email_user_path(@user.id) %>
+
+		<p>パスワード</p><%= link_to "編集", edit_password_user_path(@user.id) %>
+
+		<p>終了(ホームへ)</p>
+
+	</div>
 
 
-	<p>終了(ホームへ)</p>
+</section>
