@@ -16,11 +16,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def admins_edit
-    @user = User.find(params[:id])
-    redirect_to admins_users_edit_path(@user.id)
-  end
-
   def edit_name
     @user = User.find(params[:id])
     if @user.id == current_user.id
@@ -74,14 +69,6 @@ class UsersController < ApplicationController
     else
       redirect_to edit_user_path(@user.id)
     end
-  end
-
-  def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   private

@@ -2,30 +2,31 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'contacts/index'
-    get 'contacts/show'
+    get 'contacts/:id/show' => 'contacts#show', as: 'contact_show'
     get 'contacts/new'
     post 'contacts' => 'contacts#create'
   end
   namespace :admins do
-    get 'users/show'
-    get 'users/index'
-    get 'users/edit' => 'users#edit', as: 'admins_edit'
-    get 'users/update'
-    delete 'users/destroy'
+   # get 'users/show'
+   #get 'users/index' => 'admins/users#index'
+   # get 'users/edit'
+   # get 'users/update'
+   # delete 'users/destroy'
+   resources :users, only:[:show, :index, :edit, :update, :destroy]
   end
   namespace :admins do
     get 'products/index'
-    get 'products/show'
-    get 'products/update'
-    get 'products/destroy'
-    get 'products/edit'
+    get 'products/:id/show' => 'products#show'
+    get 'products/:id/update' => 'products#update'
+    get 'products/:id/destroy' => 'products#destroy'
+    get 'products/:id/edit' => 'products#edit'
     get 'products/new'
     post 'products' => 'products#create'
   end
 
   namespace :admins do
     get 'orders/index'
-    get 'orders/show'
+    get 'orders/:id/show' => 'orders#show', as: 'order_show'
   end
 
   devise_for :admins, controllers: {

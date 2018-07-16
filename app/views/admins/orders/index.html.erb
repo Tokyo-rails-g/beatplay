@@ -1,13 +1,13 @@
 <%= render 'admins/users/header'  %>
 
+<h1>注文一覧</h1>
 <div class="container">
-  <h1>注文一覧</h1>
   <div class="col-7">
     <table class="table">
       <thead>
         <tr>
-            <th><input type="checkbox"></th>
-            <th>オーダーNo.</th>
+            <th></th>
+            <th>注文No.</th>
             <th>ステータス</th>
             <th>購入日</th>
             <th>ユーザー名</th>
@@ -16,17 +16,18 @@
       </thead>
       <tbody>
         <tr>
-            <th><input type="checkbox"></th>
             <% @orders.each do |order| %>
-            <th><%= order.order_id %></th>
-            <td><%= order.status %></td>
+            <th><input type="checkbox"></th>
+            <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
+            <td><button type="button" class="btn btn-default btn-sm"><%= order.status %></button></td>
             <td><%= order.created_at %></td>
-            <td><%= order.user_id.first_name %><%= order.user_id.last_name %></td>
+            <td><%= link_to order.user.first_name + order.user.last_name, admins_user_path(order.user), method: :get %></td>
             <td><%= order.total %></td>
             <% end %>
         </tr>
       </tbody>
     </table>
+    <%= paginate @orders %>
   </div>
 </div>
 
