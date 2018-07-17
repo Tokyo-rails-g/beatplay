@@ -3,11 +3,10 @@
 <h1>注文詳細画面</h1>
 <div class="container">
   <div class="row">
-        <% @order.each do |order| %>
+    <% @order.each do |order| %>
         <p class="order-label">
         	<%= order.id %>  <%= '(' + order.user_id.last_name + order_id.order.user_id.first_name + ')' %>,  <%= '¥' + order.total %>
         </p>
-        <% end %>
     <div class="col-8">
     	<div class="panel panel-default">
     		<div class="panel-heaing">
@@ -22,7 +21,7 @@
 			        </tr>
 		        </thead>
 		        <tbody>
-		        	<% @order_item.each do |item| %>
+		        	<% @order.oreder_item.each do |item| %>
 			        <tr>
 				        <td><%= link_to "item.product_id.album_title", item.product_id.album_title %></td>
 				        <td><%= item.price %></td>
@@ -66,6 +65,7 @@
 		        </form>
 	        </div>
         </div>
+    <% end %>
     </div>
 
 

@@ -1,96 +1,79 @@
 <%= render 'admins/users/header'  %>
 
-<body>
-	<h1>新規商品追加</h1>
-	<div class="new-product">
+
+  <div class="new-product">
+  <h1>新規商品追加</h1>
     <div class="container">
       <form class="form-horizontal">
-        <div class="form-group">
-        <%= form_for [:admins, @product] do |f| %>
-          <div class="field">
-            <div class="artist", class="col-sm-4">
-              <%= f.text_field :artist, placeholder: "アーティスト名" %>
+        <%= form_for (@product) do |f| %>
+          <div class="form-group">
+              <%= f.label :artist, "アーティスト名：" %>
+              <%= f.text_field :artist, :size => "50" %>
 <!--モーダル呼び出しボタン-->
-              <button type="button" class="btn btn-primary ml10" data-toggle="modal" data-target="#checkModal">
-            チェック</button>
+            <button class="btn btn-default" data-toggle="modal" data-target="#checkModal">チェック</button>
 <!-- モーダル・ダイアログ-->
-              <div class="modal fade" id="checkModal" tabindex="-1">
-                <div class="modal-dialog">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span>x</span></button>
-                    <h4 class="modal-title">以下のアルバムは既に登録されています。</h4>
-                  </div>
-                  <div class="modal-body">
-                  本文
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                  </div>
+            <div class="modal fade" id="checkModal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span>x</span></button>
+                  <h4 class="modal-title">以下のアルバムは既に登録されています。</h4>
+                </div>
+                <div class="modal-body">本文</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                 </div>
               </div>
-            </div>
           </div>
 
-          <div class="field">
-            <div class="album_title", class="col-sm-4">
-            <%= f.text_field :album_title, placeholder:"シングル/アルバム名" %>
-            </div>
+          <div class="form-group">
+              <%= f.label :album_title, "シングル/アルバム名：" %>
+              <%= f.text_field :album_title, :size => "50" %>
           </div>
 
-          <div class="field">
-            <div class="price", class="col-sm-3">
-            <%= f.text_field :price, placeholder:"値段" %>
-            </div>
+          <div class="form-group">
+              <%= f.label :price, "値段：" %>
+              <%= f.text_field :price, :size => "20" %>
           </div>
 
-          <div class="field">
-            <div class="category", class="col-sm-3">
-            <%= f.text_field :category_id, placeholder:"ジャンル" %>
-            </div>
+          <div class="form-group">
+              <%= f.label :category, "カテゴリー：" %>
+              <%= f.select(:category,[['Rock',1],['Jpop',2],['Hardrock/Metal',3],['Pops',4],['HipHop/R&B',5],['Dance/Electronic',6],['Jazz',7],['World',8],['Classical',9],['Anime/Game/Soundtrack',10],['Idol',11]]) %>
           </div>
 
-          <div class="field">
-            <div class="label1", class="col-sm-3">
-            <%= f.text_field :label, placeholder:"レーベル名" %>
-            </div>
+          <div class="form-group">
+              <%= f.label :label, "レーベル名：" %>
+              <%= f.text_field :label, :size => "20" %>
           </div>
 
-          <div class="field">
-            <div class="release_year", class="col-sm-3">
-            <%= f.text_field :release_year, placeholder:"リリース年" %>
-            </div>
+          <div class="form-group">
+              <%= f.label :release_year, "リリース年：" %>
+              <%= f.text_field :release_year, :size => "20" %>
           </div>
 
-          <div class="field">
-            <div class="disc", class="col-sm-2">
-            <%= f.nested_fields_for :discs do |disc_number| %>
-              <%= disc_number.text_field :disc_number, placeholder:"ディスクNo." %>
+          <div class="form-group">
+              <%= f.label :disc_number, "ディスクNo.：" %>
+              <%= fields_for :disc do |disc| %>
+                <%= disc.text_field :disc_number, placeholder:"ディスクNo.", :size => "20" %>
+              <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :musics, "曲情報" %><br />
+            <%= fields_for :musics do |music| %>
+              <%= render 'input_music', f: music %>
             <% end %>
-            </div>
-            <table class="table table-striped table-bordered table-hover">
-              <tbody>
-                <tr>
-                 <th>曲順</th>
-                 <th>曲名</th>
-                 <th>BPM</th>
-                 <th>曲長</th>
-                </tr>
-                  <button type="button" class="btn bg-white mt10 miw100 add_btn">入力欄追加</button>
-                  
-              </tbody>
-            </table>
-            
+            <%= link_to_add_fields "曲追加", f, :musics %>
+          </div>
 
-          <div class="field">
-            <div class="stock"><%= f.text_field :stock, placeholder:"在庫数" %></div>
+          <div class="form-group">
+              <%= f.label :stock, "在庫数：" %>
+              <%= f.text_field :stock, :size => "20" %>
           </div>
 
           <div class="action">
-            <div class="submit"><%= f.submit '登録', class:"btn btn-primary col-xs-12" %></div>
+            <div class="submit"><%= f.submit '登録', class:"btn btn-default ml10" %></div>
           </div>
         <% end %>
-        </div>
       </form>
     </div>
   </div>
-</body>

@@ -1,2 +1,67 @@
 <%= render 'admins/users/header'  %>
 
+<div class="order-index">
+  <h1>商品一覧</h1>
+  <%= button_to '新規追加', admins_products_new_path, class:"btn btn-default" %>
+  <div class="container">
+    <div class="col-6">
+      <div class="main-box">
+		<div class= "products-box">
+			<% @products.each do |p| %>
+			<div class="thumbnail">
+				<p class="produts-img">ジャケット画像</p>
+				<div class="products-info">
+					<label class="col-sm-2 control-label">タイトル：</label>
+                    <%= p.album_title %>
+                    <label class="col-sm-2 control-label">アーティスト：</label>
+                    <%= p.artist %>
+                    <label class="col-sm-2 control-label">在庫数：</label>
+                    <%= p.stock %>
+				</div>
+			</div>
+			<% end %>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+			<div class="products">
+				<p class="produts-img">ジャケット画像</p>
+				<p class="products-info">商品詳細</p>
+			</div>
+		</div>
+	  </div>
+	</div>
+    <%= paginate @products %>
+    </div>
+  </div>
+</div>
+
+
