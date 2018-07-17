@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-    #@cartitem = CartItem.new
+    @cartitem = CartItem.new
   end
 
   private
