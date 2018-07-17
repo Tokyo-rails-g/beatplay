@@ -61,7 +61,10 @@ Rails.application.routes.draw do
   get 'orders/confirm' => 'orders#confirm'
   post 'orders/create' => 'orders#create'
   get 'orders/show' => 'orders#show'
-  get 'carts/add_cart_item' => 'carts#add_cart_item'
+
+  #get 'carts/add_cart_item' => 'carts#add_cart_item'
+  post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
+
   get 'carts/show' => 'carts#show'
   delete 'carts/delete_item' => 'carts#delete_item'
   delete 'carts/delete_all_items' => 'carts#delete_all_items'

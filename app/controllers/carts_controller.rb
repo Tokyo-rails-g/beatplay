@@ -1,9 +1,6 @@
 class CartsController < ApplicationController
 
 
-  def add_cart_item
-  end
-
 # カート内商品一覧
   def show
     @cart_item = Cart.find(params[:id])

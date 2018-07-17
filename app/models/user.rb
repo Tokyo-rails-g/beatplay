@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :orders
+  has_one :cart
   accepts_nested_attributes_for :orders, :allow_destroy => true
 
   devise :database_authenticatable, :registerable,

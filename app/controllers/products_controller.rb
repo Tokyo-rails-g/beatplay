@@ -4,7 +4,18 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-    #@cartitem = CartItem.new
+    @cartitem = CartItem.new
+  end
+
+  def add_cart_item
+    @cartitem = CartItem.new(cart_item_params)
+    @product = Product.find(params[:id])
+    @cart = Cart.find_by(user_id: current_user)
+    @cartitem.cart_id = @cart.id
+    @cartitem.product_id = @product.id
+    binding.pry
+    @cartitem.save
+    redirect_to product_path(product.id)
   end
 
   private

@@ -1,4 +1,7 @@
 
+
+<div class="box">
+
 <%= @product.album_title %>
 
 <%= @product.artist %>
@@ -7,7 +10,7 @@
 
 <%= @product.category.name %>
 
-<%= @product.stock %><br>
+<p>在庫数</p><%= @product.stock %><br>
 
 
 
@@ -24,16 +27,29 @@
 
 <% end %>
 
-<%= form_for(@cartitem) do |cartitem| %>
+<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
     <div class="field row">
     	<label> 数量</label>
-    	<%= f.number_field :quantity, class: "col-xs-12" %>
+    	<%= f.number_field :quantity %>
     </div>
 
 
     <div class="action row">
-  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-12" %>
+      	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
     </div>
 
 <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

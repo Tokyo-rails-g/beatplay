@@ -70,3 +70,5 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'nested_form_fields'
+
+gem 'pry-rails'
