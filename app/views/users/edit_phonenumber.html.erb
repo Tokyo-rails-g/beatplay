@@ -1,25 +1,36 @@
-<h1>電話番号の変更</h1>
 
-	<div class="field row">
-	    <label>現在の電話番号</label>
-	    <%= @user.phone_number %>
+<section class="view-edit-box">
+
+	<div class="mail-icon">
+	    <div class="">
+	    	<i class="fa fa-sign-in"></i>
+	    </div>
+		<p class="page-title">電話番号の変更</p><br>
 	</div>
 
-	<%= form_for(@user) do |f| %>
+	<div class="main-box">
 
+		<%= form_for(@user) do |f| %>
 
-		<div class="field row">
-		    <label>新しい電話番号</label>
-		    <%= f.text_field :phone_number, class: "user_phone_number col-xs-3" %>
-		</div>
+			<div>
+		    <label>現在の電話番号</label>
+		    <%= @user.phone_number %>
+			</div>
 
-		<div class="actions">
-			<%= f.submit "変更内容を保存" %>
-		</div>
+			<div>
+			    <label>新しい電話番号</label>
+			    <%= f.text_field :phone_number, class: "user_phone_number col-xs-3" %>
+			</div>
 
-	<% end %>
+			<div class="actions">
+				<%= f.submit "変更内容を保存" %>
+			</div>
 
-	<div class="row">
-        <%= link_to edit_user_path(@user.id), class: " col-xs-3 btn btn-default glyphicon glyphicon-wrench" do %> 戻る
-        <% end %>
+		<% end %>
+
+		<div class="row">
+	        <%= link_to edit_user_path(@user.id), class: " col-xs-3 btn btn-default glyphicon glyphicon-wrench" do %> 戻る
+	        <% end %>
+    	</div>
     </div>
+</section>

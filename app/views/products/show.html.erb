@@ -1,2 +1,25 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+
+<%= @product.album_title %>
+
+<%= @product.artist %>
+
+<%= @product.label %>
+
+<%= @product.category.name %>
+
+<%= @product.stock %><br>
+
+
+
+<% @product.discs.each do |disc| %>
+	<label>DISC</label>
+	<%= disc.disc_number %><br>
+
+	<% disc.musics.each do |music| %>
+	<label>曲名</label>
+	<%= music.name %>
+	<label>bpm</label>
+	<%= music.bpm %><br>
+	<% end %>
+
+<% end %>

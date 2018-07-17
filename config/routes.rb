@@ -66,8 +66,10 @@ Rails.application.routes.draw do
   delete 'carts/delete_item' => 'carts#delete_item'
   delete 'carts/delete_all_items' => 'carts#delete_all_items'
   get 'carts/checkout' => 'carts#checkout'
-  get 'products/index'
-  get 'products/show'
+  #get 'products/index'
+  #get 'products/show'
+  resources :products, only: [:index, :show]
+
   get 'admins/top' => 'admins/users#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # resourses :contacts
