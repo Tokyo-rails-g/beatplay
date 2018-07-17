@@ -1,36 +1,44 @@
 class CartsController < ApplicationController
 
+    before_action :setup_cart_item!, only: [:delete_item, :delete_all_item, :checkout]
+
 
   def add_cart_item
   end
 
 # カート内商品一覧
   def show
-    @cart_item = Cart.find(params[:id])
-    @user_id = current_user_id
+    @cart = current_cart
+    # @cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.new
+    @user = current_user
   end
 
   def delete_item
-    @cart_item = Cart.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to carts_show_path
     # カート内に商品があるかを確認。ない場合はdestroyしない
-    if Cart.exists?(id: params[:id])
-      @cart_item.destroy
-    else
-      flash[:notice] = "カートは既に空です"
-      render action: :show
-    end
+    # if Cart.exists?(id: params[:id])
+    #   @cart_item.destroy
+    # else
+    #   flash[:notice] = "カートは既に空です"
+    #   render action: :show
+    # end
   end
 
   def delete_all_items
-    @cart_items = Cart.all
-    if Cart.exists?(id: params[:id])
-      @cart_item.destroy
-    else
-      flash[:notice] = "カートは既に空です"
-      render action: :show
-    end
+    @cart_items = CartItem.all
+    @cart_item.destroy
+    redirect_to carts_show_path
+    # if Cart.exists?(id: params[:id])
+    #   @cart_item.destroy
+    # else
+    #   flash[:notice] = "カートは既に空です"
+    #   render action: :show
+    # end
   end
-# 購入手続きに進むボタンを押した時に呼ばれるアクション
+# 購入手続きに進む(レジに進む)ボタンを押した時に呼ばれるアクション
   def checkout
     redirect_to orders_address_select_path(current_user.id)
   end
