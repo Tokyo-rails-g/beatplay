@@ -21,12 +21,14 @@
 
 		<% if @address != nil %>
 			<p class="user-address">
+				新たに指定された住所
 				<%= @address.postal_code %><br>
 				<%= @address.prefecture %><%= @address.city %><%= @address.address1 %><br>
 				<%= @address.address2 %>
 			</p>
-		<% else %>
+		<% else @address == nil %>
 			<p class="user-address">
+				登録済みの住所
 				<%= @user.postal_code %><br>
 				<%= @user.prefecture %><%= @user.city %><%= @user.address1 %><br>
 				<%= @user.address2 %>
@@ -34,13 +36,17 @@
 		<% end %>
 	</div>
 	<div class="buttons-box">
+		<%= form_for @order, url: orders_create_path, method: :post do |f| %>
 		<div class="view-total-box">
 			<p>支払方法を選択</p>
-			<%= select : %>
-			<p class="total-money">合計¥ </p>
+			<%= f.select :payment, [["選択してください",""], ["クレジット","0"], ["代引き","1"], ["コンビニ・ATM払い","2"]] %>
+			<p class="total-money">合計¥ @order.total</p>
 		</div>
 		<div class="decision-button">
-			<button class="btn btn-danger btn-lg" type="submit">注文を確定する</button>
+			<%= link_to orders_show_path do %>
+				<button class="btn btn-danger btn-lg" type="submit">注文を確定する</button>
+			<% end %>
 		</div>
+		<% end %>
 	</div>
 </section>

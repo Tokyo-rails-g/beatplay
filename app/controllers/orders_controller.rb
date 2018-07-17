@@ -10,14 +10,16 @@ class OrdersController < ApplicationController
     @address = Address.new(address_params)
     if @address.save
       # 購入確認画面にリダイレクト
-      redirect_to orders_confirm_path(@order.id)
+      redirect_to orders_confirm_path(@user)
     end
   end
 
 # 購入確認画面
   def confirm
-    # @cart.id = current_cart.id
-    # @cart_item = CartItem.find(params[:id])
+    @cart = current_cart
+    @order = Order.new
+    # @cart.cart_item = CartItem.find(params[:id])
+    @address = Address.new
     # @address = Address.find(address_params)
     @user = current_user
   end
@@ -32,6 +34,7 @@ class OrdersController < ApplicationController
       @order.id = order_item.id
       @order_item.product_id = cart_item.product_id
       @cart_item.destroy
+      redirect_to orders_show_path
     end
   end
 
@@ -49,5 +52,8 @@ class OrdersController < ApplicationController
 
   def order_item_params
     params.require(:order_item).permit(:order_id, :product_id, :price, :quantity)
+  end
+  def cart_item_params
+    params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
   end
 end
