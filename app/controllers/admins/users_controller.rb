@@ -1,6 +1,6 @@
 class Admins::UsersController < ApplicationController
-PER = 30
 
+PER = 30
 
   def top
   end
@@ -12,7 +12,6 @@ PER = 30
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.find(@user)
   end
 
   def edit
@@ -24,12 +23,14 @@ PER = 30
       redirect_to edit_admins_user_path
     else
       render 'edit'
+    end
   end
 
   def destroy
   end
 
-  private
+private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first, :kana_last, :postal_code, :prefecture, :city, :address1, :address2, :phone_number, :email, :password)
+  end
 end
