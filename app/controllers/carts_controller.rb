@@ -18,6 +18,7 @@ class CartsController < ApplicationController
     else
       flash[:notice] = "カートは既に空です"
       render action: :show
+    end
   end
 
   def delete_all_items
@@ -27,6 +28,7 @@ class CartsController < ApplicationController
     else
       flash[:notice] = "カートは既に空です"
       render action: :show
+    end
   end
 # 購入手続きに進むボタンを押した時に呼ばれるアクション
   def checkout
