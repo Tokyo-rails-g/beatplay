@@ -58,8 +58,10 @@
             <td>
               <%= button_to "削除", admin_registration_path, method: :delete, class:"btn btn-default", data: { confirm: 'Are you sure?' }%>
             </td>
+            <td>
+              <%= button_to '追加', destroy_admin_session_path, method: :delete, class:"btn btn-default" %>
+            </td>
         </tr>
-        <%= button_to '追加', admin_registration_path, class:"btn btn-default" %>
       </tbody>
           <% end %>
     </table>

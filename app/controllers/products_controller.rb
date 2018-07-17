@@ -1,5 +1,48 @@
 class ProductsController < ApplicationController
+  def new
+    @product = Product.new
+    @product.discs.build
+    @product.discs.musics.build
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      flash[:notice] = '商品を追加しました！'
+      redirect_to admins_products_index_path
+    else
+      @products = Post.all
+      flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
+      render :index
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+       flash[:notice] = "商品を更新しました！"
+       redirect_to admins_path(@product)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      flash[:notice] = "商品を削除しました。"
+      redirect_to admins_products_index_path
+    else
+      render :index
+    end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def index
+    @products = Product.all
   end
 
   def show
