@@ -12,7 +12,7 @@ class Product < ApplicationRecord
 	validates :label, presence: true
 	validates :category_id, presence: true
 	validates :favorite_count, presence: true
-	validates :image_url, presence: true
+	#validates :image_url, presence: true
 	validates :price, presence: true
 	validates :stock, presence: true
 	validates :release_year, presence: true
