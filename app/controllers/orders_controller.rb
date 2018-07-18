@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new
     # @cart.cart_item = CartItem.find(params[:id])
-    @address = Address.new
+    @address = Address.find(address_params)
     # @address = Address.find(address_params)
     @user = current_user
   end
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:first_name, :last_name, :postal_code, :prefecture, :city, :address1, :address2)
+    params.require(:address).permit(:first_name, :last_name, :postal_code, :city, :address1)
   end
 
   def order_item_params

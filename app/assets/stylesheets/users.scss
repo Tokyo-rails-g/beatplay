@@ -15,17 +15,68 @@
 	background-image: url('top-page-img.jpg');
 	width: 100%;
 	height: 1000px;
-	position: relative;
+	/*position: relative;*/
 	/*display: cover;*/
 }
 .img{
 	width: 100%;
 }
 .background-image p{
-	position: absolute;
+	/*position: absolute;*/
 	/*position: fixed;*/
 	color: rgba(255, 255, 255, 0.7);
-	top: 50%;
-	left: 50%;
+	text-align: center;
+/*	top: 50%;
+	left: 50%;*/
 	font-size: 100px;
+}
+.top-search-form{
+	padding-top: 200px;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	/*position: absolute;*/
+	/*top: 50%;
+	left: 50%;*/
+}
+dl.search{
+    position:relative;
+    background-color:#fff;
+    border:1px solid #aaa;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    -o-border-radius:6px;
+    -ms-border-radius:6px;
+    border-radius:6px;
+}
+dl.search dt{
+    margin-right:40px;
+    padding:8px 0 8px 8px;
+}
+dl.search dt input{
+    width:100%;
+    height:24px;
+    line-height:24px;
+    background:none;
+    border:none;
+}
+dl.search dd{
+    position:absolute;
+    top:0;
+    right:0;
+}
+dl.search dd button{
+    display:block;
+    padding:10px;
+    background:none;
+    border:none;
+}
+dl.search dd button span{
+    display:block;
+    width:20px;
+    height:20px;
+    background:url('search.png') no-repeat scroll 0 0;
+}
+.start-button{
+	text-align: center;
 }
