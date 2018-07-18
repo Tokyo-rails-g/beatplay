@@ -23,17 +23,55 @@
            BeatPlayのロゴ
           </a>
         </div>
-        
+
+      <% if user_signed_in? %>
+      <!-- ログインしているときは以下を表示 -->
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="header-buttons" href="#">Home</a></li>
-            <li><a class="header-buttons" href="#">Mypage</a></li>
-            <li><a class="header-buttons" href="#">Cart</a></li>
+
+            <li class="header-buttons">
+              <%= link_to products_path do %>
+              Home
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to mypage_user_path(current_user) do %>
+              Mypage
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to carts_show_path do %>
+              Cart
+              <% end %>
+            </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete, class: "header-buttons" do %>SignOut<% end %>
+              <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "header-buttons" do %>SignOut<% end %>
             </li>
           </ul>
         </div>
+      <!-- ログインしていないときは以下を表示 -->
+      <% else %>
+        <div class="collapse navbar-collapse" id="navbarEexample8">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li class="header-buttons">
+              <%= link_to users_top_path do %>
+              Top
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to new_user_registration_path do %>
+              SignUp
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to new_user_session_path do %>
+              LogIn
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
       </div>
     </nav>
   </header>

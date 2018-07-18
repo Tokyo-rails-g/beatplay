@@ -2,9 +2,11 @@
 
   <div class="new-product">
 	<h1>新規商品追加</h1>
+
     <div class="container">
       <form class="form-horizontal">
         <%= form_for (@product) do |f| %>
+
           <div class="form-group">
               <%= f.label :artist, "アーティスト名：" %>
               <%= f.text_field :artist, :size => "50" %>
@@ -30,13 +32,28 @@
           </div>
 
           <div class="form-group">
+              <%= f.label :image_url, "ジャケット画像：" %>
+              <%= f.attachment_field :image_url, :fill,100,100, format:'jpeg',fallback: "meteora.jpg" %>
+          </div>
+
+          <div class="form-group">
               <%= f.label :price, "値段：" %>
               <%= f.text_field :price, :size => "20" %>
           </div>
 
           <div class="form-group">
               <%= f.label :category, "カテゴリー：" %>
-              <%= f.select(:category,[['Rock',1],['Jpop',2],['Hardrock/Metal',3],['Pops',4],['HipHop/R&B',5],['Dance/Electronic',6],['Jazz',7],['World',8],['Classical',9],['Anime/Game/Soundtrack',10],['Idol',11]]) %>
+              <%= f.select(:category,[['Rock',1],
+                                      ['Jpop',2],
+                                      ['Hardrock/Metal',3],
+                                      ['Pops',4],
+                                      ['HipHop/R&B',5],
+                                      ['Dance/Electronic',6],
+                                      ['Jazz',7],
+                                      ['World',8],
+                                      ['Classical',9],
+                                      ['Anime/Game/Soundtrack',10],
+                                      ['Idol',11]]) %>
           </div>
 
           <div class="form-group">
@@ -54,33 +71,6 @@
               <%= fields_for :disc do |disc| %>
                 <%= disc.text_field :disc_number, placeholder:"ディスクNo.", :size => "20" %>
               <% end %>
-          </div>
-
-          <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button><br>
-          <div class="parent">
-
-            <div class="form-group">
-              <%= f.label :musics, "曲情報" %><br />
-              <%= fields_for :musics do |music| %>
-                <div class="input-group col-sm-2 form-inline">
-                  <%= music.text_field :track_number, placeholder:"曲順", class: 'form-control', :size => "20" %>
-                </div>
-                <div class="input-group col-sm-4 form-inline">
-                  <%= music.text_field :track_name, placeholder:"曲名", class: 'form-control', :size => "50" %>
-                </div>
-                <div class="input-group col-sm-2 form-inline">
-                  <%= music.text_field :bpm, placeholder:"BPM", class: 'form-control', :size => "20" %>
-                </div>
-                <div class="input-group col-sm-2 form-inline">
-                  <%= music.text_field :duration, placeholder:"曲長", class: 'form-control', :size => "20" %>
-                </div>
-
-                <button type="button" class="btn trash_btn ml10" value="" name="">
-                        削除
-                      </button><br />
-              <% end %>
-            </div>
-
           </div>
 
           <div class="form-group">

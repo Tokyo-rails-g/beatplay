@@ -1,3 +1,15 @@
 <div class="background-image">
 	<p>BeatPlay</p>
+
+<form class="top-search-form" action="/" name="search" method="get">
+	<dl class="search">
+	    <dt><input type="text" name="search" value="" placeholder="キーワードで検索" /></dt>
+	    <dd><button><span></span></button></dd>
+	</dl>
+</form>
+<div class="start-button">
+	<%= link_to products_path do %>
+		<p class="btn btn-primary">START</p>
+	<% end %>
+</div>
 </div>
