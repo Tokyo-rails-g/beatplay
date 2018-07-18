@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get 'products/:id/edit' => 'products#edit'
     get 'products/new'
     post 'products' => 'products#create'
+    get 'products/:id/add_music' => 'products#new_music', as: 'add_music'
+    post 'products/:id/add_music' => 'products#add_music', as: 'create_music'
   end
 
   namespace :admins do

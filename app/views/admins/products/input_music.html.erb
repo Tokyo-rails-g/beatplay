@@ -1,0 +1,82 @@
+<div class="new-product">
+  <h1>曲情報追加</h1>
+
+    <div class="container">
+      <form class="form-horizontal">
+        <div class="form-group">
+            <%= form_for @music do |music| %>
+
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+          <div class="form-group">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline', :size => "20" %>
+          </div>
+
+          <div class="parent">
+              <%= music.text_field :track_number, placeholder:"曲順", class: 'form-inline-cp', :size => "20" %>
+              <%= music.text_field :track_name, placeholder:"曲名", class: 'form-inline-cp', :size => "50" %>
+              <%= music.text_field :bpm, placeholder:"BPM", class: 'form-inline-cp', :size => "20" %>
+              <%= music.text_field :duration, placeholder:"曲長", class: 'form-inline-cp', :size => "20" %>
+              <button type="button" class="btn trash_btn ml10 form-inline-cp">削除</button><br />
+            <% end %>
+          </div>
+
+              <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button><br>
+
+          <div class="action">
+            <div class="submit"><%= music.submit '登録', class:"btn btn-default ml10" %></div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+
