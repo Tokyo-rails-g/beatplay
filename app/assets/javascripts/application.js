@@ -17,14 +17,3 @@
 //= require bootstrap-sprockets
 //= require nested_form_fields
 //= require_tree .
-
-$( function() {
-	"use strict";
-	var $content = $( '.field:last-child' );
-	$( '.add_btn' ).on( 'click', function() {
-		$content.clone( true ).appendTo( '.parent' );
-	} );
-	$( '.parent' ).on( 'click', '.trash_btn', function() {
-		$( this ).parents( '.field' ).remove();
-	} );
-} );
