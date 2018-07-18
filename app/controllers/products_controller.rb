@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @cartitem.product_id = @product.id
     binding.pry
     @cartitem.save
-    redirect_to product_path(product.id)
+    redirect_to products_path
   end
 
   private
