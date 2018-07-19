@@ -8,12 +8,23 @@ class ProductsController < ApplicationController
     @cartitem = CartItem.new(cart_item_params)
     @product = Product.find(params[:id])
     @cart = Cart.find_by(user_id: current_user)
-    @cartitem.cart_id = @cart.id
-    @cartitem.product_id = @product.id
+
+    @cartitems = @cart.cart_items.find_by(product_id: @product.id)
+
     binding.pry
-    @cartitem.save
-    redirect_to products_path
+
+    if @cartitems.blank?
+      @cartitem.cart_id = @cart.id
+      @cartitem.product_id = @product.id
+      @cartitem.save
+      redirect_to products_path
+    else
+      render :edit
+    end
   end
+
+  #def edit
+  #end
 
   private
   	def product_params

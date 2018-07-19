@@ -29,6 +29,9 @@
 
 <% if user_signed_in? %>
 
+
+
+
 	<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
 	<div class="field row">
