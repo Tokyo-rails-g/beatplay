@@ -1,0 +1,162 @@
+<%#= render 'admins/users/header'  %>
+
+  <div class="new-product">
+	<h1>新規商品追加</h1>
+
+    <div class="container">
+      <form class="form-horizontal">
+        <%= form_for(@product) do |f| %>
+
+          <div class="form-group">
+              <%= f.label :artist, "アーティスト名：" %>
+              <%= f.text_field :artist, :size => "50" %>
+
+          <div class="form-group">
+              <%= f.label :album_title, "シングル/アルバム名：" %>
+              <%= f.text_field :album_title, :size => "50" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :image_id, "ジャケット画像：" %>
+              <%= f.attachment_field :image %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :price, "値段：" %>
+              <%= f.text_field :price, :size => "20" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :category, "カテゴリー：" %>
+              <%= f.select(:category,[['Rock',1],
+                                      ['Jpop',2],
+                                      ['Hardrock/Metal',3],
+                                      ['Pops',4],
+                                      ['HipHop/R&B',5],
+                                      ['Dance/Electronic',6],
+                                      ['Jazz',7],
+                                      ['World',8],
+                                      ['Classical',9],
+                                      ['Anime/Game/Soundtrack',10],
+                                      ['Idol',11]]) %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :label, "レーベル名：" %>
+              <%= f.text_field :label, :size => "20" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :release_year, "リリース年：" %>
+              <%= f.text_field :release_year, :size => "20" %>
+          </div>
+
+
+          <div class="form-group">
+              <%= f.label :stock, "在庫数：" %>
+              <%= f.text_field :stock, :size => "20" %>
+          </div>
+
+          <div class="action">
+            <div class="submit"><%= f.submit '登録', class:"btn btn-default ml10" %></div>
+          </div>
+        <% end %>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+<!-- admins products new -->
+<%= render 'admins/users/header'  %>
+
+  <div class="new-product">
+	<h1>新規商品追加</h1>
+
+    <div class="container">
+      <form class="form-horizontal">
+        <%= form_for(@product, url: admins_products_path, method: :post) do |f| %>
+        
+          <div class="form-group">
+              <%= f.label :artist, "アーティスト名：" %>
+              <%= f.text_field :artist, :size => "50" %>
+<!--モーダル呼び出しボタン-->
+            <button class="btn btn-default" data-toggle="modal" data-target="#checkModal">チェック</button>
+<!-- モーダル・ダイアログ-->
+            <div class="modal fade" id="checkModal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span>x</span></button>
+                  <h4 class="modal-title">以下のアルバムは既に登録されています。</h4>
+                </div>
+                <div class="modal-body">本文</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :album_title, "シングル/アルバム名：" %>
+              <%= f.text_field :album_title, :size => "50" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :image_id, "ジャケット画像：" %>
+              <%= f.attachment_field :image %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :price, "値段：" %>
+              <%= f.text_field :price, :size => "20" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :category, "カテゴリー：" %>
+              <%= f.select(:category,[['Rock',1],
+                                      ['Jpop',2],
+                                      ['Hardrock/Metal',3],
+                                      ['Pops',4],
+                                      ['HipHop/R&B',5],
+                                      ['Dance/Electronic',6],
+                                      ['Jazz',7],
+                                      ['World',8],
+                                      ['Classical',9],
+                                      ['Anime/Game/Soundtrack',10],
+                                      ['Idol',11]]) %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :label, "レーベル名：" %>
+              <%= f.text_field :label, :size => "20" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :release_year, "リリース年：" %>
+              <%= f.text_field :release_year, :size => "20" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :disc_number, "ディスクNo.：" %>
+              <%= fields_for :disc do |disc| %>
+                <%= disc.text_field :disc_number, placeholder:"ディスクNo.", :size => "20" %>
+              <% end %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :stock, "在庫数：" %>
+              <%= f.text_field :stock, :size => "20" %>
+          </div>
+
+          <div class="action">
+            <div class="submit"><%= f.submit '登録', class:"btn btn-default ml10" %></div>
+          </div>
+        <% end %>
+      </form>
+    </div>
+  </div>

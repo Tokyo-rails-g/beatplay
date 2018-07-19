@@ -10,34 +10,43 @@ PER = 30
   end
 
   def new
-    @product = Product.new(product_params)
+    
+    if params[:product].present?
+      @product = Product.new(product_params)
+      @product.save
+      redirect_to admins_new_music_path(@product.id)
+      else
+      @product = Product.new
+    end
   end
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      @disc = @product.discs.new(disc_params)
-      @disc.product_id = @product.id
-      @disc.save
-      flash[:notice] = '商品を追加しました！'
-      redirect_to admins_add_music_path
-    else
-      @products = Post.all
-      flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
-      render :index
-    end
+    # if @product.save
+    #   @disc = @product.discs.new(disc_params)
+    #   @disc.product_id = @product.id
+    #   @disc.save
+    #   flash[:notice] = '商品を追加しました！'
+    #   redirect_to admins_new_music_path(@product.id)
+    # else
+    #   flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
+    #   render :index
+    # end
   end
 
   def new_music
-    @product = Product.new
-    @disc = @product.discs.new
-    @music = @product.disc.musics.new
+    @product = Product.find(params[:id])
+    disc = @product.discs.new
+    music = disc.musics.new
   end
 
   def add_music
-    @music = @product.disc.musics.new
-    @music.disc_id = @disc.id
-    @music.save(music_params)
+    disc = @product.discs.new
+    disc.product_id = @product.id
+    disc.save(disc_params)
+    musics = disc.musics.new
+    music.disc_id = @disc.id
+    music.save(music_params)
   end
 
   def edit
@@ -67,21 +76,13 @@ PER = 30
 private
 
   def product_params
-    params.require(:product).permit(
-      :artist, :album_title, :price, :category_id, :label, :release_year, :stock)
-  end
-
-  def disc_params
-    params.require(:disc).permit(:product_id, :disc_number)
-  end
-
-  def music_params
-    params.require(:music).permit(:disc_id, :album_title, :bpm, :duration, :track_number)
+    params.require(:product).permit(:artist, :album_title, :image, :price, :category_id, :label, :release_year, :stock,
+                                    discs_attributes:[:product_id, :disc_number],
+                                    musics_attributes:[:disc_id, :album_title, :bpm, :duration, :track_number])
   end
 
   def update_product_params
     params.require(:product).permit(
-      :artist, :album_title, :price, :category_id, :label, :release_year, :stock, 
-      discs_attributes:[:id, :disc_number, :_destroy], musics_attributes:[:disc_id, :album_title, :bpm, :duration, :track_number, :_destroy])
+      :artist, :album_title, :image, :price, :category_id, :label, :favorite_count, :release_year, :stock)
   end
 end

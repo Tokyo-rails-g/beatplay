@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
 
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
   namespace :admins do
     get 'contacts/index'
     get 'contacts/:id/show' => 'contacts#show', as: 'contact_show'
     get 'contacts/new'
     post 'contacts' => 'contacts#create'
-  end
-  namespace :admins do
+
    # get 'users/show'
    #get 'users/index' => 'admins/users#index'
    # get 'users/edit'
@@ -21,9 +30,10 @@ Rails.application.routes.draw do
     get 'products/:id/destroy' => 'products#destroy'
     get 'products/:id/edit' => 'products#edit'
     get 'products/new'
-    post 'products' => 'products#create'
-    get 'products/:id/add_music' => 'products#new_music', as: 'add_music'
-    post 'products/:id/add_music' => 'products#add_music', as: 'create_music'
+    # post 'products' => 'products#create'
+    resources :products, only: [:create]
+    get 'products/:id/new_music' => 'products#new_music', as: 'new_music'
+    post 'products/:id/add_music' => 'products#add_music', as: 'add_music'
   end
 
   namespace :admins do
@@ -31,16 +41,7 @@ Rails.application.routes.draw do
     get 'orders/:id/show' => 'orders#show', as: 'order_show'
   end
 
-  devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
-  }
+
 
   resources :users, only: [:edit, :update, :destroy]
   get 'users/top' => 'users#top'
