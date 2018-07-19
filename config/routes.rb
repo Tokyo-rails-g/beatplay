@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   get 'users/:id/edit_password' => 'users#edit_password', as: 'edit_password_user'
 
 
-# admins/top以外にそれぞれusers/:id/が手前に入ってくる
+
   get 'favorites/create'
   get 'favorites/destroy'
   get '/contacts/new' => 'contacts#new'
