@@ -34,6 +34,13 @@ text-align: center;
 	justify-content: center;
 	padding-bottom: 20px;
 }
+.user-address2{
+	width:500px;
+	margin: 0 auto;
+	text-align: left;
+}
+.user-address3{
+}
 .send-user-address{
 	text-align: center;
 	width:70%;
@@ -92,14 +99,23 @@ h2{
 }
 .orders-box{
 	width: 70%;
+	height: 300px;
 	margin: 0 auto;
 	border: solid 1px;
 	border-radius: 5px;
 	padding: 60px 20px;
+	overflow: scroll;
 }
 .product-info{
 	float: none;
 	padding: 30px;
+}
+.check-addres{
+	width: 70%;
+	margin: 0 auto;
+	border: solid 1px;
+	border-radius: 5px;
+	text-align: center;
 }
 .total-money{
 	border: solid 1px;
@@ -119,9 +135,11 @@ h2{
 	flex-direction: row;
 	justify-content: flex-end;
 }
+/*購入を確定*/
 .decision-button{
 	width: 70%;
 	margin: 0 auto;
+	padding: 30px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -131,6 +149,19 @@ h2{
 	width: 200px;
 	height: 200px;
 	background-color: pink;
+}
+div.example {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  overflow: scroll;
+}
+.modal-content{
+	background-color: rgba(255, 255, 255, 0.1)!important;
+}
+.select-payment{
+	margin: 10px;
+	color: #202020;
 }
 /*============ボタン類のCSS==============*/
 /*この住所に送るボタンのスタイル*/

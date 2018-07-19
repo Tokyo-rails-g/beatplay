@@ -1,26 +1,30 @@
 class OrdersController < ApplicationController
 
   def select_address
-    @user = current_user
+    
     @address = Address.new
+    @user = current_user
+    
   end
 
 # 新たに送り先を指定したとき
   def create_address
     @address = Address.new(address_params)
+    @user = current_user
     if @address.save
       # 購入確認画面にリダイレクト
-      redirect_to orders_confirm_path(@user)
+      redirect_to orders_confirm_path(@address)
     end
   end
-
 # 購入確認画面
   def confirm
-    @cart = current_cart
+    # ログインしているユーザーに紐付いたカートIDを取得
+    @cart = Cart.find_by(user_id: current_user)
+    # カート内のすべてのカートアイテムを取得
+    @cart_items = @cart.cart_items
     @order = Order.new
-    # @cart.cart_item = CartItem.find(params[:id])
-    @address = Address.find(address_params)
-    # @address = Address.find(address_params)
+    # Addressモデルのデータから最後のデータを引っ張ってくる
+    @address = Address.last
     @user = current_user
   end
 
@@ -40,6 +44,7 @@ class OrdersController < ApplicationController
 
 # 購入完了画面で使用するアクション
   def show
+    @user = current_user
   end
 
 
