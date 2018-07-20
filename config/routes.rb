@@ -62,8 +62,8 @@ Rails.application.routes.draw do
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
   get 'orders/confirm' => 'orders#confirm'
-  post 'orders/create' => 'orders#create'
-  get 'orders/show' => 'orders#show'
+  post 'orders/create' => 'orders#create', as:'create_order'
+  get 'orders/show' => 'orders#show', as: 'show_order'
 
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'

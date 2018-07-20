@@ -3,6 +3,8 @@ class Admins::UsersController < ApplicationController
 PER = 30
 
   def top
+    @order = Order.last(10)
+    @user = User.last(10)
   end
 
   def index
