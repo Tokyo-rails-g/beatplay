@@ -2,41 +2,49 @@
 
 <h1>ユーザー詳細</h1>
 <div class="container">
-	<form class="form-horizontal col-12">
-    <%= @user.each do |user| %>
+
+  <div class="form-horizontal">
+
     <div class="form-group">
-      <label class="col-sm-2 control-label">名前：</label>
-      <div class="col-sm-10">
-        <%= @user.last_name %><%= @user.first_name %>
+      <label class="col-sm-4 control-label">名前：</label>
+      <div class="col-sm-8">
+        <p class="form-control-static">
+          <%= @user.first_name %><%= @user.last_name %>
+        </p>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">登録住所：</label>
-        <div class="col-sm-10">
-          <%= @user.postal_code %>
-          <%= @user.prefecture + @user.city %>
-          <%= @user.address1 + @user.address2 %>
+      <div class="col-sm-4 control-label">
+        <label class="control-label">登録住所：</label>
+        <div class="col-sm-8">
+          <p class="form-control-static">
+            <%= @user.postal_code %> <%= @user.prefecture %> <%= @user.city %>
+          </p>
+          <p class="form-control-static">
+            <%= @user.address1 %> <%= @user.address2 %>
+          </p>
         </div>
       </div>
     <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">電話番号：</label>
-        <div class="col-sm-10">
-          <%= @user.phone_number %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">メール：</label>
-        <div class="col-sm-10">
-          <%= @user.email %>
+        <label class="col-sm-4 control-label">電話番号：</label>
+        <div class="col-sm-8">
+          <p class="form-control-static">
+            <%= @user.phone_number %>
+          </p>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+        <label class="col-sm-4 control-label">メール：</label>
+        <div class="col-sm-8">
+          <p class="form-control-static">
+            <%= @user.email %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class=" col-sm-12">
         <%= button_to "edit", edit_admins_user_path(@user.id), class:"btn btn-success" %>
         <%= button_to "Destroy", admins_users_path(@user.id), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' }%>
       </div>
@@ -44,7 +52,7 @@
   </form>
 
   <div class="col-12">
-    	<table class="table">
+      <table class="table">
           <thead>
             <tr>
               <th><input type="checkbox"></th>
@@ -57,7 +65,7 @@
           <tbody>
             <tr>
               <th><input type="checkbox"></th>
-                <% @user.orders.each do |order| %>
+                <% @orders.each do |order| %>
               <th><%= link_to "order.id", order.order_id %></th>
               <td><%= link_to "order.status", order.status %></td>
               <td><%= link_to "order.created_at", order.created_at %></td>
@@ -66,7 +74,6 @@
             </tr>
           </tbody>
         </table>
-      <% end %>
     </div>
 
 </div>

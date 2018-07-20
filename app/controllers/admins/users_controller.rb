@@ -14,6 +14,7 @@ PER = 30
 
   def show
     @user = User.find(params[:id])
+    @orders = Order.find(params[@user.id])
   end
 
   def edit
