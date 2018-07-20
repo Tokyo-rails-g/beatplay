@@ -31,14 +31,35 @@ class OrdersController < ApplicationController
 # 注文を確定するボタンが押されたときに呼ばれるアクション
   def create
     @order = Order.new
-    @order_item = OrderItem.new(order_item_params)
-    @cart_item = CartItem.find(params[:id])
-    @user_id = current_user.id
+    @user = current_user
+    # @user.id = @cart.user_id
+    # ログインしているユーザーに紐付いたカートIDを取得
+    @cart = Cart.find_by(user_id: current_user)
+    # カート内のすべてのカートアイテム情報を取得
+    @cart_items = @cart.cart_items
+    @order.user_id = current_user.id
+    if  @address != nil
+        @address = Address.last
+        @order.address_id = @address.id
+    end
+    # binding.pry
+    # order.saveされる前に、cartsテーブルのuser_idをordersテーブルのuser_idに格納
+    # @cart.user_id = @order.user_id
+    # @cart_item = CartItem.find_by(cart_id: current_cart)
     if @order.save
-      @order.id = order_item.id
-      @order_item.product_id = cart_item.product_id
-      @cart_item.destroy
-      redirect_to orders_show_path
+      # カートアイテムIDをオーダーアイテムIDにコピーし、@order_itemを保存
+      @order_items = OrderItem.new
+      @order_items = @cart_items
+      # binding.pry
+      if @order_item.save
+        @cart_items.destroy
+      redirect_to show_order_path(@user)
+      else
+      end
+      
+    else
+      puts @order.errors.full_messages
+
     end
   end
 

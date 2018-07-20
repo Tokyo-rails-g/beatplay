@@ -1,4 +1,15 @@
 class ProductsController < ApplicationController
+
+  PER = 15
+
+# 商品一覧
+  def index
+    @products = Product.page(params[:page]).per(PER)
+    @user = current_user
+    @cart = Cart.find_by(user_id: current_user)
+
+  end
+
   def show
   	@product = Product.find(params[:id])
     @cartitem = CartItem.new

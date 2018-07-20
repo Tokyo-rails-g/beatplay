@@ -1,4 +1,33 @@
 <%= render 'admins/users/header'  %>
-
-<h1>Admins::Contacts#index</h1>
-<p>Find me in app/views/admins/contacts/index.html.erb</p>
+<div class="dashboard-sub">問い合わせ一覧</div>
+<div class ="contact-main-box">
+	<div class="contacts-contents">
+		<table class="scroll table table-striped table-hover">
+					<thead>
+						<!-- データ引っ張ってこれたらth要素をsort_linkの記述に書き換えると早いかも -->
+						<tr>
+							<th>ID</th>
+							<th>問い合わせ日</th>
+							<th>注文ID</th>
+							<th>配送状況</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- each start -->
+						<% @contacts.each do |contact| %>
+						<tr>
+							<td><%= contact.id %></td>
+							<td><%= contact.created_at %></td>
+							<td><%= contact.order.id %></td>
+							<td><%= contact.order.status %></td>
+						</tr>
+						<% end %>
+						<!-- each end -->
+						
+					</tbody>
+		</table>
+	</div>
+	<div class="contact-sort-box">
+		テスト
+	</div>
+</div>

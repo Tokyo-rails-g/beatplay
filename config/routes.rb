@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'musics/new'
+  get 'musics/create'
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -24,16 +26,21 @@ Rails.application.routes.draw do
    resources :users, only:[:show, :index, :edit, :update, :destroy]
   end
   namespace :admins do
-    get 'products/index'
-    get 'products/:id/show' => 'products#show'
-    get 'products/:id/update' => 'products#update'
-    get 'products/:id/destroy' => 'products#destroy'
-    get 'products/:id/edit' => 'products#edit'
-    get 'products/new'
+    # get 'products/index'
+    # get 'products/:id/show' => 'products#show'
+    # get 'products/:id/update' => 'products#update'
+    # get 'products/:id/destroy' => 'products#destroy'
+    # get 'products/:id/edit' => 'products#edit'
+    # get 'products/new'
     # post 'products' => 'products#create'
-    resources :products, only: [:create]
-    get 'products/:id/new_music' => 'products#new_music', as: 'new_music'
-    post 'products/:id/add_music' => 'products#add_music', as: 'add_music'
+    resources :products, only: [:new, :create, :index, :show, :update, :destroy, :edit]
+    get 'products/:id/new_disc' => 'products#new_disc', as: 'new_disc'
+    post 'products/:id/create_disc' => 'products#create_disc', as: 'create_disc'
+    get 'products/:id/edit_disc' => 'discs#edit', as: 'edit_disc'
+    patch 'products/:id/update_disc' => 'discs#update', as: 'update_disc'
+    get 'products/:product_id/discs/:id' => 'musics#new', as: 'new_music'
+    patch 'products/:product_id/discs/:id/create_musics' => 'musics#create', as: 'create_music'
+    patch 'products/:product_id/discs/:id/edit_musics' => 'musics#edit', as: 'edit_music'
   end
 
   namespace :admins do
@@ -62,8 +69,8 @@ Rails.application.routes.draw do
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
   get 'orders/confirm' => 'orders#confirm'
-  post 'orders/create' => 'orders#create'
-  get 'orders/show' => 'orders#show'
+  post 'orders/create' => 'orders#create', as:'create_order'
+  get 'orders/show' => 'orders#show', as: 'show_order'
 
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'

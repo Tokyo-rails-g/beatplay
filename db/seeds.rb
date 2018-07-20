@@ -20,6 +20,15 @@ Category.create(name: 'Anime/Game/Soundtrack')
 Category.create(name: 'Idol')
 
 # 商品
+# 下記、記述うまく画像データアップロードできず
+# Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id: open("#{Rails.root}/images/meteora.jpg"), price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
+Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
 Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
 Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')
 Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナー・ブラザーズ・レコード', category_id: '1', favorite_count: '0', image_id:'meteora.jpg', price: '1700', stock: '50', release_year:'2003')

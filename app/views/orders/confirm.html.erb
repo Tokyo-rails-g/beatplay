@@ -40,13 +40,13 @@
 	</div>
 	</div>
 	<div class="buttons-box">
-		<%= form_for @order, url: orders_create_path, method: :post do |f| %>
+		<%= form_for @order, url: create_order_path, method: :post do |f| %>
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
 				<%= f.select :payment, [["選択してください",""], ["クレジット","0"], ["代引き","1"], ["コンビニ・ATM払い","2"]] %>
 			</div>
-			<p class="total-money">合計¥ @order.total</p>
+			<p class="total-money">合計¥ @cart_items</p>
 		</div>
 			<div class="decision-button">
 					<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>
@@ -63,13 +63,11 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
-									<%= link_to orders_show_path do %>
-									<button type="submit" class="btn btn-primary">ボタン</button>
+									<%= f.submit "確定", class: "btn btn-danger" %>
 								</div>
 							</div>
 						</div>
 					</div>
-				<% end %>
 			</div>
 		<% end %>
 	</div>
