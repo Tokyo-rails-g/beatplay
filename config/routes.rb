@@ -62,8 +62,8 @@ Rails.application.routes.draw do
 
 
 
-  get 'favorites/create'
-  get 'favorites/destroy'
+  #get 'favorites/create'
+  #get 'favorites/destroy'
   get '/contacts/new' => 'contacts#new'
   post '/contacts/create' => 'contacts#create'
   get 'orders/select_address' => 'orders#select_address'
@@ -75,13 +75,17 @@ Rails.application.routes.draw do
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
 
+  patch '/products/:id/cart_items/:id/update_cart_items' => 'products#update_cart_item', as: 'update_cart_items'
+
   get 'carts/show' => 'carts#show'
   delete 'carts/delete_item' => 'carts#delete_item'
   delete 'carts/delete_all_items' => 'carts#delete_all_items'
   get 'carts/checkout' => 'carts#checkout'
   #get 'products/index'
   #get 'products/show'
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resource :favorites, only:[:create, :destroy]
+  end
 
   get 'admins/top' => 'admins/users#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @user = User.find(params[:id])
+    @favorites = @user.favorites
   end
 
   def edit
