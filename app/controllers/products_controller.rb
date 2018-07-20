@@ -27,9 +27,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart = Cart.find_by(user_id: current_user)
 
-    @cartitems = @cart.cart_items.find_by(product_id: @product.id)
-
-    binding.pry
+    @cartitems = @cart.cart_items.find_by(product_id: @product.id) #自分のカート内に今入れようとしている商品があるかの確認　無ければnilで返答
 
     if @cartitems.blank?
       @cartitem.cart_id = @cart.id
@@ -37,12 +35,11 @@ class ProductsController < ApplicationController
       @cartitem.save
       redirect_to products_path
     else
-      render :edit
+      @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
+      @cartitems.save
+      redirect_to edit_user_path(current_user)
     end
   end
-
-  #def edit
-  #end
 
   private
   	def product_params

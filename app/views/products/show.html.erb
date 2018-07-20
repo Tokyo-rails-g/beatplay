@@ -12,6 +12,11 @@
 
 <p>在庫数</p><%= @product.stock %><br>
 
+<div>
+<% if user_signed_in? %>
+    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-sm btn-danger" %>
+<% end %>
+</div>
 
 
 <% @product.discs.each do |disc| %>
@@ -28,9 +33,6 @@
 <% end %>
 
 <% if user_signed_in? %>
-
-
-
 
 	<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 

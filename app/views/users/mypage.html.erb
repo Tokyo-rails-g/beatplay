@@ -1,2 +1,85 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+
+<h1>MY PAGE</h1>
+<div class="container">
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">名前：</label>
+      <div class="col-sm-10">
+        <%= @user.last_name %><%= @user.first_name %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+        <label class="col-sm-2 control-label">登録住所：</label>
+        <div class="col-sm-10">
+          <%= @user.postal_code %>
+          <%= '@user.prefecture' + @user.city %>
+          <%= @user.address1 + @user.address2 %>
+        </div>
+      </div>
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+        <label class="col-sm-2 control-label">電話番号：</label>
+        <div class="col-sm-10">
+          <%= @user.phone_number %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2 control-label">
+        <label class="col-sm-2 control-label">メール：</label>
+        <div class="col-sm-10">
+          <%= @user.email %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to "edit", edit_user_path(@user.id), class:"btn btn-success" %>
+      </div>
+    </div>
+  </form>
+
+  <div>
+    <label>お気に入り一覧</label><br>
+    <% @favorites.each do |favorite| %>
+      <label>アルバム/シングル名</label>
+      <%= favorite.product.album_title %><br>
+
+      <label>アーティスト名</label>
+      <%= favorite.product.artist %><br>
+
+      <div>
+       <%= link_to "お気に入りにから削除する", product_favorites_path(favorite.product_id), method: :delete, class: "btn-sm btn-danger" %>
+      </div>
+
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+  <div class="col-12">
+    	<table class="table">
+          <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>オーダーNo.</th>
+              <th>ステータス</th>
+              <th>購入日</th>
+              <th>合計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>
