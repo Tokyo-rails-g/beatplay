@@ -10,18 +10,22 @@
 
 .main-visual{
 	/*background-color: silver;*/
-	/*background-image: url(beatplay_top_img.jpg);*/
+	background-image: url(product-index.jpg);
+	background-position: center;
+	background-size: cover;
 	width: 100%;
 	height: 400px;
 	display: block;
 	/*position: fixed;*/
-	background-color: darkred;
+	/*background-color: darkred;*/
 	/*z-index: -1;*/
 }
 .main-box{
 	background-color: #202020;
 	width:100%;
-	height: 1000px;
+	height: 1500px;
+	/*overflow: scroll;*/
+
 }
 .sort-box{
 	width: 100%;
@@ -41,16 +45,21 @@
 	width: 200px;
 	/*height: 200px;*/
 	background-color: silver;
-	margin: 20px;
-
+	margin: 15px;
+	justify-content: flex-start;
 }
-.produts-img{
+.products-img{
 	width: 200px;
 	height: 200px;
-	background-color: orange;
+	/*background-color: orange;*/
 }
 .products-info{
 	width: 100%;
 	height: 150px;
 	background-color: darkorange;
+}
+.pagination{
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
 }

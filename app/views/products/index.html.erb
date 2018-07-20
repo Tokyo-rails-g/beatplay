@@ -1,60 +1,38 @@
 <main>
 	<div class="main-visual">
-		<p>検索バーが入ります</p>
+	<form class="top-search-form" action="/" name="search" method="get">
+		<dl class="search">
+		    <dt><input type="text" name="search" value="" placeholder="キーワードで検索。これだとダサい" /></dt>
+		    <dd><button><span></span></button></dd>
+		</dl>
+	</form>
 		<!-- 検索フォーム -->
 	</div>
 	<div class="main-box">
 		<div class="sort-box">
 			<p>ここに並び順変えるセレクターが入ります。上下左右中央揃え。</p>
 		</div>
+		<div class="pagination"><%= paginate @products %></div>
 		<!-- 並び順 -->
 		<div class= "products-box">
+			<!-- each -->
+			<% @products.each do |product| %>
 			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
+				<p class="products-img"></p>
+				<p class="products-info">
+					アルバム名：<%= product.album_title %><br>
+					アーティスト名：<%= product.artist %><br>
+					レーベル：<%= product.label %><br>
+					ジャンル：<%= product.category.name %><br>
+					リリース年：<%= product.release_year %><br>
+					価格：<%= product.price %>
+				</p>
 			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-			<div class="products">
-				<p class="produts-img">ジャケット画像</p>
-				<p class="products-info">商品詳細</p>
-			</div>
-					</div>
-
+			<% end %>
+			<!-- each end -->
+		</div>
+		<%= paginate @products %>
 	</div>
 
 	<!-- 	ページング　　 -->
 </main>
-<footer>
-	<!-- SNS icon -->
-</footer>
