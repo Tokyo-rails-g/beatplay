@@ -1,5 +1,40 @@
 <%= render 'admins/users/header'  %>
 
-<h1>商品詳細</h1>
-<div class="container">
+
+<div class="admin-product-show">
+	<div class="header-title">
+		<h1>商品詳細</h1>
+	</div>
+	<div class="admin-edit-delete-button">
+		<button class="btn btn-success btn-lg" type="button">編集</button>
+		<button class="btn btn-danger btn-lg" type="button">削除</button>
+	</div>
+	<div class="admin-product-show-main-box">
+		<div class="admin-product-info">
+			<p class="admin-subtitles">商品詳細</p>
+			<div class="">
+				<div class="admin-product-img">
+					@product.image
+				</div>
+				<p><label>タイトル：</label>@product.album_title</p>
+				<p><label>アーティスト：</label>@product.artist</p>
+				<p><label>収録曲：</label>product#showから引用
+				</p>
+				<p><label>価格：</label>@product.price</p>
+				<p><label>リリース年：</label>@product.release_year</p>
+				<p><label>登録日：</label>@product.created_at.strftime('%Y年%m月%d日')</p>
+				<p><label>編集日：</label>@product.created_at.strftime('%Y年%m月%d日')</p>
+			</div>
+		</div>
+		<div class="sub-info">
+			<div class="admin-product-show-quantity-box">
+				<p class="admin-subtitles">在庫数</p>
+			</div>
+			<div class="nearest-orders">
+				<p class="admin-subtitles">最近のオーダー</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
 

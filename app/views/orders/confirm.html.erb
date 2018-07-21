@@ -10,7 +10,7 @@
 		<h2>ご注文内容の確認</h2>
 	<div class="orders-box">
 		<% @cart_items.each do |cartitem| %>
-			<div class="jacket-image"><%= cartitem.product.image %></div>
+			<div class="jacket-image">cartitem.product.image</div>
 			<div class="product-info">
 				<p class="p-info"><%= cartitem.product.album_title %><br><%= cartitem.product.artist %><br><%= cartitem.product.label %></p>
 				<p class="p-price"><%= cartitem.product.price %></p>
@@ -44,7 +44,7 @@
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
-				<%= f.select :payment, [["選択してください",""], ["クレジット","0"], ["代引き","1"], ["コンビニ・ATM払い","2"]] %>
+				<%= f.select :payment, Order.payments.keys.to_a, {} %>
 			</div>
 			<p class="total-money">合計¥ @cart_items</p>
 		</div>

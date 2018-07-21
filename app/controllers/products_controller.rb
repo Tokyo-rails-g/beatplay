@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     else
       @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
       @cartitems.save
-      redirect_to edit_user_path(current_user)
+      redirect_to product_path(@product.id)
     end
   end
 

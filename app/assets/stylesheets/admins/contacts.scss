@@ -42,17 +42,28 @@
 }
 .contact-head-info{
 	width: 60%;
-	margin: 0 auto;
+	height: 100px;
+	margin: 10px auto;
+	border: solid 1px;
+	border-radius: 5px;
+}
+.border-bottom{
+	border-bottom: solid 1px;
 }
 .contact-body-box{
 	width: 60%;
-	margin: 0 auto;
+	height: 200px;
+	margin: 10px auto;
 	border: solid 1px;
+	border-radius: 5px;
+	overflow: scroll;
 }
 .respons-form{
 	width: 60%;
-	margin: 0 auto;
+	height: 200px;
+	margin: 10px auto;
 	border: solid 1px;
+	border-radius: 5px;
 }
 .contact-submit-button{
 	width: 60%;

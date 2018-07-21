@@ -52,7 +52,7 @@
 		  </div>
 		  <div class="contact-box">
 				<div class="contact-forms">
-					 <%= form_for (@contact), url: contacts_create_path, method: :post do |f| %>
+					 <%= form_for(@contact) do |f| %>
 						  <!-- <select class="" name="title" id="title">
 								<option value="">お問い合わせの内容を選択してください</option>
 								<option value="0">ご注文のキャンセル</option>
@@ -68,24 +68,21 @@
 						  </select> -->
 
 						  <div class="textarea">
-								<%= f.select :title, [
-													 ["選択してください",""],
-													 ["注文のキャンセル","0"],
-													 ["お届け先の変更","1"],
-													 ["配送状況について","2"],
-													 ["商品の返品・返金について","3"],
-													 ["商品の破損・不具合について","4"],
-													 ["注文した商品と異なる商品が届いた","5"],
-													 ["発送に関するその他質問","6"],
-													 ["商品の登録情報について","7"],
-													 ["お礼","8"],
-													 ["その他の質問","9"]
-													 ] %>
+								<%= f.select :title, [["ご注文のキャンセル", "0"],
+														["お届け先の変更", "1"],
+														["配送状況について", "2"],
+														["商品の返品・返金について", "3"],
+														["商品の破損・不具合について", "4"],
+														["注文した商品と異なる商品が届いた", "5"],
+														["発送に関するその他質問", "6"],
+														["お礼", "7"],
+														["その他の質問", "8"],
+														] %>
 
 								<%= f.text_area :body, :maxlength=>"200", :class => "form-control", :placeholder => "最大２００文字まで入力できます", :size => "50x10" %>
 						  </div>
 						  <div class="contact-submit-button">
-								<button type="submit" class="btn btn-default btn-right">送信</button>
+						  	<%= f.submit '送信', class: "btn btn-default" %>
 						  </div>
 					 <% end %>
 				</div>

@@ -23,7 +23,7 @@
 	<label>DISC</label>
 	<%= disc.disc_number %><br>
 
-	<% disc.musics.each do |music| %>
+	<% disc.musics.each_with_index do |music| %>
 	<label>曲名</label>
 	<%= music.name %>
 	<label>bpm</label>

@@ -3,8 +3,10 @@ class Admins::UsersController < ApplicationController
 PER = 30
 
   def top
-    @order = Order.last(10)
-    @user = User.last(10)
+    # 注文直近１０件をひっぱってくる記述
+    @orders = Order.last(10)
+    # ユーザー直近１０件の登録者を表示
+    @users = User.last(10)
   end
 
   def index
