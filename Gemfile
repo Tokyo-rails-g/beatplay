@@ -72,3 +72,5 @@ gem 'jquery-rails'
 gem 'nested_form_fields'
 
 gem 'pry-rails'
+# enum日本語化
+gem 'enum_help'

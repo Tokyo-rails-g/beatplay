@@ -64,8 +64,9 @@ Rails.application.routes.draw do
 
   #get 'favorites/create'
   #get 'favorites/destroy'
-  get '/contacts/new' => 'contacts#new'
-  post '/contacts/create' => 'contacts#create'
+  resources :contacts, only: [:new, :create]
+  # get '/contacts/new' => 'contacts#new'
+  # post '/contacts/create' => 'contacts#create'
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
   get 'orders/confirm' => 'orders#confirm'

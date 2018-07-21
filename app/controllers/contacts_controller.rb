@@ -4,9 +4,16 @@ class ContactsController < ApplicationController
   end
 
   def create
-  	@contact = Contact.new(contact_params)
-  	@contact.user = current_user
-  	@contact.save
+  	@contact = Contact.new
+    @contact.order_id = @order.id
+  	@contact.user_id = current_user.id
+    # binding.pry
+  	if @contact.save
+      redirect_to mypage_user_path(current_user)
+    else
+      flash[:danger] = "データを保存できていません"
+      render action: :new
+    end
   end
 
 

@@ -17,8 +17,10 @@
 		<div class= "products-box">
 			<!-- each -->
 			<% @products.each do |product| %>
+			<%= link_to product_path(product) do %>
 			<div class="products">
-				<p class="products-img"></p>
+				<p class="products-img">product.image</p>
+			<% end %>
 				<p class="products-info">
 					アルバム名：<%= product.album_title %><br>
 					アーティスト名：<%= product.artist %><br>
@@ -33,6 +35,4 @@
 		</div>
 		<%= paginate @products %>
 	</div>
-
-	<!-- 	ページング　　 -->
 </main>
