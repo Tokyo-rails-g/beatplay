@@ -1,2 +1,22 @@
-<h1>Disc#edit</h1>
-<p>Find me in app/views/disc/edit.html.erb</p>
+<div class="new-product">
+  <h1>ディスクナンバー追加/編集</h1>
+
+    <div class="container">
+
+        <%= form_for @disc, url: edit_admins_product_disc_path(@product.id)  do |f| %>
+
+        <div class="form-group">
+          <%#= f.nested_fields_for :discs do |disc| %>
+              <%= f.text_field :disc_number, placeholder:"ディスクNo.", :size => "20" %>
+          <%# end %>
+        </div>
+
+        <div class="action">
+            <div class="submit"><%= f.submit '登録', class:"btn btn-default ml10" %></div>
+        </div>
+        <% end %>
+
+
+
+    </div>
+</div>

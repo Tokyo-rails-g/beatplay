@@ -1,8 +1,9 @@
 class Admins::ProductsController < ApplicationController
-PER = 30
+
+  PER = 30
 
   def index
-    @products = Products.page(params[:page]).per(PER)
+    @products = Product.page(params[:page]).per(PER)
   end
 
   def show
@@ -14,8 +15,8 @@ PER = 30
       @product = Product.new(product_params)
       @product.save
       flash[:notice] = '商品を追加しました！'
-      redirect_to admins_new_disc_path(@product.id)
-      else
+      redirect_to new_admins_product_disc_path(@product.id)
+    else
       @product = Product.new
     end
   end
@@ -27,7 +28,7 @@ PER = 30
     #   @disc.product_id = @product.id
     #   @disc.save
     #   flash[:notice] = '商品を追加しました！'
-    #   redirect_to admins_new_music_path(@product.id)
+    #   redirect_to new_admins_product_disc_path(@product.id)
     # else
     #   flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
     #   render :index
@@ -43,7 +44,7 @@ PER = 30
     binding.pry
     if @product.update(update_product_params)
        flash[:notice] = "商品を更新しました！"
-       redirect_to admins_edit_disc_path(@product)
+       redirect_to edit_admins_product_disc_path(@product)
     else
       render :edit
     end
@@ -96,12 +97,12 @@ private
                                     :stock,
                                     discs_attributes:[:id,
                                                       :disc_number,
-                                                      ],
+                                                      :_destroy],
                                     musics_attributes:[:disc_id,
                                                       :album_title,
                                                       :bpm,
                                                       :duration,
-                                                      :track_number
-                                                      ])
+                                                      :track_number,
+                                                      :_destroy])
   end
 end

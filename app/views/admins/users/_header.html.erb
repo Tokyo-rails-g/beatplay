@@ -1,4 +1,4 @@
-<!-- <header>
+<header>
     <nav class="navbar navbar-inverse navbar-fixed-top headline">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -15,9 +15,14 @@
 
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
-            
+            <li><%= link_to 'ダッシュボード', admins_top_path %></li>
+            <li><%= link_to '商品一覧', admins_products_path %></li>
+            <li><%= link_to '注文一覧', admins_orders_index_path %></li>
+            <li><%= link_to 'ユーザー一覧', admins_users_path %></li>
+            <li><%= link_to '問合せ一覧', admins_contacts_index_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" } %>
           </ul>
         </div>
       </div>
     </nav>
-</header> -->
+</header>
