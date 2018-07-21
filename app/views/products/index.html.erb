@@ -6,32 +6,47 @@
 		    <dd><button><span></span></button></dd>
 		</dl>
 	</form>
+		<!-- 検索ransack導入 -->
+		    <%= search_form_for @q do |f| %>
+			  <%= f.label :album_title_or_artist_or_label_cont, "検索"%>
+			  <%= f.search_field :album_title_or_artist_or_label_cont %>
+			  <%= f.submit "Search"%>
+			<% end %>
+			<!--  -->
 		<!-- 検索フォーム -->
 	</div>
 	<div class="main-box">
 		<div class="sort-box">
 			<p>ここに並び順変えるセレクターが入ります。上下左右中央揃え。</p>
 		</div>
-		<div class="pagination"><%= paginate @products %></div>
+		<%= paginate @searchproducts %>
 		<!-- 並び順 -->
 		<div class= "products-box">
-			<!-- each -->
-			<% @products.each do |product| %>
-			<div class="products">
-				<p class="products-img"></p>
-				<p class="products-info">
-					アルバム名：<%= product.album_title %><br>
-					アーティスト名：<%= product.artist %><br>
-					レーベル：<%= product.label %><br>
-					ジャンル：<%= product.category.name %><br>
-					リリース年：<%= product.release_year %><br>
-					価格：<%= product.price %>
-				</p>
-			</div>
+
+			<% if @q != nil %>
+
+				<!-- each -->
+				<% @searchproducts.each do |searchproduct| %>
+				<div class="products">
+					<p class="products-img"></p>
+					<p class="products-info">
+						アルバム名：<%= searchproduct.album_title %><br>
+						アーティスト名：<%= searchproduct.artist %><br>
+						レーベル：<%= searchproduct.label %><br>
+						ジャンル：<%= searchproduct.category.name %><br>
+						リリース年：<%= searchproduct.release_year %><br>
+						価格：<%= searchproduct.price %>
+					</p>
+				</div>
+				<% end %>
+				<!-- each end -->
+
+			<% else %>
+  				<p><%= @msg %></p>
 			<% end %>
-			<!-- each end -->
+
 		</div>
-		<%= paginate @products %>
+		<%= paginate @searchproducts %>
 	</div>
 
 	<!-- 	ページング　　 -->
