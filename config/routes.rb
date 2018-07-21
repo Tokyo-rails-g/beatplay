@@ -2,16 +2,19 @@ Rails.application.routes.draw do
 
   get 'musics/new'
   get 'musics/create'
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+
   namespace :admins do
     get 'contacts/index'
     get 'contacts/:id/show' => 'contacts#show', as: 'contact_show'
@@ -25,22 +28,15 @@ Rails.application.routes.draw do
    # delete 'users/destroy'
    resources :users, only:[:show, :index, :edit, :update, :destroy]
   end
+
   namespace :admins do
-    # get 'products/index'
-    # get 'products/:id/show' => 'products#show'
-    # get 'products/:id/update' => 'products#update'
-    # get 'products/:id/destroy' => 'products#destroy'
-    # get 'products/:id/edit' => 'products#edit'
-    # get 'products/new'
-    # post 'products' => 'products#create'
-    resources :products, only: [:new, :create, :index, :show, :update, :destroy, :edit]
-    get 'products/:id/new_disc' => 'products#new_disc', as: 'new_disc'
-    post 'products/:id/create_disc' => 'products#create_disc', as: 'create_disc'
-    get 'products/:id/edit_disc' => 'discs#edit', as: 'edit_disc'
-    patch 'products/:id/update_disc' => 'discs#update', as: 'update_disc'
-    get 'products/:product_id/discs/:id' => 'musics#new', as: 'new_music'
-    patch 'products/:product_id/discs/:id/create_musics' => 'musics#create', as: 'create_music'
-    patch 'products/:product_id/discs/:id/edit_musics' => 'musics#edit', as: 'edit_music'
+    get 'products/new' => 'products#new', as: 'new_product'
+    post 'products/new' => 'products#new', as: 'create_product'
+    resources :products, only: [:index, :show, :update, :destroy, :edit] do
+      resources :discs, only: [:new, :create, :edit, :update] do
+        resources :musics, only: [:new, :create, :edit, :update]
+      end
+    end
   end
 
   namespace :admins do
@@ -64,8 +60,8 @@ Rails.application.routes.draw do
 
   #get 'favorites/create'
   #get 'favorites/destroy'
-  get '/contacts/new' => 'contacts#new'
-  post '/contacts/create' => 'contacts#create'
+  resources :contacts, only: [:new, :create]
+
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
   get 'orders/confirm' => 'orders#confirm'

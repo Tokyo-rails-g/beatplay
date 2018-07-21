@@ -3,7 +3,7 @@
 
     <div class="container">
 
-        <%= form_for @disc, url: admins_create_disc_path(@product.id)  do |f| %>
+        <%= form_for @disc, url: admins_product_discs_path(@product.id)  do |f| %>
 
         <div class="form-group">
           <%#= f.nested_fields_for :discs do |disc| %>
@@ -20,4 +20,3 @@
 
     </div>
 </div>
-
