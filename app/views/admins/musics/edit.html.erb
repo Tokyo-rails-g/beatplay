@@ -3,7 +3,7 @@
 
     <div class="container">
 
-        <%= form_for @disc, url: admins_product_disc_musics_path(@product.id, @disc.id), method: :post do |f| %>
+        <%= form_for @disc, url: edit_admins_product_disc_musics_path(@disc.id) do |f| %>
 
           <%= f.nested_fields_for :musics, wrapper_tag: :div do |music| %>
 
