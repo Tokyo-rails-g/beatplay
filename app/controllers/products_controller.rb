@@ -19,19 +19,19 @@ class ProductsController < ApplicationController
   #   @product = Product.new
   # end
 
-    def create
-      @product = Product.new(product_params)
-      if @product.save
-        @disc = @product.discs.new(disc_params)
-        @disc.product_id = @product.id
-        @disc.save
-        flash[:notice] = '商品を追加しました！'
-        redirect_to admins_new_music_path(@product.id)
-      else
-        flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
-        render :index
-      end
-    end
+    # def create
+    #   @product = Product.new(product_params)
+    #   if @product.save
+    #     @disc = @product.discs.new(disc_params)
+    #     @disc.product_id = @product.id
+    #     @disc.save
+    #     flash[:notice] = '商品を追加しました！'
+    #     redirect_to admins_new_music_path(@product.id)
+    #   else
+    #     flash[:notice] = '商品を追加できませんでした。もう一度投稿してください。'
+    #     render :index
+    #   end
+    # end
 
   def add_cart_item
     @cartitem = CartItem.new(cart_item_params)

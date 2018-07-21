@@ -1,4 +1,3 @@
-<main>
 	<div class="main-visual">
 	<form class="top-search-form" action="/" name="search" method="get">
 		<dl class="search">
@@ -19,20 +18,17 @@
 			<% @products.each do |product| %>
 			<div class="products">
 				<p class="products-img"></p>
-				<p class="products-info">
+				<div class="products-info">
 					アルバム名：<%= product.album_title %><br>
 					アーティスト名：<%= product.artist %><br>
 					レーベル：<%= product.label %><br>
 					ジャンル：<%= product.category.name %><br>
 					リリース年：<%= product.release_year %><br>
 					価格：<%= product.price %>
-				</p>
+				</div>
 			</div>
 			<% end %>
 			<!-- each end -->
 		</div>
 		<%= paginate @products %>
 	</div>
-
-	<!-- 	ページング　　 -->
-</main>
