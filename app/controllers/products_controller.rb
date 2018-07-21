@@ -1,13 +1,17 @@
 class ProductsController < ApplicationController
 
-  PER = 15
+  #PER = 15
 
 # 商品一覧
   def index
-    @products = Product.page(params[:page]).per(PER)
+    #@products = Product.page(params[:page]).per(PER)
     @user = current_user
     @cart = Cart.find_by(user_id: current_user)
 
+    #検索用
+    @q = Product.ransack(params[:q])
+    @searchproducts = @q.result.page(params[:page]).per(15)
+    binding.pry
   end
 
   def show
