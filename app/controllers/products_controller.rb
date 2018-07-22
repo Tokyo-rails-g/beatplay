@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
     #検索用
     @q = Product.ransack(params[:q])
     @searchproducts = @q.result.page(params[:page]).per(15)
-    binding.pry
   end
 
   def show
@@ -19,9 +18,9 @@ class ProductsController < ApplicationController
     @cartitem = CartItem.new
   end
 
-  # def new
-  #   @product = Product.new
-  # end
+  def new
+    @product = Product.new
+  end
 
     # def create
     #   @product = Product.new(product_params)

@@ -14,25 +14,29 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%= @contact.id %></td>
-					<td><%= @contact.created_at.strftime('%Y年 %m月　%d日') %></td>
-					<td><%= @contact.order.id %></td>
-					<td><%= @contact.order.status %></td>
+					<td> @order.id %></td>
+					<td> @contact.created_at.strftime('%Y年 %m月　%d日') %></td>
+					<td> @order.user_id %></td>
+					<td> @order.status %></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<div class="contact-body-box">
-		<p class="border-bottom">問い合わせ内容</p>
-		<%= @contact.body %>
+		<p class="border-bottom">問い合わせ内容：@contact.title</p>
+		</p>
+		 @contact.body %>
 	</div>
 	<div class="respons-form">
 		<p class="border-bottom">回答フォーム</p>
-	<%= form_for(@comment) do |f| %>
-		<%= f.text_area :body, :maxlength=>"200", :class => "form-control", :placeholder => "最大２００文字まで入力できます", :size => "50x10" %>
+	<%= form_for @comment, url: admins_contacts_path, method: :post do |f| %>
+		<%= f.text_area :response, :maxlength=>"200", :class => "form-control", :placeholder => "最大２００文字まで入力できます", :size => "50x7" %>
 	</div>
-	<div class="contact-submit-button">
-		<%= f.submit "回答を送信", class: "btn btn-default", data:{ confirm: "回答を送信してよろしいですか？" } %>
+	<div class="admin-contact-submit-button">
+		<%= f.submit "回答を送信", class: "btn btn-primary", data:{ confirm: "回答を送信してよろしいですか？" } %>
+		<%= link_to admins_contacts_index_path do %>
+	<button type="button" class="btn btn-default">問い合わせ一覧画面へ</button>
+	<% end %>
 	</div>
 	<% end %>
 </div>

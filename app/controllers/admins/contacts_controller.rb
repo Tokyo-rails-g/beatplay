@@ -4,6 +4,9 @@ class Admins::ContactsController < ApplicationController
   end
 
   def show
+  	# @contact = Contact.find(params[:id])
+  	# @contact.user_id = 
+  	@comment = Comment.new
   end
 
   def new

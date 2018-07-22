@@ -3,6 +3,7 @@
 <div class ="contact-main-box">
 	<div class="contacts-contents">
 		<table class="table table-striped table-hover">
+			<% if @contacts != nil %>
 					<thead>
 						<!-- データ引っ張ってこれたらth要素をsort_linkの記述に書き換えると早いかも -->
 						<tr>
@@ -23,11 +24,15 @@
 						</tr>
 						<% end %>
 						<!-- each end -->
-						
 					</tbody>
+			<% else %>
+				<div>
+					<p>現在問い合わせはありません</p>
+				</div>
+			<% end %>
 		</table>
 	</div>
 	<div class="contact-sort-box">
-		テスト
+		絞り込み検索の機能が入る箱
 	</div>
 </div>

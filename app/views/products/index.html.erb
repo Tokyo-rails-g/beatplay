@@ -28,7 +28,9 @@
 				<!-- each -->
 				<% @searchproducts.each do |searchproduct| %>
 				<div class="products">
-					<p class="products-img"></p>
+					<%= link_to product_path(searchproduct) do %>
+					<p class="products-img">img</p>
+					<% end %>
 					<p class="products-info">
 						アルバム名：<%= searchproduct.album_title %><br>
 						アーティスト名：<%= searchproduct.artist %><br>
