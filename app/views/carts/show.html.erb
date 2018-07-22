@@ -13,13 +13,13 @@
 	<div class="main-box">
 		<div class="cart-item-box">
 			<!-- ここからeach do -->
-			<%= form_for @cart_item, url: orders_create_address_path, method: :post do |f| %>
 			<table class="cartlist">
 				<thead>
+					<% @cart_items.each do |cart_item| %>
 					<tr>
-						<td class="p-img">product.image</td>
-						<td class="p-info">product.album_title<br>
-											product.artist<br>
+						<td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200", class: "p-img" %></td>
+						<td class="p-info"><%= cart_item.product.album_title %><br>
+											<%= cart_itme.product.artist %><br>
 						</td>
 						<td class="p-qty">
 							<input class="form-control" value="1" min="1" max="30" type="number" name="cart_item[quantity]" id="cart_item_quantity">
@@ -29,10 +29,10 @@
 							<td class="p-button"><button class="">削除</button></td>
 						<% end %>
 					</tr>
+					<% end %>
 				</thead>
 			</table>
-			<% end %>
-			<!-- ここまでeach do -->
+						<!-- ここまでeach do -->
 			</table>
 			<div class="row cash-button">
 				<div class="col-lg-4"></div>
