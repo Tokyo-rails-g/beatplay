@@ -1,11 +1,12 @@
 <%= render 'admins/users/header'  %>
 
-<h1>注文一覧</h1>
+<h1>商品一覧</h1>
 <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
 <div class="container">
 	<div class="col-6">
     	<table class="table">
       		<thead>
+          <% @products.each do |product| %>
         		<tr>
             		<th>画像</th>
             		<th>シングル/アルバム名</th>
@@ -17,9 +18,9 @@
       		</thead>
       		<tbody>
         		<tr>
-           		 <% @products.each do |product| %>
 <!--            		 	attachment_image_tag -->
-           		 	<td><%= product.album_title %></td>
+                <td>画像</td>
+           		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
             		<td><%= product.artist %></td>
             		<td><%= product.price %></td>
             		<td><%= product.stock %></td>

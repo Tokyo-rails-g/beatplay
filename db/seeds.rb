@@ -54,3 +54,13 @@ Product.create(album_title: 'Meteora', artist: 'Linkin Park', label: 'ワーナ�
 # User.create(email:'takizawa3.webcamp@gmail.com', encrypted_password: '000000', reset_password_token:'', reset_password_sent_at: '', remember_created_at: '', sign_in_count:'0', current_sign_in_at:'', last_sign_in_at:'', current_sign_in_ip:'', last_sign_in_ip:'', first_name:'滝澤3', last_name:'惇', kana_first:'タキザワ',kana_last:'ジュン', postal_code:'123-4567', prefecture:'3', city:'3東京都府中市', address1:'33-16-5', address2:'アパート府中3', phone_number:'380-0000-0000')
 # User.create(email:'takizawa4.webcamp@gmail.com', encrypted_password: '000000', reset_password_token:'', reset_password_sent_at: '', remember_created_at: '', sign_in_count:'0', current_sign_in_at:'', last_sign_in_at:'', current_sign_in_ip:'', last_sign_in_ip:'', first_name:'滝澤4', last_name:'惇', kana_first:'タキザワ',kana_last:'ジュン', postal_code:'123-4567', prefecture:'4', city:'4東京都府中市', address1:'43-16-5', address2:'アパート府中4', phone_number:'480-0000-0000')
 # User.create(email:'takizawa5.webcamp@gmail.com', encrypted_password: '000000', reset_password_token:'', reset_password_sent_at: '', remember_created_at: '', sign_in_count:'0', current_sign_in_at:'', last_sign_in_at:'', current_sign_in_ip:'', last_sign_in_ip:'', first_name:'滝澤5', last_name:'惇', kana_first:'タキザワ',kana_last:'ジュン', postal_code:'123-4567', prefecture:'5', city:'5東京都府中市', address1:'53-16-5', address2:'アパート府中5', phone_number:'580-0000-0000')
+
+#オーダー
+Order.create(id: 1, user_id: 1, address_id: 1, total: 3980, payment: 3, status: 1, created_at: "2018-07-14 12:22:22", updated_at: "2018-07-14 13:22:22")
+Order.create(id: 2, user_id: 1, address_id: 1, total: 3980, payment: 3, status: 1, created_at: "2018-07-15 12:22:22", updated_at: "2018-07-15 13:22:22")
+Order.create(id: 3, user_id: 1, address_id: 1, total: 3980, payment: 3, status: 1, created_at: "2018-07-16 12:22:22", updated_at: "2018-07-16 13:22:22")
+
+#オーダーアイテム
+OrderItem.create!(order_id: 1, product_id: 3, price: 3980, quantity: 1, created_at: "2018-07-14 12:22:22", updated_at: "2018-07-14 13:22:22")
+OrderItem.create(order_id: 2, product_id: 3, price: 3980, quantity: 1, created_at: "2018-07-15 12:22:22", updated_at: "2018-07-15 13:22:22")
+OrderItem.create(order_id: 3, product_id: 3, price: 3980, quantity: 1, created_at: "2018-07-16 12:22:22", updated_at: "2018-07-16 13:22:22")
