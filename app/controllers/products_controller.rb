@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
     #検索用
     @q = Product.ransack(params[:q])
-    @searchproducts = @q.result.page(params[:page]).per(15)
+    @searchproducts = @q.result.includes(:discs,:musics).page(params[:page]).per(15)
   end
 
   def show

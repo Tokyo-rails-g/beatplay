@@ -24,7 +24,8 @@
 	<%= disc.disc_number %><br>
 
 	<% disc.musics.each_with_index do |music| %>
-	<label>曲名</label>
+	<label>曲ID</label><%= music.id %>
+	<label>曲名(track_number)</label><%= music.track_number %>
 	<%= music.name %>
 	<label>bpm</label>
 	<%= music.bpm %><br>

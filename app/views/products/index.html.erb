@@ -7,9 +7,10 @@
 	</form>
 		<!-- 検索ransack導入 -->
 		    <%= search_form_for @q do |f| %>
-			  <%= f.label :album_title_or_artist_or_label_cont, "検索"%>
-			  <%= f.search_field :album_title_or_artist_or_label_cont %>
+			  <%= f.label :album_title_or_artist_or_label_or_discs_musics_name_cont, "検索"%>
+			  <%= f.search_field :album_title_or_artist_or_label_or_discs_musics_name_cont %>
 			  <%= f.submit "Search"%>
+
 			<% end %>
 			<!--  -->
 		<!-- 検索フォーム -->
