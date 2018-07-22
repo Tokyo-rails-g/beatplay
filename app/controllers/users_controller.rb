@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
 
   def top
+    @users = User.last(10)
+    @orders = Order.last(10)
   end
 
   def confirm

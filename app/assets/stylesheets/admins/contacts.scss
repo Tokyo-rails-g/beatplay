@@ -65,7 +65,10 @@
 	border: solid 1px;
 	border-radius: 5px;
 }
-.contact-submit-button{
+.admin-contact-submit-button{
 	width: 60%;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }

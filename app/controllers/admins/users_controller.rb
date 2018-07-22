@@ -5,8 +5,13 @@ PER = 30
   def top
     # 注文直近１０件をひっぱってくる記述
     @orders = Order.last(10)
+    @q = Order.ransack(params[:q])
+    @orders2 = @q.result.last(10)
     # ユーザー直近１０件の登録者を表示
     @users = User.last(10)
+    @q2 = User.ransack(params[:q])
+    @users2 = @q2.result.last(10)
+    # @admin = Admin.find(params[:id])
   end
 
   def index

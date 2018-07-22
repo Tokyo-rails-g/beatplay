@@ -5,9 +5,9 @@ class CartsController < ApplicationController
 
 # カート内商品一覧
   def show
-    @cart = current_cart
+    @cart = Cart.find_by(user_id: current_user)
     # @cart_item = CartItem.find(params[:id])
-    @cart_item = CartItem.new
+    @cart_items = CartItem.all
     @user = current_user
   end
 

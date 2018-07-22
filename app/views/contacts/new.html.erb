@@ -18,25 +18,20 @@
 					 <div class="contents-box">
 	 <!-- ここからeach do -->
 						  <div class="conteinar">
-								<div class="p-img-contact">img</div>
-									 <div class="col-lg-12 p-info">info</div>
+								<div class="p-img-contact">@product.image</div>
+									 <div class="col-lg-12 p-info">
+									 	アルバム名： searchproduct.album_title %><br>
+										アーティスト名： searchproduct.artist %><br>
+										レーベル： searchproduct.label %><br>
+										ジャンル： searchproduct.category.name %><br>
+										リリース年： searchproduct.release_year %><br>
+										価格： searchproduct.price %>
+									 </div>
 									 <div class="col-lg-6 p-qty">qty</div>
 									 <div class="col-lg-6 p-price">price</div>
 						  </div>
 	 <!-- ここまでeach do -->
-	 <!-- 試しに繰り返し記述 -->
-						  <div class="conteinar">
-								<div class="p-img-contact">img</div>
-									 <div class="col-lg-12 p-info">info</div>
-									 <div class="col-lg-6 p-qty">qty</div>
-									 <div class="col-lg-6 p-price">price</div>
-						  </div>
-						  <div class="conteinar">
-								<div class="p-img-contact">img</div>
-									 <div class="col-lg-12 p-info">info</div>
-									 <div class="col-lg-6 p-qty">qty</div>
-									 <div class="col-lg-6 p-price">price</div>
-						  </div>
+	 
 	 <!-- --------------------------------->
 					 <div class="col-lg-4"></div>
 					 <div class="col-lg-3" align="right">
@@ -53,19 +48,6 @@
 		  <div class="contact-box">
 				<div class="contact-forms">
 					 <%= form_for(@contact) do |f| %>
-						  <!-- <select class="" name="title" id="title">
-								<option value="">お問い合わせの内容を選択してください</option>
-								<option value="0">ご注文のキャンセル</option>
-								<option value="1">お届け先の変更</option>
-								<option value="2">配送状況について</option>
-								<option value="3">商品の返品・返金について</option>
-								<option value="4">商品の破損・不具合について</option>
-								<option value="5">注文した商品と異なる商品が届いた</option>
-								<option value="6">発送に関するその他質問</option>
-								<option value="7">商品の登録情報について</option>
-								<option value="8">お礼</option>
-								<option value="9">その他の質問</option>
-						  </select> -->
 
 						  <div class="textarea">
 								<%= f.select :title, [["ご注文のキャンセル", "0"],
