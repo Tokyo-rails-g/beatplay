@@ -5,68 +5,38 @@
 		<div class="dashboard-orders-box">
 			<p class="dashboard-sub">オーダー直近１０件</p>
 				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>配送状況</th>
-							<th>オーダーNo</th>
-							<th>合計購入金額</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- each start -->
-						<tr>
-							<td>order.status</td>
-							<td>order.id</td>
-							<td>order.total</td>
-						</tr>
-						<!-- each end -->
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-						<tr>
-							<td>@order.status</td>
-							<td>@order.id</td>
-							<td>@order.total</td>
-						</tr>
-					</tbody>
+					<% if @orders2 != nil %>
+						<thead>
+							<tr>
+								<th>No</th>
+								<th> <%= sort_link(@q, :status, "配送状況") %> </th>
+								<th>オーダーNo</th>
+								<th>購入確定日</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- each start -->
+							<% @orders2.each_with_index do |order, i| %>
+							<tr>
+								<td><%= i+1 %> </td>
+								<td>order.status</td>
+								<td><%= order.id %></td>
+								<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+							</tr>
+							<% end %>
+							<!-- each end -->
+						</tbody>
+					<% else %>
+						<div>
+							<p>現在注文はありません</p>
+						</div>
+					<% end %>
 				</table>
 		</div>
 		<div class="dashboard-users-box">
 			<p class="dashboard-sub">ユーザー登録直近１０件</p>
 			<table class="table table-striped table-hover">
-
+				<% if @users2 != nil %>
 					<thead>
 						<tr>
 							<th>ユーザーID</th>
@@ -76,54 +46,25 @@
 					</thead>
 					<tbody>
 						<!-- each start -->
+					<% @users2.each do |user| %>
 						<tr>
-							<td>user.id</td>
-							<td>user.email</td>
-							<td>user.created_at.strftime('%Y年 %m月 %d日')</td>
+							<td><%= user.id %></td>
+							<td>
+								<%= link_to admins_user_path(user) do %>
+									<%= user.email %>
+								<% end %>
+							</td>
+							<td><%= user.created_at.strftime('%Y/%m/%d') %></td>
 						</tr>
+					<% end %>
 						<!-- each end -->
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
-						<tr>
-							<td>@user.id</td>
-							<td>@user.email</td>
-							<td>@user.created_at</td>
-						</tr>
 					</tbody>
-				</table>
+				<% else %>
+					<div>
+						<p>現在登録ユーザーはいません</p>
+					</div>
+				<% end %>
+			</table>
 		</div>
 		</div>
 	</div>

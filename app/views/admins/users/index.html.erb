@@ -5,6 +5,16 @@
  <div class="row">
   <div class="col-6">
     <h3>登録ユーザー一覧</h3>
+
+    <h2>検索結果</h2>
+
+    <%= search_form_for (@q, url:search_user_path) do |f| %>
+      <%= f.label :email_cont, "検索"%>
+      <%= f.search_field :email_cont %>
+      <%= f.submit "Search"%>
+    <% end %>
+
+
     <table class="table">
       <thead>
         <tr>
@@ -15,6 +25,9 @@
             <th>登録日</th>
         </tr>
       </thead>
+
+    <% if @q != nil %>
+
       <tbody>
         <tr>
             <th><input type="checkbox"></th>
@@ -33,6 +46,11 @@
               <% end %>
         </tr>
       </tbody>
+
+    <% else %>
+      <p><%= @msg %></p>
+    <% end %>
+
     </table>
   </div>
  </div>

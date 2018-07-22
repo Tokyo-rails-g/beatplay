@@ -7,7 +7,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def show
-    # @product = Product.find(params[:id])
+    @product = Product.find(params[:id])
+    @orders = Order.last(5)
+    @discs = Disc.find_by(params[:product_id])
   end
 
   def new
@@ -41,7 +43,6 @@ class Admins::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    binding.pry
     if @product.update(update_product_params)
        flash[:notice] = "商品を更新しました！"
        redirect_to edit_admins_product_disc_path(@product)
