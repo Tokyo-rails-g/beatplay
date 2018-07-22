@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'musics/new'
-  get 'musics/create'
-
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -27,6 +24,7 @@ Rails.application.routes.draw do
    # get 'users/update'
    # delete 'users/destroy'
    resources :users, only:[:show, :index, :edit, :update, :destroy]
+   get 'users/search', to: 'users#search', as: 'search_user'
   end
 
   namespace :admins do

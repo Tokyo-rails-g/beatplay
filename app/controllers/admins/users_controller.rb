@@ -12,6 +12,13 @@ PER = 30
   def index
     @users = User.page(params[:page]).per(PER)
     @admins = Admin.all
+    @q = User.ransack(params[:q])
+    @users = @q.result
+  end
+
+  def search
+    @q = User.search(search_params)
+    @users = @q.result(distinct: true)
   end
 
   def show
@@ -37,5 +44,9 @@ PER = 30
 private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first, :kana_last, :postal_code, :prefecture, :city, :address1, :address2, :phone_number, :email, :password)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
