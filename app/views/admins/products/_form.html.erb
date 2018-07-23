@@ -1,4 +1,4 @@
-
+      <%= form_for @product, url: admins_create_product_path do |f| %>
 
           <div class="form-group">
               <%= f.label :artist, "アーティスト名：" %>
@@ -64,14 +64,15 @@
               <%= f.text_field :stock, :size => "20" %>
           </div>
 
-          <div class="action">
-            <div class="submit">
-
-          <% if controller == Admins::ProductsController && action_name == "edit" %>
-              <%= f.submit '更新', class:"btn btn-default ml10" %>
-          <% else %>
-              <%= f.submit '登録', class:"btn btn-default ml10" %>
-          <% end %>
-
-            </div>
+          <h4>Discs</h4>
+          <div class="discs">
+            <%= f.fields_for :discs do |disc| %>
+                <%= render 'disc_fields', f: disc %>
+              <% end %>
+              <div id="links">
+                <%= link_to_add_association 'add disc', f, :discs %>
+              </div>
+            <%= f.submit %>
           </div>
+      <% end %>
+

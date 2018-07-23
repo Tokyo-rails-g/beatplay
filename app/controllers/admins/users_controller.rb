@@ -28,7 +28,6 @@ PER = 30
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.find(params[@user.id])
   end
 
   def edit
@@ -48,7 +47,18 @@ PER = 30
 
 private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :kana_first, :kana_last, :postal_code, :prefecture, :city, :address1, :address2, :phone_number, :email, :password)
+    params.require(:user).permit(:first_name, 
+                                  :last_name, 
+                                  :kana_first, 
+                                  :kana_last, 
+                                  :postal_code, 
+                                  :prefecture, 
+                                  :city, 
+                                  :address1, 
+                                  :address2, 
+                                  :phone_number, 
+                                  :email, 
+                                  :password)
   end
 
   def search_params

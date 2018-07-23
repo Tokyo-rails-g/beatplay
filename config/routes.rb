@@ -30,11 +30,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'products/new' => 'products#new', as: 'new_product'
     post 'products/new' => 'products#new', as: 'create_product'
-    resources :products, only: [:index, :show, :update, :destroy, :edit] do
-      resources :discs, only: [:new, :create, :edit, :update] do
-        resources :musics, only: [:new, :create, :edit, :update]
-      end
-    end
+    resources :products, only: [:index, :show, :update, :destroy, :edit]
   end
 
   namespace :admins do

@@ -5,11 +5,7 @@
 
     <div class="container">
 
-        <%= form_for(@product, url: admins_create_product_path) do |f| %>
-
-        <%= render :partial => 'admins/products/form', :locals => {:f => f} %>
-
-        <% end %>
+        <%= render 'admins/products/form', product: @product %>
 
     </div>
   </div>
