@@ -1,16 +1,17 @@
 class ProductsController < ApplicationController
 
-  #PER = 15
-
 # 商品一覧
   def index
-    #@products = Product.page(params[:page]).per(PER)
     @user = current_user
     @cart = Cart.find_by(user_id: current_user)
 
     #検索用
-    @q = Product.ransack(params[:q])
-    @searchproducts = @q.result.includes(:discs,:musics).page(params[:page]).per(15)
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @searchproducts = @q.result.page(params[:page]).per(15).distinct
+
+    @productall = Product.all
+    @searchproducts2 = @q.result
+    @msg = '検索キーワードに当てはまる商品が見つかりませんでした。'
   end
 
   def show
