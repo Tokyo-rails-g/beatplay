@@ -4,26 +4,28 @@ class CartsController < ApplicationController
 
 
 # カート内商品一覧
-  def show
+# show→indexへ
+  def index
     @cart = Cart.find_by(user_id: current_user)
+    # @cart_item = CartItem.find_by(params[:cart_id])
     @cart_items = @cart.cart_items
     @user = current_user
+    # index.html.erbにてiを使用
+    # @subtotal = @cart_item.product.price * @cart_item.quantity
+    # binding.pry
+    @total = 0
+    @cart_items.each do |i|
+    @total = @total + (i.product.price.to_i * i.quantity.to_i)
+    end
   end
 
-  def delete_item
-    @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
-    redirect_to carts_show_path
-    # カート内に商品があるかを確認。ない場合はdestroyしない
-    # if Cart.exists?(id: params[:id])
-    #   @cart_item.destroy
-    # else
-    #   flash[:notice] = "カートは既に空です"
-    #   render action: :show
-    # end
-  end
+  # def delete_item
+  #   cart_items#destroyへ移行
+  # end
 
-  def delete_all_items
+  # カート内商品を全て削除
+  # カートは削除しない！
+  def destroy
     @cart_items = CartItem.all
     @cart_item.destroy
     redirect_to carts_show_path
@@ -35,9 +37,9 @@ class CartsController < ApplicationController
     # end
   end
 # 購入手続きに進む(レジに進む)ボタンを押した時に呼ばれるアクション
-  def checkout
-    redirect_to orders_address_select_path(current_user.id)
-  end
+  # def checkout
+  #   redirect_to orders_address_select_path(current_user.id)
+  # end
 
 
   private

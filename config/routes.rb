@@ -72,12 +72,15 @@ Rails.application.routes.draw do
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
 
   patch '/products/:id/cart_items/:id/update_cart_items' => 'products#update_cart_item', as: 'update_cart_items'
-  get 'carts/checkout' => 'carts#checkout'
+  # get 'carts/checkout' => 'carts#checkout'
   
-  # resourses :carts, only: [:show]
-  get 'carts/:id' => 'carts#show', as: 'carts_show'
-  delete 'carts/delete_item' => 'carts#delete_item', as: 'delete_cart_item'
-  delete 'carts/delete_all_items' => 'carts#delete_all_items', as: 'delete_all_cart_items'
+  resources :carts, only: [:index, :destroy] do
+    resource :cart_items, only: [:update]
+    resources :cart_items, only: [:destroy]
+  end
+  # get 'carts/:id' => 'carts#show', as: 'carts_show'
+  # delete 'carts/delete_item' => 'carts#delete_item', as: 'delete_cart_item'
+  # delete 'carts/delete_all_items' => 'carts#delete_all_items', as: 'delete_all_cart_items'
   
   #get 'products/index'
   #get 'products/show'

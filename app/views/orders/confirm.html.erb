@@ -9,12 +9,12 @@
 	</div>
 		<h2>ご注文内容の確認</h2>
 	<div class="orders-box">
-		<% @cart_items.each do |cartitem| %>
-			<div class="jacket-image">cartitem.product.image</div>
+		<% @cart_items.each do |cart_item| %>
+			<div class="jacket-image"><%= attachment_image_tag cart_item.product, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200", class: "" %></div>
 			<div class="product-info">
-				<p class="p-info"><%= cartitem.product.album_title %><br><%= cartitem.product.artist %><br><%= cartitem.product.label %></p>
-				<p class="p-price"><%= cartitem.product.price %></p>
-				<p class="p-qty"><%= cartitem.quantity %></p>
+				<p class="p-info"><%= cart_item.product.album_title %><br><%= cart_item.product.artist %><br><%= cart_item.product.label %></p>
+				<p class="p-price"><%= cart_item.product.price %></p>
+				<p class="p-qty"><%= cart_item.quantity %></p>
 			</div>
 		<% end %>
 		 </div>
@@ -46,7 +46,7 @@
 			<div class="select-payment">
 				<%= f.select :payment, Order.payments.keys.to_a, {} %>
 			</div>
-			<p class="total-money">合計¥ @cart_items</p>
+			<p class="total-money">合計¥ <%= @total %></p>
 		</div>
 			<div class="decision-button">
 					<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>

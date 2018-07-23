@@ -3,14 +3,23 @@ class Admins::UsersController < ApplicationController
 PER = 30
 
   def top
+    @o_counter = Order.count
+    @u_counter = User.count
+    @p_counter = Product.count
     # 注文直近１０件をひっぱってくる記述
-    @orders = Order.last(10)
+    
     @q = Order.ransack(params[:q])
     @orders2 = @q.result.last(10)
+    if @orders2.blank?
+      @msg = "現在注文はありません"
+    end
     # ユーザー直近１０件の登録者を表示
-    @users = User.last(10)
     @q2 = User.ransack(params[:q])
     @users2 = @q2.result.last(10)
+    if @users2.blank?
+      @msg2 = "現在登録ユーザーはいません"
+    end
+    # binding.pry
     # @admin = Admin.find(params[:id])
   end
 

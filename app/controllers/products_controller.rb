@@ -50,14 +50,14 @@ class ProductsController < ApplicationController
       flash[:success] = "商品がカートに新規登録された"
       # binding.pry
       # redirect_to products_path
-      redirect_to carts_show_path(@cart)
+      redirect_to carts_path(@cart)
     else
       @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
       # binding.pry
       @cartitems.save
       flash[:success] = "カートに既にある商品の数が追加された"
       # redirect_to product_path(@product.id)
-      redirect_to carts_show_path(@cart)
+      redirect_to carts_path(@cart)
     end
   end
 

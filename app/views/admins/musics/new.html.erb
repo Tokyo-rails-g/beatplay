@@ -4,7 +4,6 @@
     <div class="container">
 
         <%= form_for @disc, url: admins_product_disc_musics_path(@product.id, @disc.id), method: :post do |f| %>
-
           <%= f.nested_fields_for :musics, wrapper_tag: :div do |music| %>
 
         <div class="form-group2">

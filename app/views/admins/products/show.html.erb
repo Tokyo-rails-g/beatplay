@@ -66,25 +66,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if @orders != nil %>
-						<!-- each start -->
-						<% @orders.each do |order| %>
-								<tr>
-									<%= link_to admins_order_show_path(order) do %>
-											<td><%= order.user_id %></td>
-											<td><%= order.id %></td>
-											<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-									<% end %>
-								</tr>
-						<% end %>
-						<!-- each end -->
-					<% else %>
-						<div>
-							<p>現在注文はありません</p>
-						</div>
+					<!-- each start -->
+					<% @orders.each do |order| %>
+						<tr>
+							<%= link_to admins_order_show_path(order) do %>
+								<td><%= order.user_id %></td>
+								<td><%= order.id %></td>
+								<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+							<% end %>
+						</tr>
 					<% end %>
+					<!-- each end -->
 				</tbody>
 				</table>
+				<%= @msg %>
 			</div>
 		</div>
 	</div>

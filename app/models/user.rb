@@ -17,6 +17,7 @@ class User < ApplicationRecord
 # ----------------------------------------------------------------------------------
 
   has_many :orders
+  has_many :addresses
   has_one :cart
   has_many :favorites, dependent: :destroy
   accepts_nested_attributes_for :orders, :allow_destroy => true
