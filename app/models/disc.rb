@@ -1,5 +1,6 @@
 class Disc < ApplicationRecord
-	belongs_to :product, optional: true
-	has_many :musics
-	accepts_nested_attributes_for :musics, allow_destroy: true
+	belongs_to :product, touch: true
+	has_many :musics, inverse_of: :disc
+	#inverse_of: :disc = (has_many/belongs_to関係下ではデフォルトで設定されている。discの変更をdiscに反映する)
+	accepts_nested_attributes_for :musics, reject_if: :all_blank, allow_destroy: true
 end
