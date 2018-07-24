@@ -1,65 +1,65 @@
 
 <head>
-	<title>カート内商品一覧</title>
+    <title>カート内商品一覧</title>
 </head>
 <section>
-	<div class="search-box">
-		<div class ="container">
-			<p class="col-lg-4"></p>
-			<p class="col-lg-4 search-form"><input class="form-control" type="search" name="search-form" placeholder="検索"></p>
-			<p class="col-lg-4"></p>
-		</div>
-	</div>
-	<div class="main-box">
-		<div class="cart-item-box">
-			<!-- ここからeach do -->
-			<table class="cartlist">
-				<thead>
-					<% @cart_items.each do |cart_item| %>
-					<tr>
-						<td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
-						<td class="p-info">
-							<div>
-								<p><%= cart_item.product.album_title %></p>
-							</div>
-							<div>
-								<p><%= cart_item.product.artist %></p>
-							</div>
-						</td>
-						<td class="p-qty">
-							<%= form_for cart_item, url: cart_cart_items_path(cart_item), method: :patch  do |f| %>
-						    <p>
-                  <%= f.number_field :quantity, default: cart_item.quantity, min: 1, max: cart_item.product.stock, class: "form-control" %>
-                <%= f.submit "更新", class: "btn btn-success btn-xs" %>
-              </p>
-							<% end %>
-						</td>
-						<td class="p-price"><p>¥ <%= cart_item.product.price %> </p></td>
-						<td class="p-subtotal">
-              <p>¥ <%= cart_item.product.price * cart_item.quantity %></p>
-            </td>
-							<td class="p-button">
-                <%= link_to cart_cart_item_path(@cart, cart_item), method: :delete, data:{confirm: "本当によろしいですか？"} do %>
-                   <p><button class="btn btn-danger btn-xs">削除</button></p>
+    <div class="search-box">
+        <div class ="container">
+            <p class="col-lg-4"></p>
+            <p class="col-lg-4 search-form"><input class="form-control" type="search" name="search-form" placeholder="検索"></p>
+            <p class="col-lg-4"></p>
+        </div>
+    </div>
+    <div class="main-box">
+        <div class="cart-item-box">
+            <!-- ここからeach do -->
+            <table class="cartlist">
+                <thead>
+                    <% @cart_items.each do |cart_item| %>
+                    <tr>
+                        <td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
+                        <td class="p-info">
+                            <div>
+                                <p><%= cart_item.product.album_title %></p>
+                            </div>
+                            <div>
+                                <p><%= cart_item.product.artist %></p>
+                            </div>
+                        </td>
+                        <td class="p-price"><p>¥ <%= cart_item.product.price %> </p></td>
+                        <td class="p-qty">
+                          <%= form_for cart_item, url: cart_cart_items_path(cart_item), method: :patch  do |f| %>
+                            <p>
+                              <%= f.number_field :quantity, default: cart_item.quantity, min: 1, max: cart_item.product.stock, class: "form-control" %>
+                              <%= f.submit "更新", class: "btn btn-default btn-xs" %>
+                            </p>
+                          <% end %>
+                        </td>
+                        <td class="p-subtotal">
+                          <p>¥  <%= cart_item.product.price * cart_item.quantity %></p>
+                        </td>
+                            <td class="p-button">
+                            <%= link_to cart_cart_item_path(@cart, cart_item), method: :delete, data:{confirm: "カートから商品を削除します。よろしいですか？"} do %>
+                               <p><button class="btn btn-danger btn-xs">削除</button></p>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </thead>
+            </table>
+                        <!-- ここまでeach do -->
+            </table>
+            <div class="row cash-button">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-3" align="right">
+                <font size="6">合計¥ <%= @total %></font>
+                </div>
+                <%= link_to orders_select_address_path(@total.id) do%>
+                    <button class=" col-lg-2 btn btn-danger btn-ms">購入手続き（送付先選択へ）</button>
                 <% end %>
-              </td>
-					</tr>
-					<% end %>
-				</thead>
-			</table>
-						<!-- ここまでeach do -->
-			</table>
-			<div class="row cash-button">
-				<div class="col-lg-4"></div>
-				<div class="col-lg-3" align="right">
-				<font size="6">合計 ¥<%= @total %></font>
-				</div>
-				<%= link_to orders_select_address_path do%>
-					<button class=" col-lg-2 btn btn-danger btn-ms">購入手続き（送付先選択へ）</button>
-				<% end %>
-				<button class=" col-lg-2 btn btn-ms">カートを空にする</button>
-				<p class="col-lg-1"></p>
-			</div>
-		</div>
-	</div>
+                <button class=" col-lg-2 btn btn-ms">カートを空にする</button>
+                <p class="col-lg-1"></p>
+            </div>
+        </div>
+    </div>
 </section>

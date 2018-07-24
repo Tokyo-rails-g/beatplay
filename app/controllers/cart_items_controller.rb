@@ -14,7 +14,6 @@ class CartItemsController < ApplicationController
 			redirect_to carts_path
 		else
 			flash[:danger] = "在庫が購入希望枚数ありません！"
-			redirect_to carts_path
 		end
 	end
 
