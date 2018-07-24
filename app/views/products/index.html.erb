@@ -23,7 +23,7 @@
 
 
 			<% if @searchproducts.any? %>
-				<% if @searchproducts2 != @productall %>
+				<% if @searchproducts2.count != @productall.count %>
 				<%= @searchproducts2.count %>件ヒットしました。
 				<% end %>
 
