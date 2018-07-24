@@ -17,8 +17,8 @@
 		<div class="admin-product-info">
 			<p class="admin-subtitles">商品詳細</p>
 			<div class="">
-				<div class="admin-product-img">
-					@product.image(callback指定)
+				<div class="">
+					<%= attachment_image_tag @product, :image, :fill, 60, 60, fallback: 'icon-mypage.jpg', :size => "100x100", class: "admin-product-img" %>
 				</div>
 				<p><label>タイトル：</label><%= @product.album_title %></p>
 				<p><label>アーティスト：</label><%= @product.artist %></p>
@@ -66,25 +66,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if @orders != nil %>
-						<!-- each start -->
-						<% @orders.each do |order| %>
-								<tr>
-									<%= link_to admins_order_show_path(order) do %>
-											<td><%= order.user_id %></td>
-											<td><%= order.id %></td>
-											<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-									<% end %>
-								</tr>
-						<% end %>
-						<!-- each end -->
-					<% else %>
-						<div>
-							<p>現在注文はありません</p>
-						</div>
+					<!-- each start -->
+					<% @orders.each do |order| %>
+						<tr>
+							<%= link_to admins_order_show_path(order) do %>
+								<td><%= order.user_id %></td>
+								<td><%= order.id %></td>
+								<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+							<% end %>
+						</tr>
 					<% end %>
+					<!-- each end -->
 				</tbody>
 				</table>
+				<%= @msg %>
 			</div>
 		</div>
 	</div>

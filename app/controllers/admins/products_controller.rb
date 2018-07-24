@@ -9,6 +9,7 @@ class Admins::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @orders = Order.last(5)
+    # @orders = Order.find_by(params[:product_id])
     @discs = Disc.find_by(params[:product_id])
   end
 
