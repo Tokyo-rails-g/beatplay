@@ -8,58 +8,45 @@
       <div class="form-horizontal">
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">名前</label>
+          <label class="col-sm-3 control-label">名前：</label>
             <div class="col-sm-8">
-              <%= f.text_field :first_name, autofocus: true %>
-              <%= f.text_field :last_name %>
+              <%= f.text_field :first_name, autofocus: true %><%= f.text_field :last_name %>
+              <%= f.text_field :kana_first %><%= f.text_field :kana_last %>
             </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-8">
-              <%= f.text_field :kana_first %>
-              <%= f.text_field :kana_last %>
-          </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">郵便番号</label>
+          <label class="col-sm-3 control-label">郵便番号：</label>
             <div class="col-sm-8">
               <%= f.text_field :postal_code %>
             </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">住所</label>
+          <label class="col-sm-3 control-label">住所：</label>
             <div class="col-sm-8">
-              <%= f.text_field :prefecture %>
-              <%= f.text_field :city %>
+              <%= f.text_field :prefecture %><%= f.text_field :city %>
+              <%= f.text_field :address1 %><%= f.text_field :address2 %>
             </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-8">
-            <%= f.text_field :address1 %>
-            <%= f.text_field :address2 %>
-          </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">電話番号</label>
+          <label class="col-sm-3 control-label">電話番号：</label>
             <div class="col-sm-8">
               <%= f.text_field :phone_number %>
             </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">メール</label>
+          <label class="col-sm-3 control-label">メール：</label>
             <div class="col-sm-8">
               <%= f.email_field :email, autocomplete: "email" %>
             </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">パスワード</label>
-          <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off" , :placeholder => "パスワード確認" %>
+          <label class="col-sm-3 control-label">パスワード：</label>
+          <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)" %><%= f.password_field :password_confirmation, autocomplete: "off" , :placeholder => "パスワード確認" %>
         </div>
 
         <div class="actions">

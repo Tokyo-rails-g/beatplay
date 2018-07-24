@@ -74,3 +74,5 @@ gem 'nested_form_fields'
 gem 'pry-rails'
 # enum日本語化
 gem 'enum_help'
+#親/子/孫関係で動的にフォームを追加/削除
+gem 'cocoon'

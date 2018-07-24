@@ -8,12 +8,6 @@
 
     <h2>検索結果</h2>
 
-    <%= search_form_for (@q, url:search_user_path) do |f| %>
-      <%= f.label :email_cont, "検索"%>
-      <%= f.search_field :email_cont %>
-      <%= f.submit "Search"%>
-    <% end %>
-
 
     <table class="table">
       <thead>
