@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
 	attachment :image
+
+	has_many :discs
+	has_many :musics, through: :discs  #商品の曲検索で必要
+
 	has_many :order_items
 	has_many :orders, through: :order_items
 	has_one :cart_item

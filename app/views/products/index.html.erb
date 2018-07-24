@@ -7,8 +7,13 @@
 	</form>
 		<!-- 検索ransack導入 -->
 		    <%= search_form_for @q do |f| %>
-			  <%= f.label :album_title_or_artist_or_label_or_discs_musics_name_cont, "検索"%>
-			  <%= f.search_field :album_title_or_artist_or_label_or_discs_musics_name_cont %>
+			  <%= f.label :album_title_or_artist_or_label_or_discs_musics_name_cont_any, "検索"%>
+
+			  <%= f.search_field :album_title_or_artist_or_label_or_discs_musics_name_cont_any %><br>
+
+			  <%= f.label :discs_musics_bpm, "範囲指定" %>
+			    <%= f.number_field :discs_musics_bpm_gteq_any, min: 10, max: 1000, step: 10 %>以上 ~
+			    <%= f.number_field :discs_musics_bpm_lteq_any, min: 10, max: 1000, step: 10 %>以下
 			  <%= f.submit "Search"%>
 
 			<% end %>
@@ -18,13 +23,26 @@
 	<div class="main-box">
 		<div class="sort-box">
 			<p>ここに並び順変えるセレクターが入ります。上下左右中央揃え。</p>
+			<table>
+			  <thead>
+			    <tr>
+			      <th><%= sort_link(@q, :album_title) %></th>
+			      <th><%= sort_link(@q, :artist) %></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  </tbody>
+			</table>
 		</div>
 		<%= paginate @searchproducts %>
 		<!-- 並び順 -->
 		<div class= "products-box">
 
 
-			<% if @q != nil %>
+			<% if @searchproducts.any? %>
+				<% if @searchproducts2 != @productall %>
+				<%= @searchproducts2.count %>件ヒットしました。
+				<% end %>
 
 				<!-- each -->
 				<% @searchproducts.each do |searchproduct| %>
