@@ -16,14 +16,15 @@ class Admins::ProductsController < ApplicationController
     if params[:product].present?
       @product = Product.new(product_params)
       @product.save
-      @disc = @product.disc.build
-      @disc.product_id = @product.id
-      @disc.save
-      @music = @disc.musics.build
-      @music.disc_id = @disc.id
-      @music.save
+      disc = @product.discs.build
+      disc.product_id = @product.id
+      disc.save
+      music = disc.musics.build
+      music.disc_id = disc.id
+      # binding.pry
+      music.save
       flash[:notice] = '商品を追加しました！'
-      redirect_to new_admins_product_disc_path(@product.id)
+      redirect_to admins_product_path(@product.id)
     else
       @product = Product.new
     end
@@ -77,13 +78,13 @@ private
                                     :stock,
                                     discs_attributes:[:id,
                                                       :disc_number,
-                                                      :_destroy],
+                                                      :_destroy,
                                     musics_attributes:[:disc_id,
                                                       :album_title,
                                                       :bpm,
                                                       :duration,
                                                       :track_number,
-                                                      :_destroy])
+                                                      :_destroy]])
   end
 
   def update_product_params
@@ -107,7 +108,7 @@ private
                                     :label,
                                     :favorite_count,
                                     :release_year,
-                                    :stock,)
+                                    :stock)
   end
 
   # def destroy_product_params
