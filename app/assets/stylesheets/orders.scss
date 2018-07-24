@@ -59,7 +59,7 @@ text-align: center;
 	text-align: center;
 	width:70%;
 	margin: 10px 30px 10px 30px;
-	background-color: rgba(255, 255, 255, 0.8);
+	/*background-color: rgba(255, 255, 255, 0.8);*/
 	border-radius: 10px;
 	margin: 0 auto;
 }
@@ -95,7 +95,7 @@ text-align: center;
 
 .confirm-main-box{
 	width: 100%;
-	background-color: #202020;
+	/*background-color: #202020;*/
 }
 h2{
 	text-align: center;
@@ -162,21 +162,21 @@ div.example {
   overflow: scroll;
 }
 .modal-content{
-	background-color: rgba(255, 255, 255, 0.1)!important;
+	/*background-color: rgba(255, 255, 255, 0.1)!important;*/
 }
 .select-payment{
 	margin: 10px;
-	color: #202020;
+	/*color: #202020;*/
 }
 /*============ボタン類のCSS==============*/
 /*この住所に送るボタンのスタイル*/
 .button-style{
 	margin:20px 0px 10px 200px;
 	border: solid 1px;
-	color: rgba(255, 255, 255, 0.8);
+	/*color: rgba(255, 255, 255, 0.8);*/
 	padding: 0 20px;
 	text-align: center;
 	border-radius: 5px;
-	background-color: #202020;
+	/*background-color: #202020;*/
 	line-height: 2.5;
 }
