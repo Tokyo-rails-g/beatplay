@@ -43,13 +43,14 @@ class ProductsController < ApplicationController
     @cart = Cart.find_by(user_id: current_user)
 
     @cartitems = @cart.cart_items.find_by(product_id: @product.id) #自分のカート内に今入れようとしている商品があるかの確認　無ければnilで返答
+    @cartitem.subtotal = @product.price * @cartitem.quantity
 
     if @cartitems.blank?
       @cartitem.cart_id = @cart.id
       @cartitem.product_id = @product.id
+      # binding.pry
       @cartitem.save
       flash[:success] = "商品がカートに新規登録された"
-      # binding.pry
       # redirect_to products_path
       redirect_to carts_path(@cart)
     else
@@ -84,6 +85,6 @@ class ProductsController < ApplicationController
     end
 
     def cart_item_params
-      params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
+      params.require(:cart_item).permit(:cart_id, :product_id, :quantity, :subtotal)
     end
 end

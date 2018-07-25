@@ -13,32 +13,34 @@
       <thead>
         <tr>
             <th><input type="checkbox"></th>
-            <th>ID</th>
-            <th>ユーザー名</th>
-            <th>Email</th>
-            <th>登録日</th>
+            <th><%= sort_link(@q, :id, "ID") %></th>
+            <th><%= sort_link(@q, :first_name, "ユーザー名") %></th>
+            <th><%= sort_link(@q, :emali, "Email") %></th>
+            <th><%= sort_link(@q, :created_at, "登録日") %></th>
+            <th></th>
+            <th></th>
+            <th></th>
+
         </tr>
       </thead>
 
     <% if @q != nil %>
 
       <tbody>
+        <% @users.each do |user| %>
         <tr>
-            <th><input type="checkbox"></th>
-              <% @users.each do |user| %>
-            <th><%= user.id %></th>
+            <td><input type="checkbox"></td>
+            <td><%= user.id %></td>
             <td><%= user.first_name %><%= user.last_name %></td>
             <td><%= user.email %></td>
-            <td><%= user.created_at %></td>
-            <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class:"btn btn-default" %></td>
+            <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default" %></td>
+            <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-success" %></td>
             <td>
-              <%= button_to "編集", edit_admins_user_path(user.id), method: :get, class:"btn btn-default" %>
+              <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-danger", data: { confirm: '削除します。よろしいですか？' }%>
             </td>
-            <td>
-              <%= button_to "削除", admins_user_path(user.id), method: :delete, class:"btn btn-default", data: { confirm: 'Are you sure?' }%>
-            </td>
-              <% end %>
         </tr>
+        <% end %>
       </tbody>
 
     <% else %>
@@ -57,25 +59,28 @@
         <tr>
             <th>名前</th>
             <th>Email</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
       </thead>
       <tbody>
+        <% @admins.each do |ad| %>
         <tr>
-          <% @admins.each do |ad| %>
             <td><%= ad.name %></td>
             <td><%= ad.email %></td>
             <td>
-              <%= button_to "編集", edit_admin_registration_path, method: :get, class:"btn btn-default" %>
+              <%= button_to "編集", edit_admin_registration_path, method: :get, class: "btn btn-default" %>
             </td>
             <td>
-              <%= button_to "削除", admin_registration_path, method: :delete, class:"btn btn-default", data: { confirm: 'Are you sure?' }%>
+              <%= button_to "削除", admin_registration_path, method: :delete, class: "btn btn-default", data: { confirm: '削除します。よろしいですか?' }%>
             </td>
             <td>
-              <%= button_to '追加', destroy_admin_session_path, method: :delete, class:"btn btn-default" %>
+              <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
             </td>
         </tr>
+        <% end %>
       </tbody>
-          <% end %>
     </table>
   </div>
  </div>

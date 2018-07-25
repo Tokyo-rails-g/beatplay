@@ -5,11 +5,15 @@ class CartItemsController < ApplicationController
 # カート内商品の数量変更
 	def update
 		@cart = Cart.find_by(user_id: current_user)
-    	# @cart_items = @cart.cart_items
+    	@cart_items = @cart.cart_items
 		@cart_item = CartItem.find(params[:cart_id])
 		@user = current_user
+		@total = 0
+      	@cart_item.subtotal = @cart_item.product.price * @cart_item.quantity
+
 		if  @cart_item.quantity < @cart_item.product.stock
-			@cart_item.update(cart_item_params)
+			@cart_item.update
+			# binding.pry
 			# redirect_to orders_select_address_path(@user)
 			redirect_to carts_path
 		else
@@ -37,7 +41,7 @@ class CartItemsController < ApplicationController
 	private
 
 	def cart_item_params
-		params.require(:cart_item).permit(:cart, :product, :quantity)
+		params.require(:cart_item).permit(:cart, :product, :quantity, :subtotal)
 	end
 
   def setup_cart_item!

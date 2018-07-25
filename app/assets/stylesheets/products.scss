@@ -21,7 +21,7 @@
 	/*z-index: -1;*/
 }
 .main-box{
-	background-color: #202020;
+	/*background-color: #202020;*/
 	width:100%;
 	height: 1500px;
 	/*overflow: scroll;*/
@@ -30,12 +30,12 @@
 .sort-box{
 	width: 100%;
 	height: 100px;
-	background-color: silver;
+	/*background-color: silver;*/
 }
 .products-box{
 	width:95%;
 	margin: 0 auto;
-	background-color: white;
+	/*background-color: white;*/
 	display: flex;
 	/*flex-direction: row;*/
 	justify-content: center;
@@ -44,19 +44,20 @@
 .products{
 	width: 200px;
 	/*height: 200px;*/
-	background-color: silver;
+	/*background-color: silver;*/
 	margin: 15px;
 	justify-content: flex-start;
 }
 .products-img{
 	width: 200px;
 	height: 200px;
+	box-shadow: rgba(255, 255, 255, 0.8);
 	/*background-color: orange;*/
 }
 .products-info{
 	width: 100%;
 	height: 150px;
-	background-color: darkorange;
+	/*background-color: darkorange;*/
 }
 .pagination{
 	width: 95%;

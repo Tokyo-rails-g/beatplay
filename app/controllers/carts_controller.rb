@@ -7,15 +7,14 @@ class CartsController < ApplicationController
 # show→indexへ
   def index
     @cart = Cart.find_by(user_id: current_user)
-    # @cart_item = CartItem.find_by(params[:cart_id])
-    @cart_items = @cart.cart_items
+    @cart_item = CartItem.find_by(params[:cart_id])
     @user = current_user
-    # index.html.erbにてiを使用
-    # @subtotal = @cart_item.product.price * @cart_item.quantity
+    @cart_items = @cart.cart_items
     # binding.pry
+    @cart_item.subtotal = @cart_item.product.price * @cart_item.quantity
     @total = 0
-    @cart_items.each do |i|
-    @total = @total + (i.product.price.to_i * i.quantity.to_i)
+    @cart_items.each do |cart_item|
+      @total = @total + cart_item.subtotal.to_i
     end
   end
 
