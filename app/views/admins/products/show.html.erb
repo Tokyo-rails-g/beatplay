@@ -22,17 +22,16 @@
 				</div>
 				<p><label>タイトル：</label><%= @product.album_title %></p>
 				<p><label>アーティスト：</label><%= @product.artist %></p>
-				<p><label>収録曲：</label>
-					<div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-							収録曲を見る
+				<p><div class="dropdown">
+						<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+							収録曲
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 						<% @product.discs.each do |disc| %>
-							<label>DISC</label><%= disc.disc_number %><br>
+							<li>DISC<%= disc.disc_number %></li>
 							<% disc.musics.each_with_index do |music| %>
-								<li><%= music.name %><label>Duration</label><%= music.duration %></li>
+								<li><%= music.name %><%= music.duration %></li>
 							<% end %>
 						<% end %>
 						</ul>

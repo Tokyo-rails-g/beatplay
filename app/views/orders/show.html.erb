@@ -1,5 +1,5 @@
 <head>
-	<title>cart_payment</title>
+	<title>購入決定後</title>
 </head>
 <section>
 	<div class="search-box">
@@ -20,8 +20,8 @@
 				<font size="5">ご注文が確定されました。<br>ありがとうございました。</font>
 			</div>
 			<div class="order-info">
-				<font size="4"><p class="order-number">注文番号：@order_id</p></font>
-				<p class="order-list">@order.name</p>
+				<font size="4"><p class="order-number">注文番号：<%= @order.id %></p></font>
+				<p class="order-list"></p>
 			</div>
 		</div>
 		<div class="buttons">
