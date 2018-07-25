@@ -1,26 +1,8 @@
-	<div class="main-visual">
-	<form class="top-search-form" action="/" name="search" method="get">
-		<dl class="search">
-		    <dt><input type="text" name="search" value="" placeholder="キーワードで検索。これだとダサい" /></dt>
-		    <dd><button><span></span></button></dd>
-		</dl>
-	</form>
-		<!-- 検索ransack導入 -->
-		    <%= search_form_for @q do |f| %>
+	<!-- main-visual -->
+	<!-- 検索フォーム -->
+		<%= render 'products/list', q: @q %>
+	<!--             -->
 
-			  <%= f.label :album_title_or_artist_or_label_or_discs_musics_name_cont_any, "検索"%>
-
-			  <p class="search-box-style"><%= f.search_field :album_title_or_artist_or_label_or_discs_musics_name_cont_any %><br></p>
-
-			  <%= f.label :discs_musics_bpm, "範囲指定" %>
-			    <%= f.number_field :discs_musics_bpm_gteq_any, min: 10, max: 1000, step: 10 %>以上 ~
-			    <%= f.number_field :discs_musics_bpm_lteq_any, min: 10, max: 1000, step: 10 %>以下
-			  <%= f.submit "Search"%>
-
-			<% end %>
-			<!--  -->
-		<!-- 検索フォーム -->
-	</div>
 	<div class="main-box">
 		<div class="sort-box">
 			<table>
@@ -40,7 +22,7 @@
 
 
 			<% if @searchproducts.any? %>
-				<% if @searchproducts2 != @productall %>
+				<% if @searchproducts2.count != @productall.count %>
 				<%= @searchproducts2.count %>件ヒットしました。
 				<% end %>
 
@@ -72,5 +54,5 @@
 	</div>
 
 
-	<!-- 	ページング　　 -->
+	 <!-- 	ページング　　 -->
 </main>

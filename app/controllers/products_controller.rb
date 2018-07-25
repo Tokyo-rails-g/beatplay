@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
     @cartitem = CartItem.new
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
   end
 
   def new
