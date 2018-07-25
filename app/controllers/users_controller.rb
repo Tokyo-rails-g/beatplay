@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def top
     @users = User.last(10)
     @orders = Order.last(10)
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
   end
 
   def confirm
@@ -12,9 +13,11 @@ class UsersController < ApplicationController
   def mypage
     @user = User.find(params[:id])
     @favorites = @user.favorites
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
   end
 
   def edit
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
     @user = User.find(params[:id])
     if @user.id == current_user.id
       render :edit

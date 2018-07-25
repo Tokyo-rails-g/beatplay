@@ -1,8 +1,12 @@
 <%= render 'admins/users/header'  %>
-<div>ダッシュボード</div>
-<p>登録ユーザー合計: <%= @u_counter %> 人 </p>
-<p>総オーダー数: <%= @o_counter %> 件 </p>
-<p>商品ラインナップ: <%= @p_counter %> 点 </p>
+<h1>ダッシュボード</h1><span></span>
+<div class="counter-box">
+	<div class="counter">
+		<p>登録ユーザー合計: <%= @u_counter %> 人 </p>
+		<p>総オーダー数: <%= @o_counter %> 件 </p>
+		<p>商品ラインナップ: <%= @p_counter %> 点 </p>
+	</div>
+</div>
 
 <div class="dashboard-main-box">
 	<div class="dashboard-contents-box">
@@ -12,7 +16,7 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th> <%= sort_link(@q, :status, "配送状況") %> </th>
+								<th>ステータス</th>
 								<th>オーダーNo</th>
 								<th>購入確定日</th>
 							</tr>
@@ -22,7 +26,7 @@
 							<% @orders2.each_with_index do |order, i| %>
 								<tr>
 									<td><%= i+1 %> </td>
-									<td>order.status</td>
+									<td><%= order.status %></td>
 									<td><%= order.id %></td>
 									<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 								</tr>

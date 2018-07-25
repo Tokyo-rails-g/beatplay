@@ -9,14 +9,38 @@
 	</div>
 		<h2>ご注文内容の確認</h2>
 	<div class="orders-box">
-		<% @cart_items.each do |cart_item| %>
-			<div class="jacket-image"><%= attachment_image_tag cart_item.product, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200", class: "" %></div>
-			<div class="product-info">
-				<p class="p-info"><%= cart_item.product.album_title %><br><%= cart_item.product.artist %><br><%= cart_item.product.label %></p>
-				<p class="p-price"><%= cart_item.product.price %></p>
-				<p class="p-qty"><%= cart_item.quantity %></p>
-			</div>
-		<% end %>
+		<table class="cartlist">
+                <thead>
+                  <% price_sum = 0 %>
+                    <% @cart_items.each_with_index do |cart_item, i| %>
+                    <tr>
+                    	<td> <%= i+1 %> </td>
+                        <td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
+                        <td class="p-info">
+                            <div>
+                                <p><%= cart_item.product.album_title %></p>
+                            </div>
+                            <div>
+                                <p><%= cart_item.product.artist %></p>
+                            </div>
+                        </td>
+                        <td class="p-price"><p>¥ <%= cart_item.product.price %> </p></td>
+                        <td class="p-qty">
+                          <%= form_for cart_item, url: cart_cart_items_path(cart_item), method: :patch  do |f| %>
+                            <p><%= cart_item.quantity %>枚</p>
+                          <% end %>
+                        </td>
+                        <td class="p-subtotal">
+                          <p>¥ <%= cart_item.product.price * cart_item.quantity %></p>
+                          <% price_sum =  price_sum + cart_item.product.price * cart_item.quantity %>
+                        </td>
+                        <td class="p-button">
+                        </td>
+                    </tr>
+                    <% end %>
+                </thead>
+            </table>
+
 		 </div>
 	<h3>送付する住所</h3>
 </div>
@@ -46,7 +70,7 @@
 			<div class="select-payment">
 				<%= f.select :payment, Order.payments.keys.to_a, {} %>
 			</div>
-			<p class="total-money">合計¥ <%= @total %></p>
+			<p class="total-money">合計 ¥：<%= @total %></p>
 		</div>
 			<div class="decision-button">
 					<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>
@@ -56,10 +80,10 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-									<h4 class="modal-title">Caution!</h4>
+									<h4 class="modal-title" align="center">Caution!</h4>
 								</div>
 								<div class="modal-body">
-									ご注文が確定されるとキャンセルできません！
+									ご注文が確定されます。よろしいですか？
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
