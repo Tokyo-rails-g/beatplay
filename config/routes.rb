@@ -23,6 +23,7 @@ Rails.application.routes.draw do
    # get 'users/edit'
    # get 'users/update'
    # delete 'users/destroy'
+   post 'users/:id/edit' => 'admins/users#edit', as: 'edit_user'
    resources :users, only:[:show, :index, :edit, :update, :destroy]
    get 'users/search', to: 'users#search', as: 'search_user'
   end
