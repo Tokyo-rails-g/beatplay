@@ -7,6 +7,15 @@
 	    <dd><button><span></span></button></dd>
 	</dl>
 </form>
+
+<%= search_form_for @q do |f| %>
+	<%= f.label :album_title_or_artist_or_discs_musics_name_cont_any, "検索"%>
+
+	<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any %><br>
+
+	<%= f.submit "Search"%>
+<% end %>
+
 <div class="start-button">
 	<%= link_to products_path do %>
 		<p class="btn btn-primary">START</p>

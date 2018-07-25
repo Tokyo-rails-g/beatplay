@@ -18,7 +18,6 @@ class FavoritesController < ApplicationController
   def destroy
   	@product = Product.find(params[:product_id])
   	favorite = current_user.favorites.find_by(product_id: params[:product_id])
-  	binding.pry
   	favorite.destroy
   	flash[:success] = '商品をお気に入りから削除しました。'
   	redirect_to mypage_user_path(current_user)
