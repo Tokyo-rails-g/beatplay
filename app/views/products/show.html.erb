@@ -42,7 +42,7 @@
 	<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
 	<div class="field row">
-		<label> 数量</label>
+		<label>数量</label>
 		<%= f.number_field :quantity, default: 1, min: 1, max: @product.stock %>
 	</div>
 

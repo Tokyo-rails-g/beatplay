@@ -64,13 +64,13 @@
 	</div>
 	</div>
 	<div class="buttons-box">
-		<%= form_for @order, url: create_order_path, method: :post do |f| %>
+		<%= form_for @order, url: create_order_path(@order), method: :post do |f| %>
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
 				<%= f.select :payment, Order.payments.keys.to_a, {} %>
 			</div>
-			<p class="total-money">合計 ¥：<%= @total %></p>
+			<p class="total-money">合計 ¥：<%= price_sum %></p>
 		</div>
 			<div class="decision-button">
 					<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>

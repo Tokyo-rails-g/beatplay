@@ -1,72 +1,58 @@
 <%= render 'admins/users/header'  %>
+<div class="dashboard-sub">注文詳細</div>
+<div class="user-infomation">
+	#000000
+</div>
+<div class ="contact-main-box">
+	<div class="contacts-contents">
+		<div class="border-solid-1">
+			<p class= "border-bottom"><span>注文内容</span><span>ステータス</span></p>
+			<div class="order-infomation">
+				<table class="table table-striped table-hover">
+					<thead>
+						<!-- データ引っ張ってこれたらth要素をsort_linkの記述に書き換えると早いかも -->
+						<tr>
+							<th>商品</th>
+							<th>価格</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- each start -->
+						<% @order_items.each do |order_item| %>
+							<tr>
+								<td>
+									<%= link_to admins_product_path(order_item.product) do %>
+										<%= order_item.product.album_title %>
+									<% end %>
+								</td>
+								<td><%= order_item.product.price %></td>
+							</tr>
+						<% end %>	
+						<!-- each end -->
+					</tbody>
+				</table>
+			</div>
+			<p>送付先</p>
+			<div class="admin-product-show-total">
+				<div class="address-box">
+					@order.address.postal_code
+					@order.address.prefecture
+					@order.address.city
+					@order.address.address1
+					@order.address.address2
 
-<h1>注文詳細画面</h1>
-<div class="container">
-  <div class="row">
-    <% @order.each do |order| %>
-        <p class="order-label">
-        	<%= order.id %>  <%= '(' + order.user_id.last_name + order_id.order.user_id.first_name + ')' %>,  <%= '¥' + order.total %>
-        </p>
-    <div class="col-8">
-    	<div class="panel panel-default">
-    		<div class="panel-heaing">
-    		  <div class="pull-left">注文内容</div>
-    		  <div class="pull-right"><button type="button" class="btn btn-default btn-sm">ステータス</button></div>
-    	    </div>
-    	    <table class="table order_items">
-		        <thead>
-			        <tr>
-				        <th>商品</th>
-				        <th>価格</th>
-			        </tr>
-		        </thead>
-		        <tbody>
-		        	<% @order.oreder_item.each do |item| %>
-			        <tr>
-				        <td><%= link_to "item.product_id.album_title", item.product_id.album_title %></td>
-				        <td><%= item.price %></td>
-			        </tr>
-		        </tbody>
-	        </table>
-	        <div class="address_info pull-left">
-	                        <%= item.order_id.address_id.postal_code %><br>
-	                        <%= item.order_id.address_id.prefecture %><%= item.order_id.address_id.city %><br>
-	                        <%= item.order_id.address_id.address1 %><br>
-	                        <%= item.order_id.address_id.address2 %><br>
-	        </div>
-	        <div class="total_price pull-right">
-	        	            <%= '合計：' + item.order_id.total %>
-	        </div>
-	                <% end %>
-        </div>
-    </div>
-
-    <div class="col-4">
-    	<div class="panel panel-default">
-    		<div class="panel-heading">購入者情報</div>
-    		<div class="panel-body">
-    		    <form class="form-horizontal">
-	                <div class="form-group">
-		                <label class="col-sm-2 control-label">ユーザー：</label>
-		                <div class="col-sm-5">
-			                <p class="form-control-static">
-			        	      <%= link_to 'order.user_id.last_name' + 'order.user_id.first_name', admins_user_path, method: :get %>
-			                 </p>
-		                </div>
-	                </div>
-	                <div class="form-group">
-		                <label class="col-sm-2 control-label">メール：</label>
-		                <div class="col-sm-5">
-			                <p class="form-control-static">
-			        	      <%= order.user_id.email %>
-			                </p>
-		                </div>
-	                </div>
-		        </form>
-	        </div>
-        </div>
-    <% end %>
-    </div>
-
-
+				</div>
+				<div class="total-box" align="right">
+					合計¥ <%= @order.total %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="order-show-user-box">
+		<p>購入者情報</p>
+		<div class="">
+			<p><label>ユーザー名：</label><%= @order.user.first_name %><%= @order.user.last_name %></p>
+			<p><label>E-mail：</label><%= @order.user.email %></p>
+		</div>
+	</div>
 </div>

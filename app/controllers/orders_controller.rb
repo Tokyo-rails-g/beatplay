@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
 # 注文を確定するボタンが押されたときに呼ばれるアクション
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @user = current_user
     # @user.id = @cart.user_id
     # ログインしているユーザーに紐付いたカートIDを取得
@@ -68,16 +68,18 @@ class OrdersController < ApplicationController
         @order_item.product_id = cart_item.product_id
         @order_item.price = cart_item.product.price
         @order_item.quantity = cart_item.quantity
+        cart_item.destroy
       end
       # @order_item.order_id = @order.id
       # @order_items = @cart_items
       # binding.pry
       if @order_item.save
-    # binding.pry
-
-        @cart_items.destroy
+        # @cart_items.destroy
+    binding.pry
       redirect_to show_order_path
       else
+        flash[:danger]="cart_itemは削除できていません！"
+        redirect_to show_order_path
       end
       
     else
@@ -86,10 +88,15 @@ class OrdersController < ApplicationController
     end
   end 
 
+
+
+
+
+
 # 購入完了画面で使用するアクション
   def show
     @user = current_user
-    # @order = Order.find()
+    @order = Order.where(user_id: current_user).last
   end
 
 
