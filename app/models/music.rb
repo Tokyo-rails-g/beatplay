@@ -4,4 +4,5 @@ class Music < ApplicationRecord
 	#touch: true = 子モデルを更新した時に親モデルのupdated_atも更新
 
 	default_scope -> { order(track_number: :asc) }
+	#track_number順でのDB格納をデフォルト設定
 end

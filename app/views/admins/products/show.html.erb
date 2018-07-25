@@ -30,9 +30,11 @@
 						</button>
 						<ul class="dropdown-menu" role="menu">
 						<% @product.discs.each do |disc| %>
-							<label>DISC</label><%= disc.disc_number %><br>
+							<label>ディスクNo.</label><%= disc.disc_number %><br>
 							<% disc.musics.each_with_index do |music| %>
-								<li><%= music.name %><label>Duration</label><%= music.duration %></li>
+								<li><label>曲名</label><%= music.name %></li>
+								<li><label>曲長</label><%= music.duration %>
+								</li>
 							<% end %>
 						<% end %>
 						</ul>

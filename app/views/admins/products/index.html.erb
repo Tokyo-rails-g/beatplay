@@ -19,7 +19,7 @@
       		<tbody>
         		<tr>
 <!--            		 	attachment_image_tag -->
-                <td>画像</td>
+                <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
            		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
             		<td><%= product.artist %></td>
             		<td><%= product.price %></td>
