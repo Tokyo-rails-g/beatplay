@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
       # binding.pry
       if @order_item.save
         # @cart_items.destroy
-    binding.pry
+    # binding.pry
       redirect_to show_order_path
       else
         flash[:danger]="cart_itemは削除できていません！"

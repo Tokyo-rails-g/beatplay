@@ -23,11 +23,12 @@ class CartsController < ApplicationController
   end
 
   # カート内商品を全て削除
-  # カートは削除しない！
   def destroy
     @cart_items = CartItem.all
-    @cart_item.destroy
-    redirect_to carts_show_path
+    @cart_items.each do |cart_item|
+      cart_item.destroy
+    end
+    redirect_to carts_path
   end
 
     # private

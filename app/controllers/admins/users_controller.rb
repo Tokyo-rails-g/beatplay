@@ -10,13 +10,13 @@ PER = 30
     
     @q = Order.ransack(params[:q])
     @orders2 = @q.result.last(10)
-    if @orders2.blank?
+    if @q == nil
       @msg = "現在注文はありません"
     end
     # ユーザー直近１０件の登録者を表示
     @q2 = User.ransack(params[:q])
     @users2 = @q2.result.last(10)
-    if @users2.blank?
+    if @users2 == nil
       @msg2 = "現在登録ユーザーはいません"
     end
     # binding.pry
