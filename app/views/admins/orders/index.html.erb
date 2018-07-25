@@ -3,7 +3,7 @@
 <h1>注文一覧</h1>
 <div class="container">
   <div class="col-7">
-    <table class="table">
+    <table class="table table-striped table-hover">
       <thead>
         <tr>
             <th></th>
@@ -15,16 +15,16 @@
         </tr>
       </thead>
       <tbody>
+        <% @orders.each do |order| %>
         <tr>
-            <% @orders.each do |order| %>
             <th><input type="checkbox"></th>
             <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
             <td><button type="button" class="btn btn-default btn-sm"><%= order.status %></button></td>
-            <td><%= order.created_at %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= link_to order.user.first_name + order.user.last_name, admins_user_path(order.user), method: :get %></td>
             <td><%= order.total %></td>
-            <% end %>
         </tr>
+        <% end %>
       </tbody>
     </table>
     <%= paginate @orders %>

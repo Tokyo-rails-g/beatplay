@@ -15,6 +15,7 @@
             <!-- ここからeach do -->
             <table class="cartlist">
                 <thead>
+                  <% price_sum = 0 %>
                     <% @cart_items.each do |cart_item| %>
                     <tr>
                         <td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
@@ -36,7 +37,8 @@
                           <% end %>
                         </td>
                         <td class="p-subtotal">
-                          <p>¥  <%= cart_item.product.price * cart_item.quantity %></p>
+                          <p>¥ <%= cart_item.product.price * cart_item.quantity %></p>
+                          <% price_sum =  price_sum + cart_item.product.price * cart_item.quantity %>
                         </td>
                             <td class="p-button">
                             <%= link_to cart_cart_item_path(@cart, cart_item), method: :delete, data:{confirm: "カートから商品を削除します。よろしいですか？"} do %>
@@ -52,7 +54,7 @@
             <div class="row cash-button">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-3" align="right">
-                <font size="6">合計¥ <%= @total %></font>
+                <font size="6">合計¥ <%= price_sum %></font>
                 </div>
                 <%= link_to orders_select_address_path do%>
                     <button class=" col-lg-2 btn btn-danger btn-ms">購入手続き（送付先選択へ）</button>

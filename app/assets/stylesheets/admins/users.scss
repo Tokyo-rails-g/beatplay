@@ -2,7 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.counter-box{
+	width: 90%;
+	margin:0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.counter{
+	width: 200px;
+	border: solid 2px;
+	border-radius: 5px;
+}
 .dashboard-main-box{
 	width: 100%;
 	display: flex;

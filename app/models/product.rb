@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 	attachment :image
 
 	has_many :discs
+
 	has_many :musics, through: :discs
 	has_many :order_items
 	has_many :orders, through: :order_items
@@ -11,8 +12,6 @@ class Product < ApplicationRecord
 	has_many :discs, inverse_of: :product
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 	has_many :musics, through: :discs  #商品の曲検索で必要
-
-
 	belongs_to :category
 
 

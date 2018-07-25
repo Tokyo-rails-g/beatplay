@@ -1,34 +1,37 @@
 <%= render 'admins/users/header'  %>
-
-<h1>商品一覧</h1>
-<%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
-<div class="container">
-	<div class="col-6">
-    	<table class="table">
-      		<thead>
-          <% @products.each do |product| %>
-        		<tr>
+<div class="main-box">
+  <h1>商品一覧</h1>
+  <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
+  <div class="container">
+  	<div class="ad-pro-index-box">
+      	<table class="table table-hover">
+        		<thead>
+          		<tr>
+                <th></th>
             		<th>画像</th>
             		<th>シングル/アルバム名</th>
             		<th>アーティスト名</th>
             		<th>値段</th>
             		<th>在庫数</th>
             		<th>お気に入り数</th>
-        		</tr>
-      		</thead>
-      		<tbody>
-        		<tr>
-<!--            		 	attachment_image_tag -->
-                <td>画像</td>
-           		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
-            		<td><%= product.artist %></td>
-            		<td><%= product.price %></td>
-            		<td><%= product.stock %></td>
-            		<td><%= product.favorite_count %></td>
-            	<% end %>
-        		</tr>
-      		</tbody>
-    	</table>
-    	<%= paginate @products %>
-  	</div>
+          		</tr>
+        		</thead>
+        		<tbody>
+                <% @products.each_with_index do |product, i| %>
+          		  <tr>
+  <!-- attachment_image_tag -->
+                  <td><%= i+1 %>.</td>
+                  <td>画像</td>
+             		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
+              		<td><%= product.artist %></td>
+              		<td><%= product.price %></td>
+              		<td><%= product.stock %></td>
+              		<td><%= product.favorite_count %></td>
+              	<% end %>
+          		</tr>
+        		</tbody>
+      	</table>
+      	<%= paginate @products %>
+    	</div>
+  </div>
 </div>

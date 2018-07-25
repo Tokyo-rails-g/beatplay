@@ -5,7 +5,6 @@
 
 	<div class="main-box">
 		<div class="sort-box">
-			<p>ここに並び順変えるセレクターが入ります。上下左右中央揃え。</p>
 			<table>
 			  <thead>
 			    <tr>
@@ -31,13 +30,13 @@
 				<% @searchproducts.each do |searchproduct| %>
 				<div class="products">
 					<%= link_to product_path(searchproduct) do %>
-					<p class="products-img">img</p>
+						<p class="products-img"><%= attachment_image_tag searchproduct, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200" %></p>
 					<% end %>
 					<p class="products-info">
-						アルバム名：<%= searchproduct.album_title %><br>
-						アーティスト名：<%= searchproduct.artist %><br>
-						レーベル：<%= searchproduct.label %><br>
-						ジャンル：<%= searchproduct.category.name %><br>
+						<%= searchproduct.album_title %><br>
+						<%= searchproduct.artist %><br>
+						<%= searchproduct.label %><br>
+						<%= searchproduct.category.name %><br>
 						リリース年：<%= searchproduct.release_year %><br>
 						価格：<%= searchproduct.price %>
 					</p>
