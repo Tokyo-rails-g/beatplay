@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'products/new' => 'products#new', as: 'new_product'
     post 'products/new' => 'products#new', as: 'create_product'
-    resources :products, only: [:index, :show, :update, :destroy, :edit]
+    resources :products, only: [:index, :show, :destroy, :edit]
   end
 
   namespace :admins do
@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   
   #get 'products/index'
   #get 'products/show'
+  patch 'products/:id/update' => 'products#update', as: 'update_product'
   resources :products, only: [:index, :show] do
     resource :favorites, only:[:create, :destroy]
   end

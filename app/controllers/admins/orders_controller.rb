@@ -1,17 +1,15 @@
 class Admins::OrdersController < ApplicationController
-  PER = 30
 
   def index
-  	@orders = Order.page(params[:page]).per(PER).reverse_order
+    @q = Order.search(params[:q])
+    @orders = @q.result.page(params[:page]).per(30).reverse_order
   end
 
   def show
   	@order = Order.find(params[:id])
   	@order_items = @order.order_items
-  	# binding.pry
   	# @order_item = OrderItem.find(params[:id])
   	# @user = @order.user
-  	# binding.pry
   end
 
 
@@ -19,7 +17,7 @@ class Admins::OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:user, :address, :total, :payment, :status)
+      params.require(:order).permit(:user_id, :address_id, :total, :payment, :status)
     end
 
 end

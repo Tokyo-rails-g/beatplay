@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   def select_address
-    
     @address = Address.new
     @address.user_id = current_user.id
     @user = current_user
@@ -62,7 +61,7 @@ class OrdersController < ApplicationController
     # order.saveされる前に、cartsテーブルのuser_idをordersテーブルのuser_idに格納
     @order.status = 0.to_i
     @order.user_id = @cart.user_id
-    binding.pry
+ 
     if @order.save
     # カートアイテムIDをオーダーアイテムIDにコピーし、@order_itemを保存
       # @order_items = OrderItem.new
@@ -81,6 +80,8 @@ class OrdersController < ApplicationController
       end
     # binding.pry
         redirect_to show_order_path
+      end
+
     else
       puts @order.errors.full_messages
 
@@ -102,7 +103,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:user, :address, :total, :payment, :status)
+      params.require(:order).permit(:user_id, :address_id, :total, :payment, :status)
     end
 
   def address_params
@@ -110,7 +111,7 @@ class OrdersController < ApplicationController
   end
 
   def order_item_params
-    params.require(:order_item).permit(:order, :product, :price, :quantity)
+    params.require(:order_item).permit(:order_id, :product_id, :price, :quantity)
   end
   def cart_item_params
     params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
