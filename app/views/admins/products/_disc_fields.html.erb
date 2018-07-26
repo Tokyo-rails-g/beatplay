@@ -10,7 +10,7 @@
     <%= f.fields_for :musics do |music| %>
       <%= render 'music_fields', f: music %>
     <% end %>
-          <div class="links">
+      <div class="links">
         <%= link_to_add_association "曲を追加", f, :musics %>
       </div>
   </div>

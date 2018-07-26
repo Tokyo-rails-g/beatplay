@@ -1,23 +1,25 @@
 <%= render 'admins/users/header'  %>
 <div class="main-box">
-  <h1>商品一覧</h1>
-  <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
+  <h1>商品一覧</h1><%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
   <div class="container">
   	<div class="ad-pro-index-box">
       	<table class="table table-hover">
         		<thead>
           		<tr>
-                <th></th>
-            		<th>画像</th>
-            		<th>シングル/アルバム名</th>
-            		<th>アーティスト名</th>
-            		<th>値段</th>
-            		<th>在庫数</th>
-            		<th>お気に入り数</th>
+                <th><input type="checkbox"></th>
+            		<th><%= sort_link(@q, :image, "画像") %></th>
+            		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
+            		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
+            		<th><%= sort_link(@q, :price, "値段") %></th>
+            		<th><%= sort_link(@q, :stock, "在庫数") %></th>
+            		<th><%= sort_link(@q, :favorite_count, "お気に入り数") %></th>
           		</tr>
         		</thead>
+
+          <% if @q != nil %>
+
         		<tbody>
-                <% @products.each_with_index do |product, i| %>
+              <% @products.each_with_index do |product, i| %>
           		  <tr>
                   <td><%= i+1 %>.</td>
                   <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
@@ -26,11 +28,16 @@
               		<td><%= product.price %></td>
               		<td><%= product.stock %></td>
               		<td><%= product.favorite_count %></td>
-              	<% end %>
-          		</tr>
+          		  </tr>
+              <% end %>
         		</tbody>
+
+          <% else %>
+            <p><%= @msg %></p>
+          <% end %>
+
       	</table>
       	<%= paginate @products %>
-    	</div>
+    </div>
   </div>
 </div>

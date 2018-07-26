@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
 
   def select_address
-    
     @address = Address.new
     @user = current_user
-    
   end
 
 # 新たに送り先を指定したとき
@@ -81,12 +79,11 @@ class OrdersController < ApplicationController
         flash[:danger]="cart_itemは削除できていません！"
         redirect_to show_order_path
       end
-      
     else
       puts @order.errors.full_messages
 
     end
-  end 
+  end
 
 
 
@@ -103,7 +100,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:user, :address, :total, :payment, :status)
+      params.require(:order).permit(:user_id, :address_id, :total, :payment, :status)
     end
 
   def address_params
@@ -111,7 +108,7 @@ class OrdersController < ApplicationController
   end
 
   def order_item_params
-    params.require(:order_item).permit(:order, :product, :price, :quantity)
+    params.require(:order_item).permit(:order_id, :product_id, :price, :quantity)
   end
   def cart_item_params
     params.require(:cart_item).permit(:cart_id, :product_id, :quantity)

@@ -64,6 +64,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      # binding.pry
+      flash[:notice] = "商品を更新しました！"
+      redirect_to admins_product_path(@product.id)
+    else
+      render :edit
+    end
+  end
+
   private
   	def product_params
   		params.require(:product).permit(:album_title, :artist, :label, :category_id, :favorite_count, :image_id, :price, :stock, :release_year)
@@ -88,4 +99,29 @@ class ProductsController < ApplicationController
     def cart_item_params
       params.require(:cart_item).permit(:cart_id, :product_id, :quantity, :subtotal)
     end
+
+    def product_params
+    params.require(:product).permit(:artist,
+                                    :album_title,
+                                    :image,
+                                    :price,
+                                    :category_id,
+                                    :label,
+                                    :release_year,
+                                    :stock,
+                                    discs_attributes: [:id,
+                                                      :disc_number,
+                                                      :_destroy,
+                                                      :product_id,
+                                                      musics_attributes: [:id,
+                                                                         :disc_id,
+                                                                         :name,
+                                                                         :bpm,
+                                                                         :duration,
+                                                                         :track_number,
+                                                                         :_destroy
+                                                                       ]
+                                                                      ]
+                                                                    )
+  end
 end

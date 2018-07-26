@@ -2,11 +2,11 @@ class Admins::ProductsController < ApplicationController
   protect_from_forgery except: :new
   # skip_before_filter :verify_authenticity_token
 
-  PER = 30
-
   def index
-    @products = Product.page(params[:page]).per(PER)
+    @q = Product.ransack(params[:q])
+    @products = @q.result.page(params[:page]).per(30)
   end
+
 
   def show
     @product = Product.find(params[:id])
@@ -41,16 +41,16 @@ class Admins::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def update
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      # binding.pry
-      flash[:notice] = "商品を更新しました！"
-      redirect_to admins_product_path(@product.id)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @product = Product.find(params[:id])
+  #   if @product.update(product_params)
+  #     # binding.pry
+  #     flash[:notice] = "商品を更新しました！"
+  #     redirect_to admins_product_path(@product.id)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @product = Product.find(params[:id])
@@ -58,12 +58,12 @@ class Admins::ProductsController < ApplicationController
       flash[:notice] = "商品を削除しました。"
       redirect_to admins_products_path
     else
+      @products = Product.page(params[:page]).per(PER)
       render :index
     end
   end
 
 private
-
   def product_params
     params.require(:product).permit(:artist,
                                     :album_title,
@@ -88,6 +88,7 @@ private
                                                                       ]
                                                                     )
   end
+
 
 # def update_product_params
 #     params.require(:product).permit(:artist,
