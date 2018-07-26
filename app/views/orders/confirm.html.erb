@@ -68,7 +68,7 @@
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
-				<%= f.select :payment, Order.payments.keys.to_a, {} %>
+				<%= f.select :payment, Order.payments.keys.to_a %>
 			</div>
 			<p class="total-money">合計 ¥：<%= price_sum %></p>
 		</div>
