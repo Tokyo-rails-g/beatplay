@@ -27,14 +27,20 @@
 							<!-- ここからeach do -->
 								<% @cart_items.each do |cart_item| %>
 								<tr>
-									<td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
+									<td class="p-img">
+										<%= link_to product_path(cart_item.product) do %>
+											<%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %>
+										<% end %>
+									</td>
 									<td class="p-info">
-										<div>
-											<p><%= cart_item.product.album_title %></p>
-										</div>
-										<div>
-											<p><%= cart_item.product.artist %></p>
-										</div>
+										<%= link_to product_path(cart_item.product) do %>
+											<div>
+												<p><%= cart_item.product.album_title %></p>
+											</div>
+											<div>
+												<p><%= cart_item.product.artist %></p>
+											</div>
+										<% end %>
 									</td>
 									<td class="p-price"><p>¥ <%= cart_item.product.price %> </p></td>
 									<td class="p-qty">
