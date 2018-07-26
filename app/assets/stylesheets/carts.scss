@@ -7,11 +7,12 @@
 td{
 	padding: 40px;
 }
-
-
-
+tr{
+	border-bottom: solid 1px silver;
+}
 .main-box{
 	width: 95%;
+	/*background-color: black;*/
 }
 .cart-item-box{
 	padding: 20px;
@@ -49,4 +50,10 @@ td{
 }
 .cash-button{
 	margin: 10px;
+}
+
+.blank-box{
+	width: 50%;
+	margin: 150px auto;
+	text-align: center;
 }

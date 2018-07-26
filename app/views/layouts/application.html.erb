@@ -29,18 +29,18 @@
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
 
-            <li class="header-buttons">
-              <%= link_to products_path do %>
+            <li class="">
+              <%= link_to products_path, class: "header-buttons" do%>
               Home
               <% end %>
             </li>
-            <li class="header-buttons">
-              <%= link_to mypage_user_path(current_user) do %>
+            <li class="">
+              <%= link_to mypage_user_path(current_user), class: "header-buttons" do %>
               Mypage
               <% end %>
             </li>
-            <li class="header-buttons">
-              <%= link_to carts_path do %>
+            <li class="">
+              <%= link_to carts_path, class: "header-buttons" do %>
               Cart
               <% end %>
             </li>
