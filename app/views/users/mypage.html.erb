@@ -71,20 +71,30 @@
     	<table class="table">
           <thead>
             <tr>
-              <th><input type="checkbox"></th>
-              <th>オーダーNo.</th>
-              <th>ステータス</th>
               <th>購入日</th>
-              <th>合計</th>
+              <th>ステータス</th>
+              <th>合計金額</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-
-
-            </tr>
+            <% @user.orders.each do |order| %>
+              <tr><%= order.created_at %></tr>
+              <tr><%= order.status %></tr>
+              <tr><%= order.total %></tr>
           </tbody>
         </table>
     </div>
+              <br><div>
 
+                <% order.order_items.each_with_index do |order_item| %>
+                  <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %><br>
+                  <label>タイトル</label><%= order_item.product.album_title %><br>
+                  <label>アーティスト</label><%= order_item.product.artist %><br>
+                  <label><%= order_item.quantity %>枚</label>
+                  <label>¥<%= order_item.price %> </label>
+                <% end %>
+              </div>
+
+              <label> 問い合わせ </label>
+            <% end %>
 </div>

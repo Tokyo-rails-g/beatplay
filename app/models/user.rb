@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_one :cart
   has_many :favorites, dependent: :destroy
   accepts_nested_attributes_for :orders, :allow_destroy => true
+  has_many :order_items, through: :orders  #ユーザーマイページの購入履歴表示に必要
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -35,11 +36,11 @@ class User < ApplicationRecord
 
   validates :kana_first,
   	presence:true,
-  	length: { minimum: 1, maximum: 20}
+    format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
 
   validates :kana_last,
   	presence:true,
-  	length: { minimum: 1, maximum: 20}
+    format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
 
   validates :postal_code,
   	presence:true

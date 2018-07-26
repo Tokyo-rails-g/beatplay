@@ -11,9 +11,8 @@ class CartItemsController < ApplicationController
 		@total = 0
       	@cart_item.subtotal = @cart_item.product.price * @cart_item.quantity
 
-		if  @cart_item.quantity < @cart_item.product.stock
+		if  @cart_item.quantity <= @cart_item.product.stock
 			@cart_item.update(cart_item_params)
-			# binding.pry
 			# redirect_to orders_select_address_path(@user)
 			redirect_to carts_path
 		else

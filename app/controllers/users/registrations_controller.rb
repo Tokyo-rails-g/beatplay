@@ -14,8 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |user|
     end
     @cart = Cart.new
-    @cart.user_id = current_user.id
-    @cart.save
+    if current_user
+       @cart.user_id = current_user.id
+       @cart.save
+    end
   end
 
   # GET /resource/edit

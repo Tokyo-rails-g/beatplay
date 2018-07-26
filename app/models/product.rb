@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 	attachment :image
-	has_many :order_items
+	has_one :order_item
 	has_many :orders, through: :order_items
 	has_one :cart_item
 	has_many :favorites, dependent: :destroy
