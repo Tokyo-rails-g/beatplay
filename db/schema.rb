@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
     t.integer "user_id"
     t.integer "address_id"
     t.integer "total"
+    t.integer "payment"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "payment"
   end
 
   create_table "products", force: :cascade do |t|
