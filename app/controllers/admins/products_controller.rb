@@ -6,6 +6,7 @@ class Admins::ProductsController < ApplicationController
 
   def index
     @products = Product.page(params[:page]).per(PER)
+    # binding.pry
   end
 
   def show

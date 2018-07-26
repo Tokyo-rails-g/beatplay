@@ -2,29 +2,29 @@
 ja:
   # -enum-
 # 注文のキャンセル,0   お届け先の変更,1 配送状況について,2 商品の返品・返金について,3 商品の破損・不具合について,4 注文した商品と異なる商品が届いた,5 発送に関するその他質問,6 商品の登録情報について,7 お礼,8 その他の質問,9
-  contacts:
-    titles:
-      cancel: '注文のキャンセル'
-      change_address: 'お届け先の変更'
-      about_status: '配送状況について'
-      return: '商品の返品・返金について'
-      failure: '商品の破損・不具合について'
-      different: '注文した商品と異なる商品が届いた'
-      about_sipping: '発送に関するその他質問'
-      about_product: '商品の登録情報について'
-      thanks: 'お礼'
-      other: 'その他の質問'
+  # contacts:
+  #   titles:
+  #     cancel: '注文のキャンセル'
+  #     change_address: 'お届け先の変更'
+  #     about_status: '配送状況について'
+  #     return: '商品の返品・返金について'
+  #     failure: '商品の破損・不具合について'
+  #     different: '注文した商品と異なる商品が届いた'
+  #     about_sipping: '発送に関するその他質問'
+  #     about_product: '商品の登録情報について'
+  #     thanks: 'お礼'
+  #     other: 'その他の質問'
 
-  orders:
-    statuses:
-      readey: '出荷待ち'
-      shipped: '出荷済み'
-      delivered: 'お届け済み'
+  # orders:
+  #   statuses:
+  #     ready: '出荷待ち'
+  #     shipped: '出荷済み'
+  #     delivered: 'お届け済み'
 
-    payments:
-      credit: 'クレジット'
-      cash_on_deli: '代引き'
-      conv_atm: 'コンビニ・ATM'
+  #   payments:
+  #     credit: 'クレジット'
+  #     cash_on_deli: '代引き'
+  #     conv_atm: 'コンビニ・ATM'
 
 # ------------enumここまで-----------------
 

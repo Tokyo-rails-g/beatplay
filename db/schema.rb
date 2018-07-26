@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_032052) do
+ActiveRecord::Schema.define(version: 2018_07_26_103105) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "last_name"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
     t.integer "product_id"
-    t.integer "quantity"
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subtotal"
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
     t.integer "user_id"
     t.integer "address_id"
     t.integer "total"
-    t.integer "status", default: 0
+    t.integer "payment", limit: 1, default: 0, null: false
+    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "payment"
   end
 
   create_table "products", force: :cascade do |t|
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_032052) do
     t.string "artist"
     t.string "label"
     t.integer "category_id"
-    t.integer "favorite_count"
+    t.integer "favorite_count", default: 0
     t.string "image_id"
     t.integer "price"
     t.integer "stock"
