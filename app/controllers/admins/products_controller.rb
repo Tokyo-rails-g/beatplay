@@ -1,4 +1,5 @@
 class Admins::ProductsController < ApplicationController
+  protect_from_forgery except: :new
   # skip_before_filter :verify_authenticity_token
 
   PER = 30
@@ -42,9 +43,8 @@ class Admins::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    disc = @product.discs
-    music = disc.musics
-    if @product.update(update_product_params)
+    if @product.update(product_params)
+      # binding.pry
       flash[:notice] = "商品を更新しました！"
       redirect_to admins_product_path(@product.id)
     else
@@ -73,68 +73,46 @@ private
                                     :label,
                                     :release_year,
                                     :stock,
-                                    discs_attributes:[:id,
+                                    discs_attributes: [:id,
                                                       :disc_number,
                                                       :_destroy,
-                                    musics_attributes:[:disc_id,
-                                                      :album_title,
-                                                      :bpm,
-                                                      :duration,
-                                                      :track_number,
-                                                      :_destroy]])
+                                                      :product_id,
+                                                      musics_attributes: [:id,
+                                                                         :disc_id,
+                                                                         :name,
+                                                                         :bpm,
+                                                                         :duration,
+                                                                         :track_number,
+                                                                         :_destroy
+                                                                       ]
+                                                                      ]
+                                                                    )
   end
 
-  def to_edit_disc_params
-    prams.require(:product).permit(:artist,
-                                    :album_title,
-                                    :image,
-                                    :price,
-                                    :category_id,
-                                    :label,
-                                    :favorite_count,
-                                    :release_year,
-                                    :stock)
-  end
+# def update_product_params
+#     params.require(:product).permit(:artist,
+#                                     :album_title,
+#                                     :image,
+#                                     :price,
+#                                     :category_id,
+#                                     :label,
+#                                     :release_year,
+#                                     :stock,
+#                                     discs_attributes: [:id,
+#                                                       :disc_number,
+#                                                       :_destroy,
+#                                                       :product_id,
+#                                                       musics_attributes: [:id,
+#                                                                          :disc_id,
+#                                                                          :name,
+#                                                                          :bpm,
+#                                                                          :duration,
+#                                                                          :track_number,
+#                                                                          :_destroy
+#                                                                        ]
+#                                                                       ]
+#                                                                     )
 
-  def update_product_params
-    params.require(:product).permit(:artist,
-                                    :album_title,
-                                    :image,
-                                    :price,
-                                    :category_id,
-                                    :label,
-                                    :favorite_count,
-                                    :release_year,
-                                    :stock,
-                                    discs_attributes:[:id,
-                                                      :disc_number,
-                                                      :_destroy,
-                                    musics_attributes:[:disc_id,
-                                                      :album_title,
-                                                      :bpm,
-                                                      :duration,
-                                                      :track_number,
-                                                      :_destroy]])
-  end
+#   end
 
-  # def destroy_product_params
-  #     params.require(:product).permit(:artist,
-  #                                   :album_title,
-  #                                   :image,
-  #                                   :price,
-  #                                   :category_id,
-  #                                   :label,
-  #                                   :favorite_count,
-  #                                   :release_year,
-  #                                   :stock,
-  #                                   discs_attributes:[:id,
-  #                                                     :disc_number,
-  #                                                     :_destroy],
-  #                                   musics_attributes:[:disc_id,
-  #                                                     :album_title,
-  #                                                     :bpm,
-  #                                                     :duration,
-  #                                                     :track_number,
-  #                                                     :_destroy])
-  # end
 end
