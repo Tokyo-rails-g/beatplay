@@ -1,6 +1,7 @@
 class Admins::ProductsController < ApplicationController
   protect_from_forgery except: :new
   # skip_before_filter :verify_authenticity_token
+  before_action: authentication_admin!
 
   def index
     @q = Product.ransack(params[:q])
@@ -73,20 +74,17 @@ private
                                     :label,
                                     :release_year,
                                     :stock,
-                                    discs_attributes: [:id,
+                                    discs_attributes:[:id,
                                                       :disc_number,
                                                       :_destroy,
                                                       :product_id,
-                                                      musics_attributes: [:id,
+                                                      musics_attributes:[:id,
                                                                          :disc_id,
                                                                          :name,
                                                                          :bpm,
                                                                          :duration,
                                                                          :track_number,
-                                                                         :_destroy
-                                                                       ]
-                                                                      ]
-                                                                    )
+                                                                         :_destroy]])
   end
 
 

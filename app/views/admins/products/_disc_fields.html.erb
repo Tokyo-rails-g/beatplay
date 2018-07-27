@@ -1,7 +1,6 @@
 <div class="nested-fields well well-compact">
   <div class="form-group">
-    <%= f.check_box :_destroy %><br>
-    <%= f.label :disc_number %>
+    <%= f.label "ディスクNo." %>
     <%= f.number_field :disc_number, min: 1 %>
     <%= link_to_remove_association "ディスクを削除", f %>
   </div>

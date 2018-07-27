@@ -242,7 +242,7 @@ Refile.secret_key = 'e6eb9eac6ba97c8e381ea8845fd6cd51c781cae85276a211215180db2e5
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  # config.sign_out_all_scopes = true
+  config.sign_out_all_scopes = false
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like

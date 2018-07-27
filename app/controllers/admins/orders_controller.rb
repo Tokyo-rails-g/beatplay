@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+  before_action: authentication_admin!, only[:index, :show]
 
   def index
     @q = Order.search(params[:q])
@@ -9,7 +10,7 @@ class Admins::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
   	@order_items = @order.order_items
   	# @order_item = OrderItem.find(params[:id])
-  	# @user = @order.user
+  	# @user = @order.users
   end
 
   def update
