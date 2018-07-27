@@ -4,13 +4,11 @@
 <div class="container">
  <div class="row">
   <div class="col-6">
-    <h3>登録ユーザー一覧</h3>
+    <h4>登録ユーザー一覧</h4>
 
-    <h2>検索結果</h2>
-
-
-    <table class="table">
-      <thead>
+    <div class="ad-pro-index-box">
+     <table class="table table-hover">
+       <thead>
         <tr>
             <th><input type="checkbox"></th>
             <th><%= sort_link(@q, :id, "ID") %></th>
@@ -53,20 +51,21 @@
 
  <div class="row">
   <div class="col-3">
-    <table class="table">
-      <h4>登録管理者情報</h4>
-      <thead>
-        <tr>
+    <div class="ad-pro-index-box">
+      <table class="table table-hover">
+        <h4>登録管理者情報</h4>
+        <thead>
+          <tr>
             <th>名前</th>
             <th>Email</th>
             <th></th>
             <th></th>
             <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @admins.each do |ad| %>
-        <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admins.each do |ad| %>
+          <tr>
             <td><%= ad.name %></td>
             <td><%= ad.email %></td>
             <td>
@@ -78,10 +77,10 @@
             <td>
               <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
             </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
   </div>
  </div>
 </div>

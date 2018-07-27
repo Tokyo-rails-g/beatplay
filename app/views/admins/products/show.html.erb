@@ -5,14 +5,6 @@
 	<div class="header-title">
 		<h1><%= @product.album_title %> ( <%= @product.artist %> )</h1>
 	</div>
-	<div class="admin-edit-delete-button">
-		<%= link_to edit_admins_product_path(@product) do %>
-		<button class="admin-edit-button btn-success btn-lg" type="button"><%= @product.album_title %> の登録情報を編集する</button>
-		<% end %>
-		<%= link_to admins_product_path, method: :delete do %>
-		<button class="admin-delete-button btn btn btn-danger btn-lg" type="button"><%= @product.album_title %> を商品一覧から削除</button>
-		<% end %>
-	</div>
 	<div class="admin-product-show-main-box">
 		<div class="admin-product-info">
 			<p class="admin-subtitles">商品詳細</p>
@@ -29,11 +21,9 @@
 						</button>
 						<ul class="dropdown-menu" role="menu">
 						<% @product.discs.each do |disc| %>
-							<label>ディスクNo.</label><%= disc.disc_number %><br>
-							<% disc.musics.each_with_index do |music| %>
-								<li><label>曲名</label><%= music.name %></li>
-								<li><label>曲長</label><%= music.duration %>
-								</li>
+							<label>ディスク</label><%= disc.disc_number %><br>
+							<% disc.musics.each_with_index do |music, i| %>
+								<li><%= i+1 %>. <%= music.name %>| <%= music.bpm %>| <%= music.duration %></li>
 							<% end %>
 						<% end %>
 						</ul>
@@ -47,6 +37,14 @@
 				<% else %>
 					<p><label>最終編集日：</label><%= @product.created_at.strftime('%Y年%m月%d日') %></p>
 				<% end %>
+					<div class="admin-edit-delete-button">
+						<%= link_to edit_admins_product_path(@product) do %>
+						<button class="admin-edit-button btn-success btn-lg" type="button">編集</button>
+						<% end %>
+						<%= link_to admins_product_path, method: :delete do %>
+						<button class="admin-delete-button btn btn btn-danger btn-lg" type="button">削除</button>
+						<% end %>
+					</div>
 			</div>
 		</div>
 		<div class="sub-info">
