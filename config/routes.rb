@@ -69,9 +69,6 @@ Rails.application.routes.draw do
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
 
-  patch '/products/:id/cart_items/:id/update_cart_items' => 'products#update_cart_item', as: 'update_cart_items'
-  # get 'carts/checkout' => 'carts#checkout'
-
   resources :carts, only: [:index, :destroy] do
     resource :cart_items, only: [:update]
     resources :cart_items, only: [:destroy]
