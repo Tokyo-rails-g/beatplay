@@ -18,25 +18,30 @@
             <th><%= sort_link(@q, :created_at, "購入日") %></th>
             <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
             <th><%= sort_link(@q, :total, "合計") %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @orders.each do |order| %>
-          <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <%= form_for order, url: admins_order_update_path(order.id), method: :patch do |f| %>
+        <tr>
             <th><input type="checkbox"></th>
             <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
-            <td><button type="button" class="btn btn-default btn-sm"><%= order.status %></button></td>
+            <td>
+                            <%= f.select :status, Order.statuses.keys.to_a %>
+              <%= f.submit "更新" %>
+            </td>
             <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= link_to admins_user_path(order.user), method: :get do %>
               <%=order.user.first_name %><%= order.user.last_name %>
                 <% end %>
               </td>
             <td><%= order.total %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @orders %>
-    </div>
+        </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @orders %>
+  </div>
 </div>
 

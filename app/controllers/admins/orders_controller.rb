@@ -13,6 +13,16 @@ class Admins::OrdersController < ApplicationController
   	# @user = @order.users
   end
 
+  def update
+    @order = Order.find(params[:id])
+    if @order.save
+      # binding.pry
+      redirect_to admins_orders_index_path
+    else
+      flash[:danger] = "ステータスを更新できていません"
+    end
+  end
+
 
 
 

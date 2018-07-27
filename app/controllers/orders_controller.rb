@@ -80,7 +80,7 @@ class OrdersController < ApplicationController
       end
     # binding.pry
         redirect_to show_order_path
-      end
+    # end
 
     else
       puts @order.errors.full_messages
@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
     end
 
   def address_params
-    params.require(:address).permit(:user, :first_name, :last_name, :postal_code, :city, :address1, :address2)
+    params.require(:address).permit(:user_id, :first_name, :last_name, :prefecture, :postal_code, :city, :address1, :address2)
   end
 
   def order_item_params

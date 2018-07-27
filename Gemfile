@@ -76,3 +76,6 @@ gem 'pry-rails'
 gem 'enum_help'
 #親/子/孫関係で動的にフォームを追加/削除
 gem 'cocoon'
+
+# 都道府県コードから都道府県名に変換するgem
+gem 'jp_prefecture'
