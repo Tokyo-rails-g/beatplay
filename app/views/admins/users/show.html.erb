@@ -33,10 +33,11 @@
     <div class="form-group">
         <%= button_to "edit", admins_edit_user_path(@user.id), class:"btn btn-success" %> <%= button_to "Destroy", admins_users_path(@user.id), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' }%>
     </div>
-  </form>
+  </div>
 
-  <div class="col-12">
+  <div class="orders-index">
       <table class="table">
+        <% @orders.each do |order| %>
           <thead>
             <tr>
               <th><input type="checkbox"></th>
@@ -48,9 +49,14 @@
           </thead>
           <tbody>
             <tr>
+              <th><%= link_to "order.id", admins_order_show_path(order.id) %></th>
+              <td><%= order.status %></td>
+              <td><%= order.created_at %></td>
+              <td><%= order.total %></td>
+        <% end %>
             </tr>
           </tbody>
-        </table>
-    </div>
+      </table>
+  </div>
 
 </div>

@@ -3,16 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
 # gem jp_prefectureの追加の為、追記しました------------------------------------------------
-  # include JpPrefecture
-  # jp_prefecture :prefecture
+  include JpPrefecture
+  jp_prefecture :prefecture
 
-  #   def prefecture_name
-  #     JpPrefecture::Prefecture.find(code: pref_id).try(:name)
-  #   end
+    def prefecture_name
+      JpPrefecture::Prefecture.find(code: pref_id).try(:name)
+    end
 
-  #   def prefecture_name=(prefecture_name)
-  #     self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
-  #   end
+    def prefecture_name=(prefecture_name)
+      self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
+    end
 
 # ----------------------------------------------------------------------------------
 

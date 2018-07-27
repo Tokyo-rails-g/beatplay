@@ -1,7 +1,6 @@
 <%= render 'admins/users/header'  %>
-
-<h1>注文一覧</h1>
-
+<div class="main-box">
+  <h4>注文一覧</h4>
 
 <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
   <%= f.search_field :id_eq %>
@@ -9,10 +8,10 @@
 <% end %>
 
 <div class="container">
-  <div class="col-7">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
+    <div class="ad-pro-index-box">
+      <table class="table table-hover">
+        <thead>
+          <tr>
             <th></th>
             <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
             <th><%= sort_link(@q, :status, "ステータス") %></th>
@@ -23,14 +22,22 @@
       </thead>
       <tbody>
         <% @orders.each do |order| %>
+        <%= form_for order, url: admins_order_update_path(order.id), method: :patch do |f| %>
         <tr>
             <th><input type="checkbox"></th>
             <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
-            <td><button type="button" class="btn btn-default btn-sm"><%= order.status %></button></td>
+            <td>
+                            <%= f.select :status, Order.statuses.keys.to_a %>
+              <%= f.submit "更新" %>
+            </td>
             <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            <td><%#= link_to order.user_id.first_name + order.user_id.last_name, admins_user_path(order.user), method: :get %></td>
+            <td><%= link_to admins_user_path(order.user), method: :get do %>
+              <%=order.user.first_name %><%= order.user.last_name %>
+                <% end %>
+              </td>
             <td><%= order.total %></td>
         </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>

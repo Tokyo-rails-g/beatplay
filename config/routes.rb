@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'orders/index'
     get 'orders/:id/show' => 'orders#show', as: 'order_show'
+    patch 'orders/:id/update' => 'orders#update', as: 'order_update'
   end
 
 
@@ -67,7 +68,7 @@ Rails.application.routes.draw do
 
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
-  
+
   resources :carts, only: [:index, :destroy] do
     resource :cart_items, only: [:update]
     resources :cart_items, only: [:destroy]
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
   # get 'carts/:id' => 'carts#show', as: 'carts_show'
   # delete 'carts/delete_item' => 'carts#delete_item', as: 'delete_cart_item'
   # delete 'carts/delete_all_items' => 'carts#delete_all_items', as: 'delete_all_cart_items'
-  
+
   #get 'products/index'
   #get 'products/show'
   patch 'products/:id/update' => 'products#update', as: 'update_product'
