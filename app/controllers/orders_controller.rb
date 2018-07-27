@@ -80,7 +80,7 @@ class OrdersController < ApplicationController
       end
     # binding.pry
         redirect_to show_order_path
-      end
+
 
     else
       puts @order.errors.full_messages

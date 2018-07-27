@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:add_cart_item]
 
 # 商品一覧
   def index
