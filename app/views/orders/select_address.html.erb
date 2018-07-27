@@ -31,6 +31,7 @@
 					<label class="control-label">郵便番号</label>
         	<p class=""><%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %></p>
 				<label class="">都道府県</label>
+				<p class=""><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, includ_blank: true, class: "form-control" %></p>
     				<label class="control-label">住所</label>
 			    <p class=""><%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %></p>
 			  <label class="control-label"></label>
