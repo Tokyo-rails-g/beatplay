@@ -71,7 +71,6 @@
               <%= f.text_field :stock, :size => "20" %>
           </div>
 
-          <h4>Discs</h4>
           <div class="discs">
             <%= f.fields_for :discs do |disc| %>
                 <%= render 'disc_fields', f: disc %>

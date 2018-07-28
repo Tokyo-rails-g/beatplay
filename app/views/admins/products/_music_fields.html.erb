@@ -1,7 +1,7 @@
 <div class="nested-fields form-inline">
     <div class="form-group">
     	<%= f.check_box :_destroy %>※チェックボックスにチェックを入れると一括削除もできます<br/>
-    	<%= link_to_remove_association "曲を削除", f %>
+    	<%= link_to_remove_association "削除", f %>
     	<%= f.number_field :track_number, placeholder:"曲順", class: 'form-inline', :size => "10" %>
     	<%= f.text_field :name, placeholder:"曲名", class: 'form-inline', :size => "40" %>
     	<%= f.text_field :bpm, placeholder:"BPM", class: 'form-inline', :size => "15" %>
