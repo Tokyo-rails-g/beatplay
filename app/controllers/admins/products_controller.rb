@@ -1,7 +1,6 @@
 class Admins::ProductsController < ApplicationController
   protect_from_forgery except: :new
   # skip_before_filter :verify_authenticity_token
-
   before_action :authenticate_admin!
 
   def index

@@ -84,7 +84,6 @@ class OrdersController < ApplicationController
 
     end
   end
-
 # 購入完了画面で使用するアクション
   def show
     @user = current_user
