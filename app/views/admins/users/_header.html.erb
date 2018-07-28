@@ -15,15 +15,28 @@
 
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'ダッシュボード', admins_top_path %></li>
-            <li><%= link_to '商品一覧', admins_products_path %></li>
-            <li><%= link_to '注文一覧', admins_orders_index_path %></li>
-            <li><%= link_to 'ユーザー一覧', admins_users_path %></li>
-            <li><%= link_to '問合せ一覧', admins_contacts_index_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" } %>
+            <li><%= link_to admins_top_path do %>
+              <%= image_tag('i-cheeze.jpeg', :size => 5*5) %>TOP<% end %>
+            </li>
+            <li><%= link_to admins_products_path do %>
+              <%= image_tag('i-product.jpeg', :size => 5*5) %>CD<% end %>
+            </li>
+            <li><%= link_to admins_orders_index_path do %>
+              <%= image_tag('i-order.jpeg', :size => 5*5) %>ORDER<% end %>
+            </li>
+            <li><%= link_to admins_users_path do %>
+              <%= image_tag('i-user.jpeg', :size => 5*5) %>USER<% end %>
+            </li>
+            <li><%= link_to admins_contacts_index_path do %>
+              <%= image_tag('i-contact2.jpeg', :size => 5*5) %>CONTACT<% end %>
+            </li>
+            <li><%= link_to destroy_admin_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" } do %>
+              <span class="glyphicon glyphicon-log-out" aria-hidden="true">LOGOUT</span>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
-      <span><font size="4" color="white"><%= Date.current.strftime('%Y/%m/%d.%a') %></span><span id="RealtimeClockArea2"></span></font> 
+      <span id="RealtimeClockArea2"><font size="4" color="white"><%= Date.current.strftime('%Y/%m/%d.%a') %></font></span>
     </nav>
 </header>
