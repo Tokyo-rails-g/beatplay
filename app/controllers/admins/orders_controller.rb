@@ -1,5 +1,5 @@
 class Admins::OrdersController < ApplicationController
-  before_action: authentication_admin!, only[:index, :show]
+  before_action :authenticate_admin!, only: [:index, :show]
 
   def index
     @q = Order.search(params[:q])

@@ -85,6 +85,7 @@ class OrdersController < ApplicationController
       puts @order.errors.full_messages
 
     end
+  end
 
 
 

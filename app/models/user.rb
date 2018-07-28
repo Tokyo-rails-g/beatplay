@@ -51,12 +51,7 @@ class User < ApplicationRecord
   validates :city,
   	presence:true
 
-  validates :address1,
-  	presence:true
-
-  validates :address2,
-  	presence:true
-
   validates :phone_number,
-  	presence:true
+  	presence:true,
+    format: { with: /\A(((0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1}|[5789]0[-(]?\d{4})[-)]?)|\d{1,4}\-?)\d{4}|0120[-(]?\d{3}[-)]?\d{3})\z/}
 end

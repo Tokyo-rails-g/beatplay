@@ -1,5 +1,5 @@
 class Admins::UsersController < ApplicationController
-  before_action: authentication_admin!
+  before_action :authenticate_admin!
 
   def top
     @o_counter = Order.count
