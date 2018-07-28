@@ -20,7 +20,7 @@
 
 		<p>カナ</p><%= @user.kana_first %><%= @user.kana_last %><%= link_to "編集", edit_name_user_path(@user.id) %>
 
-		<p>住所</p><%= @user.prefecture %><%= link_to "編集", edit_address_user_path(@user.id) %>
+		<p>住所</p><%= @user.pref %><%= link_to "編集", edit_address_user_path(@user.id) %>
 
 		<p>電話番号</p><%= @user.phone_number %><%= link_to "編集", edit_phonenumber_user_path(@user.id) %>
 

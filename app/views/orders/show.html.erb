@@ -20,7 +20,7 @@
 				<font size="5">ご注文が確定されました。<br>ありがとうございました。</font>
 			</div>
 			<div class="order-info">
-				<font size="4"><p class="order-number">注文番号：<%= @order.id %></p></font>
+				<font size="4"><p class="order-number">注文番号：#<%= @order.id %><%= @order.id %>-<%= @order.created_at.strftime('%Y%m%d') %></p></font>
 				<p class="order-list"></p>
 			</div>
 		</div>

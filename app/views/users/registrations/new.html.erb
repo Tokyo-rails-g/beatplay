@@ -28,7 +28,7 @@
         </div>
 
         <div class="field">
-          <%= f.text_field :prefecture, :placeholder => "都道府県" %>
+          <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name %>
           <%= f.text_field :city, :placeholder => "市町村"  %>
         </div>
 

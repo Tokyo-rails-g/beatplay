@@ -1,5 +1,5 @@
 class Admins::UsersController < ApplicationController
-  before_action: authentication_admin!
+  # before_action: authentication_admin!
 
   def top
     @o_counter = Order.count
@@ -23,7 +23,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(PER)
+    @users = User.page(params[:page]).per(15)
     @admins = Admin.all
     @q = User.ransack(params[:q])
     @users = @q.result
@@ -63,7 +63,7 @@ private
                                   :kana_first,
                                   :kana_last,
                                   :postal_code,
-                                  :prefecture,
+                                  :pref,
                                   :city,
                                   :address1,
                                   :address2,
