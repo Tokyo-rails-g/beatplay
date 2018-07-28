@@ -14,12 +14,15 @@
 
 <%= @product.category.name %>
 
-<p>在庫数</p><%= @product.stock %><br>
-
-<div>
-<% if user_signed_in? %>
-    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-sm btn-danger" %>
+<% if @product.stock === 0 %>
+	<p><font color ="red"><b><%= @alert_zero %></b></font></p>
+<% else %>
+	<p>在庫数：<%= @product.stock %><br></p>
 <% end %>
+<div>
+	<% if user_signed_in? %>
+	    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-sm btn-danger" %>
+	<% end %>
 </div>
 
 
@@ -41,22 +44,28 @@
 
 	<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
-	<div class="field row">
-		<label>数量</label>
-
-		<%= f.number_field :quantity, min: 1, max: @product.stock %>
-
-	</div>
+		<div class="field row">
+			<label>数量</label>
+		</div>
 
 
-	<div class="action row">
-	  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
-	</div>
+		<% if @product.stock > 0 && @product.stock <= 10 %>
+		<div class="action row">
+		  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
+		</div>
+			<%= f.number_field :quantity, min: 1, max: @product.stock %>
+			<font color = "orange"><b><%= @alert_few %></b></font>
+		<% elsif @product.stock === 0 %>
+
+		<% else %>
+		<div class="action row">
+		  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
+		</div>
+			<%= f.number_field :quantity, min: 1, max: @product.stock %>
+		<% end %>
 
 	<% end %>
-
 <% end %>
-
 </div>
 
 

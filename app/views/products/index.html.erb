@@ -39,6 +39,12 @@
 						<%= searchproduct.category.name %><br>
 						リリース年：<%= searchproduct.release_year %><br>
 						価格：<%= searchproduct.price %>
+						<% if searchproduct.stock > 0 && searchproduct.stock <= 10 %>
+							<font color = "orange"><b><%= @alert_few %></b></font>
+						<% elsif searchproduct.stock === 0 %>
+							<font color ="red"><b><%= @alert_zero %></b></font>
+						<% else %>
+						<% end %>
 					</p>
 				</div>
 				<% end %>

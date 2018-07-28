@@ -2,10 +2,12 @@ class Order < ApplicationRecord
 
 	# gem jp_prefectureの追加の為、追記しました------------------------------------------------
   include JpPrefecture
-  jp_prefecture :prefecture
+  jp_prefecture :pref
 
     def prefecture_name
       JpPrefecture::Prefecture.find(code: pref_id).try(:name)
+      # JpPrefecture::Prefecture.find(name: pref_id).try(:code)
+
     end
 
     def prefecture_name=(prefecture_name)

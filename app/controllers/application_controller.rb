@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys:[:name,:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:prefecture,:city,:address1,:address2,:phone_number])
-    devise_parameter_sanitizer.permit(:sign_in, keys:[:name,:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:prefecture,:city,:address1,:address2,:phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:name,:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:pref,:city,:address1,:address2,:phone_number])
+    devise_parameter_sanitizer.permit(:sign_in, keys:[:name,:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:pref,:city,:address1,:address2,:phone_number])
   end
 
   def after_sign_in_path_for(resource)
