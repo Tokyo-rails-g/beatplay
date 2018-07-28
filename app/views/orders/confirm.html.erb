@@ -51,13 +51,13 @@
 		<% if @address != nil %>
 				<div>
 				郵便番号：<%= @address.postal_code %><br>
-				住所：<%= @address.prefecture %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
+				住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
 				名前： <%= @address.first_name %> <%= @address.last_name %>
 				</div>
 		<% else @address == nil %>
 				<div>
 				郵便番号：<%= @user.postal_code %><br>
-				住所：<%= @user.prefecture %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
+				住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
 				名前： <%= @user.first_name %> <%= @user.last_name %>
 				</div>
 		<% end %>

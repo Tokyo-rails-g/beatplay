@@ -71,13 +71,12 @@
               <%= f.text_field :stock, :size => "20" %>
           </div>
 
-          <h4>Disc</h4>
           <div class="discs">
             <%= f.fields_for :discs do |disc| %>
                 <%= render 'disc_fields', f: disc %>
             <% end %>
             <div id="links">
-                <%= link_to_add_association 'add disc', f, :discs %>
+                <%= link_to_add_association 'ディスクを追加', f, :discs %>
             </div>
             <%= f.submit %>
           </div>

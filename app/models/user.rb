@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 # gem jp_prefectureの追加の為、追記しました------------------------------------------------
   include JpPrefecture
-  jp_prefecture :prefecture
+  jp_prefecture :pref
 
     def prefecture_name
       JpPrefecture::Prefecture.find(code: pref_id).try(:name)
@@ -45,7 +45,7 @@ class User < ApplicationRecord
   validates :postal_code,
   	presence:true
 
-  validates :prefecture,
+  validates :pref,
   	presence:true
 
   validates :city,

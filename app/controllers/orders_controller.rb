@@ -58,14 +58,12 @@ class OrdersController < ApplicationController
         @address = Address.last
         @order.address_id = @address.id
     end
-    # order.saveされる前に、cartsテーブルのuser_idをordersテーブルのuser_idに格納
+    # @order.saveされる前に、cartsテーブルのuser_idをordersテーブルのuser_idに格納
     @order.status = 0.to_i
     @order.user_id = @cart.user_id
- 
+
     if @order.save
     # カートアイテムIDをオーダーアイテムIDにコピーし、@order_itemを保存
-      # @order_items = OrderItem.new
-
       @cart_items = @cart.cart_items
       @cart_items.each do |cart_item|
         @order_item = OrderItem.new
@@ -86,12 +84,6 @@ class OrdersController < ApplicationController
 
     end
   end
-
-
-
-
-
-
 # 購入完了画面で使用するアクション
   def show
     @user = current_user
@@ -105,14 +97,15 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:user_id, :address_id, :total, :payment, :status)
     end
 
-  def address_params
-    params.require(:address).permit(:user_id, :first_name, :last_name, :prefecture, :postal_code, :city, :address1, :address2)
-  end
+    def address_params
+      params.require(:address).permit(:user_id, :first_name, :last_name, :pref, :postal_code, :city, :address1, :address2)
+    end
 
-  def order_item_params
-    params.require(:order_item).permit(:order_id, :product_id, :price, :quantity)
-  end
-  def cart_item_params
-    params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
-  end
+    def order_item_params
+      params.require(:order_item).permit(:order_id, :product_id, :price, :quantity)
+    end
+
+    def cart_item_params
+      params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
+    end
 end

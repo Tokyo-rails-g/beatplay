@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_103105) do
+ActiveRecord::Schema.define(version: 2018_07_28_053508) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "postal_code"
-    t.integer "prefecture"
+    t.string "pref"
     t.string "city"
     t.string "address1"
     t.string "address2"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_103105) do
     t.string "kana_first"
     t.string "kana_last"
     t.string "postal_code"
-    t.integer "prefecture"
+    t.string "pref"
     t.string "city"
     t.string "address1"
     t.string "address2"
