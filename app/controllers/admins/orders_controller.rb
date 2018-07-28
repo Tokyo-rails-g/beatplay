@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+
   before_action :authenticate_admin!
 
   def index
@@ -15,11 +16,13 @@ class Admins::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.save
       # binding.pry
+    if @order.update(order_params)
+      @msg = "ステータスを更新しました"
       redirect_to admins_orders_index_path
     else
-      flash[:danger] = "ステータスを更新できていません"
+      @msg = "ステータスを更新できていません"
+
     end
   end
 

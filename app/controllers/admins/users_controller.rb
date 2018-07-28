@@ -1,4 +1,5 @@
 class Admins::UsersController < ApplicationController
+
   before_action :authenticate_admin!
 
   def top
@@ -63,7 +64,7 @@ private
                                   :kana_first,
                                   :kana_last,
                                   :postal_code,
-                                  :prefecture,
+                                  :pref,
                                   :city,
                                   :address1,
                                   :address2,

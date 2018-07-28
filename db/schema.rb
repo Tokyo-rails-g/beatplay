@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_103105) do
+ActiveRecord::Schema.define(version: 2018_07_28_053508) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "postal_code"
-    t.integer "prefecture"
+    t.string "pref"
     t.string "city"
     t.string "address1"
     t.string "address2"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_103105) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 2018_07_26_103105) do
     t.integer "user_id"
     t.integer "address_id"
     t.integer "total"
+    t.integer "payment", limit: 1, default: 0, null: false
     t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "payment", limit: 1, default: 0, null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_103105) do
     t.string "kana_first"
     t.string "kana_last"
     t.string "postal_code"
-    t.integer "prefecture"
+    t.string "pref"
     t.string "city"
     t.string "address1"
     t.string "address2"

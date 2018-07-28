@@ -8,40 +8,42 @@
 <% end %>
 
 <div class="container">
-    <div class="ad-pro-index-box">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
-            <th><%= sort_link(@q, :status, "ステータス") %></th>
-            <th><%= sort_link(@q, :created_at, "購入日") %></th>
-            <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
-            <th><%= sort_link(@q, :total, "合計") %></th>
+  <div class="ad-pro-index-box">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
+          <th><%= sort_link(@q, :status, "ステータス") %></th>
+          <th><%= sort_link(@q, :created_at, "購入日") %></th>
+          <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
+          <th><%= sort_link(@q, :total, "合計") %></th>
         </tr>
       </thead>
       <tbody>
         <% @orders.each do |order| %>
-        <%= form_for order, url: admins_order_update_path(order.id), method: :patch do |f| %>
-        <tr>
-            <th><input type="checkbox"></th>
-            <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
-            <td>
-                            <%= f.select :status, Order.statuses.keys.to_a %>
-              <%= f.submit "更新" %>
-            </td>
-            <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            <td><%= link_to admins_user_path(order.user), method: :get do %>
-              <%=order.user.first_name %><%= order.user.last_name %>
-                <% end %>
-              </td>
-            <td><%= order.total %></td>
-        </tr>
-        <% end %>
+          <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
+            <tr>
+                <th><input type="checkbox"></th>
+                <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
+                <td>
+                  <%= @msg %>
+                  <%= order.status %>
+                  <%= f.select :status, Order.statuses.keys.to_a %>
+                  <%= f.submit "更新" %>
+                </td>
+                <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= link_to admins_user_path(order.user), method: :get do %>
+                  <%=order.user.first_name %><%= order.user.last_name %>
+                    <% end %>
+                  </td>
+                <td>¥ <%= order.total %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
-    <%= paginate @orders %>
+  <%= paginate @orders %>
   </div>
 </div>
 
