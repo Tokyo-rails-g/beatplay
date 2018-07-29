@@ -9,7 +9,7 @@
             <th></th>
             <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
             <th><%= sort_link(@q, :status, "ステータス") %></th>
-            <th><%= @msg %><%= @msg2 %></th>
+            <th></th>
             <th><%= sort_link(@q, :created_at, "購入日") %></th>
             <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
             <th><%= sort_link(@q, :total, "合計") %></th>
@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
-            <%#= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
+            <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
               <tr>
                 <th><input type="checkbox"></th>
                 <td><%= link_to admins_order_show_path(order.id) do %>
@@ -27,38 +27,42 @@
                 <td>
                   <%= @msg %>
                   <%= order.status %>
+                </td>
+                <td>
                   <%= f.select :status, Order.statuses.keys.to_a %>
-                  <button type="submit" class="update-button">ステータス更新</button>
+                  <button type="submit" class="update-button">更新</button>
                   <% end %>
+                </td>
                 </td>
                 <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
                 <td><%= link_to admins_user_path(order.user), method: :get do %>
                   <%=order.user.first_name %><%= order.user.last_name %>
                     <% end %>
-                  </td>
+                </td>
                 <td>¥ <%= order.total %></td>
               </tr>
             <% end %>
-          <% end %>
         </tbody>
       </table>
       <%= paginate @orders %>
     </div>
 
     <div class="extraction-box">
-      <div class="search-id-box">
-        <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
-          <%= f.search_field :id_eq %>
-          <%= f.submit "ID検索" %>
-        <% end %>
-      </div>
-      <div class="btn-group btn-group-sm status-box" role="group">
-        <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
-        <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
-        <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+      <div class="test-box">
+        <div class="search-id-box">
+          <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
+            <%= f.search_field :id_eq %>
+            <%= f.submit "ID検索" %>
+          <% end %>
+        </div>
+        <div class="btn-group btn-group-sm status-box" role="group">
+          <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
+          <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
+          <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+        </div>
       </div>
     </div>
-
+  </div>
 </div>
 
 <!-- <script language="javascript" type="text/javascript">
