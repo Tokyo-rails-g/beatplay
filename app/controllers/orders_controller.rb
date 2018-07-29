@@ -4,19 +4,18 @@ class OrdersController < ApplicationController
     @address = Address.new
     @address.user_id = current_user.id
     @user = current_user
+    @address.save
   end
 
 # 新たに送り先を指定したとき
   def create_address
-    @address = Address.new(address_params)
-    @address.user_id = current_user.id
-    @user = current_user
-    if @address.save
-      # 購入確認画面にリダイレクト
-      redirect_to orders_confirm_path(@address)
-    end
-      @address = Address.new(address_params)
-      # render :select_address
+    # @address = Address.new
+    # @address.user_id = current_user.id
+    # @user = current_user
+  # 購入確認画面にリダイレクト
+    # redirect_to orders_confirm_path(@address)
+  # @address = Address.new(address_params)
+  # render :select_address
   end
 # 購入確認画面
   def confirm
@@ -27,7 +26,11 @@ class OrdersController < ApplicationController
     @cart_items = @cart.cart_items
     @order = Order.new
     # Addressモデルのデータから最後のデータを引っ張ってくる
-    @address = Address.last
+    @user = current_user
+    # @address = @user.addresses.last
+    @address = Address.new
+    @address.save
+    @address.user_id = current_user.id
     @user = current_user
 
     @total = 0

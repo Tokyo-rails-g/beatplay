@@ -9,9 +9,9 @@
 <div class="contents-box">
 	<p class="page-title">送付先住所を選択してください</p>
 	<div class="send-user-address">
-		<span>登録済みの住所に送る</span>
-		<%= link_to orders_confirm_path do %>
-			<button type="button" class="button-style" >この住所に送る</button>
+		<span>自分の住所に送る</span>
+		<%= form_for @address, url: orders_confirm_path(@address), method: :post do |v| %>
+			<%= v.submit "この住所に送る", class: "btn btn-info" %>
 		<% end %>
 			<p class="user-address">
 				<%= @user.postal_code %><br>
@@ -21,27 +21,42 @@
 	</div>
 	<p class="page-title">送り先住所を変更する</p>
 	<div class="change-send-address">
-		<span>送り先住所を変更する</span>
-		<%= form_for @address, url: orders_create_address_path(@address), method: :post do |f| %>
 
-		<%= f.submit "この住所に送る", class: "btn btn-default" %>
-
-				<!-- <button type="submit" class="button-style" >この住所に送る</button> -->
-			<form class="form-horizontal">
-					<label class="control-label">郵便番号</label>
-        	<p class=""><%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %></p>
-				<label class="">都道府県</label>
-				<p class=""><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "form-control" %></p>
-    				<label class="control-label">住所</label>
-			    <p class=""><%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %></p>
-			  <label class="control-label"></label>
-			    <p class=""><%= f.text_field :address1, :class => "form-control", :placeholder => "番地" %></p>
-			  <label class="control-label"></label>
-			    <p><%= f.text_field :address2, :class => "form-control", :placeholder => "アパート／マンション名" %></p>
-			  <label class="control-label">お名前</label>
-			    <p class=""><%= f.text_field :first_name ,:class => "form-control", :placeholder => "姓" %></p>
-			    <p class=""><%= f.text_field :last_name, :class => "form-control", :placeholder => "名" %></p>
-	    	</form>
+		<%= form_for @address, url: orders_confirm_path(@address), method: :post do |f| %>
+		  <!-- モーダル -->
+    	<button class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#sampleModal" type="button">他の住所に送る</button>
+				<!-- モーダル・ダイアログ -->
+				<div class="modal fade" id="sampleModal" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+								<h4 class="modal-title" align="center">送付先住所を入力してください</h4>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<label class="control-label">お名前</label>
+								    <p class=""><%= f.text_field :first_name ,:class => "form-control", :placeholder => "姓" %></p>
+								    <p class=""><%= f.text_field :last_name, :class => "form-control", :placeholder => "名" %></p>
+										<label class="control-label">郵便番号</label>
+					        		<p class=""><%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %></p>
+										<label class="">都道府県</label>
+									<p class=""><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "form-control" %></p>
+					    				<label class="control-label">住所</label>
+								    <p class=""><%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %></p>
+								  	<label class="control-label"></label>
+								    <p class=""><%= f.text_field :address1, :class => "form-control", :placeholder => "番地" %></p>
+								  	<label class="control-label"></label>
+								    <p><%= f.text_field :address2, :class => "form-control", :placeholder => "アパート／マンション名" %></p>
+    							</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+								<%= f.submit "この住所に送る", class: "btn btn-info" %>
+							</div>
+						</div>
+					</div>
+				</div>
 	   <% end %>
 	</div>
 

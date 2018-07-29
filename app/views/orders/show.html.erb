@@ -20,16 +20,13 @@
 				<font size="5">ご注文が確定されました。<br>ありがとうございました。</font>
 			</div>
 			<div class="order-info">
-				<font size="4"><p class="order-number">注文番号：#<%= @order.id %><%= @order.id %>-<%= @order.created_at.strftime('%Y%m%d') %></p></font>
+				<font size="4"><p class="order-number">注文番号：#<%= @order.id %>-<%= @order.created_at.strftime('%Y%m%d') %></p></font>
 				<p class="order-list"></p>
 			</div>
 		</div>
 		<div class="buttons">
-			<%= link_to products_path(@user) do %>
-			<p class="btn btn-primary header-buttons">Home</p>
-			<% end %>
 			<%= link_to mypage_user_path(@user) do %>
-            <p class="btn btn-default header-buttons">買い物を続ける</p>
+            	<p class="btn btn-default header-buttons">買い物を続ける</p>
             <% end %>
 		</div>
 	</div>

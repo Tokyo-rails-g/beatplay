@@ -9,6 +9,7 @@
             <th></th>
             <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
             <th><%= sort_link(@q, :status, "ステータス") %></th>
+            <th><%= @msg %><%= @msg2 %></th>
             <th><%= sort_link(@q, :created_at, "購入日") %></th>
             <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
             <th><%= sort_link(@q, :total, "合計") %></th>
@@ -16,15 +17,19 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
-            <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
+            <%#= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
               <tr>
                 <th><input type="checkbox"></th>
-                <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
+                <td><%= link_to admins_order_show_path(order.id) do %>
+                    #<%= order.id %>-<%= order.created_at.strftime('%Y%m%d') %>
+                  <% end %>
+                </td>
                 <td>
                   <%= @msg %>
                   <%= order.status %>
-                   <%= f.select :status, Order.statuses.keys.to_a %>
-                  <%= f.submit "更新" %>
+                  <%= f.select :status, Order.statuses.keys.to_a %>
+                  <button type="submit" class="update-button">ステータス更新</button>
+                  <% end %>
                 </td>
                 <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
                 <td><%= link_to admins_user_path(order.user), method: :get do %>
