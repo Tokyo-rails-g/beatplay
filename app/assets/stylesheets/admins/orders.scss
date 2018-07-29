@@ -5,11 +5,13 @@
 
 .border-solid-1{
 	border: solid 1px;
+	border-radius: 5px;
 }
 .user-infomation{
 	width:90%;
 	margin: 0 auto;
 	border: solid 1px;
+	border-radius: 5px;
 	padding: 20px;
 }
 .order-infomation{
@@ -24,18 +26,37 @@
 	border-radius: 5px;
 }
 .border-bottom{
+	width: 100%;
+	padding:10px;
 	border-bottom: solid 1px;
+	display: flex;
+	flex-direction: row;
+}
+.order-info2{
+	width: 200px;
+	justify-content: space-between;
+}
+.order-status2{
+	width: 300px;
+	justify-content: space-between;
 }
 .admin-product-show-total{
 	display: flex;
 	flex-direction: row;
-	background-color: silver;
+	/*background-color: silver;*/
 }
 .address-box{
 	justify-content: space-between;
 	width: 50%;
+	border: solid 1px;
+	border-radius: 5px;
 }
 .total-box{
 	justify-content: space-between;
 	width: 50%;
+	border: solid 1px;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 20px;
 }
+
