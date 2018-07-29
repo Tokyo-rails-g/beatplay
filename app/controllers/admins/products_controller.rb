@@ -4,8 +4,13 @@ class Admins::ProductsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @q = Product.ransack(params[:q])
-    @products = @q.result.page(params[:page]).per(30)
+    #検索用
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @searchproducts = @q.result.page(params[:page]).per(30).distinct
+
+    @productall = Product.all
+    @searchproducts2 = @q.result
+    @msg = '商品が見つかりませんでした。'
   end
 
 
@@ -18,6 +23,8 @@ class Admins::ProductsController < ApplicationController
 
   def new
     if params[:product].present?
+      @product = Product.all
+      render plain: Product.where(artist: 渋谷慶一郎).pluck(:album_title)
       @product = Product.new(product_params)
       @product.save
       # disc = @product.discs.build

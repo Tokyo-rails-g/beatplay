@@ -1,13 +1,25 @@
 <%= render 'admins/users/header'  %>
-<div class="main-box">
-  <h4>商品一覧</h4>
-  <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
-  <div class="container">
-  	<div class="ad-pro-index-box">
+
+<div class="ad-pro-index-box">
+  <div class="search-box">
+    <%= search_form_for q do |f| %>
+      <%= f.label :album_title_cont_any, "シングル/アルバム名" %>
+        <%= f.search_field :album_title_cont_any %><br>
+      <%= f.label :artist_cont_any, "アーティスト" %>
+        <%= f.search_field :artist_cont_any %><br>
+      <%= f.label :discs_musics_name_cont_any, "曲名"%>
+        <%= f.search_field :discs_musics_name_cont_any %><br>
+      <%= f.submit "検索"%>
+    <% end %>
+  </div>
+
+  <div class="ad-pro-index-box">
+    <h4>商品一覧</h4>
+    <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
       	<table class="table table-hover">
         		<thead>
           		<tr>
-                <th><input type="checkbox"></th>
+                <th></th>
             		<th><%= sort_link(@q, :image, "画像") %></th>
             		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
             		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
@@ -17,28 +29,27 @@
           		</tr>
         		</thead>
 
-          <% if @q != nil %>
+            <% if @searchproducts.any? %>
 
         		<tbody>
-              <% @products.each_with_index do |product, i| %>
-          		  <tr>
-                  <td><%= i+1 %>.</td>
-                  <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
-              		<td><%= product.artist %></td>
-              		<td><%= product.price %></td>
-              		<td><%= product.stock %></td>
-              		<td><%= product.favorite_count %></td>
-          		  </tr>
-              <% end %>
+                  <% @searchproducts.each_with_index do |searchproduct, i| %>
+          		      <tr>
+                      <td><input type="checkbox"></td>
+                      <td><%= i+1 %>.</td>
+                      <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
+             		 	   <td><%= link_to searchproduct.album_title, admins_product_path(searchproduct.id) %></td>
+              		    <td><%= searchproduct.artist %></td>
+              		    <td><%= searchproduct.price %></td>
+              		    <td><%= searchproduct.stock %></td>
+              		    <td><%= searchproduct.favorite_count %></td>
+          		      </tr>
+                  <% end %>
         		</tbody>
 
-          <% else %>
-            <p><%= @msg %></p>
-          <% end %>
+            <% end %>
 
       	</table>
-      	<%= paginate @products %>
-    </div>
+      <%= paginate @searchproducts %>
   </div>
+
 </div>

@@ -14,7 +14,6 @@
 				<table class="table table-striped table-hover">
 						<thead>
 							<tr>
-								<th>No.</th>
 								<th>ステータス</th>
 								<th>オーダーNo.</th>
 								<th>購入確定日</th>
@@ -22,9 +21,8 @@
 						</thead>
 						<tbody>
 							<!-- each start -->
-							<% @orders2.each_with_index do |order, i| %>
+							<% @orders2.reverse.each do |order| %>
 								<tr>
-									<td><%= i+1 %> </td>
 									<td><%= order.status %></td>
 									<td><%= order.id %></td>
 									<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
@@ -47,7 +45,7 @@
 				</thead>
 				<tbody>
 					<!-- each start -->
-				<% @users2.each do |user| %>
+				<% @users2.reverse_each do |user| %>
 					<tr>
 						<td><%= user.id %></td>
 						<td>

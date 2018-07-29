@@ -1,12 +1,8 @@
 <%= render 'admins/users/header'  %>
 
-
-<div class="container">
- <div class="row">
-  <div class="col-6">
+<div class="ad-user-index-box">
+  <div class="user-index-box">
     <h4>登録ユーザー一覧</h4>
-
-    <div class="ad-pro-index-box">
      <table class="table table-hover">
        <thead>
         <tr>
@@ -32,10 +28,10 @@
             <td><%= user.first_name %><%= user.last_name %></td>
             <td><%= user.email %></td>
             <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default" %></td>
-            <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-success" %></td>
+            <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
+            <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
             <td>
-              <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-danger", data: { confirm: '削除します。よろしいですか？' }%>
+              <%= button_to "削除", registration_path(user), method: :delete, class: "btn btn-default btn-ms", data: { confirm: '削除します。よろしいですか？' }%>
             </td>
         </tr>
         <% end %>
@@ -47,13 +43,11 @@
 
     </table>
   </div>
- </div>
 
- <div class="row">
-  <div class="col-3">
-    <div class="ad-pro-index-box">
+
+  <div class="admin-index-box">
+    <h4 class="admin-index">管理者情報</h4>
       <table class="table table-hover">
-        <h4>登録管理者情報</h4>
         <thead>
           <tr>
             <th>名前</th>
@@ -69,20 +63,19 @@
             <td><%= ad.name %></td>
             <td><%= ad.email %></td>
             <td>
-              <%= button_to "編集", edit_admin_registration_path, method: :get, class: "btn btn-default" %>
+              <%= button_to "編集", edit_admin_registration_path, method: :get, class: "btn btn-default btn-xs" %>
             </td>
             <td>
-              <%= button_to "削除", admin_registration_path, method: :delete, class: "btn btn-default", data: { confirm: '削除します。よろしいですか?' }%>
+              <%= button_to "削除", admin_registration_path, method: :delete, class: "btn btn-default btn-xs", data: { confirm: '削除します。よろしいですか?' }%>
             </td>
             <td>
-              <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
+              <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default btn-xs" %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
   </div>
- </div>
 </div>
 
 

@@ -5,27 +5,32 @@
 	margin: 30px;
 }
 
-.main-box{
+
+/*--商品一覧--*/
+/*.main-box{
 	width: 100%;
-}
+}*/
+
+/*	border: solid 1px;
+	border-radius: 5px;
+	background-color: silver;*/
 
 .ad-pro-index-box{
-	width: 100%;
-
-	border: solid 1px;
-	border-radius: 5px;
-	/*background-color: silver;*/
+	width: 80%;
+	display: flex;
+	flex-direction: row-reverse;
 	justify-content: center;
 	margin: 10px;
 }
 
-/*-----edit----*/
+
+/*--商品編集--*/
 .edit-product {
 	margin: 30px;
 }
 
 
-/*-----show----*/
+/*--商品詳細--*/
 .admin-product-show{
 	width: 100%;
 }

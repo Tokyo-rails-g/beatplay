@@ -36,7 +36,6 @@ class Admins::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.find_by(params[:user_id])
   end
 
   def edit
@@ -54,6 +53,11 @@ class Admins::UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = 'ユーザーを削除しました'
+      render 'index'
+    end
   end
 
 private
@@ -70,9 +74,5 @@ private
                                   :phone_number,
                                   :email,
                                   :password)
-  end
-
-  def search_params
-    params.require(:q).permit!
   end
 end

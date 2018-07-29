@@ -1,46 +1,46 @@
 <%= render 'admins/users/header'  %>
 
-<h1>ユーザー詳細</h1>
-<div class="container">
+<div class="ad-user-show-box">
 
-  <div class="form-horizontal">
-
-    <div class="form-group">
+    <div class="form-horizontal user-show-box">
+      <h4>ユーザー登録情報</h4>
+      <div class="form-group">
         <p class="form-control-static">
-          名前：<%= @user.first_name %><%= @user.last_name %>
+          <label>名前：</label>
+          <%= @user.first_name %><%= @user.last_name %>
         </p>
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
           <p class="form-control-static">
-            登録住所：<%= @user.postal_code %>
+            <label>住所：</label>
+            <%= @user.postal_code %><br/>
             <%= @user.prefecture %> <%= @user.city %>
-          </p>
-          <p class="form-control-static">
             <%= @user.address1 %> <%= @user.address2 %>
           </p>
-
+        </div>
+      <div class="form-group">
+          <p class="form-control-static">
+            <label>電話番号：</label>
+            <%= @user.phone_number %>
+          </p>
       </div>
-    <div class="form-group">
+      <div class="form-group">
           <p class="form-control-static">
-            電話番号：<%= @user.phone_number %>
-          </p>
+            <label>メール：</label>
+            <%= @user.email %>
+            </p>
+      </div>
+      <div class="form-group">
+        <div class="button-box">
+          <%= button_to "編集", admins_edit_user_path(@user.id), class:"btn btn-default btn-ms" %> <%= button_to "削除", user_registration_path(@user.id), class:"btn btn-default btn-ms", data: { confirm: 'Are you sure?' }, method: :delete %>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-          <p class="form-control-static">
-            メール：<%= @user.email %>
-          </p>
-    </div>
-    <div class="form-group">
-        <%= button_to "edit", admins_edit_user_path(@user.id), class:"btn btn-success" %> <%= button_to "Destroy", admins_users_path(@user.id), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' }%>
-    </div>
-  </div>
 
-  <div class="orders-index">
+    <div class="orders-index-box">
       <table class="table">
-        <% @orders.each do |order| %>
           <thead>
             <tr>
-              <th><input type="checkbox"></th>
               <th>オーダーNo.</th>
               <th>ステータス</th>
               <th>購入日</th>
@@ -49,14 +49,15 @@
           </thead>
           <tbody>
             <tr>
-              <th><%= link_to "order.id", admins_order_show_path(order.id) %></th>
+              <% @user.orders.reverse_each do |order| %>
+              <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
               <td><%= order.status %></td>
               <td><%= order.created_at %></td>
               <td><%= order.total %></td>
-        <% end %>
             </tr>
+            <% end %>
           </tbody>
       </table>
-  </div>
+    </div>
 
 </div>

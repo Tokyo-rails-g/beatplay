@@ -11,17 +11,21 @@
               <%= f.label :artist, "アーティスト名：" %>
               <%= f.text_field :artist, :size => "50" %>
 <!--モーダル呼び出しボタン-->
-            <!-- <button class="btn btn-default" data-toggle="modal" data-target="#checkModal">チェック</button> -->
+<div class="decision-button">
+            <button class="btn btn-default" data-toggle="modal" data-target="#checkModal">チェック</button>
 <!-- モーダル・ダイアログ-->
-           <!--  <div class="modal fade" id="checkModal" tabindex="-1">
+          <!--   <div class="modal fade" id="checkModal" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-header">
-                  <h4 class="modal-title">以下のアルバムは既に登録されています。</h4>
-                  <%=  %>
+                  <h4 class="modal-title" align="center">以下のアルバムは既に登録されています。</h4>
                 </div>
-                <div class="modal-body">本文</div>
-                <div class="modal-footer">
+                <div class="modal-body">
+                  <%#= @product.album_title.each do |album| %>
+                    <%= album.album_title %>
+                  <%# end %>
                   <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                </div>
+                <div class="modal-footer">
                 </div>
               </div>
           </div> -->
