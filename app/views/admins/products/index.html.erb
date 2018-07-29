@@ -1,8 +1,8 @@
 <%= render 'admins/users/header'  %>
 
 <div class="ad-pro-index-box">
-  <div class="search-box">
-    <%= search_form_for q do |f| %>
+  <div class="ad-search-box">
+    <%= search_form_for @q do |f| %>
       <%= f.label :album_title_cont_any, "シングル/アルバム名" %>
         <%= f.search_field :album_title_cont_any %><br>
       <%= f.label :artist_cont_any, "アーティスト" %>
@@ -15,10 +15,11 @@
 
   <div class="ad-pro-index-box">
     <h4>商品一覧</h4>
-    <%= button_to '新規追加', admins_new_product_path, class:"btn btn-default" %>
+    <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
       	<table class="table table-hover">
         		<thead>
           		<tr>
+                <th></th>
                 <th></th>
             		<th><%= sort_link(@q, :image, "画像") %></th>
             		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
@@ -37,39 +38,24 @@
           		      <tr>
                       <td><input type="checkbox"></td>
                       <td><%= i+1 %>.</td>
-                      <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	   <td><%= link_to searchproduct.album_title, admins_product_path(searchproduct.id) %></td>
+                      <td><%= attachment_image_tag searchproduct, :image, :fill, 50, 50, format: 'jpg' %></td>
+             		 	    <td><%= link_to searchproduct.album_title, admins_product_path(searchproduct.id) %></td>
               		    <td><%= searchproduct.artist %></td>
               		    <td><%= searchproduct.price %></td>
               		    <td><%= searchproduct.stock %></td>
                       <td>
-                      <% if product.stock <= 10 && product.stock >= 1 %>
-                      <p class="alert-few" style="color: orange;">在庫が少なくなっています。<br>入荷しましょう。</p>
-                      <% elsif product.stock === 0 %>
-                      <p class="alert-zero" style="color: red;"><b>在庫がなくなりました。</b></p>
-                      <% end %>
+                        <% if searchproduct.stock <= 10 && searchproduct.stock >= 1 %>
+                          <p class="alert-few" style="color: orange;">在庫が少なくなっています。<br>入荷しましょう。</p>
+                        <% elsif searchproduct.stock === 0 %>
+                          <p class="alert-zero" style="color: red;"><b>在庫がなくなりました。</b></p>
+                        <% end %>
                       </td>
               		    <td><%= searchproduct.favorite_count %></td>
           		      </tr>
                   <% end %>
-              <% @products.each_with_index do |product, i| %>
-          		  <tr>
-                  <td><%= i+1 %>.</td>
-                  <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	<td><%= link_to product.album_title, admins_product_path(product.id) %></td>
-              		<td><%= product.artist %></td>
-              		<td><%= product.price %></td>
-              		<td><%= product.stock %></td>
-                  
-              		<td><%= product.favorite_count %></td>
-          		  </tr>
-              <% end %>
         		</tbody>
-
             <% end %>
-
       	</table>
       <%= paginate @searchproducts %>
   </div>
-
 </div>
