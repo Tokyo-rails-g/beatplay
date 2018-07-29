@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/:id/show' => 'orders#show', as: 'order_show'
     patch 'orders/:id/update' => 'orders#update', as: 'order_update'
+    patch 'orders/:id/update2' => 'orders#update2', as: 'order_update2'
   end
 
 
@@ -62,7 +63,7 @@ Rails.application.routes.draw do
 
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
-  get 'orders/confirm' => 'orders#confirm'
+  post 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
   post 'orders/create' => 'orders#create', as:'create_order'
   get 'orders/show' => 'orders#show', as: 'show_order'
 

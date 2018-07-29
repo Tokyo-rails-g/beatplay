@@ -13,6 +13,7 @@
             		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
             		<th><%= sort_link(@q, :price, "値段") %></th>
             		<th><%= sort_link(@q, :stock, "在庫数") %></th>
+                <th></th>
             		<th><%= sort_link(@q, :favorite_count, "お気に入り数") %></th>
           		</tr>
         		</thead>
@@ -28,6 +29,13 @@
               		<td><%= product.artist %></td>
               		<td><%= product.price %></td>
               		<td><%= product.stock %></td>
+                  <td>
+                    <% if product.stock <= 10 && product.stock >= 1 %>
+                      <p class="alert-few" style="color: orange;">在庫が少なくなっています。<br>入荷しましょう。</p>
+                      <% elsif product.stock === 0 %>
+                      <p class="alert-zero" style="color: red;"><b>在庫がなくなりました。</b></p>
+                    <% end %>
+                  </td>
               		<td><%= product.favorite_count %></td>
           		  </tr>
               <% end %>

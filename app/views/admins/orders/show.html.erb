@@ -1,23 +1,31 @@
 <%= render 'admins/users/header'  %>
 <div class="dashboard-sub">注文詳細</div>
-<div class="user-infomation">
+<div class="user-infomation" style="font-size: 20px;">
 	#<%= @order.id %>-<%= @order.created_at.strftime('%Y%m%d') %>
 </div>
 <div class ="contact-main-box">
 	<div class="contacts-contents">
 		<div class="border-solid-1">
-			<p class= "border-bottom">
-				<span>注文内容</span><span>ステータス</span></p>
+			<div class= "border-bottom">
+				<div class="order-info2" style="font-size:20px;"><b>注文内容</b></div>
+				<div class="order-status2" style="font-size:20px;"><b>ステータス:</b><%= @order.status %></div>
+				<%= form_for @order, url: admins_order_update2_path(@order), method: :patch do |f| %>
+					<%= f.select :status, Order.statuses.keys.to_a, class: "" %>
+					<%= f.submit "ステータス更新", style: "border-radius: 10px;", class: "btn btn-info" %>
+				<% end %>
+			</div>
 			<div class="order-infomation">
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th>商品</th>
 							<th>価格</th>
+							<th>購入数</th>
+							<th>小計</th>
 						</tr>
 					</thead>
 					<tbody>
-
+						<% price_sum = 0 %>
 						<% @order_items.each do |order_item| %>
 							<tr>
 								<td>
@@ -26,7 +34,10 @@
 									<% end %>
 								</td>
 								<td><%= order_item.product.price %></td>
+								<td><%= order_item.quantity %></td>
+								<td><%= order_item.product.price * order_item.quantity %></td>
 							</tr>
+							<% price_sum =  price_sum + order_item.product.price * order_item.quantity %>
 						<% end %>
 
 					</tbody>
@@ -35,10 +46,22 @@
 			<p>送付先</p>
 			<div class="admin-product-show-total">
 				<div class="address-box">
-
+					<% if @address != nil %>
+						<div style= "font-size: 20px;">
+						<label>郵便番号：</label><%= @address.postal_code %><br>
+						<label>住所：</label><%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
+						<label>名前： </label><%= @address.first_name %> <%= @address.last_name %>
+						</div>
+					<% else @address == nil %>
+						<div>
+						郵便番号：<%= @user.postal_code %><br>
+						住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
+						名前： <%= @user.first_name %> <%= @user.last_name %>
+						</div>
+					<% end %>
 				</div>
 				<div class="total-box" align="right">
-					合計¥ <%= @order.total %>
+					<b>合計¥ <%= price_sum %></b>
 				</div>
 			</div>
 		</div>
