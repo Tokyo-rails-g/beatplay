@@ -7,20 +7,25 @@
 
 
 /*--商品一覧--*/
-/*.main-box{
-	width: 100%;
-}*/
 
 /*	border: solid 1px;
 	border-radius: 5px;
 	background-color: silver;*/
 
-.ad-pro-index-box{
-	width: 80%;
+.ad-product-index {
+	width: 90%;
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: center;
 	margin: 10px;
+}
+.product-search-box {
+	width: 30%;
+	margin-top: 40px;
+	postion: relative;
+}
+.product-index-box {
+	width: 70%;
 }
 
 /*--商品編集--*/
@@ -30,13 +35,24 @@
 
 
 /*--商品詳細--*/
-.admin-product-show{
-	width: 100%;
+.ad-pro-show-box {
+	position: relative;
+	width: 80%;
+	margin: 60px auto;
+	display: flex;
+	flex-direction: row;
 }
-.header-title{
+.product-info-box {
 	width: 70%;
-	margin: 0 auto;
+	margin: 10px;
+	border: solid 1px;
+	border-radius: 5px;
 }
+.sub-info-box {
+	width: 30%;
+	margin-left: 30px;
+}
+
 .admin-edit-delete-button{
 	width: 50%;
 	margin: 0 auto;
@@ -50,32 +66,12 @@
 .admin-delete-button{
 	margin: 5px;
 }
-.admin-product-show-main-box{
-	width: 80%;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: row;
-}
-.admin-product-info{
-	width: 70%;
-	height: 600px;
-	border: solid 1px;
-	border-radius: 5px;
-	margin: 10px;
-	/*margin-bottom: 10px;*/
-}
 .admin-product-img{
-	width: 100px;
-	height: 100px;
 	background-color: silver;
 }
 .admin-subtitles{
 	border-bottom: solid 1px;
 	font-size: 20px;
-}
-.sub-info{
-	width: 30%;
-	height: 500px;
 }
 .admin-product-show-quantity-box{
 	height: 200px;

@@ -1,21 +1,21 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-pro-index-box">
-  <div class="ad-search-box">
+<div class="ad-product-index">
+  <div class="product-search-box">
     <%= search_form_for @q do |f| %>
-      <%= f.label :album_title_cont_any, "シングル/アルバム名" %>
+      <%= f.label :album_title_cont_any, "シングル/アルバム名：" %>
         <%= f.search_field :album_title_cont_any %><br>
-      <%= f.label :artist_cont_any, "アーティスト" %>
+      <%= f.label :artist_cont_any, "アーティスト：" %>
         <%= f.search_field :artist_cont_any %><br>
-      <%= f.label :discs_musics_name_cont_any, "曲名"%>
+      <%= f.label :discs_musics_name_cont_any, "曲名："%>
         <%= f.search_field :discs_musics_name_cont_any %><br>
       <%= f.submit "検索"%>
     <% end %>
   </div>
 
-  <div class="ad-pro-index-box">
+  <div class="product-index-box">
     <h4>商品一覧</h4>
-    <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
+      <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
       	<table class="table table-hover">
         		<thead>
           		<tr>
@@ -31,31 +31,31 @@
           		</tr>
         		</thead>
 
-            <% if @searchproducts.any? %>
+            <% if @searchitems.any? %>
 
         		<tbody>
-                  <% @searchproducts.each_with_index do |searchproduct, i| %>
+                  <% @searchitems.each_with_index do |searchitem, i| %>
           		      <tr>
                       <td><input type="checkbox"></td>
                       <td><%= i+1 %>.</td>
-                      <td><%= attachment_image_tag searchproduct, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	    <td><%= link_to searchproduct.album_title, admins_product_path(searchproduct.id) %></td>
-              		    <td><%= searchproduct.artist %></td>
-              		    <td><%= searchproduct.price %></td>
-              		    <td><%= searchproduct.stock %></td>
+                      <td><%= attachment_image_tag searchitem, :image, :fill, 50, 50, format: 'jpg' %></td>
+             		 	    <td><%= link_to searchitem.album_title, admins_product_path(searchitem.id) %></td>
+              		    <td><%= searchitem.artist %></td>
+              		    <td><%= searchitem.price %></td>
+              		    <td><%= searchitem.stock %></td>
                       <td>
-                        <% if searchproduct.stock <= 10 && searchproduct.stock >= 1 %>
-                          <p class="alert-few" style="color: orange;">在庫が少なくなっています。<br>入荷しましょう。</p>
-                        <% elsif searchproduct.stock === 0 %>
-                          <p class="alert-zero" style="color: red;"><b>在庫がなくなりました。</b></p>
+                        <% if searchitem.stock <= 10 && searchitem.stock >= 1 %>
+                          <p class="alert-few" style="color: orange;">要入荷</p>
+                        <% elsif searchitem.stock === 0 %>
+                          <p class="alert-zero" style="color: red;"><b>在庫0</b></p>
                         <% end %>
                       </td>
-              		    <td><%= searchproduct.favorite_count %></td>
+              		    <td><%= searchitem.favorite_count %></td>
           		      </tr>
                   <% end %>
         		</tbody>
             <% end %>
       	</table>
-      <%= paginate @searchproducts %>
+      <%= paginate @searchitems %>
   </div>
 </div>

@@ -6,10 +6,10 @@ class Admins::ProductsController < ApplicationController
   def index
     #検索用
     @q = Product.includes(:discs,:musics).ransack(params[:q])
-    @searchproducts = @q.result.page(params[:page]).per(30).distinct
+    @searchitems = @q.result.page(params[:page]).per(30).distinct
 
     @productall = Product.all
-    @searchproducts2 = @q.result
+    @searchitems2 = @q.result
     @msg = '商品が見つかりませんでした。'
   end
 
@@ -66,7 +66,7 @@ class Admins::ProductsController < ApplicationController
       flash[:notice] = "商品を削除しました。"
       redirect_to admins_products_path
     else
-      @products = Product.page(params[:page]).per(PER)
+      @products = Product.page(params[:page]).per(30)
       render :index
     end
   end

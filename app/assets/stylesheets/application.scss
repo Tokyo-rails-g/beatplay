@@ -24,14 +24,25 @@
 .logo{
 	width:100px;
 }
-
-
+.header-buttons{
+	margin: 10px;
+	border: solid 2px;
+	/*border-color: silver;*/
+	border-radius: 20px;
+}
+.navbar {
+	margin-bottom: 0px;
+}
 
 /*================================================*/
 *{
 	/*color: rgba(255, 255, 255, 0.8);
 	background-color: #202020;*/
 	font-family: Didact+Gothic;
+	font-weight: lighter;
+}
+body{
+	margin-top: 90px;
 }
 body{
 	margin-top: 90px;
@@ -40,9 +51,9 @@ td{
 	margin-top: 40px;
 	padding: 25px;
 }
-header{
+.container-fruid {
 	width: 100%;
-	/*height: 100px;*/
+	height: 60px;
 	/*position: fixed;
     top: 0px;
     left: 0px;*/
@@ -117,15 +128,17 @@ footer{
 	margin: 170px auto;
     text-align: center;
 }
-.headline{
-	padding: 10px;
-}
+
+// .headline{
+// 	padding: 10px;
+// }
 .header-buttons{
 	margin: 10px;
 	border: solid 2px;
 	/*border-color: silver;*/
 	border-radius: 20px;
 }
+
 
 .search-box{
 	width: 100%;
