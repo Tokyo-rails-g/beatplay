@@ -61,11 +61,18 @@ Rails.application.routes.draw do
   # get '/contacts/new' => 'contacts#new'
   # post '/contacts/create' => 'contacts#create'
 
-  get 'orders/select_address' => 'orders#select_address'
-  post 'orders/create_address' => 'orders#create_address'
-  post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
-  post 'orders/create' => 'orders#create', as:'create_order'
-  get 'orders/show' => 'orders#show', as: 'show_order'
+
+  resources :orders, only: [:new, :show, :create] do
+    collection do
+      post 'confirm'
+      post 'confirm_user'
+    end
+  end
+  # get 'orders/new' => 'orders#new'
+  # post 'orders/create_address' => 'orders#create_address'
+  # post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+  # post 'orders/create' => 'orders#create', as:'create_order'
+  # get 'orders/show' => 'orders#show', as: 'show_order'
 
   #get 'carts/add_cart_item' => 'carts#add_cart_item'
   post '/products/:id/add_cart_items' => 'products#add_cart_item', as: 'add_cart_items'
