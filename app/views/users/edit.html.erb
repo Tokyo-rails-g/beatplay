@@ -10,27 +10,44 @@
 	    <div class="">
 	    	<i class="fa fa-sign-in"></i>
 	    </div>
-
 		<p class="page-title">登録情報の編集</p><br>
     </div>
-
-    <div class="main-box">
-
-		<p>名前</p><%= @user.first_name %><%= @user.last_name %>
-
-		<p>カナ</p><%= @user.kana_first %><%= @user.kana_last %><%= link_to "編集", edit_name_user_path(@user.id) %>
-
-		<p>住所</p><%= @user.pref %><%= link_to "編集", edit_address_user_path(@user.id) %>
-
-		<p>電話番号</p><%= @user.phone_number %><%= link_to "編集", edit_phonenumber_user_path(@user.id) %>
-
-		<p>メールアドレス</p><%= @user.email%><%= link_to "編集", edit_email_user_path(@user.id) %>
-
-		<p>パスワード</p><%= link_to "編集", edit_password_user_path(@user.id) %>
-
-		<p>終了(ホームへ)</p>
-
-	</div>
-
-
+    <div class="user-show-box">
+        <div class="form-horizontal user-info-box">
+            <h4>ユーザー登録情報</h4>
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <label>名前：</label>
+                            <%= @user.first_name %><%= @user.last_name %>
+                            <%= @user.kana_first %><%= @user.kana_last %><%= link_to "編集", edit_name_user_path(@user.id) %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <label>住所：</label>
+                            <%= @user.postal_code %><br/>
+                            <%= @user.prefecture %> <%= @user.city %>
+                            <%= @user.address1 %> <%= @user.address2 %><%= link_to "編集", edit_address_user_path(@user.id) %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <label>電話番号：</label>
+                            <%= @user.phone_number %><%= link_to "編集", edit_phonenumber_user_path(@user.id) %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <label>メール：</label>
+                            <%= @user.email %><%= link_to "編集", edit_email_user_path(@user.id) %>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <label>パスワード：</label>
+                            <%= link_to "編集", edit_password_user_path(@user.id) %>
+                    </p>
+                </div>
+            <h4><%= link_to "終了(ホームへ)", products_path %> | <%= link_to "退会する", edit_user_registration_path, class: "btn-sm btn-danger" %></h4>
+        </div>
 </section>
