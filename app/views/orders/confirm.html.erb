@@ -48,17 +48,18 @@
 <!-- Addressモデルにデータがあるかどうかを確認しています ---->
 <!-- データが入っていた場合はそのデータの中から最新の情報を引っ張ってきて表示されます -->
 	<div class="user-address2">
-		<% if @address != nil %>
-				<div>
-				郵便番号：<%= @address.postal_code %><br>
-				住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
-				名前： <%= @address.first_name %> <%= @address.last_name %>
-				</div>
-		<% else @address == nil %>
+		<% if @address == nil %>
 				<div>
 				郵便番号：<%= @user.postal_code %><br>
 				住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
 				名前： <%= @user.first_name %> <%= @user.last_name %>
+				</div>
+		<% else %>
+				
+				<div>
+				郵便番号：<%= @address.postal_code %><br>
+				住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
+				名前： <%= @address.first_name %> <%= @address.last_name %>
 				</div>
 		<% end %>
 	</div>

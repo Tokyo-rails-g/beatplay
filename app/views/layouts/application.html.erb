@@ -19,9 +19,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
-           BeatPlayのロゴ
-          </a>
+          <div class="navbar-brand">
+            <%= link_to users_top_path do %>
+            <span><%= image_tag('BeatPlay-logo.png', class: "logo") %></span>
+           <% end %>
+          </div>
         </div>
 
       <% if user_signed_in? %>
@@ -86,5 +88,11 @@
     <%= yield %>
   </body>
   <footer>
+    <div class="sns-icons">
+      <i class="fab fa-2x fa-facebook-square"></i>
+      <i class="fab fa-2x fa-twitter-square"></i>
+      <i class="fab fa-2x fa-line"></i>
+      <i class="fab fa-2x fa-spotify"></i>
+    </div>
   </footer>
 </html>
