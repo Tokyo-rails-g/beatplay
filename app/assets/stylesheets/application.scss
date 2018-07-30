@@ -44,6 +44,9 @@
 body{
 	margin-top: 90px;
 }
+body{
+	margin-top: 90px;
+}
 td{
 	margin-top: 40px;
 	padding: 25px;
@@ -125,6 +128,17 @@ footer{
 	margin: 170px auto;
     text-align: center;
 }
+
+// .headline{
+// 	padding: 10px;
+// }
+.header-buttons{
+	margin: 10px;
+	border: solid 2px;
+	/*border-color: silver;*/
+	border-radius: 20px;
+}
+
 
 .search-box{
 	width: 100%;

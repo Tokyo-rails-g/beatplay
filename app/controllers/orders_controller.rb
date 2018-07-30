@@ -1,33 +1,44 @@
 class OrdersController < ApplicationController
 
 # addressの#newにあたる
-  def select_address
-    @address = Address.new
+  def new
     @user = current_user
+    @address = Address.new( user_id: @user.id,  first_name: @user.first_name,last_name: @user.last_name,pref: @user.pref, postal_code: @user.postal_code,city: @user.city, address1: @user.address1, address2: @user.address2 )
     # @address.save
+    # binding.pry
   end
 
-# 新たに送り先を指定したとき
-  def create_address
-    # @address = Address.new
-    # @address.user_id = current_user.id
-    # @user = current_user
-  # 購入確認画面にリダイレクト
-    # redirect_to orders_confirm_path(@address)
-  # @address = Address.new(address_params)
-  # render :select_address
-  end
 # 購入確認画面
   def confirm
     @c_i_counter = CartItem.count
     @cart = Cart.find_by(user_id: current_user)
     @cart_items = @cart.cart_items
     @order = Order.new
+
     @address = Address.new(address_params)
-    if @address.invalid?
-      render :select_address
+    if @address.valid?
+      @user = current_user
+      render :new
     end
     @user = current_user
+    # @address = @user.addresses.last
+    @address.user_id = current_user.id
+
+    @total = 0
+    @cart_items.each do |cart_item|
+      @total = @total + cart_item.subtotal.to_i
+    end
+    # binding.pry
+  end
+
+  def confirm_user
+    @c_i_counter = CartItem.count
+    @cart = Cart.find_by(user_id: current_user)
+    @cart_items = @cart.cart_items
+    @order = Order.new
+
+    @user = current_user
+    @address = Address.new( user_id: @user.id,  first_name: @user.first_name,last_name: @user.last_name,pref: @user.pref, postal_code: @user.postal_code,city: @user.city, address1: @user.address1, address2: @user.address2 )
     # @address = @user.addresses.last
     @address.user_id = current_user.id
 
@@ -78,7 +89,7 @@ class OrdersController < ApplicationController
         cart_item.destroy
       end
     # binding.pry
-        redirect_to show_order_path
+        redirect_to order_path(@order)
 
     else
       puts @order.errors.full_messages

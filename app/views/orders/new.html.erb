@@ -9,13 +9,10 @@
 <div class="contents-box">
 	<p class="page-title">送付先住所を選択してください</p>
 	<div class="send-user-address">
-		<span>自分の住所に送る</span>
-		<%= form_for @address, url: {action: 'confirm'} do |f| %>
-			<%= f.submit "この住所に送る", class: "btn btn-info" %>
-		<% end %>
+		<%= link_to 'この住所に送る',confirm_user_orders_path, class: "btn btn-info", method: :post %>
 			<p class="user-address">
-				<%= @user.postal_code %><br>
-				<%= @user.pref %><%= @user.city %><%= @user.address1 %><br>
+				郵便番号：<%= @user.postal_code %><br>
+				住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><br>
 				<%= @user.address2 %>
 			</p>
 	</div>

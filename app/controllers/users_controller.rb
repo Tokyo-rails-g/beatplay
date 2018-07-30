@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = User.find(params[:id])
-    @favorites = @user.favorites
+    @favorites = @user.favorites.reverse_order
     @q = Product.includes(:discs,:musics).ransack(params[:q])
   end
 
