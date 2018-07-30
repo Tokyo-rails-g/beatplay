@@ -63,7 +63,7 @@ Rails.application.routes.draw do
 
   get 'orders/select_address' => 'orders#select_address'
   post 'orders/create_address' => 'orders#create_address'
-  post 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
+  post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
   post 'orders/create' => 'orders#create', as:'create_order'
   get 'orders/show' => 'orders#show', as: 'show_order'
 

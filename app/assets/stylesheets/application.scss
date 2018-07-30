@@ -39,7 +39,7 @@ td{
 }
 header{
 	width: 100%;
-	height: 100px;
+	/*height: 100px;*/
 	/*position: fixed;
     top: 0px;
     left: 0px;*/
@@ -48,15 +48,23 @@ footer{
 	width: 100%;
 	height: 150px;
 	background-color:black;
-	/*position: fixed;
+	/*position: fixed;*/
     bottom: 0px;
-    left: 0px;*/
+    left: 0px;
 }
-
+.fab{
+	margin: 5px;
+}
+.sns-icons{
+	color: silver;
+	width: 200px;
+	text-align: center;
+	padding-top: 60px;
+}
 .top-contents-box{
 	width: 50%;
 	/*position: absolute;*/
-	padding-top: 200px;
+	padding-top: 230px;
 }
 .search-bar{
 	width: 100%;
@@ -71,7 +79,7 @@ footer{
 	border: solid 1px white;
 	border-radius:30px;
 	background-color: rgba(255, 255, 255, 0);
-	transition: width 200ms;
+	transition: width 200ms, border 200ms;
 }
 .search-bar-border:hover{
 	width: 300px;
@@ -87,12 +95,13 @@ footer{
     height: 100px;
     /*background-color: transparent;*/
     margin: 0 auto;
-    border: solid 2px;
+    /*border: solid 2px;*/
     border-radius: 40px;
     padding: 15px 30px;
     font-size: 20px;
     color: white;
 	text-align: center;
+	background-color: rgba(255, 200, 255, 0.4);
 	transition: padding 200ms, background-color 200ms;
 }
 .start-button:hover{
@@ -102,11 +111,11 @@ footer{
 }
 .start-button-center{
 	width:50%;
-	margin: 120px auto;
+	margin: 170px auto;
     text-align: center;
 }
 .headline{
-	padding: 20px;
+	/*padding: 20px;*/
 }
 .header-buttons{
 	margin: 10px;
