@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
 
+# addressの#newにあたる
   def select_address
     @address = Address.new
-    @address.user_id = current_user.id
     @user = current_user
-    @address.save
+    # @address.save
   end
 
 # 新たに送り先を指定したとき
@@ -19,19 +19,17 @@ class OrdersController < ApplicationController
   end
 # 購入確認画面
   def confirm
-    # ログインしているユーザーに紐付いたカートIDを取得
     @c_i_counter = CartItem.count
     @cart = Cart.find_by(user_id: current_user)
-    # カート内のすべてのカートアイテムを取得
     @cart_items = @cart.cart_items
     @order = Order.new
-    # Addressモデルのデータから最後のデータを引っ張ってくる
+    @address = Address.new(address_params)
+    if @address.invalid?
+      render :select_address
+    end
     @user = current_user
     # @address = @user.addresses.last
-    @address = Address.new
-    @address.save
     @address.user_id = current_user.id
-    @user = current_user
 
     @total = 0
     @cart_items.each do |cart_item|

@@ -10,21 +10,23 @@
 
 /*---------------top_page----------------*/
 /*黒からフェードインのアニメーション*/
-body{
-    /*background-color: black;*/
-}
-body {
+
+.fade-in {
     animation: fadeIn 2s ease 0s 1 normal;
     -webkit-animation: fadeIn 2s ease 0s 1 normal;
 }
 
 @keyframes fadeIn {
-    0% {opacity: 0}
+    0% {opacity: 0;
+        background-color: black;
+    }
     100% {opacity: 1}
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity: 0}
+    0% {opacity: 0;
+        background-color: black;
+    }
     100% {opacity: 1}
 }
 /*-------------------*/
@@ -40,6 +42,7 @@ body {
     background: linear-gradient(to right, rgba(0, 0, 0, 1.0), transparent), url('top-image-girl2.jpg');
     background-attachment: fixed;
     background-size: cover;
+    /*background-color: black;*/
 
 }
 .img{

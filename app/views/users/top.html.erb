@@ -1,21 +1,21 @@
-<body>
-<div class="background-image">
-	<div class ="top-contents-box">
-		<p><%= image_tag('BeatPlay-logo.png') %></p>
+<div class= fade-in>
+	<div class="background-image">
+		<div class ="top-contents-box">
+			<p><%= image_tag('BeatPlay-logo.png') %></p>
 
-		<div class="search-bar-border">
-			<div class="search-bar">
-				<%= search_form_for @q do |f| %>
-				<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any, class: "form-control", style: "background-color:transparent; border:none; color:white; font-size: 15px;" %>
+			<div class="search-bar-border">
+				<div class="search-bar">
+					<%= search_form_for @q do |f| %>
+					<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any, class: "form-control", style: "background-color:transparent; border:none; color:white; font-size: 15px;" %>
+				</div>
+				<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
+					<% end %>
 			</div>
-			<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
-				<% end %>
-		</div>
-		<div class="start-button-center">
-				<%= link_to products_path, class: "start-button" do %>
-				START
-				<% end %>
+			<div class="start-button-center">
+					<%= link_to products_path, class: "start-button" do %>
+					Entrance
+					<% end %>
+			</div>
 		</div>
 	</div>
 </div>
-</body>
