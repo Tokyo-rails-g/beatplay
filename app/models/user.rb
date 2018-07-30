@@ -2,6 +2,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  def soft_delete
+    update(deleted_at: Time.now)
+  end
+
+  def active_for_authentication?
+    !deleted_at
+  end
+
+  def inactive_message
+    !deleted_at? super: :deleted_account
+  end
+
 # gem jp_prefectureの追加の為、追記しました------------------------------------------------
   include JpPrefecture
   jp_prefecture :pref

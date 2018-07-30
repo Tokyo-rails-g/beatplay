@@ -35,7 +35,7 @@
                 </td>
                 </td>
                 <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                <td><%= link_to admins_user_path(order.user), method: :get do %>
+                <td><%= link_to admins_user_path(order.user.id), method: :get do %>
                   <%=order.user.first_name %><%= order.user.last_name %>
                     <% end %>
                 </td>
