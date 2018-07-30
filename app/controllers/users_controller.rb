@@ -81,6 +81,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    @user.soft_delete
+    sign_out(@user)
+  end
+
   private
     def user_params
       params.require(:user).permit(:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:pref,:city,:address1,:address2,:phone_number)

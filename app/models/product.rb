@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 	has_one :order_item
 	has_many :orders, through: :order_items
 	has_one :cart_item
-	has_many :favorites, dependent: :destroy
+	has_many :favorites, dependent: :delete_all
 	has_many :discs, dependent: :destroy
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 	has_many :musics, through: :discs  #商品の曲検索で必要

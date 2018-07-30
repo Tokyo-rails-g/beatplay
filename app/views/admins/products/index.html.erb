@@ -54,6 +54,9 @@
           		      </tr>
                   <% end %>
         		</tbody>
+
+            <% else %>
+                <%= @msg %>
             <% end %>
       	</table>
       <%= paginate @searchitems %>

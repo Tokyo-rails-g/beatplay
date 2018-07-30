@@ -3,8 +3,7 @@
 <div class="container">
 	<div class="contents-box row">
 		<h3>ユーザー情報編集</h3>
-		<%= form_for(@user) do |f| %>
-
+		<%= form_for(@user, url: admins_user_path(@user), method: :put) do |f| %>
       <div class="form-horizontal">
 
         <div class="form-group">
@@ -42,12 +41,6 @@
             <div class="col-sm-8">
               <%= f.email_field :email, autocomplete: "email" %>
             </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">パスワード：</label>
-          <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)" %>
-          <%= f.password_field :password_confirmation, autocomplete: "off" , :placeholder => "パスワード確認" %>
         </div>
 
         <div class="actions">
