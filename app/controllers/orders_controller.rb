@@ -2,6 +2,14 @@ class OrdersController < ApplicationController
 
 # addressの#newにあたる
   def new
+    @cart = Cart.find_by(user_id: current_user)
+    @cart_items = @cart.cart_items
+    @cart_items.each do |cart_item|
+      if cart_item.product.stock <= 0
+        flash[:danger] = "購入希望数の在庫がありません。"
+        redirect_to carts_path
+      end
+    end
     @user = current_user
     @address = Address.new( user_id: @user.id,  first_name: @user.first_name,last_name: @user.last_name,pref: @user.pref, postal_code: @user.postal_code,city: @user.city, address1: @user.address1, address2: @user.address2 )
     # @address.save

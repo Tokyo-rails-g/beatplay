@@ -46,8 +46,12 @@
 									<td class="p-qty">
 										<%= form_for cart_item, url: cart_cart_items_path(cart_item), method: :patch  do |f| %>
 										<p>
-											<%= f.number_field :quantity, default: cart_item.quantity, min: 1, max: cart_item.product.stock, class: "form-control" %>
-											<%= f.submit "更新", class: "btn btn-default btn-xs" %>
+											<% if cart_item.product.stock > 0 %>
+												<%= f.number_field :quantity, default: cart_item.quantity, min: 1, max: cart_item.product.stock, class: "form-control" %>
+												<%= f.submit "更新", class: "btn btn-default btn-xs" %>
+											<% else %>
+												<p class="alert-zero">在庫なし</p>
+											<% end %>
 										</p>
 										<% end %>
 									</td>

@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
 
   	if @favorite.blank?
 	    favorite = current_user.favorites.new(product_id: @product.id)
+      @product.favorite_count = @product.favorite_count + 1
+      @product.save
   	  favorite.save
   	  flash[:success] = '商品をお気に入りに追加しました。'
   		redirect_to product_path(@product.id)
@@ -17,6 +19,9 @@ class FavoritesController < ApplicationController
 
   def destroy
   	@product = Product.find(params[:product_id])
+    @product.favorite_count = @product.favorite_count - 1
+    @product.save
+    binding.pry
   	favorite = current_user.favorites.find_by(product_id: params[:product_id])
   	favorite.destroy
   	flash[:success] = '商品をお気に入りから削除しました。'
