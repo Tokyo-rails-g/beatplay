@@ -12,8 +12,6 @@ class UsersController < ApplicationController
 
   def mypage
     @user = User.find(params[:id])
-    @orders = Order.where(user_id: current_user).page(params[:page]).per(4)
-
     @favorites = @user.favorites.reverse_order
     @q = Product.includes(:discs,:musics).ransack(params[:q])
   end

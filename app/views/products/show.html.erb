@@ -37,11 +37,11 @@
 
 
 						<% if @product.stock > 0 && @product.stock <= 10 %>
+							<%= f.number_field :quantity, min: 1, max: @product.stock %>
+							<font color = "orange"><b><%= @alert_few %></b></font>
 							<div class="action row">
 							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
 							</div>
-								<%= f.number_field :quantity, min: 1, max: @product.stock %>
-								<font color = "orange"><b><%= @alert_few %></b></font>
 
 						<% elsif @product.stock === 0 %>
 

@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="orders-info-box">
-      <p class="orders-info">お気に入りリスト</p>
+      <p class="orders-info">購入履歴</p>
         <% @user.orders.reverse_each do |order| %>
           <div class="orders-contents">
             <table class="table">
@@ -75,7 +75,6 @@
             </table>
           </div>
         <% end %>
-        <%= paginate @orders, class: "pagenate" %>
     </div>
   </div>
 </div>
