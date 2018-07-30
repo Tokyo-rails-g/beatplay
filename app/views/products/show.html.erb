@@ -4,68 +4,84 @@
 	<%= render 'products/list', q: @q %>
 <!--             -->
 
-<div class="box">
+<div class="product-show">
+	<div class="product-show-box">
+		<div class="product-show-image-info-cart-box">
+			<div class="product-image-box">
+				<%= attachment_image_tag @product, :image, :fill, 400, 400, fallback: 'icon-mypage.jpg', :size => "400x400" %>
+			</div>
+			<div class="product-info-box">
+				<p><label>アルバム/シングル名</label> <%= @product.album_title %></p>
+				<p><label>アーティスト名：</label> <%= @product.artist %></p>
+				<p><label>レーベル名：</label> <%= @product.label %></p>
+				<p><label>ジャンル：</label> <%= @product.category.name %></p>
+				<% if @product.stock === 0 %>
+					<p><font color ="red"><b><%= @alert_zero %></b></font></p>
+				<% else %>
+					<p>在庫数：<%= @product.stock %><br></p>
+				<% end %>
+				<div class="product-add-favorite">
+					<% if user_signed_in? %>
+					    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-lg btn-danger" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="product-add-cart-box">
+				<% if user_signed_in? %>
 
-<%= @product.album_title %>
+					<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
-<%= @product.artist %>
-
-<%= @product.label %>
-
-<%= @product.category.name %>
-
-<% if @product.stock === 0 %>
-	<p><font color ="red"><b><%= @alert_zero %></b></font></p>
-<% else %>
-	<p>在庫数：<%= @product.stock %><br></p>
-<% end %>
-<div>
-	<% if user_signed_in? %>
-	    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-sm btn-danger" %>
-	<% end %>
-</div>
+						<div class="field row">
+							<label>数量</label>
+						</div>
 
 
-<% @product.discs.each do |disc| %>
-	<label>DISC</label>
-	<%= disc.disc_number %><br>
+						<% if @product.stock > 0 && @product.stock <= 10 %>
+							<%= f.number_field :quantity, min: 1, max: @product.stock %>
+							<font color = "orange"><b><%= @alert_few %></b></font>
+							<div class="action row">
+							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
+							</div>
 
-	<% disc.musics.each_with_index do |music| %>
-	<label>曲ID</label><%= music.id %>
-	<label>曲名(track_number)</label><%= music.track_number %>
-	<%= music.name %>
-	<label>bpm</label>
-	<%= music.bpm %><br>
-	<% end %>
+						<% elsif @product.stock === 0 %>
 
-<% end %>
-
-<% if user_signed_in? %>
-
-	<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
-
-		<div class="field row">
-			<label>数量</label>
+						<% else %>
+							<%= f.number_field :quantity, min: 1, max: @product.stock %>
+							<div class="action row">
+							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 
-
-		<% if @product.stock > 0 && @product.stock <= 10 %>
-		<div class="action row">
-		  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
+		<div class="product-disc-music-box">
+			<% @product.discs.each do |disc| %>
+				<p class="product-disc-data"><label>DISC</label><%= disc.disc_number %></p>
+				<table class="product-music-box">
+					<thead>
+							<tr>
+								<td class="product-music-info"><label>曲順</label></td>
+								<td class="product-music-info"><label>曲名</label></td>
+								<td class="product-music-info"><label>BPM</label></td>
+								<td class="product-music-info"><label>曲長</label></td>
+							</tr>
+					</thead>
+					<tbody>
+						<% disc.musics.each_with_index do |music| %>
+							<tr>
+								<td class="product-music-data"><p><%= music.track_number %></p></td>
+								<td class="product-music-data"><p><%= music.name %></p></td>
+								<td class="product-music-data"><p><%= music.bpm %></p></td>
+								<td class="product-music-data"><p><%= music.duration %></p></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
 		</div>
-			<%= f.number_field :quantity, min: 1, max: @product.stock %>
-			<font color = "orange"><b><%= @alert_few %></b></font>
-		<% elsif @product.stock === 0 %>
-
-		<% else %>
-		<div class="action row">
-		  	<%= f.submit 'カートに入れる', class: "btn btn-primary col-xs-3" %>
-		</div>
-			<%= f.number_field :quantity, min: 1, max: @product.stock %>
-		<% end %>
-
-	<% end %>
-<% end %>
+	</div>
 </div>
 
 

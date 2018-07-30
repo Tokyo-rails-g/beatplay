@@ -104,3 +104,108 @@ dl.search dd button span{
     height:20px;
     background:url('search.png') no-repeat scroll 0 0;
 }
+
+
+/*---------------my_page----------------*/
+
+.users-mypage{
+    width: 100%;
+}
+.header-title{
+    text-align: center;
+}
+.users-mypage-main-box{
+    display: flex;
+    flex-direction: row;
+}
+.users-favorites-info-box{
+    height: 1300px;
+    width: 40%;
+    margin: 40px;
+}
+.users-info-box{
+    height: 320px;
+    border: solid 3px;
+    border-radius: 10px;
+}
+.users-info{
+    font-size: 20px;
+    border-bottom: solid 2px;
+    text-align: center;
+}
+.current-user{
+    font-size: 15px;
+    border-bottom: solid 1px silver;
+}
+.favorites-info-box{
+    height: 960px;
+    margin-top: 20px;
+    border: solid 3px;
+    border-radius: 10px;
+    overflow: scroll;
+}
+.favorites-info{
+    font-size: 20px;
+    border-bottom: solid 2px;
+    text-align: center;
+}
+.favorites-contents{
+    display: flex;
+    flex-direction: row;
+}
+.favorites-product-image{
+    margin: 10px;
+}
+.favorites-product-info-box{
+    border-bottom: solid 1px silver;
+    margin: 10px;
+}
+.orders-info-box{
+    height: 1300px;
+    width: 60%;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    border: solid 3px;
+    border-radius: 10px;
+    overflow: scroll;
+}
+.orders-info{
+    font-size: 20px;
+    border-bottom: solid 2px;
+    text-align: center;
+}
+.orders-contents{
+    margin: 20px;
+    border: solid 2px;
+    border-radius: 10px;
+}
+.orders-address{
+    margin-left: 20px;
+}
+
+/*============ボタン類のCSS==============*/
+.edit-button-style{
+    margin:20px 0px 10px 100px;
+    border: solid 1px;
+    /*color: rgba(255, 255, 255, 0.8);*/
+    padding: 0 20px;
+    text-align: center;
+    font-size: 15px;
+    color: purple;
+    border-radius: 5px;
+    /*background-color: #202020;*/
+    line-height: 2.5;
+}
+
+.favorites-destroy-button-style{
+    border: solid 1px;
+    /*color: rgba(255, 255, 255, 0.8);*/
+    padding: 0 20px;
+    text-align: center;
+    font-size: 10px;
+    color: purple;
+    border-radius: 5px;
+    /*background-color: #202020;*/
+    line-height: 2.5;
+}

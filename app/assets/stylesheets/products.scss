@@ -75,3 +75,41 @@
 .box{
 	padding-top: 50px;
 }
+.product-show{
+	width: 100%;
+}
+.product-show-box{
+	width: 95%;
+	margin: 0 auto;
+}
+.product-show-image-info-cart-box{
+	display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    font-size: 20px;
+}
+.product-info-box{
+	margin: 70px;
+}
+.product-add-favorite{
+	margin-top: 30px;
+}
+.product-add-cart-box{
+	margin-top: 70px;
+}
+.product-disc-music-box{
+	width: 70%;
+	margin: 30px auto;
+	font-size: 17px;
+}
+.product-disc-data{
+	margin: 20px;
+}
+
+td.product-music-info{
+	padding: 5px 70px;
+}
+
+td.product-music-data{
+	padding: 5px 70px;
+}
