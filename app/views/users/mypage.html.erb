@@ -4,97 +4,78 @@
   <%= render 'products/list', q: @q %>
 <!--             -->
 
-<h1>MY PAGE</h1>
-<div class="container">
-
-    <div class="form-group">
-      <label class="col-sm-2 control-label">名前：</label>
-      <div class="col-sm-10">
-        <%= @user.last_name %><%= @user.first_name %>
+<div class="users-mypage">
+  <div class="users-mypage-main-box">
+    <div class="users-favorites-info-box">
+      <div class="users-info-box">
+        <p class="users-info">登録情報</p>
+        <p class="current-user"><label>名前：</label><%= @user.first_name %> <%= @user.last_name %></p>
+        <p class="current-user"><label>郵便番号：</label><%= @user.postal_code %></p>
+        <p class="current-user"><label>住所：</label><%= @user.pref + @user.city %><%= @user.address1 %> <%= @user.address2 %></p>
+        <p class="current-user"><label>電話番号：</label><%= @user.phone_number %></p>
+        <p class="current-user"><label>メールアドレス：</label><%= @user.email %></p>
+        <%= link_to edit_user_path(@user.id) do %>
+          <button type="button" class="edit-button-style" >登録内容編集</button>
+        <% end %>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">登録住所：</label>
-        <div class="col-sm-10">
-          <%= @user.postal_code %>
-          <%= '@user.pref' + @user.city %>
-          <%= @user.address1 + @user.address2 %>
-        </div>
-      </div>
-    <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">電話番号：</label>
-        <div class="col-sm-10">
-          <%= @user.phone_number %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-2 control-label">
-        <label class="col-sm-2 control-label">メール：</label>
-        <div class="col-sm-10">
-          <%= @user.email %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <%= link_to "edit", edit_user_path(@user.id), class:"btn btn-success" %>
-      </div>
-    </div>
-  </form>
-
-  <div>
-    <label>お気に入り一覧</label><br>
-    <% @favorites.each do |favorite| %>
-      <label>アルバム/シングル名</label>
-      <%= favorite.product.album_title %><br>
-
-      <label>アーティスト名</label>
-      <%= favorite.product.artist %><br>
-
-      <div>
-       <%= link_to "お気に入りにから削除する", product_favorites_path(favorite.product_id), method: :delete, class: "btn-sm btn-danger" %>
-      </div>
-
-    <% end %>
-  </div>
-
-
-
-
-
-
-
-  <div class="col-12">
-    	<table class="table">
-          <thead>
-            <tr>
-              <th>購入日</th>
-              <th>ステータス</th>
-              <th>合計金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @user.orders.each do |order| %>
-              <tr><%= order.created_at %></tr>
-              <tr><%= order.status %></tr>
-              <tr><%= order.total %></tr>
-          </tbody>
-        </table>
-    </div>
-              <br><div>
-
-                <% order.order_items.each_with_index do |order_item| %>
-                  <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %><br>
-                  <label>タイトル</label><%= order_item.product.album_title %><br>
-                  <label>アーティスト</label><%= order_item.product.artist %><br>
-                  <label><%= order_item.quantity %>枚</label>
-                  <label>¥<%= order_item.price %> </label>
+      <div class="favorites-info-box">
+        <p class="favorites-info">お気に入りリスト</p>
+          <% @favorites.each do |favorite| %>
+            <div class="favorites-contents">
+              <%= link_to product_path(favorite.product.id) do %>
+                <div class="favorites-product-image">
+                  <%= attachment_image_tag favorite.product, :image, :fill, 150, 150, fallback: 'icon-mypage.jpg', :size => "150x150" %>
+                </div>
+              <% end %>
+              <div class="favorites-product-info-box">
+                <p class="favorites-product-info"><label>アルバム/シングル名：</label><%= favorite.product.album_title %></p>
+                <p class="favorites-product-info"><label>アーティスト名：</label><%= favorite.product.artist  %></p>
+                <%= link_to product_favorites_path(favorite.product_id), method: :delete do %>
+                  <button type="button" class="favorites-destroy-button-style" >お気に入りから外す</button>
                 <% end %>
               </div>
-
-              <label> 問い合わせ </label>
-            <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+    <div class="orders-info-box">
+      <p class="orders-info">お気に入りリスト</p>
+        <% @user.orders.reverse_each do |order| %>
+          <div class="orders-contents">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>購入日： <%= order.created_at.strftime('%Y年%m月%d日') %></th>
+                  <th>ステータス： <%= order.status %></th>
+                  <th>合計金額： ￥<%= order.total %></th>
+                </tr>
+              </thead>
+            </table>
+            <p class="orders-address">送付先： </p>
+            <table>
+              <thead>
+                <% order.order_items.each_with_index do |order_item| %>
+                  <tr>
+                    <td class="orders-product-image">
+                      <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %>
+                    </td>
+                    <td class="orders-product-title-artist-box">
+                      <p><label>アルバム/シングル名：</label> <%= order_item.product.album_title %></p>
+                      <p><label>アーティスト：</label> <%= order_item.product.artist %></p>
+                    </td>
+                    <td class="orders-product-quantity-box">
+                      <p><label>購入枚数：</label> <%= order_item.quantity %>枚</p>
+                    </td>
+                    <td class="orders-product-subtotal-box">
+                      <p class="orders-product-subtotal"><label>小計：</label>￥<%= order_item.quantity  *  order_item.product.price %></p>
+                    </td>
+                  </tr>
+                <% end %>
+              </thead>
+            </table>
+          </div>
+        <% end %>
+        <%= paginate @orders, class: "pagenate" %>
+    </div>
+  </div>
 </div>
