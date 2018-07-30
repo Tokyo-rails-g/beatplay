@@ -23,8 +23,8 @@ class Admins::ProductsController < ApplicationController
 
   def new
     if params[:product].present?
-      @product = Product.all
-      render plain: Product.where(artist: 渋谷慶一郎).pluck(:album_title)
+      # @product = Product.all
+      # render plain: Product.where(artist: 渋谷慶一郎).pluck(:album_title)
       @product = Product.new(product_params)
       @product.save
       # disc = @product.discs.build

@@ -16,19 +16,19 @@
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to admins_top_path do %>
-              <%= image_tag('i-cheeze.jpeg', :size => 5*5) %>TOP<% end %>
+              <i class="fas fa-chalkboard-teacher"></i>TOP<% end %>
             </li>
             <li><%= link_to admins_products_path do %>
-              <%= image_tag('i-product.jpeg', :size => 5*5) %>CD<% end %>
+              <i class="fas fa-compact-disc"></i>CD<% end %>
             </li>
             <li><%= link_to admins_orders_index_path do %>
-              <%= image_tag('i-order.jpeg', :size => 5*5) %>ORDER<% end %>
+              <i class="fa fa-file-text-o" aria-hidden="true"></i>ORDER<% end %>
             </li>
             <li><%= link_to admins_users_path do %>
-              <%= image_tag('i-user.jpeg', :size => 5*5) %>USER<% end %>
+              <i class="fa fa-address-card" aria-hidden="true"></i>USER<% end %>
             </li>
             <li><%= link_to admins_contacts_index_path do %>
-              <%= image_tag('i-contact2.jpeg', :size => 5*5) %>CONTACT<% end %>
+              <i class="fa fa-comments-o" aria-hidden="true"></i>CONTACT<% end %>
             </li>
             <li><%= link_to destroy_admin_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" } do %>
               <span class="glyphicon glyphicon-log-out" aria-hidden="true">LOGOUT</span>
