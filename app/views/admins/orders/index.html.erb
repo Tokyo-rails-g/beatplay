@@ -41,16 +41,18 @@
     </div>
 
     <div class="extraction-box">
-      <div class="search-id-box">
-        <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
-          <%= f.search_field :id_eq %>
-          <%= f.submit "ID検索" %>
+      <div class="box_for_position">
+        <div class="search-id-box">
+          <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
+            <%= f.search_field :id_eq %>
+            <%= f.submit "ID検索" %>
         <% end %>
-      </div>
-      <div class="btn-group btn-group-sm status-box" role="group">
-        <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
-        <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
-        <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+        </div>
+        <div class="btn-group btn-group-sm status-box" role="group">
+         <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
+         <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
+         <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+        </div>
       </div>
     </div>
 
