@@ -21,9 +21,9 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-    # if admin_signed_in?
-    #   redirect_to admins_product_path(@product)
-    # else
+    if admin_signed_in?
+      redirect_to admins_product_path(@product)
+    else
       @cartitem = CartItem.new
       @q = Product.includes(:discs,:musics).ransack(params[:q])
 
