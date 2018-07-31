@@ -12,8 +12,6 @@ class OrdersController < ApplicationController
     end
     @user = current_user
     @address = Address.new( user_id: @user.id,  first_name: @user.first_name,last_name: @user.last_name,pref: @user.pref, postal_code: @user.postal_code,city: @user.city, address1: @user.address1, address2: @user.address2 )
-    # @address.save
-    # binding.pry
   end
 
 # 購入確認画面
@@ -22,21 +20,18 @@ class OrdersController < ApplicationController
     @cart = Cart.find_by(user_id: current_user)
     @cart_items = @cart.cart_items
     @order = Order.new
-
     @address = Address.new(address_params)
     if @address.valid?
       @user = current_user
       render :new
     end
     @user = current_user
-    # @address = @user.addresses.last
     @address.user_id = current_user.id
 
     @total = 0
     @cart_items.each do |cart_item|
       @total = @total + cart_item.subtotal.to_i
     end
-    # binding.pry
   end
 
   def confirm_user
@@ -72,16 +67,17 @@ class OrdersController < ApplicationController
       @total = @total + cart_item.subtotal.to_i
     end
     @order.total = @total
-    # binding.pry
     @order.user_id = current_user.id
-    if  @address != nil
-        @address = Address.last
-        @order.address_id = @address.id
-    end
+    @address = Address.new(address_params)
+    @address.user_id = current_user.id
+    @address.save
+    @order.address_id = @address.id
+    # if  @address != nil
+    #     @address = Address.last
+    # end
     # @order.saveされる前に、cartsテーブルのuser_idをordersテーブルのuser_idに格納
     @order.status = 0.to_i
     @order.user_id = @cart.user_id
-
     if @order.save
     # カートアイテムIDをオーダーアイテムIDにコピーし、@order_itemを保存
       @cart_items = @cart.cart_items

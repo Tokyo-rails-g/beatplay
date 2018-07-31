@@ -66,6 +66,18 @@
 	</div>
 	<div class="buttons-box">
 		<%= form_for @order, url: orders_path(@order), method: :post do |f| %>
+			<%= fields_for @address do |address| %>
+				<%= address.hidden_field :user_id, value: current_user.id.to_i %>
+				<%= address.text_field :first_name %>
+			    <%= address.text_field :last_name %>
+				<%= address.text_field :postal_code %>
+				<%= address.text_field :pref, value: @address.pref%>
+				<%#= address.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, :selected => @address.pref %>
+			    <%= address.text_field :city %>
+			    <%= address.text_field :address1 %>
+			    <%= address.text_field :address2 %>
+
+
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
@@ -89,11 +101,13 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
 									<%= f.submit "確定", class: "btn btn-danger" %>
+									<% binding.pry %>
 								</div>
 							</div>
 						</div>
 					</div>
 			</div>
+		<% end %>
 		<% end %>
 	</div>
 </section>
