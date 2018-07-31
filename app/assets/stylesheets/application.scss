@@ -129,9 +129,9 @@ footer{
     text-align: center;
 }
 
-// .headline{
-// 	padding: 10px;
-// }
+/*.headline{
+	padding: 10px;
+}*/
 .header-buttons{
 	margin: 10px;
 	border: solid 2px;
@@ -152,4 +152,12 @@ footer{
 	text-align: center;
 	font-size: 30px;
 	margin-top: 20px;
+}
+.alert-few{
+	color: orange;
+	font-weight: bold;
+}
+.alert-zero{
+	color: red;
+	font-weight: bold;
 }
