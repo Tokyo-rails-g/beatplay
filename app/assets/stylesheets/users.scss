@@ -142,12 +142,16 @@ dl.search dd button span{
     margin-top: 20px;
     border: solid 3px;
     border-radius: 10px;
-    overflow: scroll;
 }
 .favorites-info{
+    height: 30px;
     font-size: 20px;
     border-bottom: solid 2px;
     text-align: center;
+}
+.favorites-all-contents{
+    height: 610px;
+    overflow: scroll;
 }
 .favorites-contents{
     display: flex;
@@ -168,12 +172,16 @@ dl.search dd button span{
     margin-bottom: 40px;
     border: solid 3px;
     border-radius: 10px;
-    overflow: scroll;
 }
 .orders-info{
+    height: 30px;
     font-size: 20px;
     border-bottom: solid 2px;
     text-align: center;
+}
+.orders-all-contents{
+    height: 940px;
+    overflow: scroll;
 }
 .orders-contents{
     margin: 20px;
@@ -192,6 +200,108 @@ dl.search dd button span{
 .user-info-box {
     margin: 0 auto;
 }
+
+/*============ユーザー編集画面==============*/
+.users-edit{
+    width: 60%;
+    margin: 40px auto;
+    border: solid 3px;
+    border-radius: 10px;
+}
+.users-edit-title{
+    font-size: 25px;
+    border-bottom: solid 2px;
+}
+.users-edit-boxes{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 15px;
+}
+.users-edit-information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px;
+    border-bottom: solid 1px silver;
+}
+.users-edit-information-name{
+    margin: 40px;
+    border-bottom: solid 1px silver;
+}
+.users-edit-information-contents{
+    display: flex;
+    flex-direction: row;
+}
+.users-edits-button-style{
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+/*============ユーザー編集各詳細画面　退会ページ==============*/
+.users-edit-show-boxes{
+    width: 70%;
+    margin: 0 auto;
+    font-size: 17px;
+}
+.users-edit-show-informations{
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.uses_edit-show-info{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+}
+.actions-users-edit-show-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.actions-users-edit-show{
+    font-size: 15px;
+    margin: 30px 0;
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+    line-height: 3;
+}
+.actions-users-edit-show-back{
+    font-size: 15px;
+    margin: 30px 0;
+    padding: 0 20px;
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+    line-height: 3;
+}
+
+.users_edit-show-prefecture{
+    margin-top: 15px;
+}
+
+.users_edit-show-current-phonenumber-email-box{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: solid 1px;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+.users-unsubscribe-box{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.actions-users-unsubscribe-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0;
+}
+
+
+
 
 /*============ボタン類のCSS==============*/
 .edit-button-style{

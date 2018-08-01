@@ -30,12 +30,10 @@
 
 					<%= form_for(@cartitem, url: add_cart_items_path(@product) ,method: :post) do |f| %>
 
-						<div class="field row">
-							<label>数量</label>
-						</div>
-
-
 						<% if @product.stock > 0 && @product.stock <= 10 %>
+							<div class="field row">
+								<label>数量</label>
+							</div>
 							<%= f.number_field :quantity, min: 1, max: @product.stock %>
 							<font color = "orange"><b><%= @alert_few %></b></font>
 							<div class="action row">
@@ -45,6 +43,9 @@
 						<% elsif @product.stock === 0 %>
 
 						<% else %>
+							<div class="field row">
+								<label>数量</label>
+							</div>
 							<%= f.number_field :quantity, min: 1, max: @product.stock %>
 							<div class="action row">
 							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
