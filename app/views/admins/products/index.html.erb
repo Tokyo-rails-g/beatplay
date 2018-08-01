@@ -1,33 +1,21 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-product-index">
-  <div class="product-search-box">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :album_title_cont_any, "シングル/アルバム名：" %>
-        <%= f.search_field :album_title_cont_any %><br>
-      <%= f.label :artist_cont_any, "アーティスト：" %>
-        <%= f.search_field :artist_cont_any %><br>
-      <%= f.label :discs_musics_name_cont_any, "曲名："%>
-        <%= f.search_field :discs_musics_name_cont_any %><br>
-      <%= f.submit "検索"%>
-    <% end %>
-  </div>
+<div class="container ad-page-title">
 
-  <div class="product-index-box">
-    <h4>商品一覧</h4>
-      <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
+  <div class="ad-product-index-box">
+    <div class="ad-or-index-box">
       	<table class="table table-hover">
+          <div class="ad-tbl-title">商品一覧</div>
         		<thead>
           		<tr>
-                <th></th>
                 <th></th>
             		<th><%= sort_link(@q, :image, "画像") %></th>
             		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
             		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
             		<th><%= sort_link(@q, :price, "値段") %></th>
-            		<th><%= sort_link(@q, :stock, "在庫数") %></th>
+            		<th><%= sort_link(@q, :stock, "在庫") %></th>
                 <th></th>
-            		<th><%= sort_link(@q, :favorite_count, "お気に入り数") %></th>
+            		<th><%= sort_link(@q, :favorite_count, "♡") %></th>
           		</tr>
         		</thead>
 
@@ -36,10 +24,9 @@
         		<tbody>
                   <% @searchitems.each_with_index do |searchitem, i| %>
           		      <tr>
-                      <td><input type="checkbox"></td>
                       <td><%= i+1 %>.</td>
                       <td><%= attachment_image_tag searchitem, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	    <td><%= link_to searchitem.album_title, admins_product_path(searchitem.id) %></td>
+             		 	    <td style="width: 280"><%= link_to searchitem.album_title, admins_product_path(searchitem.id) %></td>
               		    <td><%= searchitem.artist %></td>
               		    <td><%= searchitem.price %></td>
               		    <td><%= searchitem.stock %></td>
@@ -60,5 +47,23 @@
             <% end %>
       	</table>
       <%= paginate @searchitems %>
+  </div>
+
+  <div class="ad-ransack-box">
+    <div class="box-for-position2">
+      <div class="ad-search-box">
+        <%= search_form_for @q, url: admins_products_path do |f| %>
+          シングル/アルバム名：<br>
+            <%= f.search_field :album_title_cont_any %>  <%= f.submit "検索"%><br>
+          アーティスト：<br>
+            <%= f.search_field :artist_cont_any %>  <%= f.submit "検索"%><br>
+          曲名：<br>
+            <%= f.search_field :discs_musics_name_cont_any %>  <%= f.submit "検索"%><br>
+        <% end %>
+      </div>
+      <div class="ad-new-btn">
+        <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
+      </div>
+    </div>
   </div>
 </div>

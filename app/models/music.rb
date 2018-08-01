@@ -5,4 +5,7 @@ class Music < ApplicationRecord
 
 	scope :asc, -> { order("musics.track_number ASC")}
 	#track_number順でのDB格納をデフォルト設定
+
+	validates :track_number, presence: true
+	validates :name, presence: true
 end

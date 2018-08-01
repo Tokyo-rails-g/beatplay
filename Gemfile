@@ -74,8 +74,9 @@ gem 'nested_form_fields'
 gem 'pry-rails'
 # enum日本語化
 gem 'enum_help'
-#親/子/孫関係で動的にフォームを追加/削除
+# 親/子/孫関係で動的にフォームを追加/削除
 gem 'cocoon'
-
+# 論理削除したuserをadmin側で表示
+gem 'paranoia'
 # 都道府県コードから都道府県名に変換するgem
 gem 'jp_prefecture'
