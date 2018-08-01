@@ -3,6 +3,7 @@ class CartsController < ApplicationController
     # before_action :setup_cart_item!, only: [:index, :destroy]
 
   def index
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
     @cart = Cart.find_by(user_id: current_user)
     @cart_item = CartItem.find_by(params[:cart_id])
     if @cart_item == nil

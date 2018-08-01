@@ -1,5 +1,7 @@
 <title>購入確認画面</title>
-<section class= "confirm-main-box">
+<!-- headerの部分テンプレート -->
+<%= render 'layouts/user_header'  %>
+<section class= "confirm-main-box user-inverse">
 	<div class="search-box">
 		<div class ="container">
 			<p class="col-lg-4"></p>
@@ -8,8 +10,8 @@
 		</div>
 	</div>
 		<h2>ご注文内容の確認</h2>
-	<div class="orders-box">
-		<table class="cartlist">
+		<div class="orders-box">
+			<table class="cartlist">
                 <thead>
                   <% price_sum = 0 %>
                     <% @cart_items.each_with_index do |cart_item, i| %>
@@ -41,43 +43,39 @@
                 </thead>
             </table>
 
-		 </div>
+		</div>
 	<h3>送付する住所</h3>
-</div>
 	<div class="check-addres">
 <!-- Addressモデルにデータがあるかどうかを確認しています ---->
 <!-- データが入っていた場合はそのデータの中から最新の情報を引っ張ってきて表示されます -->
-	<div class="user-address2">
-		<% if @address == nil %>
-			<div>
-			郵便番号：<%= @user.postal_code %><br>
-			住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
-			名前： <%= @user.first_name %> <%= @user.last_name %>
-			</div>
-		<% else %>
+		<div class="user-address2">
+			<% if @address == nil %>
+				<div>
+				郵便番号：<%= @user.postal_code %><br>
+				住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
+				名前： <%= @user.first_name %> <%= @user.last_name %>
+				</div>
+			<% else %>
 
-			<div>
-			郵便番号：<%= @address.postal_code %><br>
-			住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
-			名前： <%= @address.first_name %> <%= @address.last_name %>
-			</div>
-		<% end %>
-	</div>
+				<div>
+				郵便番号：<%= @address.postal_code %><br>
+				住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
+				名前： <%= @address.first_name %> <%= @address.last_name %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 	<div class="buttons-box">
 		<%= form_for @order, url: orders_path(@order), method: :post do |f| %>
 			<%= fields_for @address do |address| %>
 				<%= address.hidden_field :user_id, value: current_user.id.to_i %>
-				<%= address.text_field :first_name %>
-			    <%= address.text_field :last_name %>
-				<%= address.text_field :postal_code %>
-				<%= address.text_field :pref, value: @address.pref%>
-				<%#= address.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, :selected => @address.pref %>
-			    <%= address.text_field :city %>
-			    <%= address.text_field :address1 %>
-			    <%= address.text_field :address2 %>
-
-
+				<%= address.hidden_field :first_name %>
+			    <%= address.hidden_field :last_name %>
+				<%= address.hidden_field :postal_code %>
+				<%= address.hidden_field :pref, value: @address.pref%>
+			    <%= address.hidden_field :city %>
+			    <%= address.hidden_field :address1 %>
+			    <%= address.hidden_field :address2 %>
 		<div class="view-total-box">
 			<p>お支払方法</p>
 			<div class="select-payment">
@@ -105,8 +103,9 @@
 							</div>
 						</div>
 					</div>
+		<!-- モーダル エンド-->
 			</div>
-		<% end %>
-		<% end %>
+			<% end %><!-- end of fields_for -->
+		<% end %><!-- end of form_for -->
 	</div>
 </section>

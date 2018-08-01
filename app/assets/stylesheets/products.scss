@@ -18,7 +18,7 @@
 	background-position: center;
 	background-size: cover;
 	width: 100%;
-	height: 400px;
+	height: 300px;
 	display: block;
 	/*position: fixed;*/
 	/*background-color: darkred;*/
@@ -33,7 +33,7 @@
 }
 .sort-box{
 	width: 100%;
-	height: 100px;
+	height: 70px;
 	/*background-color: silver;*/
 }
 .products-box{
@@ -81,11 +81,12 @@
 .product-show-box{
 	width: 95%;
 	margin: 0 auto;
+	padding-bottom: 20px;
 }
 .product-show-image-info-cart-box{
 	display: flex;
     flex-direction: row;
-    margin-top: 40px;
+    padding-top: 40px;
     font-size: 20px;
 }
 .product-info-box{
@@ -99,8 +100,9 @@
 }
 .product-disc-music-box{
 	width: 70%;
-	margin: 30px auto;
-	font-size: 17px;
+    margin: 0px auto;
+    padding-bottom: 10px;
+    font-size: 17px;
 }
 .product-disc-data{
 	margin: 20px;

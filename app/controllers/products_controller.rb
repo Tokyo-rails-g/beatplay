@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
 
 # 商品一覧
   def index
-
     @alert_few = "残りわずか！"
     @alert_zero = "在庫なし"
 
@@ -23,7 +22,6 @@ class ProductsController < ApplicationController
   	@product = Product.find(params[:id])
     @cartitem = CartItem.new
     @q = Product.includes(:discs,:musics).ransack(params[:q])
-
     @alert_few = "残りわずか！"
     @alert_zero = "在庫なし"
   end
