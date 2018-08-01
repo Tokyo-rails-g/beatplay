@@ -1,15 +1,10 @@
 <head>
 	<title>購入決定後</title>
 </head>
+<!-- headerの部分テンプレート -->
+<%= render 'layouts/user_header' %>
 <section>
-	<div class="search-box">
-		<div class ="container">
-			<p class="col-lg-4"></p>
-			<p class="col-lg-4 search-form"><input class="form-control" type="search" name="search-form" placeholder="検索"></p>
-			<p class="col-lg-4"></p>
-		</div>
-	</div>
-	<div class="main-box">
+	<div class="main-box user-inverse">
 			<div class="thanks-icon">
 				<%= image_tag 'thanks-logo.png', :size => "200x200"%>
 				<!-- <img src="assets/thanks-logo.png" alt=""> -->
@@ -25,7 +20,7 @@
 			</div>
 		</div>
 		<div class="buttons">
-			<%= link_to mypage_user_path(@user) do %>
+			<%= link_to products_path do %>
             	<p class="btn btn-default header-buttons">買い物を続ける</p>
             <% end %>
 		</div>

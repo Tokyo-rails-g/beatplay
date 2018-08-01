@@ -35,7 +35,7 @@ class Admins::ProductsController < ApplicationController
       # # binding.pry
       # music.save
       flash[:notice] = '商品を追加しました！'
-      redirect_to admins_product_path(@product.id)
+      redirect_to admins_products_path
     else
       @product = Product.new
     end

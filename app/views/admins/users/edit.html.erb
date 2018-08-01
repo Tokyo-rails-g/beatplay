@@ -24,7 +24,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">住所：</label>
             <div class="col-sm-8">
-              <%= f.text_field :pref %><%= f.text_field :city %>
+              <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name %>  <%= f.text_field :city %>
               <%= f.text_field :address1 %><%= f.text_field :address2 %>
             </div>
         </div>

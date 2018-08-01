@@ -1,25 +1,24 @@
-
 <head>
 		<title>カート内商品一覧</title>
 </head>
+<!-- headerの部分テンプレート -->
+<%= render 'layouts/user_header'  %>
 <section>
-		<div class="search-box">
-			<div class ="container">
-				<p class="col-lg-4"></p>
-				<p class="col-lg-4 search-form"><input class="form-control" type="search" name="search-form" placeholder="検索"></p>
-				<p class="col-lg-4"></p>
-			</div>
-		</div>
+		<!-- 検索フォーム -->
+	<%= render 'products/list', q: @q %>
 			<% if @trigger_numb == 1 %>
+			<div class="user-inverse">
 				<div class = "blank-box">
-					<font size="8">Blank!</font>
-					<div class="cart-blank">
-						<%= image_tag('blank_cart.png') %>
+					<div style="padding-top:10px;">
+						<font size="8">Blank!</font>
 					</div>
-					<p>カートは空です</p>
+					<div class="cart-blank">
+						<%= image_tag('blank_cart.png', size: "350x250") %>
+					</div>
 				</div>
+			</div>
 			<% else @trigger_numb == 2 %>
-				<div class="main-box">
+				<div class="main-box user-inverse">
 					<div class="cart-item-box">
 						<table class="cartlist">
 							<thead>
