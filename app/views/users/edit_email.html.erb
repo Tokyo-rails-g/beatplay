@@ -1,39 +1,27 @@
 
-<section class="view-edit-box">
-
+<div class="users-edit">
 	<div class="mail-icon">
 	    <div class="">
 	    	<i class="fa fa-sign-in"></i>
 	    </div>
-		<p class="page-title">メールアドレスの変更</p><br>
-	</div>
-
-	<div class="main-box">
-
-		<div class="field row">
-		    <label>現在のメールアドレス</label>
-		    <%= @user.email %>
-		</div>
-
-		<%= form_for(@user) do |f| %>
-
-
-			<div class="field row">
-			    <label>新しいメールアドレス</label>
-			    <%= f.text_field :email, class: "user_email col-xs6" %>
+		<p class="users-edit-title">メールアドレスの変更</p>
+  	</div>
+    <div class="users-edit-show-boxes">
+    	<%= form_for(@user) do |f| %>
+			<div class="users-edit-show-informations">
+				<label>現在のメールアドレス</label><br>
+				<div>
+					<div class="users_edit-show-current-phonenumber-email-box"><%= @user.email %></div>
+				</div>
+	    	</div>
+	    	<div class="users-edit-show-informations">
+	    		<label>新しいメールアドレス</label>
+	    		<p><%= f.text_field :email, class: "uses_edit-show-info col-xs-5", :placeholder => "メールアドレス" %>
+	    	</div>
+	    	<div class="actions-users-edit-show-box">
+			<%= f.submit "変更内容を保存", class: "actions-users-edit-show" %>
+			<%= link_to "戻る", edit_user_path(@user.id),class: "actions-users-edit-show-back" %>
 			</div>
-
-			<div class="actions">
-				<%= f.submit "変更内容を保存" %>
-			</div>
-
 		<% end %>
-
-		<div class="row">
-	        <%= link_to edit_user_path(@user.id), class: " col-xs-3 btn btn-default glyphicon glyphicon-wrench" do %> 戻る
-	        <% end %>
-	    </div>
-	</div>
-</section>
-
-
+    </div>
+</div>

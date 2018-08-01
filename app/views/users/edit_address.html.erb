@@ -1,51 +1,37 @@
 
-<section class="view-edit-box">
-
+<div class="users-edit">
 	<div class="mail-icon">
 	    <div class="">
 	    	<i class="fa fa-sign-in"></i>
 	    </div>
-		<p class="page-title">住所の変更</p><br>
-	</div>
-
-	<div class="main-box">
-
-		<%= form_for(@user) do |f| %>
-
-			<div class="field row">
-			    <label>郵便番号</label>
-			    <%= f.text_field :postal_code, class: "user_postal_code col-xs-3" %>
+		<p class="users-edit-title">住所の変更</p>
+  	</div>
+    <div class="users-edit-show-boxes">
+    	<%= form_for(@user) do |f| %>
+			<div class="users-edit-show-informations">
+				<label>郵便番号</label>
+				<p><%= f.text_field :postal_code, class: "uses_edit-show-info col-xs-3", :placeholder => "郵便番号" %></p>
+	    	</div>
+	    	<div class="users-edit-show-informations-pref">
+	    		<label>都道府県</label>
+	    		<p class="users_edit-show-prefecture"><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name%></p>
+	    	</div>
+	    	<div class="users-edit-show-informations">
+	    		<label>市町村</label>
+	    		<p><%= f.text_field :city, class: "uses_edit-show-info col-xs-8", :placeholder => "市町村" %></p>
+	    	</div>
+	    	<div class="users-edit-show-informations">
+	    		<label>番地</label>
+	    		<p><%= f.text_field :address1, class: "uses_edit-show-info col-xs-5", :placeholder => "番地" %></p>
+	    	</div>
+	    	<div class="users-edit-show-informations">
+	    		<label>建物名/部屋番号</label>
+			    <p><%= f.text_field :address2, class: "uses_edit-show-info col-xs-8", :placeholder => "建物名/部屋番号" %></p>
+	    	</div>
+	    	<div class="actions-users-edit-show-box">
+			<%= f.submit "変更内容を保存", class: "actions-users-edit-show" %>
+			<%= link_to "戻る", edit_user_path(@user.id),class: "actions-users-edit-show-back" %>
 			</div>
-
-			<div class="field row">
-			    <label>都道府県</label>
-			    <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name %>
-			</div>
-
-			<div class="field row">
-			    <label>市町村</label>
-			    <%= f.text_field :city, class: "user_city col-xs-3" %>
-			</div>
-
-			<div class="field row">
-			    <label>番地</label>
-			    <%= f.text_field :address1, class: "user_address1 col-xs-3" %>
-			</div>
-
-			<div class="field row">
-			    <label>建物名　部屋番号</label>
-			    <%= f.text_field :address2, class: "user_address2 col-xs-3" %>
-			</div>
-
-			<div class="actions">
-				<%= f.submit "変更内容を保存" %>
-			</div>
-
 		<% end %>
-
-		<div class="row">
-	        <%= link_to edit_user_path(@user.id), class: " col-xs-3 btn btn-default glyphicon glyphicon-wrench" do %> 戻る
-	        <% end %>
-	    </div>
-	</div>
-</section>
+    </div>
+</div>

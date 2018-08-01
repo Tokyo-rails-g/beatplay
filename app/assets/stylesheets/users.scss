@@ -213,9 +213,9 @@ dl.search dd button span{
     border-bottom: solid 2px;
 }
 .users-edit-boxes{
-    width:70%;
+    width: 80%;
     margin: 0 auto;
-    font-size: 17px;
+    font-size: 15px;
 }
 .users-edit-information{
     display: flex;
@@ -228,8 +228,78 @@ dl.search dd button span{
     margin: 40px;
     border-bottom: solid 1px silver;
 }
-.users-edits-button-style{
+.users-edit-information-contents{
+    display: flex;
+    flex-direction: row;
 }
+.users-edits-button-style{
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+/*============ユーザー編集各詳細画面　退会ページ==============*/
+.users-edit-show-boxes{
+    width: 70%;
+    margin: 0 auto;
+    font-size: 17px;
+}
+.users-edit-show-informations{
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.uses_edit-show-info{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+}
+.actions-users-edit-show-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.actions-users-edit-show{
+    font-size: 15px;
+    margin: 30px 0;
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+    line-height: 3;
+}
+.actions-users-edit-show-back{
+    font-size: 15px;
+    margin: 30px 0;
+    padding: 0 20px;
+    color: purple;
+    border: solid 1px;
+    border-radius: 5px;
+    line-height: 3;
+}
+
+.users_edit-show-prefecture{
+    margin-top: 15px;
+}
+
+.users_edit-show-current-phonenumber-email-box{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: solid 1px;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+.users-unsubscribe-box{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.actions-users-unsubscribe-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0;
+}
+
 
 
 

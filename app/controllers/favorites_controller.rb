@@ -21,7 +21,6 @@ class FavoritesController < ApplicationController
   	@product = Product.find(params[:product_id])
     @product.favorite_count = @product.favorite_count - 1
     @product.save
-    binding.pry
   	favorite = current_user.favorites.find_by(product_id: params[:product_id])
   	favorite.destroy
   	flash[:success] = '商品をお気に入りから削除しました。'
