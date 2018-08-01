@@ -12,27 +12,74 @@
 	border-radius: 5px;
 	background-color: silver;*/
 
-.ad-product-index {
+.ad-product-index-box {
 	width: 90%;
+	margin: 30px auto;
 	display: flex;
-	flex-direction: row-reverse;
 	justify-content: center;
+}
+.ad-page-title {
+	width: 90%;
+	margin: 0 auto;
+	padding: 20px;
+}
+.ad-title-btn {
+	width: 150px;
+	text-align: center;
+	margin: 20px auto;
+	border-radius: 30px; /*角の丸み*/
+ 	background-color: #EEEEEE; /* 背景色 */
+ 	padding: 20px;
+ 	font-size: 16px;
+}
+.ad-tbl-title {
+	font-size: 18px;
+/*	position: relative;
+	display: inline-block;*/
+	margin-top: 30px;
+	margin-right: 60%;
+	padding-left: 10%;
+	padding-bottom: 5px;
+	border-bottom: solid 2px;
+}
+/*.ad-tbl-top:before {
+	content: '';
+	position: absolute;
+	left: 300%;
+	bottom: -5px;
+	display: inline-block;
+	width: 800px;
+	border-radius: 2px;
+}*/
+.ad-board-title {
+	font-size: 18px;
+	margin: 30px 120px 5px 50px;
+	padding-bottom: 5px;
+	border-bottom: solid 2px;
+}
+.ad-ransack-box {
+	width: 20%;
 	margin: 10px;
+	position: relative;
 }
-.product-search-box {
-	width: 30%;
-	margin-top: 40px;
-	postion: relative;
+.box-for-position2 {
+	position: fixed;
+	margin-left: 40px;
+	padding: 10px 10px 10px 30px;
+	border: solid 1px;
+	border-radius: 50px;
 }
-.product-index-box {
-	width: 70%;
+.ad-new-btn {
+	margin-top: 30px;
 }
 
 /*--商品編集--*/
 .edit-product {
 	margin: 30px;
 }
-
+.ad-album-title {
+	font-size: 22px;
+}
 
 /*--商品詳細--*/
 .ad-pro-show-box {

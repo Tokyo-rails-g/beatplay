@@ -5,13 +5,14 @@
 		<div class="product-info-box">
 			<p class="admin-subtitles">商品詳細</p>
 			<div class="">
-				<p><%= @product.album_title %></p>
+				<p class="ad-album-title"><%= @product.album_title %></p>
 				<p><label>アーティスト：</label><%= @product.artist %></p>
 				<div class="product-img">
 					<%= attachment_image_tag @product, :image, fallback: 'icon-mypage.jpg', :size => "250x250", class: "admin-product-img" %>
 				</div>
 				<p><label>価格 ：¥</label><%= @product.price %></p>
 				<p><label>リリース年：</label><%= @product.release_year %>年</p>
+				<p><label>レーベル名：</label><%= @product.label %></p>
 				<p><label>登録日：</label><%= @product.created_at.strftime('%Y年%m月%d日') %></p>
 				<% if @product.created_at.blank? %>
 					<p><label>最終編集日：</label>編集履歴はありません</p>
@@ -24,17 +25,17 @@
 						<p>Disc No.<%= disc.disc_number %></p>
 					<table class="table music-table">
 						<thead>
-								<tr></tr>
-								<tr></tr>
-								<tr></tr>
-								<tr></tr>
+							<tr></tr>
+							<tr></tr>
+							<tr></tr>
+							<tr></tr>
 						</thead>
+						<% disc.musics.each_with_index do |music, i| %>
 						<tbody>
-							<% disc.musics.each_with_index do |music, i| %>
-								<td><%= i+1 %>. </td>
-								<td>「<%= music.name %>」</td>
-								<td>BPM: <%= music.bpm %></td>
-								<td>曲長: <%= music.duration %></td>
+							<td><%= i+1 %>. </td>
+							<td>「<%= music.name %>」</td>
+							<td>BPM: <%= music.bpm %></td>
+							<td>曲長: <%= music.duration %></td>
 							<% end %>
 						</tbody>
 					<% end %>
@@ -42,45 +43,45 @@
 				</div>
 					<div class="admin-edit-delete-button">
 						<%= link_to edit_admins_product_path(@product) do %>
-						<button class="admin-edit-button btn-success btn-lg" type="button">編集</button>
+						<button class="admin-edit-button btn-default btn-lg" type="button">編集</button>
 						<% end %>
 						<%= link_to admins_product_path, method: :delete do %>
-						<button class="admin-delete-button btn btn btn-danger btn-lg" type="button">削除</button>
+						<button class="admin-delete-button btn btn btn-default btn-lg" type="button">削除</button>
 						<% end %>
 					</div>
 			</div>
 		</div>
 
 		<div class="sub-info-box">
-			<div class="admin-product-show-quantity-box">
-				<p class="admin-subtitles">在庫数</p>
+			<div class="ad-pro-box">
+				<p class="admin-subtitles">在庫</p>
 				<p><%= @product.stock %></p>
-				<p class="admin-subtitles">お気に入り登録数</p>
+				<p class="admin-subtitles">お気に入り</p>
 				<p><%= @product.favorite_count %></p>
 			</div>
 			<div class="nearest-orders">
-				<p class="admin-subtitles">最近のオーダー（直近５件）</p>
+				<p class="admin-subtitles">最近の注文</p>
 				<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>ユーザーID</th>
-						<th>オーダーID</th>
-						<th>注文日</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- each start -->
-					<% @orders.each do |order| %>
+					<thead>
 						<tr>
-							<%= link_to admins_order_show_path(order) do %>
-								<td><%= order.user_id %></td>
-								<td><%= order.id %>-<%= order.created_at.strftime('%Y%m%d') %></td>
-								<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-							<% end %>
+							<th>userID</th>
+							<th>orderID</th>
+							<th>Date</th>
 						</tr>
-					<% end %>
-					<!-- each end -->
-				</tbody>
+					</thead>
+					<tbody>
+						<!-- each start -->
+						<% @orders.each do |order| %>
+							<tr>
+								<%= link_to admins_order_show_path(order) do %>
+									<td><%= order.user_id %></td>
+									<td><%= order.id %>-<%= order.created_at.strftime('%Y%m%d') %></td>
+									<td><%= order.created_at.strftime('%m/%d') %></td>
+								<% end %>
+							</tr>
+						<% end %>
+						<!-- each end -->
+					</tbody>
 				</table>
 				<%= @msg %>
 			</div>

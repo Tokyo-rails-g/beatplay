@@ -10,13 +10,11 @@ class Product < ApplicationRecord
 	belongs_to :category
 
 
-	# validates :album_title, presence: true
-	# validates :artist, presence: true
-	# validates :label, presence: true
-	# validates :category_id, presence: true
-	# # validates :favorite_count, presence: true
-	# validates :image_id, presence: true
-	# validates :price, presence: true
-	# validates :stock, presence: true
-	# validates :release_year, presence: true
+	validates :album_title, presence: true
+	validates :artist, presence: true
+	validates :label, presence: true
+	validates :category_id, presence: true
+	validates :price, presence: true
+	validates :stock, presence: true
+	validates :release_year, presence: true
 end

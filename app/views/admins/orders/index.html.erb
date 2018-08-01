@@ -1,7 +1,7 @@
 <%= render 'admins/users/header'  %>
 
 <div class="ad-order-index-box">
-  <div class="order-index-box">
+  <div class="ad-or-index-box">
     <h4>注文一覧</h4>
       <table class="table table-hover">
         <thead>
@@ -35,10 +35,15 @@
                 </td>
                 </td>
                 <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                <td><%= link_to admins_user_path(order.user.id), method: :get do %>
-                  <%=order.user.first_name %><%= order.user.last_name %>
-                    <% end %>
-                </td>
+                <%# if admins %>
+ <!--                  <td><%#= link_to admins_user_path(order.user.id), method: :get do %>
+                        <%#=order.user.first_name %><%#= order.user.last_name %>
+                      <%# end %></td>
+                <%# else %> -->
+                  <td><%= link_to admins_user_path(order.user.id), method: :get do %>
+                        <%=order.user.first_name %><%= order.user.last_name %>
+                      <% end %></td>
+                <%# end %>
                 <td>¥ <%= order.total %></td>
               </tr>
             <% end %>
@@ -49,7 +54,7 @@
 
     <div class="extraction-box">
       <div class="box_for_position">
-        <div class="search-id-box">
+        <div class="ad-search-box">
           <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
             <%= f.search_field :id_eq %>
             <%= f.submit "ID検索" %>

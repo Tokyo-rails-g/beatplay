@@ -4,4 +4,6 @@ class Disc < ApplicationRecord
 	#inverse_of: :disc = (has_many/belongs_to関係下ではデフォルトで設定されている。discの変更をdiscに反映する)
 	accepts_nested_attributes_for :musics, reject_if: :all_blank, allow_destroy: true
 	#allow_destroy = 親を削除した時に子も同時に削除
+
+	validates :disc_number, presence: true
 end
