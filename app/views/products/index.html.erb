@@ -1,64 +1,58 @@
-	<!-- main-visual -->
-	<!-- 検索フォーム -->
-		<%= render 'products/list', q: @q %>
-	<!--             -->
+<!-- headerの部分テンプレート -->
+<%= render 'layouts/user_header'  %>
+<!-- 検索フォーム -->
+<%= render 'products/list', q: @q %>
 
-	<div class="main-box">
-		<div class="sort-box">
-			<table>
-			  <thead>
-			    <tr>
-			      <th><%= sort_link(@q, :album_title) %></th>
-			      <th><%= sort_link(@q, :artist) %></th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  </tbody>
-			</table>
-		</div>
-		<%= paginate @searchproducts %>
-		<!-- 並び順 -->
-		<div class= "products-box">
-
-
-			<% if @searchproducts.any? %>
-				<% if @searchproducts2.count != @productall.count %>
+<div class="main-box user-inverse">
+	<div class="sort-box">
+		      <div align="center" style="width:200px;background-color: silver; border-radius:30px;" >
+		      	<font color="white"><%= sort_link(@q, :album_title, "アルバム／タイトル順")%></font>
+		      </div>
+		      <div align="center" style="width:200px;background-color: silver; border-radius:30px;">
+		      	<font color="white"><%= sort_link(@q, :artist, "アーティスト順")%></font>
+		      </div>
+	</div>
+	<%= paginate @searchproducts %>
+	<!-- 並び順 -->
+	<% if @searchproducts.any? %>
+			<% if @searchproducts2.count != @productall.count %>
 				<%= @searchproducts2.count %>件ヒットしました。
-				<% end %>
-
-				<!-- each -->
-				<% @searchproducts.each do |searchproduct| %>
-				<div class="products">
-					<%= link_to product_path(searchproduct) do %>
-						<p class="products-img"><%= attachment_image_tag searchproduct, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200" %></p>
-					<% end %>
-					<p class="products-info">
-						<%= searchproduct.album_title %><br>
-						<%= searchproduct.artist %><br>
-						<%= searchproduct.label %><br>
-						<%= searchproduct.category.name %><br>
-						リリース年：<%= searchproduct.release_year %><br>
-						価格：<%= searchproduct.price %>
-						<% if searchproduct.stock > 0 && searchproduct.stock <= 10 %>
-							<font color = "orange"><b><%= @alert_few %></b></font>
-						<% elsif searchproduct.stock === 0 %>
-							<font color ="red"><b><%= @alert_zero %></b></font>
-						<% else %>
-						<% end %>
-					</p>
-				</div>
-				<% end %>
-				<!-- each end -->
-
-			<% else %>
-  				<p><%= @msg %></p>
 			<% end %>
+	<div class= "products-box">
 
-		</div>
+			<!-- each -->
+			<% @searchproducts.each do |searchproduct| %>
+			<div class="products">
+				<%= link_to product_path(searchproduct) do %>
+					<p class="products-img"><%= attachment_image_tag searchproduct, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200" %></p>
+				<% end %>
+				<p class="products-info">
+					<%= searchproduct.album_title %><br>
+					<%= searchproduct.artist %><br>
+					<%= searchproduct.label %><br>
+					<%= searchproduct.category.name %><br>
+					リリース年：<%= searchproduct.release_year %><br>
+					価格：<%= searchproduct.price %>
+					<% if searchproduct.stock > 0 && searchproduct.stock <= 10 %>
+						<font color = "orange"><b><%= @alert_few %></b></font>
+					<% elsif searchproduct.stock === 0 %>
+						<font color ="red"><b><%= @alert_zero %></b></font>
+					<% else %>
+					<% end %>
+				</p>
+			</div>
+			<% end %>
+			<!-- each end -->
 
-		<%= paginate @searchproducts %>
+		<% else %>
+				<p><%= @msg %></p>
+		<% end %>
+
 	</div>
 
+	<%= paginate @searchproducts %>
+</div>
 
-	 <!-- 	ページング　　 -->
+
+ <!-- 	ページング　　 -->
 </main>

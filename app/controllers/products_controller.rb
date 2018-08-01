@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
 
 # 商品一覧
   def index
-
     @alert_few = "残りわずか！"
     @alert_zero = "在庫なし"
 
@@ -29,7 +28,7 @@ class ProductsController < ApplicationController
 
       @alert_few = "残りわずか！"
       @alert_zero = "在庫なし"
-    # end
+    end
   end
 
   def new

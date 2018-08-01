@@ -1,0 +1,74 @@
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top headline">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            <%= link_to users_top_path do %>
+            <span><%= image_tag('BeatPlay-logo.png', class: "logo") %></span>
+           <% end %>
+          </div>
+          <% flash.each do |key, value| %>
+            <span class= "notice">
+              <span class= "alert alert-<%= key %>">
+                <span class="flash-message"><%= value %></span>
+              </span>
+            </span>
+          <% end %>
+        </div>
+
+      <% if user_signed_in? %>
+      <!-- ログインしているときは以下を表示 -->
+        <div class="collapse navbar-collapse" id="navbarEexample8">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <%= link_to products_path, class: "header-buttons" do%>
+              Home
+              <% end %>
+            </li>
+            <li class="">
+              <%= link_to mypage_user_path(current_user), class: "header-buttons" do %>
+              Mypage
+              <% end %>
+            </li>
+            <li class="">
+              <%= link_to carts_path, class: "header-buttons" do %>
+              Cart
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "header-buttons" do %>SignOut<% end %>
+            </li>
+          </ul>
+        </div>
+      <!-- ログインしていないときは以下を表示 -->
+      <% else %>
+        <div class="collapse navbar-collapse" id="navbarEexample8">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li class="header-buttons">
+              <%= link_to users_top_path do %>
+                Top
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to new_user_registration_path do %>
+                SignUp
+              <% end %>
+            </li>
+            <li class="header-buttons">
+              <%= link_to new_user_session_path do %>
+                LogIn
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+      </div>
+    </nav>
+  </header>

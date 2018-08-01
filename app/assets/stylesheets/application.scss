@@ -21,6 +21,11 @@
 	@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 
 
+.carousel-control.left{
+	background-image: transparent!important;
+	background-color: transparent!important;
+}
+
 .logo{
 	width:100px;
 }
@@ -33,13 +38,19 @@
 .navbar {
 	margin-bottom: 0px;
 }
-
+.circle-style{
+	border-radius: 50%;
+}
 /*================================================*/
 *{
 	/*color: rgba(255, 255, 255, 0.8);
 	background-color: #202020;*/
 	font-family: Didact+Gothic;
 	font-weight: lighter;
+}
+.user-inverse{
+	color: rgba(255, 255, 255, 0.9);
+	background-color: black;
 }
 body{
 	margin-top: 80px;
@@ -57,11 +68,14 @@ td{
 }
 footer{
 	width: 100%;
-	height: 150px;
+	height: 130px;
 	background-color:black;
 	/*position: fixed;*/
     bottom: 0px;
     left: 0px;
+}
+.flash-message{
+	margin-top: 10px;
 }
 .fab{
 	margin: 5px;
@@ -70,12 +84,12 @@ footer{
 	color: silver;
 	width: 200px;
 	text-align: center;
-	padding-top: 60px;
+	padding-top: 20px;
 }
 .top-contents-box{
 	width: 50%;
 	/*position: absolute;*/
-	padding-top: 230px;
+	padding-top: 130px;
 }
 .search-bar{
 	width: 100%;
@@ -100,6 +114,36 @@ footer{
 	border-radius: 30px;
 	background-color: rgba(255, 200, 255, 0.4);
 	border: none;
+}
+.bpm-box{
+	width: 280px;
+	margin: 0 auto;
+}
+.bpm-search-box{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 280px;
+	/*border: solid 1px white;*/
+	border-radius: 50px;
+	padding: 10px;
+	/*background-color: rgba(255, 150, 255, 0.4);*/
+	box-shadow: 0px 0px 100px 00px rgba(255, 150, 255, 0.4);
+}
+.bpm-select-range{
+	background-color: transparent;
+}
+.flex-end{
+	justify-content: flex-end;
+}
+.bpm-range-box{
+	width:100px;
+	display: flex;
+}
+.bpm-range{
+	border: none ;
+	background-color: rgba(255,200,255,0.2);
+	border-radius: 30px;
 }
 .start-button{
     width: 100px;
@@ -126,9 +170,9 @@ footer{
     text-align: center;
 }
 
-/*.headline{
-	padding: 10px;
-}*/
+.headline{
+	padding: 5px;
+}
 .header-buttons{
 	margin: 10px;
 	border: solid 2px;
@@ -136,7 +180,11 @@ footer{
 	border-radius: 20px;
 }
 
-
+.percial-main-box{
+	padding-top: 130px;
+	width: 60%;
+	margin: 0 auto;
+}
 .search-box{
 	width: 100%;
 	height: 200px;
@@ -157,4 +205,19 @@ footer{
 .alert-zero{
 	color: red;
 	font-weight: bold;
+}
+
+
+
+.left.carousel-control{
+		background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 0%);
+}
+.right.carousel-control{
+		background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0001) 0%);
+}
+.glyphicon-chevron-left:before{
+	color: rgba(255, 200, 255, 0.7);
+}
+.glyphicon-chevron-right:before{
+	color: rgba(255, 200, 255, 0.7);
 }
