@@ -84,29 +84,28 @@
 			<p class="total-money">合計 ¥：<%= price_sum %></p>
 		</div>
 			<div class="decision-button">
-				<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>
-		<!-- モーダル・ダイアログ -->
-				<div class="modal fade" id="sampleModal" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-								<h4 class="modal-title" align="center">Caution!</h4>
-							</div>
-							<div class="modal-body">
-								ご注文が確定されます。よろしいですか？
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
-								<%= f.submit "確定", class: "btn btn-danger" %>
+					<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#sampleModal" type="button">注文を確定する</button>
+					<!-- モーダル・ダイアログ -->
+					<div class="modal fade" id="sampleModal" tabindex="-1">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+									<h4 class="modal-title" align="center">Caution!</h4>
+								</div>
+								<div class="modal-body">
+									ご注文が確定されます。よろしいですか？
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+									<%= f.submit "確定", class: "btn btn-danger" %>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 		<!-- モーダル エンド-->
 			</div>
 			<% end %><!-- end of fields_for -->
 		<% end %><!-- end of form_for -->
 	</div>
-</section>
 </section>
