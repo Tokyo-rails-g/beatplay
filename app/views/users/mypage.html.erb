@@ -20,6 +20,7 @@
       </div>
       <div class="favorites-info-box">
         <p class="favorites-info">お気に入りリスト</p>
+        <div class="favorites-all-contents">
           <% @favorites.each do |favorite| %>
             <div class="favorites-contents">
               <%= link_to product_path(favorite.product.id) do %>
@@ -36,10 +37,12 @@
               </div>
             </div>
           <% end %>
+        </div>
       </div>
     </div>
     <div class="orders-info-box">
       <p class="orders-info">購入履歴</p>
+      <div class="orders-all-contents">
         <% @user.orders.reverse_each do |order| %>
           <div class="orders-contents">
             <table class="table">
@@ -51,7 +54,10 @@
                 </tr>
               </thead>
             </table>
-            <p class="orders-address"><label>送付先：</label></p>
+            <p class="orders-address">
+              <label>送付先：</label>
+              <span><%= order.address.postal_code %> / <%= order.address.pref %><%= order.address.city %><%= order.address.address1 %><%= order.address.address2 %></span>
+            </p>
             <table>
               <thead>
                 <% order.order_items.each_with_index do |order_item| %>
@@ -75,6 +81,7 @@
             </table>
           </div>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

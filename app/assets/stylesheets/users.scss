@@ -142,12 +142,16 @@ dl.search dd button span{
     margin-top: 20px;
     border: solid 3px;
     border-radius: 10px;
-    overflow: scroll;
 }
 .favorites-info{
+    height: 30px;
     font-size: 20px;
     border-bottom: solid 2px;
     text-align: center;
+}
+.favorites-all-contents{
+    height: 610px;
+    overflow: scroll;
 }
 .favorites-contents{
     display: flex;
@@ -168,12 +172,16 @@ dl.search dd button span{
     margin-bottom: 40px;
     border: solid 3px;
     border-radius: 10px;
-    overflow: scroll;
 }
 .orders-info{
+    height: 30px;
     font-size: 20px;
     border-bottom: solid 2px;
     text-align: center;
+}
+.orders-all-contents{
+    height: 940px;
+    overflow: scroll;
 }
 .orders-contents{
     margin: 20px;
@@ -192,6 +200,38 @@ dl.search dd button span{
 .user-info-box {
     margin: 0 auto;
 }
+
+/*============ユーザー編集画面==============*/
+.users-edit{
+    width: 60%;
+    margin: 40px auto;
+    border: solid 3px;
+    border-radius: 10px;
+}
+.users-edit-title{
+    font-size: 25px;
+    border-bottom: solid 2px;
+}
+.users-edit-boxes{
+    width:70%;
+    margin: 0 auto;
+    font-size: 17px;
+}
+.users-edit-information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px;
+    border-bottom: solid 1px silver;
+}
+.users-edit-information-name{
+    margin: 40px;
+    border-bottom: solid 1px silver;
+}
+.users-edits-button-style{
+}
+
+
 
 /*============ボタン類のCSS==============*/
 .edit-button-style{
