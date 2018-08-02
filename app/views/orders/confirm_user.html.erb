@@ -49,20 +49,20 @@
 <!-- Addressモデルにデータがあるかどうかを確認しています ---->
 <!-- データが入っていた場合はそのデータの中から最新の情報を引っ張ってきて表示されます -->
 		<div class="user-address2">
-			<% if @address == nil %>
-				<div>
-				郵便番号：<%= @user.postal_code %><br>
-				住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
-				名前： <%= @user.first_name %> <%= @user.last_name %>
-				</div>
-			<% else %>
+			<%# if @address == nil %>
+				<!-- <div> -->
+				<!-- 郵便番号：<%= @user.postal_code %><br> -->
+				<!-- 住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br> -->
+				<!-- 名前： <%= @user.first_name %> <%= @user.last_name %> -->
+				<!-- </div> -->
+			<%# else %>
 
 				<div>
-				郵便番号：<%= @address.postal_code %><br>
-				住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
-				名前： <%= @address.first_name %> <%= @address.last_name %>
+					郵便番号：<%= @address.postal_code %><br>
+					住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
+					名前： <%= @address.first_name %> <%= @address.last_name %>
 				</div>
-			<% end %>
+			<%# end %>
 		</div>
 	</div>
 	<div class="buttons-box">
@@ -70,15 +70,15 @@
 			<%= fields_for @address do |address| %>
 				<%= address.hidden_field :user_id, value: current_user.id.to_i %>
 				<%= address.hidden_field :first_name %>
-			    <%= address.hidden_field :last_name %>
+				<%= address.hidden_field :last_name %>
 				<%= address.hidden_field :postal_code %>
 				<%= address.hidden_field :pref, value: @address.pref%>
-			    <%= address.hidden_field :city %>
-			    <%= address.hidden_field :address1 %>
-			    <%= address.hidden_field :address2 %>
+				<%= address.hidden_field :city %>
+				<%= address.hidden_field :address1 %>
+				<%= address.hidden_field :address2 %>
 		<div class="view-total-box">
 			<p>お支払方法</p>
-			<div class="select-payment">
+			<div class="select-payment" style="color:black;">
 				<%= f.select :payment, Order.payments.keys.to_a %>
 			</div>
 			<p class="total-money">合計 ¥：<%= price_sum %></p>
@@ -88,7 +88,7 @@
 					<!-- モーダル・ダイアログ -->
 					<div class="modal fade" id="sampleModal" tabindex="-1">
 						<div class="modal-dialog">
-							<div class="modal-content">
+							<div class="modal-content" style="background-color: black;">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
 									<h4 class="modal-title" align="center">Caution!</h4>

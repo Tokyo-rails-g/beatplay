@@ -7,7 +7,6 @@
 <div class="contents-box">
 	<p class="page-title">送付先住所を選択してください</p>
 
-<% if @addresses === nil %>
 	<div class="send-user-address">
 		<div style="padding-top:5px;">
 			<%= link_to 'この住所に送る',confirm_user_orders_path, class: "btn btn-info", method: :post %>
@@ -31,7 +30,7 @@
 				<!-- モーダル・ダイアログ -->
 				<div class="modal fade" id="sampleModal" tabindex="-1">
 					<div class="modal-dialog">
-						<div class="modal-content">
+						<div class="modal-content" style="background-color:rgba(200,200,200,1); color: black;">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
 								<h4 class="modal-title" align="center">送付先住所を入力してください</h4>
@@ -44,98 +43,7 @@
 										<label class="control-label">郵便番号</label>
 					        		<p class=""><%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %></p>
 										<label class="">都道府県</label>
-									<p class=""><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "form-control" %></p>
-					    				<label class="control-label">住所</label>
-								    <p class=""><%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %></p>
-								  	<label class="control-label"></label>
-								    <p class=""><%= f.text_field :address1, :class => "form-control", :placeholder => "番地" %></p>
-								  	<label class="control-label"></label>
-								    <p><%= f.text_field :address2, :class => "form-control", :placeholder => "アパート／マンション名" %></p>
-    							</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
-								<%= f.submit "この住所に送る", class: "btn btn-info" %>
-							</div>
-						</div>
-					</div>
-				</div>
-	   <% end %>
-	</div>
-
-<% else %>
-<!-- カルーセルテスト -->
-	<div class="send-user-address">
-		<div id="sampleCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<div style="padding-top:5px;">
-						<%= link_to 'この住所に送る',confirm_user_orders_path, class: "btn btn-info", method: :post %>
-						<div class="user-address">
-							<div class="address" style="padding-top:10px;">
-								<div><b><%= @user.first_name %> <%= @user.last_name %></b></div>
-								<div>〒<%= @user.postal_code %></div>
-								<div><%= @user.pref %><%= @user.city %><%= @user.address1 %></div>
-								<div><%= @user.address2 %></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- each start -->
-				<% @addresses.each_with_index do |address, i| %>
-				<div class="item">
-					<div style="padding-top:5px;">
-						<%= i+1 %>
-						<%= link_to 'この住所に送る',confirm_user_orders_path, class: "btn btn-info", method: :post %>
-						<div class="user-address">
-							<div class="address" style="padding-top:10px;">
-								<div><b><%= address.first_name %> <%= address.last_name %></b></div>
-								<div>〒<%= address.postal_code %></div>
-								<div><%= address.pref %><%= @user.city %><%= address.address1 %></div>
-								<div><%= address.address2 %></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<% end %>
-				<!-- each end -->
-			</div>
-			<a id="test" class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">前へ</span>
-			</a>
-			<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">次へ</span>
-			</a>
-		</div>
-	</div>
-<!-- カルーセルテストここまで -->
-<% end %>
-
-	<p class="page-title">送り先住所を変更する</p>
-	<div class="change-send-address">
-
-		<%= form_for @address, url: {action: 'confirm'} do |f| %>
-	<!-- モーダル展開 -->
-    	<button class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#sampleModal" type="button">他の住所に送る</button>
-				<!-- モーダル・ダイアログ -->
-				<div class="modal fade" id="sampleModal" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-								<h4 class="modal-title" align="center">送付先住所を入力してください</h4>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal">
-									<label class="control-label">お名前</label>
-								    <p class=""><%= f.text_field :first_name ,:class => "form-control", :placeholder => "姓" %></p>
-								    <p class=""><%= f.text_field :last_name, :class => "form-control", :placeholder => "名" %></p>
-										<label class="control-label">郵便番号</label>
-					        		<p class=""><%= f.text_field :postal_code, :class => "form-control", :placeholder => "郵便番号" %></p>
-										<label class="">都道府県</label>
-									<p class=""><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "form-control" %></p>
+									<p class="" style="color:black;"><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "form-control" %></p>
 					    				<label class="control-label">住所</label>
 								    <p class=""><%= f.text_field :city, :class => "form-control", :placeholder => "市区町村" %></p>
 								  	<label class="control-label"></label>
