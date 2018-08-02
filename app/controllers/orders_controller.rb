@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+    before_action :authenticate_user!
 # addressの#newにあたる
   def new
     @q = Product.includes(:discs,:musics).ransack(params[:q])
@@ -46,6 +46,9 @@ class OrdersController < ApplicationController
 
     @user = current_user
     @address = Address.new( user_id: @user.id, first_name: @user.first_name,last_name: @user.last_name,pref: @user.pref, postal_code: @user.postal_code,city: @user.city, address1: @user.address1, address2: @user.address2 )
+    # @address = Address.new(address_params)
+    # @address = Address.new(address_params)
+
     @address.user_id = current_user.id
 
     @total = 0

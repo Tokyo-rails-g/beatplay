@@ -65,9 +65,11 @@ class UsersController < ApplicationController
   end
 
   def edit_password
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = current_user
     if @user.id == current_user.id
-      render :edit_password
+      # redirect_to edit_password_user_path(current_user)
+      # render :edit_password
     else
       redirect_to edit_user_path(current_user)
     end
@@ -93,4 +95,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email,:encrypted_password,:first_name,:last_name,:kana_first,:kana_last,:postal_code,:pref,:city,:address1,:address2,:phone_number)
     end
+
+
 end

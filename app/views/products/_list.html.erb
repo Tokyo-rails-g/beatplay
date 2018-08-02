@@ -1,4 +1,12 @@
 <div class="main-visual">
+	<div style="padding:10px 10px 0px 0px;" align="right">
+	    <font color="white">こんにちは。
+		    <%= link_to mypage_user_path(current_user) do %>
+		    <%= current_user.first_name %> <%= current_user.last_name %>
+		    <% end %>
+		    さん
+	    </font>
+    </div>
 	<!-- 検索ransack導入 -->
 	<div class="percial-main-box">
 		<div class="search-bar-border">

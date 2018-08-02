@@ -73,6 +73,8 @@ footer{
 	/*position: fixed;*/
     bottom: 0px;
     left: 0px;
+    clear: both;
+    display: block;
 }
 .flash-message{
 	margin-top: 10px;
@@ -181,7 +183,7 @@ footer{
 }
 
 .percial-main-box{
-	padding-top: 130px;
+	padding-top: 90px;
 	width: 60%;
 	margin: 0 auto;
 }

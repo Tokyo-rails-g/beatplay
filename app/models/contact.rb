@@ -12,7 +12,7 @@ class Contact < ApplicationRecord
 # end
 
 	belongs_to :order
-	belongs_to :user
+	belongs_to :user, -> { with_deleted }
 
 	has_many :comments
 end

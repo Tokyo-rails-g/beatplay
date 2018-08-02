@@ -2,15 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+/*--header--*/
 .navbar-header {
 	height: 60px;
 }
-span#RealtimeClock {
+#RealtimeClock {
 	size: 4px;
 	color: white;
 	vertical-align: middle;
 }
+
 
 /*--top--*/
 .counter-box {
@@ -40,7 +41,7 @@ span#RealtimeClock {
 }
 .dashboard-box {
 	width: 80%;
-	height: 480px;
+	height: 520px;
 	border: solid 1px;
 	border-radius: 50px;
 	justify-content: center;
@@ -54,12 +55,13 @@ span#RealtimeClock {
 	border-bottom: solid 2px;
 }
 
-/*--ユーザー一覧--*/
+
+/*--index--*/
 .button-group {
 	justify-content: center;
 }
 .ad-user-index-box {
-	width: 80%;
+	width: 90%;
 	margin: 30px auto;
 	display: flex;
 	flex-direction: row;
@@ -73,6 +75,17 @@ span#RealtimeClock {
 	border-radius: 50px;
 	justify-content: center;
 }
+.ad-tbl-title2 {
+	font-size: 18px;
+/*	position: relative;
+	display: inline-block;*/
+	margin-top: 30px;
+	margin-right: 60%;
+	margin-bottom: 10px;
+	padding-left: 10%;
+	padding-bottom: 5px;
+	border-bottom: solid 2px;
+}
 .ad-ad-index-box {
 	width: 30%;
 	margin: 10px;
@@ -81,26 +94,65 @@ span#RealtimeClock {
 .ad-index {
 	font-size: 13px;
 }
-/*--ユーザー詳細--*/
+
+
+/*--show--*/
 .ad-user-show-box {
 	width: 80%;
 	margin:0 auto;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+/*	display: flex;*/
+/*	flex-direction: row;*/
 }
-/*.user-show-box {
-	width: 40%;
-	margin: 10px;
-}*/
-.orders-index-box {
-	width: 60%;
-	margin: 10px;
+.ad-user-show-box:after {
+	display: block;
+	clear: both;
+	content: "";
 }
-.button-box {
+.ad-user-show-inner {
+	float: left;
+	width: 480px;
+	margin: 50px 10px 60px 50px;
+	padding-left: 60px;
+}
+.ad-user-info {
+	border: solid 1px;
+	border-radius: 50px;
+}
+.ad-tbl-title2 {
+	font-size: 18px;
+/*	position: relative;
+	display: inline-block;*/
+	margin-top: 30px;
+	margin-right: 55%;
+	margin-bottom: 10px;
+	padding-left: 10%;
+	padding-bottom: 5px;
+	border-bottom: solid 2px;
+}
+.ad-form {
+	margin-left: 80px;
+}
+.ad-user-btn-box {
 	width: 50%;
-    margin: 0 auto;
+    margin: 0 25% 15px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+.ad-user-orders {
+	float: right;
+	width: 520px;
+	margin: 50px 30px 50px 10px;
+}
+.ad-user-orders-inner {
+	border: solid 1px;
+	border-radius: 50px;
+/*	margin: 30px 10px;*/
+	padding-bottom: 30px;
+}
+
+
+/*--edit--*/
+.ad-submit-btn {
+	margin-left: 70%;
 }
