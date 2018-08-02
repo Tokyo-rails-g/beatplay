@@ -11,10 +11,10 @@
 	<div class="percial-main-box">
 		<div class="search-bar-border">
 			<div class="search-bar">
-			<%= search_form_for @q do |f| %>
+			<%= search_form_for q do |f| %>
 				<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any, class: "form-control", style: "background-color:transparent; border:none; color:white; font-size: 15px;" %>
 			</div>
-					<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
+				<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
 		</div>
 		<div class="bpm-box">
 			<font color="white">bpmで検索</font>
