@@ -7,15 +7,22 @@
 		<p class="users-edit-title">退会をご希望の方</p>
   	</div>
     <div class="users-edit-show-boxes">
-		<div class="users-unsubscribe-box">
-			<p>退会すると、これまでのデータはすべて削除されます。<br>
-       		(※商品の発送が完了していないお客様は退会できません。)<br>
-       		よろしいですか？
-    		</p>
-    	</div>
-    	<div class="actions-users-unsubscribe-box">
-			<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete %></p>
-			<p><%= link_to "戻る(ホームへ)", products_path, class: "btn-sm btn-danger" %></p>
-		</div>
+
+    	<% if @orders.nil? && @orders2.nil? %>
+    	<% binding.pry %>
+    		<div class="users-unsubscribe-box">
+				<p>退会すると、これまでのデータはすべて削除されます。<br>
+	       		(※商品の発送が完了していないお客様は退会できません。)<br>
+	       		よろしいですか？
+	    		</p>
+	    	</div>
+	    	<div class="actions-users-unsubscribe-box">
+				<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete %></p>
+				<p><%= link_to "戻る(ホームへ)", products_path, class: "btn-sm btn-danger" %></p>
+			</div>
+		<% else %>
+			<p>発送中の商品があるため、退会することができません。</p>
+    		<p><%= link_to "戻る(ホームへ)", products_path, class: "btn-sm btn-danger" %>
+		<% end %>
     </div>
 </div>

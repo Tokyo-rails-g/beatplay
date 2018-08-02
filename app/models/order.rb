@@ -24,7 +24,6 @@ class Order < ApplicationRecord
 	enum status: { 出荷待ち: 0, 出荷済み: 1, お届け済み: 2 }
 
 	belongs_to :address
-	# has_one :address
 	accepts_nested_attributes_for :address
 	belongs_to :user, -> { with_deleted}
 

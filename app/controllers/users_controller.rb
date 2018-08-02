@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites.reverse_order
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @msg = 'お気に入りリストに商品は入っておりません。'
+    @msg2 = '購入履歴はございません。'
   end
 
   def edit

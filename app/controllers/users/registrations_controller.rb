@@ -21,9 +21,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    #super do
+    #end
+    @user = current_user
+    @orders = @user.orders.find_by(status: '0')
+    @orders2 = @user.orders.find_by(status: '1')
+    binding.pry
+  end
 
   # PUT /resource
   # def update
