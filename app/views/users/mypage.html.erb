@@ -22,21 +22,25 @@
       <div class="favorites-info-box">
         <p class="favorites-info">お気に入りリスト</p>
         <div class="favorites-all-contents">
-          <% @favorites.each do |favorite| %>
-            <div class="favorites-contents">
-              <%= link_to product_path(favorite.product.id) do %>
-                <div class="favorites-product-image">
-                  <%= attachment_image_tag favorite.product, :image, :fill, 150, 150, fallback: 'icon-mypage.jpg', :size => "150x150" %>
-                </div>
-              <% end %>
-              <div class="favorites-product-info-box">
-                <p class="favorites-product-info"><label>アルバム/シングル名：</label><%= favorite.product.album_title %></p>
-                <p class="favorites-product-info"><label>アーティスト名：</label><%= favorite.product.artist  %></p>
-                <%= link_to product_favorites_path(favorite.product_id), method: :delete do %>
-                  <button type="button" class="favorites-destroy-button-style" >お気に入りから外す</button>
+          <% if @favorites.any? %>
+            <% @favorites.each do |favorite| %>
+              <div class="favorites-contents">
+                <%= link_to product_path(favorite.product.id) do %>
+                  <div class="favorites-product-image">
+                    <%= attachment_image_tag favorite.product, :image, :fill, 150, 150, fallback: 'icon-mypage.jpg', :size => "150x150" %>
+                  </div>
                 <% end %>
+                <div class="favorites-product-info-box">
+                  <p class="favorites-product-info"><label>アルバム/シングル名：</label><%= favorite.product.album_title %></p>
+                  <p class="favorites-product-info"><label>アーティスト名：</label><%= favorite.product.artist  %></p>
+                  <%= link_to product_favorites_path(favorite.product_id), method: :delete do %>
+                    <button type="button" class="favorites-destroy-button-style" >お気に入りから外す</button>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
+          <% else %>
+            <p class="favorite-nothing-message"><%= @msg %></p>
           <% end %>
         </div>
       </div>
@@ -44,43 +48,47 @@
     <div class="orders-info-box">
       <p class="orders-info">購入履歴</p>
       <div class="orders-all-contents">
-        <% @user.orders.reverse_each do |order| %>
-          <div class="orders-contents">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>購入日： <%= order.created_at.strftime('%Y年%m月%d日') %></th>
-                  <th>ステータス： <%= order.status %></th>
-                  <th>合計金額： ￥<%= order.total %></th>
-                </tr>
-              </thead>
-            </table>
-            <p class="orders-address">
-              <label>送付先：</label>
-              <span><%= order.address.postal_code %> / <%= order.address.pref %><%= order.address.city %><%= order.address.address1 %><%= order.address.address2 %></span>
-            </p>
-            <table>
-              <thead>
-                <% order.order_items.each_with_index do |order_item| %>
+        <% if @user.orders.any? %>
+          <% @user.orders.reverse_each do |order| %>
+            <div class="orders-contents">
+              <table class="table">
+                <thead>
                   <tr>
-                    <td class="orders-product-image">
-                      <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %>
-                    </td>
-                    <td class="orders-product-title-artist-box">
-                      <p><label>アルバム/シングル名：</label> <%= order_item.product.album_title %></p>
-                      <p><label>アーティスト：</label> <%= order_item.product.artist %></p>
-                    </td>
-                    <td class="orders-product-quantity-box">
-                      <p><label>購入枚数：</label> <%= order_item.quantity %>枚</p>
-                    </td>
-                    <td class="orders-product-subtotal-box">
-                      <p class="orders-product-subtotal"><label>小計：</label>￥<%= order_item.quantity  *  order_item.product.price %></p>
-                    </td>
+                    <th>購入日： <%= order.created_at.strftime('%Y年%m月%d日') %></th>
+                    <th>ステータス： <%= order.status %></th>
+                    <th>合計金額： ￥<%= order.total %></th>
                   </tr>
-                <% end %>
-              </thead>
-            </table>
-          </div>
+                </thead>
+              </table>
+              <p class="orders-address">
+                <label>送付先：</label>
+                <span><%= order.address.postal_code %> / <%= order.address.pref %><%= order.address.city %><%= order.address.address1 %><%= order.address.address2 %></span>
+              </p>
+              <table>
+                <thead>
+                  <% order.order_items.each_with_index do |order_item| %>
+                    <tr>
+                      <td class="orders-product-image">
+                        <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %>
+                      </td>
+                      <td class="orders-product-title-artist-box">
+                        <p><label>アルバム/シングル名：</label> <%= order_item.product.album_title %></p>
+                        <p><label>アーティスト：</label> <%= order_item.product.artist %></p>
+                      </td>
+                      <td class="orders-product-quantity-box">
+                        <p><label>購入枚数：</label> <%= order_item.quantity %>枚</p>
+                      </td>
+                      <td class="orders-product-subtotal-box">
+                        <p class="orders-product-subtotal"><label>小計：</label>￥<%= order_item.quantity  *  order_item.product.price %></p>
+                      </td>
+                    </tr>
+                  <% end %>
+                </thead>
+              </table>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="order-nothing-message"><%= @msg2 %></p>
         <% end %>
       </div>
     </div>
