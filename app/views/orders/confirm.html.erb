@@ -50,21 +50,19 @@
 <!-- Addressモデルにデータがあるかどうかを確認しています ---->
 <!-- データが入っていた場合はそのデータの中から最新の情報を引っ張ってきて表示されます -->
 	<div class="user-address2">
-		<% if @address == nil %>
-			<div>
-			郵便番号：<%= @user.postal_code %><br>
-			住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br>
-			名前： <%= @user.first_name %> <%= @user.last_name %>
-			</div>
-		<% else %>
+		<%# if @address == nil %>
+			<!-- <div> -->
+			<!-- 郵便番号：<%= @user.postal_code %><br> -->
+			<!-- 住所：<%= @user.pref %><%= @user.city %><%= @user.address1 %><%= @user.address2 %><br> -->
+			<!-- 名前： <%= @user.first_name %> <%= @user.last_name %> -->
+			<!-- </div> -->
+		<%# else %>
 
-			<div>
 			<div style="display:none;"><%= @address.id %></div>
 			郵便番号：<%= @address.postal_code %><br>
 			住所：<%= @address.pref %><%= @address.city %><%= @address.address1 %><%= @address.address2 %><br>
 			名前： <%= @address.first_name %> <%= @address.last_name %>
-			</div>
-		<% end %>
+		<%# end %>
 	</div>
 	</div>
 	<div class="buttons-box">
@@ -82,8 +80,8 @@
 
 		<div class="view-total-box">
 			<p>お支払方法</p>
-			<div class="select-payment">
-				<%= f.select :payment, Order.payments.keys.to_a %>
+			<div class="select-payment" style="color:black;">
+				<%= f.select :payment, Order.payments.keys.to_a, style:"color:black;" %>
 			</div>
 			<p class="total-money">合計 ¥：<%= price_sum %></p>
 		</div>

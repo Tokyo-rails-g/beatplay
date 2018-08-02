@@ -23,8 +23,8 @@ class Order < ApplicationRecord
 	# 配送状況 ０：出荷待ち、１：出荷済み、２：お届け済み
 	enum status: { 出荷待ち: 0, 出荷済み: 1, お届け済み: 2 }
 
-	# belongs_to :address
-	has_one :address
+	belongs_to :address
+	# has_one :address
 	accepts_nested_attributes_for :address
 	belongs_to :user, -> { with_deleted}
 

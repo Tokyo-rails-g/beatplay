@@ -57,14 +57,14 @@ class ProductsController < ApplicationController
       @cartitem.product_id = @product.id
       # bining.pry
       @cartitem.save
-      flash[:success] = "商品がカートに新規登録された"
+      flash[:success] = "『" + @product.album_title + "』がカートに入りました"
       redirect_to products_path
       # redirect_to carts_path(@cart)
     else
       @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
       if @cartitems.quantity <= @product.stock
         @cartitems.save
-        flash[:success] = "カートに既にある商品の数が追加された"
+        flash[:success] = "『" + @product.album_title + "』の数量が変更されました"
         redirect_to products_path
         # redirect_to carts_path(@cart)
       else
