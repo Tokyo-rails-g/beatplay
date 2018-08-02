@@ -1,9 +1,9 @@
 <%= render 'admins/users/header'  %>
 
-<div class="container ad-page-title">
+<div class="ad-page">
 
-  <div class="ad-product-index-box">
-    <div class="ad-or-index-box">
+  <div class="ad-index-box">
+    <div class="ad-index-inner">
       	<table class="table table-hover">
           <div class="ad-tbl-title">商品一覧</div>
         		<thead>
@@ -62,7 +62,7 @@
         <% end %>
       </div>
       <div class="ad-new-btn">
-        <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default" %>
+        <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default add-new-product" %>
       </div>
     </div>
   </div>
