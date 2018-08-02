@@ -1,11 +1,11 @@
 <%= render 'admins/users/header'  %>
 
-  <div class="new-product">
-  <h4>新規商品追加</h4>
+  <div class="ad-index-box">
+    <div class="ad-index-inner">
+      <div class="ad-tbl-title">新規商品追加</div>
+      <div class="new-product-form">
 
-    <div class="container">
-
-    	<%= form_for(@product, url: admins_create_product_path) do |f| %>
+    	 <%= form_for(@product, url: admins_create_product_path) do |f| %>
 
         <div class="form-group">
               <%= f.label :artist, "アーティスト名：" %>
@@ -88,6 +88,7 @@
 
 
       <% end %>
+      </div>
 
     </div>
   </div>

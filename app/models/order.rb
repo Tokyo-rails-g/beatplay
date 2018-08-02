@@ -26,7 +26,7 @@ class Order < ApplicationRecord
 	# belongs_to :address
 	has_one :address
 	accepts_nested_attributes_for :address
-	belongs_to :user
+	belongs_to :user, -> { with_deleted}
 
 	has_many :order_items
 	has_many :products, through: :order_items

@@ -1,42 +1,46 @@
 <%= render 'admins/users/header'  %>
 
 <div class="ad-user-show-box">
-
-    <div class="form-horizontal user-show-box">
-      <h4>ユーザー登録情報</h4>
-      <div class="form-group">
-          <label>名前：</label>
-          <%= @user.first_name %><%= @user.last_name %>
-        </p>
-      </div>
-      <div class="form-group">
+  <div class="ad-user-show-inner">
+    <div class="ad-user-info">
+      <div class="ad-tbl-title2">ユーザー登録情報</div>
+        <div class="ad-form">
+          <p class="form-control-static">
+            <label>名前：</label>
+              <%= @user.first_name %><%= @user.last_name %>
+          </p>
+        </div>
+        <div class="ad-form">
           <p class="form-control-static">
             <label>住所：</label>
-            <%= @user.postal_code %><br/>
-            <%= @user.pref %> <%= @user.city %>
-            <%= @user.address1 %> <%= @user.address2 %>
+              <%= @user.postal_code %><br/>
+              <%= @user.pref %> <%= @user.city %>
+              <%= @user.address1 %> <%= @user.address2 %>
           </p>
         </div>
-      <div class="form-group">
-          <p class="form-control-static">
-            <label>電話番号：</label>
-            <%= @user.phone_number %>
-          </p>
-      </div>
-      <div class="form-group">
-          <p class="form-control-static">
-            <label>メール：</label>
-            <%= @user.email %>
+        <div class="ad-form">
+            <p class="form-control-static">
+              <label>電話番号：</label>
+              <%= @user.phone_number %>
             </p>
-      </div>
-      <div class="form-group">
-        <div class="button-box">
-          <%= button_to "編集", edit_admins_user_path(@user.id), method: :get, class: "btn btn-default btn-ms" %> <%= button_to "削除", user_registration_path(@user.id), class:"btn btn-default btn-ms", data: { confirm: 'Are you sure?' }, method: :delete %>
         </div>
-      </div>
+        <div class="ad-form">
+            <p class="form-control-static">
+              <label>メール：</label>
+              <%= @user.email %>
+              </p>
+        </div>
+        <div class="ad-form">
+          <div class="ad-user-btn-box">
+            <%= button_to "編集", edit_admins_user_path(@user.id), method: :get, class: "btn btn-default btn-ms" %> <%= button_to "削除", user_registration_path(@user.id), class:"btn btn-default btn-ms", data: { confirm: 'Are you sure?' }, method: :delete %>
+          </div>
+        </div>
     </div>
+  </div>
 
-    <div class="orders-index-box">
+  <div class="ad-user-orders">
+    <div class="ad-user-orders-inner">
+      <div class="ad-tbl-title2">オーダー履歴</div>
       <table class="table">
           <thead>
             <tr>
@@ -57,6 +61,6 @@
             <% end %>
           </tbody>
       </table>
-    </div>
+  </div>
 
 </div>
