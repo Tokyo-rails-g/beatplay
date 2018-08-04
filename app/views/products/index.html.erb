@@ -24,7 +24,7 @@
 			<% @searchproducts.each do |searchproduct| %>
 			<div class="products">
 				<%= link_to product_path(searchproduct) do %>
-					<p class="products-img"><%= attachment_image_tag searchproduct, :image, :fill, 200, 200, fallback: 'icon-mypage.jpg', :size => "200x200" %></p>
+					<p class="products-img"><%= attachment_image_tag searchproduct, :image, :fill, 200, 200, fallback: 'icon-mypage.png', :size => "200x200" %></p>
 				<% end %>
 				<p class="products-info">
 					<%= searchproduct.album_title %><br>
@@ -54,5 +54,5 @@
 </div>
 
 
- <!-- 	ページング　　 -->
+ <!-- 	ページング -->
 </main>

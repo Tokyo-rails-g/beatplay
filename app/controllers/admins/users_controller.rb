@@ -23,10 +23,14 @@ class Admins::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(30)
+    @users2 = User.all
+    @users = User.with_deleted.page(params[:page]).per(30)
     @admins = Admin.all
+
     @q = User.ransack(params[:q])
-    @users = @q.result
+    @searchuser = @q.result
+    @q2 = User.with_deleted.ransack(params[:q])
+    @searchuser2 = @q2.result
   end
 
   def search
@@ -35,7 +39,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.with_deleted.find(params[:id])
   end
 
   def edit

@@ -37,14 +37,18 @@
                   </td>
                   <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
                   <td><%= link_to admins_user_path(order.user.id), method: :get do %>
+                        <% if order.user.deleted_at != nil %>
+                          <%=order.user.first_name %><%= order.user.last_name %>**
+                        <% else %>
                           <%=order.user.first_name %><%= order.user.last_name %>
-
+                        <% end %>
                   </td>
                   <td>¥ <%= order.total %></td>
                 </tr>
               <% end %>
             <% end %>
           </tbody>
+        <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
       </table>
       <%= paginate @orders %>
     </div>
@@ -58,9 +62,9 @@
         <% end %>
         </div>
         <div class="btn-group btn-group-sm status-box" role="group">
-         <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
-         <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
-         <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+          <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
+            <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
+           <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
         </div>
       </div>
     </div>
