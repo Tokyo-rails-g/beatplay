@@ -30,10 +30,7 @@
 	width:100px;
 }
 .header-buttons{
-	margin: 10px;
-	border: solid 2px;
-	/*border-color: silver;*/
-	border-radius: 20px;
+	filter:drop-shadow(0px 0px 10px 0px rgba(255, 200, 255, 0.5));
 }
 .navbar {
 	margin-bottom: 0px;
@@ -43,8 +40,8 @@
 }
 /*================================================*/
 *{
-	/*color: rgba(255, 255, 255, 0.8);
-	background-color: #202020;*/
+	/*color: rgba(255, 255, 255, 0.8);*/
+	/*background-color: #202020;*/
 	font-family: Didact+Gothic;
 	font-weight: lighter;
 }
@@ -176,10 +173,7 @@ footer{
 	padding: 5px;
 }
 .header-buttons{
-	margin: 10px;
-	border: solid 2px;
-	/*border-color: silver;*/
-	border-radius: 20px;
+	
 }
 
 .percial-main-box{
@@ -208,7 +202,16 @@ footer{
 	color: red;
 	font-weight: bold;
 }
-
+.field{
+	margin-bottom: 20px;
+}
+.field-box{
+	width: 50%;
+	padding:50px;
+	margin: 0 auto;
+	border: solid 1px;
+	border-radius: 5px;
+}
 
 
 .left.carousel-control{
