@@ -5,6 +5,14 @@
 <%= render 'products/list', q: @q, q2: @q2  %>
 
 <div class="bpm-main-box user-inverse">
+	<div class="sort-box">
+        <div align="center" style="width:200px;border: solid 2px; border-radius:30px; padding:5px; margin-right:5px;" >
+      		<font color="white"><%= sort_link(@q2, :name, " 曲名順", class: "form-control")%></font>
+        </div>
+        <div align="center" style="width:200px;border: solid 2px; border-radius:30px; padding:5px;">
+      		<font color="white"><%= sort_link(@q2, :bpm, "BPM順", class: "form-control")%></font>
+        </div>
+	</div>
 
 	<% if @searchproducts.any? %>
 			<% if @searchproducts2.count != @productall.count %>

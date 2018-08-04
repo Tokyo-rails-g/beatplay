@@ -183,6 +183,11 @@ p.sign-up{
     color: rgba(255, 255, 255, 0.7);
 }
 
+.users-devise-error-message{
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+}
+
 /*---------------my_page----------------*/
 
 .users-mypage{
@@ -291,6 +296,7 @@ p.sign-up{
 .users-edit-page{
     width: 100%;
     padding: 40px 0;
+    height: 1000px;
 }
 .users-edit-box{
     width: 60%;
