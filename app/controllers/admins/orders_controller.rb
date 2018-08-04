@@ -17,11 +17,12 @@ class Admins::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
+    # if
+      @order.update(order_params)
       redirect_to admins_orders_index_path
-    else
+    # else
 
-    end
+    # end
   end
 
 # showページでのupdateアクション
@@ -39,7 +40,7 @@ class Admins::OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:user_id, :address_id, :total, :payment, :status)
+      params.require(:order).permit(:status)
     end
 
 end
