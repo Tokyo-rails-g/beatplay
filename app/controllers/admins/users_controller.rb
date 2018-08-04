@@ -23,7 +23,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(30)
+    @users = User.with_deleted.page(params[:page]).per(30)
     @admins = Admin.all
     @q = User.ransack(params[:q])
     @users = @q.result
