@@ -1,22 +1,26 @@
 
-<div class="users-edit user-inverse">
-	<div class="mail-icon">
-	    <div class="">
-	    	<i class="fa fa-sign-in"></i>
-	    </div>
-		<p class="users-edit-title">名前の変更</p>
-  	</div>
+<!-- headerの部分テンプレート -->
+  <%= render 'layouts/user_header'  %>
+<!-- main-visual -->
+
+<div class="users-edit-page user-inverse">
     <div class="users-edit-show-boxes">
+    	<div class="mail-icon">
+		    <div class="">
+		    	<i class="fa fa-sign-in"></i>
+		    </div>
+			<p class="users-edit-title">名前の変更</p>
+  		</div>
     	<%= form_for(@user) do |f| %>
 			<div class="users-edit-show-informations">
 				<label>新しい名前</label>
-				<p><%= f.text_field :first_name, class: "uses_edit-show-info col-xs-5", :placeholder => "姓" %>
-				    <%= f.text_field :last_name, class: "uses_edit-show-info col-xs-5", :placeholder => "名" %></p>
+				<p><%= f.text_field :first_name, class: "uses_edit-show-info col-xs-3", :placeholder => "姓" %>
+				    <%= f.text_field :last_name, class: "uses_edit-show-info col-xs-3", :placeholder => "名" %></p>
 	    	</div>
 	    	<div class="users-edit-show-informations">
 	    		<label>カナ</label>
-	    		<p><%= f.text_field :kana_first, class: "uses_edit-show-info col-xs-5", :placeholder => "カナ" %>
-			    <%= f.text_field :kana_last, class: "uses_edit-show-info col-xs-5", :placeholder => "カナ" %></p>
+	    		<p><%= f.text_field :kana_first, class: "uses_edit-show-info col-xs-3", :placeholder => "カナ" %>
+			    <%= f.text_field :kana_last, class: "uses_edit-show-info col-xs-3", :placeholder => "カナ" %></p>
 	    	</div>
 	    	<div class="actions-users-edit-show-box">
 			<%= f.submit "変更内容を保存", class: "actions-users-edit-show" %>

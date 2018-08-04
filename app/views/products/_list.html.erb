@@ -9,31 +9,33 @@
     </div>
 	<!-- 検索ransack導入 -->
 	<div class="percial-main-box">
-		<div class="search-bar-border">
-			<div class="search-bar">
-			<%= search_form_for q do |f| %>
-				<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any, class: "form-control", style: "background-color:transparent; border:none; color:white; font-size: 15px;" %>
-			</div>
-				<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
-		</div>
-		<div class="bpm-box">
-			<font color="white">bpmで検索</font>
-			<div class="bpm-search-box">
-				<div class="bpm-range-box">
-					<div class="bpm-range">
-						<%= f.number_field :discs_musics_bpm_gteq_any, min: 10, max: 1000, step: 10, style: "border: none; color:white;", class: "bpm-select-range" %>
-					</div>
-					<div>
-						<font color="white">〜</font>
-					</div>
-					<div class="bpm-range">
-			    	<%= f.number_field :discs_musics_bpm_lteq_any, min: 10, max: 1000, step: 10, style: "border:none; color:white;", class: "bpm-select-range"  %>
-					</div>
+		<%= search_form_for q do |f| %>
+			<div class="search-bar-border">
+				<div class="search-bar">
+					<%= f.search_field :album_title_or_artist_or_discs_musics_name_cont_any, class: "form-control", style: "background-color:transparent; border:none; color:white; font-size: 15px;" %>
 				</div>
-			  	<%= f.submit "Search", class: "start-search-button flex-end", style: "color:white;" %>
+					<button class="start-search-button" type="submit"><font color= "white">Search</font></button>
 			</div>
-		</div>
-			<% end %>
+		<% end %>
+		<%= search_form_for q2, url: bpms_products_path do |f| %>
+			<div class="bpm-box">
+				<font color="white">bpmで検索</font>
+				<div class="bpm-search-box">
+					<div class="bpm-range-box">
+						<div class="bpm-range">
+							<%= f.number_field :bpm_gteq_any, min: 10, max: 1000, step: 10, style: "border: none; color:white;", class: "bpm-select-range" %>
+						</div>
+						<div>
+							<font color="white">〜</font>
+						</div>
+						<div class="bpm-range">
+				    	<%= f.number_field :bpm_lteq_any, min: 10, max: 1000, step: 10, style: "border:none; color:white;", class: "bpm-select-range"  %>
+						</div>
+					</div>
+				  	<%= f.submit "Search", class: "start-search-button flex-end", style: "color:white;" %>
+				</div>
+			</div>
+		<% end %>
 		<!-- 検索フォーム -->
 	</div>
 </div>

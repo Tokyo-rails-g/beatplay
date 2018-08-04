@@ -4,6 +4,7 @@ class CartsController < ApplicationController
 
   def index
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @q2 = Music.ransack(params[:q])
     @cart = Cart.find_by(user_id: current_user)
     @cart_item = CartItem.find_by(cart_id: @cart.id)
     if @cart_item == nil

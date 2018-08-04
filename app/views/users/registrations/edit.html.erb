@@ -1,12 +1,16 @@
 
-<div class="users-edit">
-	<div class="mail-icon">
-	    <div class="">
-	    	<i class="fa fa-sign-in"></i>
-	    </div>
-		<p class="users-edit-title">退会をご希望の方</p>
-  	</div>
+<!-- headerの部分テンプレート -->
+  <%= render 'layouts/user_header'  %>
+<!-- main-visual -->
+
+<div class="users-edit-page user-inverse">
     <div class="users-edit-show-boxes">
+    	<div class="mail-icon">
+		    <div class="">
+		    	<i class="fa fa-sign-in"></i>
+		    </div>
+			<p class="users-edit-title">退会をご希望の方</p>
+  		</div>
 
     	<% if @orders.nil? && @orders2.nil? %>
     		<div class="users-unsubscribe-box">
@@ -16,12 +20,12 @@
 	    		</p>
 	    	</div>
 	    	<div class="actions-users-unsubscribe-box">
-				<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete %></p>
-				<p><%= link_to "戻る(ホームへ)", products_path, class: "btn-sm btn-danger" %></p>
+				<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete, class: "unsubscribe-button-style" %></p>
+				<p><%= link_to "戻る(ホームへ)", products_path, class: "end-home-button-style" %></p>
 			</div>
 		<% else %>
 			<p>発送中の商品があるため、退会することができません。</p>
-    		<p><%= link_to "戻る(ホームへ)", products_path, class: "btn-sm btn-danger" %>
+    		<p><%= link_to "戻る(ホームへ)", products_path, class: "end-home-button-style" %>
 		<% end %>
     </div>
 </div>

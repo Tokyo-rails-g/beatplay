@@ -1,12 +1,16 @@
 
-<div class="users-edit user-inverse">
-	<div class="mail-icon">
-	    <div class="">
-	    	<i class="fa fa-sign-in"></i>
-	    </div>
-		<p class="users-edit-title">メールアドレスの変更</p>
-  	</div>
+<!-- headerの部分テンプレート -->
+  <%= render 'layouts/user_header'  %>
+<!-- main-visual -->
+
+<div class="users-edit-page user-inverse">
     <div class="users-edit-show-boxes">
+    	<div class="mail-icon">
+		    <div class="">
+		    	<i class="fa fa-sign-in"></i>
+		    </div>
+			<p class="users-edit-title">メールアドレスの変更</p>
+  		</div>
     	<%= form_for(@user) do |f| %>
 			<div class="users-edit-show-informations">
 				<label>現在のメールアドレス</label><br>
