@@ -13,19 +13,19 @@
 
 .fade-in {
     animation: fadeIn 2s ease 0s 1 normal;
-    -webkit-animation: fadeIn 2s ease 0s 1 normal;
+    /*-webkit-animation: fadeIn 2s ease 0s 1 normal;*/
 }
 
 @keyframes fadeIn {
-    0% {opacity: 0;
-        background-color: black;
+    0% {background-color: black;
+        opacity: 0;
     }
     100% {opacity: 1}
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity: 0;
-        background-color: black;
+    0% {background-color: black;
+        opacity: 0;
     }
     100% {opacity: 1}
 }
@@ -214,11 +214,13 @@ dl.search dd button span{
 /*============ユーザー編集画面==============*/
 .users-edit{
     width: 60%;
-    margin: 40px auto;
+    margin: 0 auto;
+    padding-top:40px;
     border: solid 3px;
     border-radius: 10px;
 }
 .users-edit-title{
+    text-align:center;
     font-size: 25px;
     border-bottom: solid 2px;
 }

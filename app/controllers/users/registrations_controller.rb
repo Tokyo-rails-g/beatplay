@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
     @orders = @user.orders.find_by(status: '0')
     @orders2 = @user.orders.find_by(status: '1')
-    binding.pry
+    # binding.pry
   end
 
   # PUT /resource

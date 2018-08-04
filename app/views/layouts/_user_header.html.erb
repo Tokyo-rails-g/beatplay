@@ -27,22 +27,24 @@
         <div class="collapse navbar-collapse" id="navbarEexample8">
           <ul class="nav navbar-nav navbar-right">
             <li class="">
-              <%= link_to products_path, class: "header-buttons" do%>
-              Home
+              <%= link_to products_path, class: "header-buttons" do %>
+              <%= image_tag('home-logo.png',size: "100x50") %>
               <% end %>
             </li>
             <li class="">
-              <%= link_to mypage_user_path(current_user), class: "header-buttons" do %>
-              Mypage
+              <%= link_to mypage_user_path(current_user), class: "" do %>
+                <%= image_tag('mypage-logo.png',size: "100x50") %>
               <% end %>
             </li>
             <li class="">
-              <%= link_to carts_path, class: "header-buttons" do %>
-              Cart
+              <%= link_to carts_path, class: "" do %>
+                <%= image_tag('cart-logo.png',size: "100x55") %>
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "header-buttons" do %>SignOut<% end %>
+              <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "" do %>
+                <%= image_tag('sign-out-logo.png',size: "100x50") %>
+              <% end %>
             </li>
           </ul>
         </div>

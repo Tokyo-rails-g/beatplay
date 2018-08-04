@@ -32,9 +32,10 @@
 
 }
 .sort-box{
-	width: 100%;
-	height: 70px;
-	/*background-color: silver;*/
+	display: flex;
+	width: 80%;
+ 	margin: 0px auto;
+	padding: 20px;
 }
 .products-box{
 	width:95%;

@@ -5,14 +5,12 @@
 <!-- 検索フォーム -->
   <%= render 'products/list', q: @q %>
 <!--             -->
-
-<div class="users-edit user-inverse">
-	<div class="mail-icon">
+<div class="user-inverse" style="padding-top:40px;">
+<div class="users-edit">
     <div class="">
     	<i class="fa fa-sign-in"></i>
     </div>
 		<p class="users-edit-title">登録情報の編集</p>
-  </div>
   <div class="users-edit-boxes">
 		<p class="users-edit-information-name">
 			<label>名前：</label>
@@ -66,4 +64,5 @@
     </p>
     <p><%= link_to "終了(ホームへ)", products_path, class: "btn-sm btn-danger" %> | <%= link_to "退会する", edit_user_registration_path, class: "btn-sm btn-danger" %></p>
   </div>
+</div>
 </div>
