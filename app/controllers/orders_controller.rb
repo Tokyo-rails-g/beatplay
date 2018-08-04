@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 # addressの#newにあたる
   def new
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @q2 = Music.ransack(params[:q])
     @cart = Cart.find_by(user_id: current_user)
     @cart_items = @cart.cart_items
     @cart_items.each do |cart_item|

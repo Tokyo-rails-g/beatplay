@@ -1,0 +1,46 @@
+
+<!-- headerの部分テンプレート -->
+<%= render 'layouts/user_header'  %>
+<!-- 検索フォーム -->
+<%= render 'products/list', q: @q, q2: @q2  %>
+
+<div class="bpm-main-box user-inverse">
+
+	<% if @searchproducts.any? %>
+			<% if @searchproducts2.count != @productall.count %>
+				<%= @searchproducts2.count %>件ヒットしました。
+			<% end %>
+	<div class= "bpm-search-result-box">
+		<table class="bpm-search-result-table-box">
+			<thead>
+				<% @searchproducts.each do |searchproduct| %>
+				<tr>
+					<td class="">
+						<%= link_to product_path(searchproduct.disc.product_id) do %>
+							<p class=""><%= attachment_image_tag searchproduct.disc.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %></p>
+						<% end %>
+						<p class="">
+							<%= searchproduct.disc.product.album_title %><br>
+							<%= searchproduct.disc.product.artist %><br></p>
+					</td>
+				    <td>
+						<label>DISC</label><%= searchproduct.disc.disc_number %></p>
+								<label>曲順：</label><%= searchproduct.track_number %><br>
+								<label>曲名：</label><%= searchproduct.name %></br>
+								<label>BPM：</label><%= searchproduct.bpm %><br>
+								<label>曲長：</label><%= searchproduct.duration %><br>
+					</td>
+				</tr>
+				<% end %>
+				<%= paginate @searchproducts %>
+			</thead>
+		</table>
+		<%= paginate @searchproducts %>
+	</div>
+
+	<% else %>
+		<p><%= @msg %></p>
+	<% end %>
+</div>
+
+</main>

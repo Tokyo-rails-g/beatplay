@@ -1,37 +1,40 @@
+<%= render 'layouts/user_header'  %>
+  <div class="sign-up-background-image">
+    <div class="view-registration-box">
+      <div class="mail-icon">
+        <p class="page-title">Beat Play へようこそ</p><br>
+        <p class="sign-up">Log in</p>
+      </div>
 
-<section class="view-session-box">
+      <div class="sign-up-boxes">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="mail-icon">
-    <div class="">
-      <i class="fa fa-sign-in"></i>
+          <div class="sign-up-content-box">
+            <div class="sign-up-info-name-box">
+              <label class="sign-up-info-label">メールアドレス</label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" , :placeholder => "メールアドレス", class: "sign-up-info-box"%>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">パスワード</label>
+              <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード", class: "sign-up-info-box"%>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="sign-up-info-boxes-remember">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div class="action-sign-up-info-box">
+              <%= f.submit "Log in", class: "sign-up-info-box-button" %>
+            </div>
+          </div>
+
+        <% end %>
+
+        <%= render "users/shared/links", class: "sign-up-info-box"  %>
+      </div>
     </div>
-    <p class="page-title">Beat Play へようこそ</p><br>
-    <p class="page-title">Log in</p>
   </div>
-
-  <div class="main-box">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" , :placeholder => "メールアドレス"%>
-      </div>
-
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード"%>
-      </div>
-
-      <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end -%>
-
-      <div class="actions">
-        <%= f.submit "Log in" %>
-      </div>
-    <% end %>
-
-    <%= render "users/shared/links" %>
-  </div>
-
-</section>

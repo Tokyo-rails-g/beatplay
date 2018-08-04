@@ -3,67 +3,69 @@
   <%= render 'layouts/user_header'  %>
 <!-- main-visual -->
 <!-- 検索フォーム -->
-  <%= render 'products/list', q: @q %>
+  <%= render 'products/list', q: @q, q2: @q2 %>
 <!--             -->
 
-<div class="users-edit user-inverse">
-	<div class="mail-icon">
-    <div class="">
-    	<i class="fa fa-sign-in"></i>
+<div class="users-edit-page user-inverse">
+  <div class="users-edit-box">
+  	<div class="mail-icon">
+      <div class="">
+      	<i class="fa fa-sign-in"></i>
+      </div>
+  		<p class="users-edit-title">登録情報の編集</p>
     </div>
-		<p class="users-edit-title">登録情報の編集</p>
-  </div>
-  <div class="users-edit-boxes">
-		<p class="users-edit-information-name">
-			<label>名前：</label>
-			<label><%= @user.first_name %><%= @user.last_name %></label>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>カナ：</label>
-        <%= @user.kana_first %><%= @user.kana_last %>
-      </label>
-      <%= link_to edit_name_user_path(@user.id) do %>
-        <button type="button" class="users-edits-button-style" >編集</button>
-      <% end %>
-		</p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>住所：</label>
-        <%= @user.postal_code %><br>
-        <%= @user.pref %> <%= @user.city %>
-        <%= @user.address1 %> <%= @user.address2 %>
-      </label>
-      <%= link_to edit_address_user_path(@user.id) do %>
-        <button type="button" class="users-edits-button-style" >編集</button>
-      <% end %>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>電話番号：</label>
-        <%= @user.phone_number %>
-      </label>
-      <%= link_to edit_phonenumber_user_path(@user.id)  do %>
-        <button type="button" class="users-edits-button-style" >編集</button>
-      <% end %>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>メールアドレス：</label>
-        <%= @user.email %>
-      </label>
-      <%= link_to edit_email_user_path(@user.id)  do %>
-        <button type="button" class="users-edits-button-style" >編集</button>
-      <% end %>
-    </p>
-    <p class="users-edit-information">
-      <label class="users-edit-information-contents">
-        <label>パスワード</label>
-      </label>
-      <%= link_to edit_password_user_path(@user.id) do %>
-        <button type="button" class="users-edits-button-style" >編集</button>
-      <% end %>
-    </p>
-    <p><%= link_to "終了(ホームへ)", products_path, class: "btn-sm btn-danger" %> | <%= link_to "退会する", edit_user_registration_path, class: "btn-sm btn-danger" %></p>
+    <div class="users-edit-boxes">
+  		<p class="users-edit-information-name">
+  			<label>名前：</label>
+  			<label><%= @user.first_name %><%= @user.last_name %></label>
+      </p>
+      <p class="users-edit-information">
+        <label class="users-edit-information-contents">
+          <label>カナ：</label>
+          <%= @user.kana_first %><%= @user.kana_last %>
+        </label>
+        <%= link_to edit_name_user_path(@user.id) do %>
+          <button type="button" class="users-edits-button-style" >編集</button>
+        <% end %>
+  		</p>
+      <p class="users-edit-information">
+        <label class="users-edit-information-contents">
+          <label>住所：</label>
+          <%= @user.postal_code %><br>
+          <%= @user.pref %> <%= @user.city %>
+          <%= @user.address1 %> <%= @user.address2 %>
+        </label>
+        <%= link_to edit_address_user_path(@user.id) do %>
+          <button type="button" class="users-edits-button-style" >編集</button>
+        <% end %>
+      </p>
+      <p class="users-edit-information">
+        <label class="users-edit-information-contents">
+          <label>電話番号：</label>
+          <%= @user.phone_number %>
+        </label>
+        <%= link_to edit_phonenumber_user_path(@user.id)  do %>
+          <button type="button" class="users-edits-button-style" >編集</button>
+        <% end %>
+      </p>
+      <p class="users-edit-information">
+        <label class="users-edit-information-contents">
+          <label>メールアドレス：</label>
+          <%= @user.email %>
+        </label>
+        <%= link_to edit_email_user_path(@user.id)  do %>
+          <button type="button" class="users-edits-button-style" >編集</button>
+        <% end %>
+      </p>
+      <p class="users-edit-information">
+        <label class="users-edit-information-contents">
+          <label>パスワード</label>
+        </label>
+        <%= link_to edit_password_user_path(@user.id) do %>
+          <button type="button" class="users-edits-button-style" >編集</button>
+        <% end %>
+      </p>
+      <p><%= link_to "終了(ホームへ)", products_path, class: "end-home-button-style" %> | <%= link_to "退会する", edit_user_registration_path, class: "unsubscribe-button-style" %></p>
+    </div>
   </div>
 </div>
