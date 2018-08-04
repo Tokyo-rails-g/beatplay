@@ -3,8 +3,9 @@
   <%= render 'layouts/user_header'  %>
 <!-- main-visual -->
 <!-- 検索フォーム -->
-  <%= render 'products/list', q: @q %>
+  <%= render 'products/list', q: @q, q2: @q2 %>
 <!--             -->
+
 <div class="user-inverse" style="padding-top:40px;">
 <div class="users-edit">
     <div class="">
@@ -62,7 +63,7 @@
         <button type="button" class="users-edits-button-style" >編集</button>
       <% end %>
     </p>
-    <p><%= link_to "終了(ホームへ)", products_path, class: "btn-sm btn-danger" %> | <%= link_to "退会する", edit_user_registration_path, class: "btn-sm btn-danger" %></p>
+    <p><%= link_to "終了(ホームへ)", products_path, class: "end-home-button-style" %> | <%= link_to "退会する", edit_user_registration_path, class: "unsubscribe-button-style" %></p>
   </div>
 </div>
 </div>

@@ -1,67 +1,77 @@
+<div class= fade-in>
+  <%= render 'layouts/user_header'  %>
+  <div class="sign-up-background-image">
+    <div class="view-registration-box">
 
-<section class="view-registration-box">
+      <div class="mail-icon">
+        <p class="page-title">Beat Play へようこそ</p><br>
+        <p class="sign-up">Sign up</p>
+      </div>
 
-  <div class="mail-icon">
-    <div class="">
-      <i class="fa fa-sign-in"></i>
+      <div class="sign-up-boxes">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="sign-up-content-box">
+            <div class="sign-up-info-name-box">
+              <label class="sign-up-info-label">名前</label>
+              <%= f.text_field :first_name, autofocus: true, :placeholder => "姓", class: "sign-up-info-box" %>
+              <%= f.text_field :last_name, :placeholder => "名", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">カナ</label>
+              <%= f.text_field :kana_first, :placeholder => "カナ", class: "sign-up-info-box" %>
+              <%= f.text_field :kana_last, :placeholder => "カナ", class: "sign-up-info-box"  %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">郵便番号</label>
+              <%= f.text_field :postal_code, :placeholder => "郵便番号", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">住所</label>
+              <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name, class: "sign-up-info-box" %>
+              <%= f.text_field :city, :placeholder => "市町村", class: "sign-up-info-box"  %>
+            </div>
+
+            <div class="sign-up-info-address12-boxes">
+              <%= f.text_field :address1, :placeholder => "番地", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-address12-boxes">
+              <%= f.text_field :address2, :placeholder => "建物名、部屋番号", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">電話番号</label>
+              <%= f.telephone_field :phone_number, :placeholder => "電話番号", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">メールアドレス</label>
+              <%= f.email_field :email, autocomplete: "email", :placeholder => "メールアドレス", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">パスワード</label>
+              <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="sign-up-info-boxes">
+              <label class="sign-up-info-label">パスワード確認</label>
+              <%= f.password_field :password_confirmation, autocomplete: "off" , :placeholder => "パスワード確認", class: "sign-up-info-box" %>
+            </div>
+
+            <div class="action-sign-up-info-box">
+              <%= f.submit "Sign up アカウントを作成する", class: "sign-up-info-box-button" %>
+            </div>
+          </div>
+        <% end %>
+        <%= render "users/shared/links", class: "sign-up-info-box"  %>
+      </div>
     </div>
-    <p class="page-title">Beat Play へようこそ</p><br>
-    <p class="page-title">Sign up</p>
   </div>
-
-  <div class="main-box">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-
-        <div class="field">
-          <%= f.text_field :first_name, autofocus: true, :placeholder => "姓" %>
-          <%= f.text_field :last_name, :placeholder => "名" %>
-        </div>
-
-        <div class="field">
-          <%= f.text_field :kana_first, :placeholder => "カナ" %>
-          <%= f.text_field :kana_last, :placeholder => "カナ"  %>
-        </div>
-
-        <div class="field">
-          <%= f.text_field :postal_code, :placeholder => "郵便番号" %>
-        </div>
-
-        <div class="field">
-          <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name, :name %>
-          <%= f.text_field :city, :placeholder => "市町村"  %>
-        </div>
-
-        <div class="field">
-          <%= f.text_field :address1, :placeholder => "番地" %>
-        </div>
-
-        <div class="field">
-          <%= f.text_field :address2, :placeholder => "建物名、部屋番号" %>
-        </div>
-
-        <div class="field">
-          <%= f.telephone_field :phone_number, :placeholder => "電話番号" %>
-        </div>
-
-        <div class="field">
-          <%= f.email_field :email, autocomplete: "email", :placeholder => "メールアドレス" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード(8~16文字)" %>
-        </div>
-
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "off" , :placeholder => "パスワード確認" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Sign up アカウントを作成する" %>
-        </div>
-    <% end %>
-
-    <%= render "users/shared/links" %>
-  </div>
-</section>
+</div>
 

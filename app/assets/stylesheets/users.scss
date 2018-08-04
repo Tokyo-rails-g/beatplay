@@ -105,6 +105,83 @@ dl.search dd button span{
     background:url('search.png') no-repeat scroll 0 0;
 }
 
+/*---------------Sign Up----------------*/
+.sign-up-background-image{
+    /*background-image: url('top-image-girl2.jpg');*/
+    width: 100%;
+    padding-bottom: 40px;
+    /*position: fixed;*/
+    background: linear-gradient(to right, rgba(0, 0, 0, 1.0), transparent), url('top-image-girl2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    /*background-color: black;*/
+}
+.sign-up-background-image p{
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-size: 50px;
+}
+p.sign-up{
+    font-size: 40px;
+}
+.view-registration-box{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.sign-up-boxes{
+    width: 70%;
+    margin: 0 auto;
+    border: solid 1px white;
+    border-radius: 10px;
+}
+.sign-up-content-box{
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+.sign-up-info-name-box{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.sign-up-info-boxes{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.sign-up-info-address12-boxes{
+    margin-top: 30px;
+    margin-left: 45px;
+}
+.sign-up-info-label{
+    margin-right: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.sign-up-info-box{
+    border: solid 1px white;
+    border-radius: 30px;
+    /*background-color: rgba(255, 200, 255, 0.4);*/
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+.action-sign-up-info-box{
+    margin: 30px 0;
+}
+.sign-up-info-box-button{
+    border: solid 1px white;
+    border-radius: 30px;
+    /*background-color: rgba(255, 200, 255, 0.4);*/
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+}
+.sign-up-info-boxes-remember{
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.7);
+}
 
 /*---------------my_page----------------*/
 
@@ -186,7 +263,6 @@ dl.search dd button span{
 .orders-contents{
     margin: 20px;
     border: solid 2px;
-    border-radius: 10px;
 }
 .orders-address{
     margin-left: 20px;
@@ -212,7 +288,11 @@ dl.search dd button span{
 }
 
 /*============ユーザー編集画面==============*/
-.users-edit{
+.users-edit-page{
+    width: 100%;
+    padding: 40px 0;
+}
+.users-edit-box{
     width: 60%;
     margin: 0 auto;
     padding-top:40px;
@@ -225,7 +305,7 @@ dl.search dd button span{
     border-bottom: solid 2px;
 }
 .users-edit-boxes{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     font-size: 15px;
 }
@@ -245,25 +325,30 @@ dl.search dd button span{
     flex-direction: row;
 }
 .users-edits-button-style{
-    color: purple;
-    border: solid 1px;
+    border: solid 1px purple;
     border-radius: 5px;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /*============ユーザー編集各詳細画面　退会ページ==============*/
 .users-edit-show-boxes{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     font-size: 17px;
+    border: solid 3px;
+    border-radius: 10px;
 }
 .users-edit-show-informations{
     margin-top: 50px;
     margin-bottom: 70px;
+    margin-left: 20px;
 }
 .uses_edit-show-info{
     margin-top: 15px;
     margin-left: 15px;
     border-radius: 10px;
+    color: black;
 }
 .actions-users-edit-show-box{
     width: 100%;
@@ -273,25 +358,31 @@ dl.search dd button span{
 .actions-users-edit-show{
     font-size: 15px;
     margin: 30px 0;
-    color: purple;
-    border: solid 1px;
+    border: solid 1px purple;
     border-radius: 5px;
     line-height: 3;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
 }
 .actions-users-edit-show-back{
     font-size: 15px;
     margin: 30px 0;
     padding: 0 20px;
-    color: purple;
-    border: solid 1px;
+    border: solid 1px purple;
     border-radius: 5px;
     line-height: 3;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
 }
-
+.users-edit-show-informations-pref{
+    margin-left: 20px;
+}
 .users_edit-show-prefecture{
     margin-top: 15px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: black;
 }
-
 .users_edit-show-current-phonenumber-email-box{
     margin-top: 15px;
     margin-left: 15px;
@@ -300,7 +391,6 @@ dl.search dd button span{
     padding: 0 10px;
     display: inline-block;
 }
-
 .users-unsubscribe-box{
     margin-top: 50px;
     margin-bottom: 40px;
@@ -313,30 +403,48 @@ dl.search dd button span{
 }
 
 
-
-
 /*============ボタン類のCSS==============*/
 .edit-button-style{
     margin:20px 0px 10px 100px;
-    border: solid 1px;
+    border: solid 1px purple;
     /*color: rgba(255, 255, 255, 0.8);*/
     padding: 0 20px;
     text-align: center;
     font-size: 15px;
-    color: purple;
     border-radius: 5px;
     /*background-color: #202020;*/
     line-height: 2.5;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .favorites-destroy-button-style{
-    border: solid 1px;
+    border: solid 1px purple;
     /*color: rgba(255, 255, 255, 0.8);*/
     padding: 0 20px;
     text-align: center;
     font-size: 10px;
-    color: purple;
     border-radius: 5px;
     /*background-color: #202020;*/
+    line-height: 2.5;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/*============ボタン類のCSS 編集==============*/
+.end-home-button-style{
+    border: solid 1px purple;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px 20px;
+    line-height: 2.5;
+}
+.unsubscribe-button-style{
+    border: solid 2px purple;
+    background-color: rgba(255, 200, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px 20px;
     line-height: 2.5;
 }

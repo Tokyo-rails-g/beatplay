@@ -1,7 +1,7 @@
 <!-- headerの部分テンプレート -->
 	<%= render 'layouts/user_header'  %>
 <!-- 検索フォーム -->
-	<%= render 'products/list', q: @q %>
+	<%= render 'products/list', q: @q, q2: @q2  %>
 
 <div class="product-show user-inverse">
 	<div class="product-show-box">
@@ -21,7 +21,7 @@
 				<% end %>
 				<div class="product-add-favorite">
 					<% if user_signed_in? %>
-					    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "btn-lg btn-danger" %>
+					    <%= link_to "お気に入りに追加する", product_favorites_path(@product), method: :post, class: "end-home-button-style" %>
 					<% end %>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 							<%= f.number_field :quantity, min: 1, max: @product.stock, style:"color:black;", value:"1" %>
 							<font color = "orange"><b><%= @alert_few %></b></font>
 							<div class="action row">
-							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
+							  	<%= f.submit 'カートに入れる', class: "cart-button-style" %>
 							</div>
 
 						<% elsif @product.stock === 0 %>
@@ -48,7 +48,7 @@
 							</div>
 							<%= f.number_field :quantity, min: 1, max: @product.stock %>
 							<div class="action row">
-							  	<%= f.submit 'カートに入れる', class: "btn-lg btn-primary" %>
+							  	<%= f.submit 'カートに入れる', class: "cart-button-style" %>
 							</div>
 						<% end %>
 					<% end %>

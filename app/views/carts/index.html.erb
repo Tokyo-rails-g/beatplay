@@ -5,7 +5,7 @@
 <%= render 'layouts/user_header'  %>
 <section>
 		<!-- 検索フォーム -->
-	<%= render 'products/list', q: @q %>
+	<%= render 'products/list', q: @q, q2: @q2 %>
 			<% if @trigger_numb == 1 %>
 			<div class="user-inverse">
 				<div class = "blank-box">

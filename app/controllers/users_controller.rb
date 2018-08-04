@@ -14,12 +14,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites.reverse_order
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @q2 = Music.ransack(params[:q])
     @msg = 'お気に入りリストに商品は入っておりません。'
     @msg2 = '購入履歴はございません。'
   end
 
   def edit
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @q2 = Music.ransack(params[:q])
     @user = User.find(params[:id])
     if @user.id == current_user.id
       render :edit

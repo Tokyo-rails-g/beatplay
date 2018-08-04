@@ -19,7 +19,6 @@
           </thead>
           <tbody>
             <% @orders.each do |order| %>
-              <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
                 <tr>
                   <th><input type="checkbox"></th>
                   <td><%= link_to admins_order_show_path(order.id) do %>
@@ -31,24 +30,20 @@
                     <%= order.status %>
                   </td>
                   <td>
+                <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
                     <%= f.select :status, Order.statuses.keys.to_a %>
                     <button type="submit" class="update-button">更新</button>
-                    <% end %>
-                  </td>
+                <% end %>
                   </td>
                   <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                  <%# if admins %>
-   <!--                  <td><%#= link_to admins_user_path(order.user.id), method: :get do %>
-                          <%#=order.user.first_name %><%#= order.user.last_name %>
-                        <%# end %></td>
-                  <%# else %> -->
-                    <td><%= link_to admins_user_path(order.user.id), method: :get do %>
+                  <td><%= link_to admins_user_path(order.user.id), method: :get do %>
                           <%=order.user.first_name %><%= order.user.last_name %>
-                        <% end %></td>
-                  <%# end %>
+
+                  </td>
                   <td>¥ <%= order.total %></td>
                 </tr>
               <% end %>
+            <% end %>
           </tbody>
       </table>
       <%= paginate @orders %>

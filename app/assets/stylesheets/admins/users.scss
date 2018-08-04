@@ -88,7 +88,7 @@
 }
 .ad-ad-index-box {
 	width: 30%;
-	margin: 10px;
+	margin: 100px 10px;
 	font-size: 8px;
 }
 .ad-index {
@@ -141,8 +141,8 @@
 }
 .ad-user-orders {
 	float: right;
-	width: 520px;
-	margin: 50px 30px 50px 10px;
+	width: 500px;
+	margin: 150px 30px 50px 10px;
 }
 .ad-user-orders-inner {
 	border: solid 1px;
@@ -155,4 +155,10 @@
 /*--edit--*/
 .ad-submit-btn {
 	margin-left: 70%;
+}
+
+
+/*--admin(devise)/edit--*/
+.ad-ad-edit {
+	margin-left: 100px;
 }

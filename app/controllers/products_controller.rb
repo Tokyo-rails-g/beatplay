@@ -14,14 +14,27 @@ class ProductsController < ApplicationController
     @searchproducts = @q.result.page(params[:page]).per(15).distinct
 
     @productall = Product.all
-    @searchproducts2 = @q.result
+    @searchproducts2 = @q.result.distinct
     @msg = '検索キーワードに当てはまる商品が見つかりませんでした。'
+    @q2 = Music.ransack(params[:q])
+  end
+
+  def bpms
+    @q2 = Music.ransack(params[:q])
+    @searchproducts = @q2.result.page(params[:page]).per(15)
+
+    @productall = Music.all
+    @searchproducts2 = @q2.result
+    @msg = '検索キーワードに当てはまる商品が見つかりませんでした。'
+
+    @q = Product.includes(:discs,:musics).ransack(params[:q])
   end
 
   def show
   	@product = Product.find(params[:id])
     @cartitem = CartItem.new
     @q = Product.includes(:discs,:musics).ransack(params[:q])
+    @q2 = Music.ransack(params[:q])
     @alert_few = "残りわずか！"
     @alert_zero = "在庫なし"
   end
@@ -47,29 +60,33 @@ class ProductsController < ApplicationController
   def add_cart_item
     @cartitem = CartItem.new(cart_item_params)
     @product = Product.find(params[:id])
-    @cart = Cart.find_by(user_id: current_user)
-
-    @cartitems = @cart.cart_items.find_by(product_id: @product.id) #自分のカート内に今入れようとしている商品があるかの確認　無ければnilで返答
-    @cartitem.subtotal = @product.price * @cartitem.quantity
-
-    if @cartitems.blank?
-      @cartitem.cart_id = @cart.id
-      @cartitem.product_id = @product.id
-      # bining.pry
-      @cartitem.save
-      flash[:success] = "『" + @product.album_title + "』がカートに入りました"
-      redirect_to products_path
-      # redirect_to carts_path(@cart)
+    if @cartitem.quantity.nil?
+      flash[:success] = "数量を入れて下さい。"
+      redirect_to product_path(@product.id)
     else
-      @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
-      if @cartitems.quantity <= @product.stock
-        @cartitems.save
-        flash[:success] = "『" + @product.album_title + "』の数量が変更されました"
+      @cart = Cart.find_by(user_id: current_user)
+      @cartitems = @cart.cart_items.find_by(product_id: @product.id) #自分のカート内に今入れようとしている商品があるかの確認　無ければnilで返答
+      @cartitem.subtotal = @product.price * @cartitem.quantity
+
+      if @cartitems.blank?
+        @cartitem.cart_id = @cart.id
+        @cartitem.product_id = @product.id
+        # bining.pry
+        @cartitem.save
+        flash[:success] = "『" + @product.album_title + "』がカートに入りました"
         redirect_to products_path
         # redirect_to carts_path(@cart)
       else
-        flash[:success] = "商品の在庫の数量を超えております"
-        redirect_to product_path(@product.id)
+        @cartitems.quantity = @cartitems.quantity + @cartitem.quantity
+        if @cartitems.quantity <= @product.stock
+          @cartitems.save
+          flash[:success] = "『" + @product.album_title + "』の数量が変更されました"
+          redirect_to products_path
+          # redirect_to carts_path(@cart)
+        else
+          flash[:success] = "商品の在庫の数量を超えております"
+          redirect_to product_path(@product.id)
+        end
       end
     end
   end

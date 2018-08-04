@@ -25,13 +25,13 @@
               <i class="fas fa-compact-disc"></i>CD<% end %>
             </li>
             <li><%= link_to admins_orders_index_path do %>
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>ORDER<% end %>
+              <i class="fa fa-clipboard" aria-hidden="true"></i>ORDER<% end %>
             </li>
             <li><%= link_to admins_users_path do %>
               <i class="fa fa-address-card" aria-hidden="true"></i>USER<% end %>
             </li>
-            <li><%= link_to admins_contacts_index_path do %>
-              <i class="fa fa-comments-o" aria-hidden="true"></i>CONTACT<% end %>
+            <li><%= link_to "#" do %>
+              <i class="fa fa-comments" aria-hidden="true"></i>CONTACT<% end %>
             </li>
             <li><%= link_to destroy_admin_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" } do %>
               <span class="glyphicon glyphicon-log-out" aria-hidden="true">LOGOUT</span>
