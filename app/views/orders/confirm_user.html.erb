@@ -10,7 +10,7 @@
                     <% @cart_items.each_with_index do |cart_item, i| %>
                     <tr>
                     	<td> <%= i+1 %> </td>
-                        <td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.jpg', :size => "250x250", class: "p-img" %></td>
+                        <td class="p-img"><%= attachment_image_tag cart_item.product, :image, :fill, 250, 250, fallback: 'icon-mypage.png', :size => "250x250", class: "p-img" %></td>
                         <td class="p-info">
                             <div>
                                 <p><%= cart_item.product.album_title %></p>

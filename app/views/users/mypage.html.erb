@@ -69,7 +69,7 @@
                   <% order.order_items.each_with_index do |order_item| %>
                     <tr>
                       <td class="orders-product-image">
-                        <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.jpg', :size => "100x100" %>
+                        <%= attachment_image_tag order_item.product, :image, :fill, 100, 100, fallback: 'icon-mypage.png', :size => "100x100" %>
                       </td>
                       <td class="orders-product-title-artist-box">
                         <p><label>アルバム/シングル名：</label> <%= order_item.product.album_title %></p>

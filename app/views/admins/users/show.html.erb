@@ -5,9 +5,14 @@
     <div class="ad-user-info">
       <div class="ad-tbl-title2">ユーザー登録情報</div>
         <div class="ad-form">
+          <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
           <p class="form-control-static">
             <label>名前：</label>
-              <%= @user.first_name %><%= @user.last_name %>
+              <% if @user.deleted_at != nil %>
+                <%= @user.first_name %><%= @user.last_name %>**
+              <% else %>
+                <%= @user.first_name %><%= @user.last_name %>
+              <% end %>
           </p>
         </div>
         <div class="ad-form">
