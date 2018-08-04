@@ -54,8 +54,8 @@ class Admins::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
-      flash[:success] = 'ユーザーを削除しました'
+    if @user.soft_delete
+      flash[:success] = 'ユーザーを削除しました(soft_deleted)'
       render 'index'
     end
   end

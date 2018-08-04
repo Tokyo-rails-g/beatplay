@@ -55,10 +55,10 @@
 				<p class="admin-subtitles">お気に入り：<b><%= @product.favorite_count %></b></p>
 				<div class="ad-pro-show-btn">
 					<%= link_to edit_admins_product_path(@product) do %>
-						<button class="admin-edit-button btn-default" type="button">商品情報編集</button>
+						<button class="btn btn-default btn-ms">商品情報編集</button>
 					<% end %>
 					<%= link_to admins_product_path, method: :delete do %>
-						<button class="admin-delete-button btn-default" type="button">商品削除</button>
+						<button class="btn btn-default btn-ms">商品削除</button>
 					<% end %>
 				</div>
 			</div>
