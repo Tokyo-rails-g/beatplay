@@ -33,7 +33,7 @@
             </li>
             <li class="">
               <%= link_to mypage_user_path(current_user), class: "" do %>
-                <%= image_tag('mypage-logo.png',size: "100x50") %>
+                <%= image_tag('mypage-logo.png',size: "110x50") %>
               <% end %>
             </li>
             <li class="">
@@ -43,7 +43,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, data:{ confirm:"ログアウトしてよろしいですか？", cancel:"Cancel", commit:"OK" }, class: "" do %>
-                <%= image_tag('sign-out-logo.png',size: "100x50") %>
+                <%= image_tag('sign-out-logo.png',size: "110x50") %>
               <% end %>
             </li>
           </ul>
