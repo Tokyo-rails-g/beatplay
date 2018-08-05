@@ -8,13 +8,11 @@
 
       <div class="sign-up-boxes">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
           <div class="sign-up-content-box">
             <div class="sign-up-info-name-box">
               <label class="sign-up-info-label">メールアドレス</label>
               <%= f.email_field :email, autofocus: true, autocomplete: "email" , :placeholder => "メールアドレス", class: "sign-up-info-box"%>
             </div>
-
             <div class="sign-up-info-boxes">
               <label class="sign-up-info-label">パスワード</label>
               <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワード", class: "sign-up-info-box"%>
