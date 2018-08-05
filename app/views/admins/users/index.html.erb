@@ -1,119 +1,120 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-page">
-  <div class="ad-user-index-box">
-    <div class="ad-user-ind-box">
-      <table class="table table-hover">
-        <div class="ad-tbl-title2">登録ユーザー一覧</div>
-         <thead>
-          <tr>
-            <th><input type="checkbox"></th>
-            <th><%= sort_link(@q, :id, "ID") %></th>
-            <th><%= sort_link(@q, :first_name, "ユーザー名") %></th>
-            <th><%= sort_link(@q, :emali, "Email") %></th>
-            <th><%= sort_link(@q, :created_at, "登録日") %></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+<div class="ad-box">
+  <div class="ad-page">
+    <div class="ad-user-index-box">
+      <div class="ad-user-ind-box">
+        <table class="table table-hover">
+          <div class="ad-tbl-title2">登録ユーザー一覧</div>
+           <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th><%= sort_link(@q, :id, "ID") %></th>
+              <th><%= sort_link(@q, :first_name, "ユーザー名") %></th>
+              <th><%= sort_link(@q, :emali, "Email") %></th>
+              <th><%= sort_link(@q, :created_at, "登録日") %></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-      <% if @users2.count == @searchuser.count %>
+        <% if @users2.count == @searchuser.count %>
 
-        <tbody>
-          <% @users.each do |user| %>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td><%= user.id %></td>
-                <td>
-                  <% if user.deleted_at != nil %>
-                    <%= user.first_name %><%= user.last_name %>**
-                  <% else %>
-                    <%= user.first_name %><%= user.last_name %>
-                  <% end %>
-                </td>
-                <td><%= user.email %></td>
-                <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-                <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
-                <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
-                <td>
-                  <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-default btn-ms", data: { confirm: '削除します。よろしいですか？' }%>
-                </td>
-              </tr>
-          <% end %>
-        </tbody>
+          <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><%= user.id %></td>
+                  <td>
+                    <% if user.deleted_at != nil %>
+                      <%= user.first_name %><%= user.last_name %>**
+                    <% else %>
+                      <%= user.first_name %><%= user.last_name %>
+                    <% end %>
+                  </td>
+                  <td><%= user.email %></td>
+                  <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+                  <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
+                  <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
+                  <td>
+                    <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-default btn-ms", data: { confirm: '削除します。よろしいですか？' }%>
+                  </td>
+                </tr>
+            <% end %>
+          </tbody>
 
-      <% else %>
+        <% else %>
 
-        <tbody>
-          <% @searchuser2.each do |user| %>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><%= user.id %></td>
-            <td><%= user.first_name %><%= user.last_name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
-            <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
-            <td>
-              <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-default btn-ms", data: { confirm: '削除します。よろしいですか？' }%>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      <% end %>
-      <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
+          <tbody>
+            <% @searchuser2.each do |user| %>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><%= user.id %></td>
+              <td><%= user.first_name %><%= user.last_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= button_to "詳細", admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
+              <td><%= button_to "編集", edit_admins_user_path(user.id), method: :get, class: "btn btn-default btn-ms" %></td>
+              <td>
+                <%= button_to "削除", admins_user_path(user.id), method: :delete, class: "btn btn-default btn-ms", data: { confirm: '削除します。よろしいですか？' }%>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+        <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
 
-      </table>
-    </div>
+        </table>
+      </div>
 
 
-    <div class="ad-ad-index-box">
-      <div class="box-for-position2">
-        <h4 class="ad-index">管理者情報</h4>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>名前</th>
-                <th>Email</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @admins.each do |ad| %>
-              <tr>
-                <td><%= ad.name %></td>
-                <td><%= ad.email %></td>
-                <td>
-                  <%= button_to "編集", edit_admin_registration_path, method: :get, class: "btn btn-default btn-xs" %>
-                </td>
-                <td>
-                  <%= button_to "削除", admin_registration_path, method: :delete, class: "btn btn-default btn-xs", data: { confirm: '削除します。よろしいですか?' }%>
-                </td>
-                <td>
-                  <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default btn-xs" %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-          <div class="extraction-box">
-            <div class="box-for-position">
-              <div class="ad-search-box">
-                <%= search_form_for @q, url:admins_users_path, method: :get do |f| %>
-                  <%= f.search_field :id_eq %>
-                  <%= f.submit "ID検索" %>
+      <div class="ad-ad-index-box">
+        <div class="box-for-position2">
+          <h4 class="ad-index">管理者情報</h4>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>名前</th>
+                  <th>Email</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @admins.each do |ad| %>
+                <tr>
+                  <td><%= ad.name %></td>
+                  <td><%= ad.email %></td>
+                  <td>
+                    <%= button_to "編集", edit_admin_registration_path, method: :get, class: "btn btn-default btn-xs" %>
+                  </td>
+                  <td>
+                    <%= button_to "削除", admin_registration_path, method: :delete, class: "btn btn-default btn-xs", data: { confirm: '削除します。よろしいですか?' }%>
+                  </td>
+                  <td>
+                    <%= button_to '追加', destroy_admin_session_path, method: :delete, class: "btn btn-default btn-xs" %>
+                  </td>
+                </tr>
                 <% end %>
+              </tbody>
+            </table>
+
+            <div class="extraction-box">
+              <div class="box-for-position">
+                <div class="ad-search-box">
+                  <%= search_form_for @q, url:admins_users_path, method: :get do |f| %>
+                    <%= f.search_field :id_eq %>
+                    <%= f.submit "ID検索" %>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
+        </div>
       </div>
     </div>
+
   </div>
-
 </div>
-
 

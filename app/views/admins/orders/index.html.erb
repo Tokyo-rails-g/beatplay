@@ -1,76 +1,77 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-page">
+<div class="ad-box">
+  <div class="ad-page">
 
-  <div class="ad-index-box">
-    <div class="ad-index-inner">
-      <table class="table table-hover">
-        <div class="ad-tbl-title2">オーダー一覧</div>
-          <thead>
-            <tr>
-              <th></th>
-              <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
-              <th><%= sort_link(@q, :status, "ステータス") %></th>
-              <th></th>
-              <th><%= sort_link(@q, :created_at, "購入日") %></th>
-              <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
-              <th><%= sort_link(@q, :total, "合計") %></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @orders.each do |order| %>
-                <tr>
-                  <th><input type="checkbox"></th>
-                  <td><%= link_to admins_order_show_path(order.id) do %>
-                      #<%= order.id %>-<%= order.created_at.strftime('%Y%m%d') %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= @msg %>
-                    <%= order.status %>
-                  </td>
-                  <td>
-                <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
-                    <%= f.select :status, Order.statuses.keys.to_a %>
-                    <button type="submit" class="update-button">更新</button>
+    <div class="ad-index-box">
+      <div class="ad-index-inner">
+        <table class="table table-hover">
+          <div class="ad-tbl-title2">オーダー一覧</div>
+            <thead>
+              <tr>
+                <th></th>
+                <th><%= sort_link(@q, :id, "オーダーNo.") %></th>
+                <th><%= sort_link(@q, :status, "ステータス") %></th>
+                <th></th>
+                <th><%= sort_link(@q, :created_at, "購入日") %></th>
+                <th><%= sort_link(@q, :user_id, "ユーザー名") %></th>
+                <th><%= sort_link(@q, :total, "合計") %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+                  <tr>
+                    <th><input type="checkbox"></th>
+                    <td><%= link_to admins_order_show_path(order.id) do %>
+                        #<%= order.id %>-<%= order.created_at.strftime('%Y%m%d') %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= @msg %>
+                      <%= order.status %>
+                    </td>
+                    <td>
+                  <%= form_for order, url: admins_order_update_path(order), method: :patch do |f| %>
+                      <%= f.select :status, Order.statuses.keys.to_a %>
+                      <button type="submit" class="update-button">更新</button>
+                  <% end %>
+                    </td>
+                    <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                    <td><%= link_to admins_user_path(order.user.id), method: :get do %>
+                          <% if order.user.deleted_at != nil %>
+                            <%=order.user.first_name %><%= order.user.last_name %>**
+                          <% else %>
+                            <%=order.user.first_name %><%= order.user.last_name %>
+                          <% end %>
+                    </td>
+                    <td>¥ <%= order.total %></td>
+                  </tr>
                 <% end %>
-                  </td>
-                  <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                  <td><%= link_to admins_user_path(order.user.id), method: :get do %>
-                        <% if order.user.deleted_at != nil %>
-                          <%=order.user.first_name %><%= order.user.last_name %>**
-                        <% else %>
-                          <%=order.user.first_name %><%= order.user.last_name %>
-                        <% end %>
-                  </td>
-                  <td>¥ <%= order.total %></td>
-                </tr>
               <% end %>
-            <% end %>
-          </tbody>
-        <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
-      </table>
-      <%= paginate @orders %>
-    </div>
+            </tbody>
+          <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
+        </table>
+        <%= paginate @orders %>
+      </div>
 
-    <div class="extraction-box">
-      <div class="box-for-position2">
-        <div class="ad-search-box">
-          <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
-            <%= f.search_field :id_eq %>
-            <%= f.submit "ID検索" %>
-        <% end %>
-        </div>
-        <div class="btn-group btn-group-sm status-box" role="group">
-          <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
-            <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
-           <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+      <div class="extraction-box">
+        <div class="box-for-position2">
+          <div class="ad-search-box">
+            <%= search_form_for @q, url:admins_orders_index_path, method: :get do |f| %>
+              <%= f.search_field :id_eq %>
+              <%= f.submit "ID検索" %>
+          <% end %>
+          </div>
+          <div class="btn-group btn-group-sm status-box" role="group">
+            <button type="button" class="btn btn-default" onclick="OnButton0Click();">出荷待ち</button>
+              <button type="button" class="btn btn-default" onclick="OnButton1Click();">出荷済み</button>
+             <button type="button" class="btn btn-default" onclick="OnButton2Click();"/>お届け済み</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- <script language="javascript" type="text/javascript">
    function clickSwitch() {
   'use strict';

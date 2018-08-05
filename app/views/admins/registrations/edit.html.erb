@@ -1,53 +1,55 @@
-<div class="ad-index-box">
-  <div class="ad-index-inner">
-    <div class="ad-tbl-title">管理者情報編集 <%= resource_name.to_s.humanize %></div>
+<div class="ad-box">
+  <div class="ad-index-box">
+    <div class="ad-index-inner">
+      <div class="ad-tbl-title">管理者情報編集 <%= resource_name.to_s.humanize %></div>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-      <div class="field ad-ad-edit">
-        <%= f.label :名前 %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-      </div>
+        <div class="field ad-ad-edit">
+          <%= f.label :名前 %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
 
-      <div class="field ad-ad-edit">
-        <%= f.label :メール %><br />
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
+        <div class="field ad-ad-edit">
+          <%= f.label :メール %><br />
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field ad-ad-edit">
+          <%= f.label :新しいパスワード %><em><%= @minimum_password_length %> 文字以上</em><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+          <% end %>
+        </div>
+
+        <div class="field ad-ad-edit">
+          <%= f.label :新しいパスワードをもう一度入力してください %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="field ad-ad-edit">
+          <%= f.label :古いパスワード %> <i>(変更には(旧)パスワードの入力が必要です)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+
+        <div class="actions ad-ad-edit">
+          <%= f.submit "更新" %>
+        </div>
       <% end %>
 
-      <div class="field ad-ad-edit">
-        <%= f.label :新しいパスワード %><em><%= @minimum_password_length %> 文字以上</em><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-        <% if @minimum_password_length %>
-        <% end %>
+      <div class="ad-ad-edit">
+        <p>アカウントを削除する</p>
+
+        <%= button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+
+        <%= link_to "戻る", :back %>
       </div>
 
-      <div class="field ad-ad-edit">
-        <%= f.label :新しいパスワードをもう一度入力してください %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="field ad-ad-edit">
-        <%= f.label :古いパスワード %> <i>(変更には(旧)パスワードの入力が必要です)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
-      </div>
-
-      <div class="actions ad-ad-edit">
-        <%= f.submit "更新" %>
-      </div>
-    <% end %>
-
-    <div class="ad-ad-edit">
-      <p>アカウントを削除する</p>
-
-      <%= button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
-      <%= link_to "戻る", :back %>
     </div>
-
   </div>
 </div>
