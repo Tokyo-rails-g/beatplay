@@ -1,68 +1,70 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-page">
+<div class="ad-box">
+  <div class="ad-page">
 
-  <div class="ad-index-box">
-    <div class="ad-index-inner">
-      	<table class="table table-hover">
-          <div class="ad-tbl-title">商品一覧</div>
-        		<thead>
-          		<tr>
-                <th></th>
-            		<th><%= sort_link(@q, :image, "画像") %></th>
-            		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
-            		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
-            		<th><%= sort_link(@q, :price, "値段") %></th>
-            		<th><%= sort_link(@q, :stock, "在庫") %></th>
-                <th></th>
-            		<th><%= sort_link(@q, :favorite_count, "♡") %></th>
-          		</tr>
-        		</thead>
+    <div class="ad-index-box">
+      <div class="ad-index-inner">
+        	<table class="table table-hover">
+            <div class="ad-tbl-title">商品一覧</div>
+          		<thead>
+            		<tr>
+                  <th></th>
+              		<th><%= sort_link(@q, :image, "画像") %></th>
+              		<th><%= sort_link(@q, :album_title, "シングル/アルバム名") %></th>
+              		<th><%= sort_link(@q, :artist, "アーティスト名") %></th>
+              		<th><%= sort_link(@q, :price, "値段") %></th>
+              		<th><%= sort_link(@q, :stock, "在庫") %></th>
+                  <th></th>
+              		<th><%= sort_link(@q, :favorite_count, "♡") %></th>
+            		</tr>
+          		</thead>
 
-            <% if @searchitems.any? %>
+              <% if @searchitems.any? %>
 
-        		<tbody>
-                  <% @searchitems.each_with_index do |searchitem, i| %>
-          		      <tr>
-                      <td><%= i+1 %>.</td>
-                      <td><%= attachment_image_tag searchitem, :image, :fill, 50, 50, format: 'jpg' %></td>
-             		 	    <td style="width: 280"><%= link_to searchitem.album_title, admins_product_path(searchitem.id) %></td>
-              		    <td><%= searchitem.artist %></td>
-              		    <td><%= searchitem.price %></td>
-              		    <td><%= searchitem.stock %></td>
-                      <td>
-                        <% if searchitem.stock <= 10 && searchitem.stock >= 1 %>
-                          <p class="alert-few" style="color: orange;">要入荷</p>
-                        <% elsif searchitem.stock === 0 %>
-                          <p class="alert-zero" style="color: red;"><b>在庫0</b></p>
-                        <% end %>
-                      </td>
-              		    <td><%= searchitem.favorite_count %></td>
-          		      </tr>
-                  <% end %>
-        		</tbody>
+          		<tbody>
+                    <% @searchitems.each_with_index do |searchitem, i| %>
+            		      <tr>
+                        <td><%= i+1 %>.</td>
+                        <td><%= attachment_image_tag searchitem, :image, :fill, 50, 50, format: 'jpg' %></td>
+               		 	    <td style="width: 280"><%= link_to searchitem.album_title, admins_product_path(searchitem.id) %></td>
+                		    <td><%= searchitem.artist %></td>
+                		    <td><%= searchitem.price %></td>
+                		    <td><%= searchitem.stock %></td>
+                        <td>
+                          <% if searchitem.stock <= 10 && searchitem.stock >= 1 %>
+                            <p class="alert-few" style="color: orange;">要入荷</p>
+                          <% elsif searchitem.stock === 0 %>
+                            <p class="alert-zero" style="color: red;"><b>在庫0</b></p>
+                          <% end %>
+                        </td>
+                		    <td><%= searchitem.favorite_count %></td>
+            		      </tr>
+                    <% end %>
+          		</tbody>
 
-            <% else %>
-                <%= @msg %>
-            <% end %>
-      	</table>
-      <%= paginate @searchitems %>
-  </div>
+              <% else %>
+                  <%= @msg %>
+              <% end %>
+        	</table>
+        <%= paginate @searchitems %>
+    </div>
 
-  <div class="ad-ransack-box">
-    <div class="box-for-position2">
-      <div class="ad-search-box">
-        <%= search_form_for @q, url: admins_products_path do |f| %>
-          シングル/アルバム名：<br>
-            <%= f.search_field :album_title_cont_any %>  <%= f.submit "検索"%><br>
-          アーティスト：<br>
-            <%= f.search_field :artist_cont_any %>  <%= f.submit "検索"%><br>
-          曲名：<br>
-            <%= f.search_field :discs_musics_name_cont_any %>  <%= f.submit "検索"%><br>
-        <% end %>
-      </div>
-      <div class="ad-new-btn">
-        <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default add-new-product" %>
+    <div class="ad-ransack-box">
+      <div class="box-for-position2">
+        <div class="ad-search-box">
+          <%= search_form_for @q, url: admins_products_path do |f| %>
+            シングル/アルバム名：<br>
+              <%= f.search_field :album_title_cont_any %>  <%= f.submit "検索"%><br>
+            アーティスト：<br>
+              <%= f.search_field :artist_cont_any %>  <%= f.submit "検索"%><br>
+            曲名：<br>
+              <%= f.search_field :discs_musics_name_cont_any %>  <%= f.submit "検索"%><br>
+          <% end %>
+        </div>
+        <div class="ad-new-btn">
+          <%= button_to '新規追加', admins_new_product_path, class: "btn btn-default add-new-product" %>
+        </div>
       </div>
     </div>
   </div>

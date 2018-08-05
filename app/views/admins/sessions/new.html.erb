@@ -1,27 +1,29 @@
-<div class="ad-index-box">
-  <div class="ad-index-inner">
-    <div class="ad-tbl-title">管理者用ログイン</div>
+<div class="ad-box">
+  <div class="ad-index-box">
+    <div class="ad-index-inner">
+      <div class="ad-tbl-title">管理者用ログイン</div>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <div class="field ad-ad-edit">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email" %>
+      <div class="field ad-ad-edit">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="field ad-ad-edit">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="actions ad-ad-edit">
+        <%= f.submit "ログイン" %>
+        <% end %>
+
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "新規登録", new_registration_path(resource_name) %><br />
+        <% end -%>
+      </div>
+
     </div>
-
-    <div class="field ad-ad-edit">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="actions ad-ad-edit">
-      <%= f.submit "ログイン" %>
-      <% end %>
-
-      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "新規登録", new_registration_path(resource_name) %><br />
-      <% end -%>
-    </div>
-
   </div>
 </div>

@@ -1,71 +1,73 @@
 <%= render 'admins/users/header'  %>
 
-<div class="ad-user-show-box">
-  <div class="ad-user-show-inner">
-    <div class="ad-user-info">
-      <div class="ad-tbl-title2">ユーザー登録情報</div>
-        <div class="ad-form">
-          <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
-          <p class="form-control-static">
-            <label>名前：</label>
-              <% if @user.deleted_at != nil %>
-                <%= @user.first_name %><%= @user.last_name %>**
-              <% else %>
-                <%= @user.first_name %><%= @user.last_name %>
-              <% end %>
-          </p>
-        </div>
-        <div class="ad-form">
-          <p class="form-control-static">
-            <label>住所：</label>
-              <%= @user.postal_code %><br/>
-              <%= @user.pref %> <%= @user.city %>
-              <%= @user.address1 %> <%= @user.address2 %>
-          </p>
-        </div>
-        <div class="ad-form">
+<div class="ad-box">
+  <div class="ad-user-show-box">
+    <div class="ad-user-show-inner">
+      <div class="ad-user-info">
+        <div class="ad-tbl-title2">ユーザー登録情報</div>
+          <div class="ad-form">
+            <div class="ad-user-notice">※名前の脇に「**」がついているユーザーは退会済みです</div>
             <p class="form-control-static">
-              <label>電話番号：</label>
-              <%= @user.phone_number %>
+              <label>名前：</label>
+                <% if @user.deleted_at != nil %>
+                  <%= @user.first_name %><%= @user.last_name %>**
+                <% else %>
+                  <%= @user.first_name %><%= @user.last_name %>
+                <% end %>
             </p>
-        </div>
-        <div class="ad-form">
-            <p class="form-control-static">
-              <label>メール：</label>
-              <%= @user.email %>
-              </p>
-        </div>
-        <div class="ad-form">
-          <div class="ad-user-btn-box">
-            <%= button_to "編集", edit_admins_user_path(@user.id), method: :get, class: "btn btn-default btn-ms" %> <%= button_to "削除", user_registration_path(@user.id), class:"btn btn-default btn-ms", data: { confirm: 'Are you sure?' }, method: :delete %>
           </div>
-        </div>
+          <div class="ad-form">
+            <p class="form-control-static">
+              <label>住所：</label>
+                <%= @user.postal_code %><br/>
+                <%= @user.pref %> <%= @user.city %>
+                <%= @user.address1 %> <%= @user.address2 %>
+            </p>
+          </div>
+          <div class="ad-form">
+              <p class="form-control-static">
+                <label>電話番号：</label>
+                <%= @user.phone_number %>
+              </p>
+          </div>
+          <div class="ad-form">
+              <p class="form-control-static">
+                <label>メール：</label>
+                <%= @user.email %>
+                </p>
+          </div>
+          <div class="ad-form">
+            <div class="ad-user-btn-box">
+              <%= button_to "編集", edit_admins_user_path(@user.id), method: :get, class: "btn btn-default btn-ms" %> <%= button_to "削除", user_registration_path(@user.id), class:"btn btn-default btn-ms", data: { confirm: 'Are you sure?' }, method: :delete %>
+            </div>
+          </div>
+      </div>
     </div>
-  </div>
 
-  <div class="ad-user-orders">
-    <div class="ad-user-orders-inner">
-      <div class="ad-tbl-title2">オーダー履歴</div>
-      <table class="table">
-          <thead>
-            <tr>
-              <th>オーダーNo.</th>
-              <th>ステータス</th>
-              <th>購入日</th>
-              <th>合計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <% @user.orders.reverse_each do |order| %>
-              <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
-              <td><%= order.status %></td>
-              <td><%= order.created_at %></td>
-              <td><%= order.total %></td>
-            </tr>
-            <% end %>
-          </tbody>
-      </table>
-  </div>
+    <div class="ad-user-orders">
+      <div class="ad-user-orders-inner">
+        <div class="ad-tbl-title2">オーダー履歴</div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>オーダーNo.</th>
+                <th>ステータス</th>
+                <th>購入日</th>
+                <th>合計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% @user.orders.reverse_each do |order| %>
+                <td><%= link_to order.id, admins_order_show_path(order.id) %></td>
+                <td><%= order.status %></td>
+                <td><%= order.created_at %></td>
+                <td><%= order.total %></td>
+              </tr>
+              <% end %>
+            </tbody>
+        </table>
+    </div>
 
+  </div>
 </div>
