@@ -7,7 +7,7 @@
 	<div class="product-show-box">
 		<div class="product-show-image-info-cart-box">
 			<div class="product-image-box">
-				<%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: 'icon-mypage.jpg', :size => "300x300" %>
+				<%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: 'icon-mypage.jpg', :size => "300x300", class: "product-image-icon" %>
 			</div>
 			<div class="product-info-box">
 				<p><label>アルバム/シングル名</label> <%= @product.album_title %></p>
@@ -46,7 +46,7 @@
 							<div class="field row">
 								<label>数量</label>
 							</div>
-							<%= f.number_field :quantity, min: 1, max: @product.stock %>
+							<%= f.number_field :quantity, min: 1, max: @product.stock, style:"color:black;", value:"1" %>
 							<div class="action row">
 							  	<%= f.submit 'カートに入れる', class: "cart-button-style" %>
 							</div>
